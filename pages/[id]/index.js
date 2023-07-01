@@ -25,7 +25,7 @@ const Note = () => {
     const router = useRouter()
     const { note } = useGetNote(router)
 
-    useRedirect(note, data, router)
+    useRedirect(note, user, router)
 
 
 
@@ -38,7 +38,7 @@ const Note = () => {
                     type: "NEW_MESSAGE",
                     email: note.breakerEmail,
                     subject: "interest in your property",
-                    picture: data.picture,
+                    picture: user.picture,
                     header: `message from ${user.name}`,
                     message: messageToBreaker,
                     link: "",
@@ -57,7 +57,7 @@ const Note = () => {
 
 
     if (!note) return
-    if (!data) return
+    if (!user) return
     if (windowWidth > 1200) {
         return (
             <div style={desktopCont}>
