@@ -1,5 +1,8 @@
 import dbConnect from '../../../../utils/dbConnect';
 import Filter from '../../../../models/Filter';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 dbConnect();
 
@@ -139,6 +142,28 @@ export default async (req, res) => {
 
                     if (filter.email === req.body.breakerEmail) return
 
+                    // console.log("matching?? ",
+                    //     addressWithinArr,
+                    //     higherThanMinRent,
+                    //     lowerThanMaxRent,
+                    //     canMoveInAfterEarliest,
+                    //     canMoveInBeforeLatest,
+                    //     petsMatch,
+                    //     parkingMatch,
+                    //     outdoorMatch,
+                    //     gardenMatch,
+                    //     wallMatch,
+                    //     floorMatch,
+                    //     supermarketMatch,
+                    //     trainMatch,
+                    //     higherThanMinBed,
+                    //     higherThanMinBath
+                    // )
+
+                    console.log(process.env.EMAIL_ROOT_URL);
+
+                    process
+
                     if (
                         addressWithinArr === true &&
                         higherThanMinRent === true &&
@@ -156,31 +181,31 @@ export default async (req, res) => {
                         higherThanMinBed === true &&
                         higherThanMinBath === true
                     ) {
-                        // async function sendEmail() {
+                        async function sendEmail() {
 
-                        //     try {
-                        //         await fetch('/api/contact', {
-                        //             method: "POST",
-                        //             body: JSON.stringify({
-                        //                 type: "NEW_MESSAGE",
-                        //                 name: filter.userName,
-                        //                 email: filter.userEmail,
-                        //                 subject: 'A new property matches your filter!',
-                        //                 picture: req.body.pics[0].url,
-                        //                 header: `Hi, ${filter.userName} This property matches a filter`,
-                        //                 message: req.body.description,
-                        //                 link: `/${req.body._id}#Details`,
-                        //             }),
-                        //             headers: { "Content-Type": "application/json", Accept: "application/json" },
-                        //         }).then((res) => {
-                        //             if (!res.ok) throw new Error("Failed to send message");
-                        //             return res.json();
-                        //         })
-                        //     } catch (error) {
-                        //         console.log("send email err: ", error)
-                        //     }
-                        // };
-                        // sendEmail()
+                            try {
+                                await fetch('http://localhost:3000/api/contact', {
+                                    method: "POST",
+                                    body: JSON.stringify({
+                                        type: "NEW_MESSAGE",
+                                        name: filter.userName,
+                                        email: filter.userEmail,
+                                        subject: 'A new property matches your filter!',
+                                        picture: req.body.pics[0].url,
+                                        header: `Hi, ${filter.userName} This property matches a filter`,
+                                        message: req.body.description,
+                                        link: `http://localhost:3000/${req.body._id}`,
+                                    }),
+                                    headers: { "Content-Type": "application/json", Accept: "application/json" },
+                                }).then((res) => {
+                                    if (!res.ok) throw new Error("Failed to send message");
+                                    return res.json();
+                                })
+                            } catch (error) {
+                                console.log("send email err: ", error)
+                            }
+                        };
+                        sendEmail()
                     }
 
                 })
