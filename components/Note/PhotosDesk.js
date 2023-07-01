@@ -1,20 +1,20 @@
-// const PhotosDesk = ({ pics }) => {
+const PhotosDesk = ({ pics }) => {
 
-//     return (
-//         <div style={{ display: "flex", justifyContent: "space-between", flexWrap: "wrap" }}>
-//             {pics.map((pic, idx) => {
+    return (
+        <div style={{ display: "flex", justifyContent: "left", overflow: "scroll" }}>
+            {pics.map((pic, idx) => {
 
-//                 return (
-//                     <div key={idx}>
-//                         <img
-//                             src={pic.url}
-//                             style={{ height: "120px" }}
-//                         />
-//                     </div>
-//                 )
-//             })}
-//         </div>
-//     )
-// }
+                return (
+                    <div key={idx}>
+                        <img
+                            src={pic.url}
+                            style={{ height: "400px" }}
+                        />
+                    </div>
+                )
+            })}
+        </div>
+    )
+}
 
-// export default PhotosDesk;
+export default PhotosDesk;

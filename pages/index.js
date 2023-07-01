@@ -6,14 +6,19 @@ import fetch from 'isomorphic-unfetch';
 import FilterComp from '../components/Filter/FilterComp';
 import ListingComp from '../components/Listing/ListingComp';
 import WelcomeComp from '../components/WelcomeComp';
-import Logo from '../components/Logo'
 import useWindowWidth from '../custom_hooks/useWindowWidth';
 import useGetFilteredNotes from '../custom_hooks/useGetFilteredNotes';
 import useGetFilter from '../custom_hooks/useGetFilter';
 import ListingEditToggle from '../components/Listing/ListingEditToggle';
 import useUpdateFilter from '../custom_hooks/useUpdateFilter';
 
+import trees from '../public/australian-trees.jpg';
+import logo from '../public/lbm-logo.svg';
+
+
 const Index = () => {
+
+  const [loaded, setLoaded] = useState(false)
 
   const windowWidth = useWindowWidth()
   const [mobileView, setMobileView] = useState("NOTES")
@@ -46,53 +51,67 @@ const Index = () => {
   }, [])
 
 
-  if (windowWidth > 1200) {
-    return (
-      <div style={{ width: "100%", display: "flex", justifyContent: "center" }}>
-        <div ref={desktopComp} style={{ marginTop: "152px", width: "1200px", zoom: "0.8" }}>
-          <div style={{ position: "absolute", width: "100%", top: "-420px", left: "0px", zIndex: "-1", height: "720px", overflow: "hidden", filter: "brightness(0.8)", opacity: "1" }}>
-            <iframe
-              width="1500"
-              height="1500"
-              src="https://www.youtube.com/embed/rSEtLebW-Bc?autoplay=1&mute=1&&loop=5"
-              title="YouTube video player"
-              allow="autoplay"
-              style={{ width: "100%", marginTop: "120px" }}
-            >
+  /**
+   * Set loaded after time interval from mount
+   */
+  useEffect(() => {
+    setTimeout(() => {
+      setLoaded(true)
+    }, 2000)
+  }, [])
 
-            </iframe>
-          </div>
-          <div style={{ position: "absolute", top: "16px", left: "24px" }}>
-            <Logo />
-          </div>
-          <WelcomeComp user={user} filter={filter} setFilter={setFilter} deviceSize={"DESKTOP"} />
-          <div style={{ display: "flex", justifyContent: "space-between" }}>
-            <div style={{ width: "29%" }}>
-              <FilterComp filter={filter} setFilter={setFilter} updateFilter={updateFilter} filterUpdating={filterUpdating} notes={notes} deviceSize={"DESKTOP"} />
+
+  if (loaded) {
+    if (windowWidth > 1200) {
+      return (
+        <div style={{ width: "100%", display: "flex", justifyContent: "center" }}>
+          <div ref={desktopComp} style={{ marginTop: "152px", width: "1200px", zoom: "0.8" }}>
+            <div style={{ position: "absolute", width: "100%", top: "-420px", left: "0px", zIndex: "-1", height: "720px", overflow: "hidden", filter: "brightness(0.8)", opacity: "1" }}>
+              <img
+                width="1500"
+                src={trees.src}
+                style={{ width: "100%", marginTop: "120px" }}
+              />
             </div>
-            <div style={{ width: "69%" }}>
-              <ListingComp notes={notes} rendering={rendering} unlimitedNotes={unlimitedNotes} skipping={skipping} setSkipping={setSkipping} deviceSize={"DESKTOP"} />
+            <div style={{ position: "absolute", top: "16px", left: "24px" }}>
+              <img src={logo()}/>
+            </div>
+            <WelcomeComp user={user} filter={filter} setFilter={setFilter} deviceSize={"DESKTOP"} />
+            <div style={{ display: "flex", justifyContent: "space-between" }}>
+              <div style={{ width: "29%" }}>
+                <FilterComp filter={filter} setFilter={setFilter} updateFilter={updateFilter} filterUpdating={filterUpdating} notes={notes} deviceSize={"DESKTOP"} />
+              </div>
+              <div style={{ width: "69%" }}>
+                <ListingComp notes={notes} rendering={rendering} unlimitedNotes={unlimitedNotes} skipping={skipping} setSkipping={setSkipping} deviceSize={"DESKTOP"} />
+              </div>
             </div>
           </div>
+        </div >
+      )
+    } else {
+      return (
+        <div style={{ width: "100%" }}>
+          <div style={{ zoom: "0.8" }}>
+            <WelcomeComp user={user} filter={filter} setFilter={setFilter} deviceSize={"MOBILE"} />
+          </div>
+          <ListingEditToggle mobileView={mobileView} setMobileView={setMobileView} />
+          {mobileView === "FILTERS" && (
+            <FilterComp filter={filter} setFilter={setFilter} updateFilter={updateFilter} filterUpdating={filterUpdating} notes={notes} deviceSize={"MOBILE"} />
+          )}
+          {mobileView === "NOTES" && (
+            <ListingComp notes={notes} rendering={rendering} unlimitedNotes={unlimitedNotes} skipping={skipping} setSkipping={setSkipping} deviceSize={"MOBILE"} />
+          )}
         </div>
-      </div >
-    )
+      )
+    }
   } else {
     return (
-      <div style={{ width: "100%" }}>
-        <div style={{ zoom: "0.8" }}>
-          <WelcomeComp user={user} filter={filter} setFilter={setFilter} deviceSize={"MOBILE"} />
-        </div>
-        <ListingEditToggle mobileView={mobileView} setMobileView={setMobileView} />
-        {mobileView === "FILTERS" && (
-          <FilterComp filter={filter} setFilter={setFilter} updateFilter={updateFilter} filterUpdating={filterUpdating} notes={notes} deviceSize={"MOBILE"} />
-        )}
-        {mobileView === "NOTES" && (
-          <ListingComp notes={notes} rendering={rendering} unlimitedNotes={unlimitedNotes} skipping={skipping} setSkipping={setSkipping} deviceSize={"MOBILE"} />
-        )}
+      <div style={{ width: "100vw", height: "100vh", display: "flex", justifyContent: "center", alignItems: "center" }}>
+        <h1 style={{ color: "black" }}>loading...</h1>
       </div>
     )
   }
+
 }
 
 export default Index;

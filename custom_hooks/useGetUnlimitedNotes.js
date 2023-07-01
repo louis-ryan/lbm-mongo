@@ -8,6 +8,8 @@ function useGetUnlimitedNotes(filter) {
 
     if (!filter) return
 
+    // console.log("filter: ", filter)
+
     async function getNotes() {
         const filterString = useFilterString(filter, null, null)
       

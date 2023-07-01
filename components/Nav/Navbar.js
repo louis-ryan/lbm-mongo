@@ -1,12 +1,16 @@
 import { useState } from 'react';
-
+import { useUser } from '@auth0/nextjs-auth0';
 import NavbarUserOptions from './NavbarUserOptions';
 import NavbarDropdown from './NavbarDropdown'
+import ContactModal from './ContactModal';
 
 
 const Navbar = () => {
 
     const [userOptions, setUserOptions] = useState(false)
+    const [contactShowing, setContactShowing] = useState(false)
+
+    const { user } = useUser()
 
 
     return (
@@ -19,9 +23,20 @@ const Navbar = () => {
                 />
             </div>
 
-            {userOptions && <NavbarDropdown
-                setUserOptions={setUserOptions}
-            />}
+            {userOptions && (
+                <NavbarDropdown
+                    setUserOptions={setUserOptions}
+                    setContactShowing={setContactShowing}
+                />
+            )}
+
+            {contactShowing && (
+                <ContactModal
+                    setContactShowing={setContactShowing}
+                    user={user}
+                />
+            )}
+
         </div>
     )
 
