@@ -50,7 +50,7 @@ const RentFilter = ({ reveal, setReveal, deviceSize, filter, setFilter, notes })
     async function getCompleteNotes() {
         var rentArr = []
 
-        const res = await fetch(`api/notes/`);
+        const res = await fetch(`api/notes`);
         const { data } = await res.json();
 
         data.map((note) => {

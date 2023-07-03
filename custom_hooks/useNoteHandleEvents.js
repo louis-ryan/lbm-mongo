@@ -9,7 +9,6 @@ function useNoteHandleEvents(form, setForm, post, setPost, setValidAddresses, se
             })
             router.push("/");
             const resJSON = await res.json()
-            console.log("note res: ", resJSON)
             if (res.status === 201) {
                 const res = await fetch('api/filters/contact', {
                     method: 'POST',
@@ -17,7 +16,6 @@ function useNoteHandleEvents(form, setForm, post, setPost, setValidAddresses, se
                     body: JSON.stringify({ ...form, _id: resJSON.data._id })
                 })
                 resJSON = await res.json()
-                console.log("email res: ", resJSON)
             }
         } catch (error) {
             console.log("create note err: ", error);

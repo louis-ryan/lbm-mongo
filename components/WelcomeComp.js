@@ -81,10 +81,10 @@ const WelcomeComp = ({ user, filter, setFilter, deviceSize }) => {
     if (deviceSize === "DESKTOP") {
         return (
             <div style={{ width: "100%", borderRadius: "8px", color: "white" }}>
-                <div style={{ height: "16px" }} />
+                <div style={{ height: "60px" }} />
                 <div style={{ fontSize: "32px" }}>Welcome {user && user.given_name}</div>
-                <div style={{ height: "24px" }} />
-                <div style={{ fontSize: "16px" }}>You are filtering by the following options...</div>
+                <div style={{ height: "40px" }} />
+                {/* <div style={{ fontSize: "16px" }}>You are filtering by the following options...</div>
                 <div style={{ marginTop: "24px", display: "flex", flexWrap: "wrap" }}>
 
                     {labelsArr.map((label) => (
@@ -105,7 +105,7 @@ const WelcomeComp = ({ user, filter, setFilter, deviceSize }) => {
                             <div>{label.name}</div>
                         </div>
                     ))}
-                </div>
+                </div> */}
             </div>
         )
     } else {

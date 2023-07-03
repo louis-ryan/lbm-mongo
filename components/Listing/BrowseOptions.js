@@ -1,5 +1,5 @@
 
-const BrowseOptions = ({ unlimitedNotes, skipping, setSkipping, }) => {
+const BrowseOptions = ({ unlimitedNotes, skipping, setSkipping, getSkippedNotes }) => {
 
     return (
         <div style={{ width: "100%", display: "flex", justifyContent: "space-between", padding: "8px" }}>
@@ -11,6 +11,7 @@ const BrowseOptions = ({ unlimitedNotes, skipping, setSkipping, }) => {
                 onClick={() => {
                     if (skipping === 0) return
                     setSkipping(skipping - 5)
+                    getSkippedNotes(skipping - 5)
                 }}
             >
                 PREV
@@ -21,6 +22,7 @@ const BrowseOptions = ({ unlimitedNotes, skipping, setSkipping, }) => {
                 onClick={() => {
                     if (skipping + 5 >= unlimitedNotes) return
                     setSkipping(skipping + 5)
+                    getSkippedNotes(skipping + 5)
                 }}
             >
                 NEXT

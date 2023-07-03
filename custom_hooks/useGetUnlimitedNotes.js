@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import useFilterString from './useFilterString';
 
 function useGetUnlimitedNotes(filter) {
@@ -8,16 +8,17 @@ function useGetUnlimitedNotes(filter) {
 
     if (!filter) return
 
-    // console.log("filter: ", filter)
+    useEffect(() => {
+        async function getNotes() {
+            const filterString = useFilterString(filter, null, null)
 
-    async function getNotes() {
-        const filterString = useFilterString(filter, null, null)
-      
-        const res = await fetch(`/api/notes/filter/${filterString}`);
-        const { data } = await res.json();
-        setUnlimitedNotes(data.length)
-    }
-    getNotes()
+            const res = await fetch(`/api/notes/filter/${filterString}`);
+            const { data } = await res.json();
+            setUnlimitedNotes(data.length)
+        }
+        getNotes()
+    }, [filter])
+
 
 
     // setTimeout(() => {
