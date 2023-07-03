@@ -160,8 +160,6 @@ export default async (req, res) => {
                     //     higherThanMinBath
                     // )
 
-                    console.log(process.env.EMAIL_ROOT_URL);
-
                     process
 
                     if (

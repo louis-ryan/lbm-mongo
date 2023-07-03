@@ -12,13 +12,11 @@ import useGetFilter from '../custom_hooks/useGetFilter';
 import ListingEditToggle from '../components/Listing/ListingEditToggle';
 import useUpdateFilter from '../custom_hooks/useUpdateFilter';
 
-import trees from '../public/australian-trees.jpg';
-import logo from '../public/lbm-logo.svg';
+import Logo from '../public/lbm_new_logo.svg';
 
 
 const Index = () => {
 
-  const [loaded, setLoaded] = useState(false)
 
   const windowWidth = useWindowWidth()
   const [mobileView, setMobileView] = useState("NOTES")
@@ -27,7 +25,7 @@ const Index = () => {
   const desktopComp = useRef()
   const { filter, setFilter } = useGetFilter(user)
   const unlimitedNotes = useGetUnlimitedNotes(filter)
-  const { notes, rendering, filterUpdating, setFilterUpdating, skipping, setSkipping } = useGetFilteredNotes(filter)
+  const { notes, rendering, filterUpdating, setFilterUpdating, skipping, setSkipping, getSkippedNotes } = useGetFilteredNotes(filter)
   const { updateFilter } = useUpdateFilter(user, router, setFilterUpdating, filter, setFilter)
 
 
@@ -51,66 +49,49 @@ const Index = () => {
   }, [])
 
 
-  /**
-   * Set loaded after time interval from mount
-   */
-  useEffect(() => {
-    setTimeout(() => {
-      setLoaded(true)
-    }, 2000)
-  }, [])
-
-
-  if (loaded) {
-    if (windowWidth > 1200) {
-      return (
-        <div style={{ width: "100%", display: "flex", justifyContent: "center" }}>
-          <div ref={desktopComp} style={{ marginTop: "152px", width: "1200px", zoom: "0.8" }}>
-            <div style={{ position: "absolute", width: "100%", top: "-420px", left: "0px", zIndex: "-1", height: "720px", overflow: "hidden", filter: "brightness(0.8)", opacity: "1" }}>
-              <img
-                width="1500"
-                src={trees.src}
-                style={{ width: "100%", marginTop: "120px" }}
-              />
+  if (windowWidth > 1200) {
+    return (
+      <div style={{ width: "100%", display: "flex", justifyContent: "center" }}>
+        <div ref={desktopComp} style={{ marginTop: "152px", width: "1200px", zoom: "0.8" }}>
+          <div style={{ position: "absolute", width: "100%", top: "-420px", left: "0px", zIndex: "-1", height: "720px", overflow: "hidden", filter: "brightness(0.8)", opacity: "1" }}>
+            <img
+              width="1500"
+              src={"https://www.austapestry.com.au/sites/default/files/tapestry/Mob1.jpg"}
+              style={{ width: "100%", marginTop: "120px", filter: "brightness(0.6) saturate(0.8) blur(2px)", transform: "scale(1.05)" }}
+            />
+          </div>
+          <div style={{ position: "absolute", top: "16px", left: "24px" }}>
+            <Logo />
+          </div>
+          <WelcomeComp user={user} filter={filter} setFilter={setFilter} deviceSize={"DESKTOP"} />
+          <div style={{ display: "flex", justifyContent: "space-between" }}>
+            <div style={{ width: "29%" }}>
+              <FilterComp filter={filter} setFilter={setFilter} updateFilter={updateFilter} filterUpdating={filterUpdating} notes={notes} deviceSize={"DESKTOP"} />
             </div>
-            <div style={{ position: "absolute", top: "16px", left: "24px" }}>
-              <img src={logo()}/>
-            </div>
-            <WelcomeComp user={user} filter={filter} setFilter={setFilter} deviceSize={"DESKTOP"} />
-            <div style={{ display: "flex", justifyContent: "space-between" }}>
-              <div style={{ width: "29%" }}>
-                <FilterComp filter={filter} setFilter={setFilter} updateFilter={updateFilter} filterUpdating={filterUpdating} notes={notes} deviceSize={"DESKTOP"} />
-              </div>
-              <div style={{ width: "69%" }}>
-                <ListingComp notes={notes} rendering={rendering} unlimitedNotes={unlimitedNotes} skipping={skipping} setSkipping={setSkipping} deviceSize={"DESKTOP"} />
-              </div>
+            <div style={{ width: "69%" }}>
+              <ListingComp notes={notes} rendering={rendering} unlimitedNotes={unlimitedNotes} skipping={skipping} setSkipping={setSkipping} getSkippedNotes={getSkippedNotes} deviceSize={"DESKTOP"} />
             </div>
           </div>
-        </div >
-      )
-    } else {
-      return (
-        <div style={{ width: "100%" }}>
-          <div style={{ zoom: "0.8" }}>
-            <WelcomeComp user={user} filter={filter} setFilter={setFilter} deviceSize={"MOBILE"} />
-          </div>
-          <ListingEditToggle mobileView={mobileView} setMobileView={setMobileView} />
-          {mobileView === "FILTERS" && (
-            <FilterComp filter={filter} setFilter={setFilter} updateFilter={updateFilter} filterUpdating={filterUpdating} notes={notes} deviceSize={"MOBILE"} />
-          )}
-          {mobileView === "NOTES" && (
-            <ListingComp notes={notes} rendering={rendering} unlimitedNotes={unlimitedNotes} skipping={skipping} setSkipping={setSkipping} deviceSize={"MOBILE"} />
-          )}
         </div>
-      )
-    }
+      </div >
+    )
   } else {
     return (
-      <div style={{ width: "100vw", height: "100vh", display: "flex", justifyContent: "center", alignItems: "center" }}>
-        <h1 style={{ color: "black" }}>loading...</h1>
+      <div style={{ width: "100%" }}>
+        <div style={{ zoom: "0.8" }}>
+          <WelcomeComp user={user} filter={filter} setFilter={setFilter} deviceSize={"MOBILE"} />
+        </div>
+        <ListingEditToggle mobileView={mobileView} setMobileView={setMobileView} />
+        {mobileView === "FILTERS" && (
+          <FilterComp filter={filter} setFilter={setFilter} updateFilter={updateFilter} filterUpdating={filterUpdating} notes={notes} deviceSize={"MOBILE"} />
+        )}
+        {mobileView === "NOTES" && (
+          <ListingComp notes={notes} rendering={rendering} unlimitedNotes={unlimitedNotes} skipping={skipping} setSkipping={setSkipping} getSkippedNotes={getSkippedNotes} deviceSize={"MOBILE"} />
+        )}
       </div>
     )
   }
+
 
 }
 

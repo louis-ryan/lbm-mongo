@@ -3,13 +3,14 @@ import { useUser } from '@auth0/nextjs-auth0';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import PropertyInfo from '../components/Creation/PropertyInfo';
-import Logo from '../components/Logo'
 import useWindowWidth from '../custom_hooks/useWindowWidth';
 import useNoteFormatForm from '../custom_hooks/useNoteFormatForm';
 import useNoteFormInit from '../custom_hooks/useNoteFormInit';
 import useNotePostcodeQuery from '../custom_hooks/useNotePostcodeQuery';
 import useNoteHandleEvents from '../custom_hooks/useNoteHandleEvents';
 import useNoteImageUpload from '../custom_hooks/useNoteImageUpload';
+
+import Logo from '../public/lbm_new_logo.svg';
 
 
 const NewNote = () => {
@@ -36,7 +37,7 @@ const NewNote = () => {
                             style={{ width: "100%" }}
                         />
                     </div>
-                    <div onClick={() => router.push('/')} style={{ position: "absolute", top: "16px", left: "24px" }}>
+                    <div onClick={() => router.push('/')} style={{ position: "absolute", top: "16px", left: "24px", cursor: "pointer" }}>
                         <Logo />
                     </div>
                     <div style={{ height: "40px" }} />

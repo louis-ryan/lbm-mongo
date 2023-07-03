@@ -2,7 +2,7 @@ import ListingCard from './ListingCard';
 import BrowseOptions from './BrowseOptions';
 
 
-const ListingComp = ({ notes, getNotes, rendering, unlimitedNotes, skipping, setSkipping, deviceSize }) => {
+const ListingComp = ({ notes, getNotes, rendering, unlimitedNotes, skipping, setSkipping, getSkippedNotes, deviceSize }) => {
 
 
     return (
@@ -15,6 +15,7 @@ const ListingComp = ({ notes, getNotes, rendering, unlimitedNotes, skipping, set
                 unlimitedNotes={unlimitedNotes}
                 skipping={skipping}
                 setSkipping={setSkipping}
+                getSkippedNotes={getSkippedNotes}
             />
 
             {notes && notes.map((note, idx) => {
@@ -35,6 +36,7 @@ const ListingComp = ({ notes, getNotes, rendering, unlimitedNotes, skipping, set
                 unlimitedNotes={unlimitedNotes}
                 skipping={skipping}
                 setSkipping={setSkipping}
+                getSkippedNotes={getSkippedNotes}
             />
 
             <div style={{ height: "80px" }} />
