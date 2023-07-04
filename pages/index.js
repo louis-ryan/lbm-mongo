@@ -12,8 +12,6 @@ import useGetFilter from '../custom_hooks/useGetFilter';
 import ListingEditToggle from '../components/Listing/ListingEditToggle';
 import useUpdateFilter from '../custom_hooks/useUpdateFilter';
 
-import Logo from '../public/lbm_new_logo.svg';
-
 
 const Index = () => {
 
@@ -61,7 +59,7 @@ const Index = () => {
             />
           </div>
           <div style={{ position: "absolute", top: "16px", left: "24px" }}>
-            <Logo />
+            <img src="https://images.squarespace-cdn.com/content/v1/56dce00a45bf214a0b3fadf3/5cf24fcb-d5dc-44b2-a321-b28ee3d3e00d/lbm_new_logo.png?format=500w" />
           </div>
           <WelcomeComp user={user} filter={filter} setFilter={setFilter} deviceSize={"DESKTOP"} />
           <div style={{ display: "flex", justifyContent: "space-between" }}>
