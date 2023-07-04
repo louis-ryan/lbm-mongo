@@ -9,8 +9,6 @@ import useGetNote from '../../custom_hooks/useGetNote';
 import useRedirect from '../../custom_hooks/useRedirect';
 import mapPath from '../../components/Creation/MapPath';
 
-import Logo from '../../public/lbm_new_logo.svg';
-
 
 const desktopCont = { width: "100%", display: "flex", justifyContent: "center" }
 const desktopComp = { width: "920px", zoom: "0.8" }
@@ -68,7 +66,7 @@ const Note = () => {
                         <img src={note.pics[0].url} style={{ width: "100%" }} />
                     </div>
                     <div onClick={() => { router.push('/') }} style={{ position: "absolute", top: "16px", left: "24px", cursor: "pointer" }} >
-                        <Logo />
+                        <img src="https://images.squarespace-cdn.com/content/v1/56dce00a45bf214a0b3fadf3/5cf24fcb-d5dc-44b2-a321-b28ee3d3e00d/lbm_new_logo.png?format=500w" />
                     </div>
                     <div style={{ height: "140px" }} />
 

@@ -10,8 +10,6 @@ import useNotePostcodeQuery from '../custom_hooks/useNotePostcodeQuery';
 import useNoteHandleEvents from '../custom_hooks/useNoteHandleEvents';
 import useNoteImageUpload from '../custom_hooks/useNoteImageUpload';
 
-import Logo from '../public/lbm_new_logo.svg';
-
 
 const NewNote = () => {
 
@@ -38,7 +36,7 @@ const NewNote = () => {
                         />
                     </div>
                     <div onClick={() => router.push('/')} style={{ position: "absolute", top: "16px", left: "24px", cursor: "pointer" }}>
-                        <Logo />
+                    <img src="https://images.squarespace-cdn.com/content/v1/56dce00a45bf214a0b3fadf3/5cf24fcb-d5dc-44b2-a321-b28ee3d3e00d/lbm_new_logo.png?format=500w" />
                     </div>
                     <div style={{ height: "40px" }} />
                     <h1 style={{ color: "white" }}>Create Post</h1>
