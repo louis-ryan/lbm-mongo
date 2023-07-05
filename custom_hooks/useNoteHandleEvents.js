@@ -1,4 +1,4 @@
-function useNoteHandleEvents(form, setForm, post, setPost, setValidAddresses, setMapCoords, router, setErrors) {
+function useNoteHandleEvents(form, setForm, post, setPost, setValidAddresses, setMapCoords, router, errors, setErrors) {
 
     const createNote = async () => {
         try {

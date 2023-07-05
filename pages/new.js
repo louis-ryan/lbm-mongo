@@ -21,7 +21,7 @@ const NewNote = () => {
     const [form, setForm] = useState(useNoteFormInit());
     const { formBools, setFormBools, post, setPost } = useNoteFormatForm(user, form, setForm);
     const { setMapCoords, latInPx, longInPx, validAddresses, setValidAddresses } = useNotePostcodeQuery(form, setForm, errors, setErrors);
-    const [handleSubmit, handleChange, handleRent, handlePost, handleMoveInDate, handleContractEnds, handleContractTerminates, handleAddress, handleClearPost] = useNoteHandleEvents(form, setForm, post, setPost, setValidAddresses, setMapCoords, router, setErrors)
+    const [handleSubmit, handleChange, handleRent, handlePost, handleMoveInDate, handleContractEnds, handleContractTerminates, handleAddress, handleClearPost] = useNoteHandleEvents(form, setForm, post, setPost, setValidAddresses, setMapCoords, router, errors, setErrors)
     const { compressFile } = useNoteImageUpload(form, setForm, errors, setErrors)
 
 
