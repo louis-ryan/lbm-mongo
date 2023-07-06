@@ -1,6 +1,35 @@
+.filter-box {
+    background-color: white;
+    border-radius: 8px;
+    z-index: 15;
+    box-shadow: 4px -4px 0px 0px grey;
+}
+
+.filter-box:hover {
+    box-shadow: 4px -4px 0px 2px pink;
+}
+
 .filter-header {
     margin: 0px 8px 16px 8px;
     display: flex;
     justify-content: space-between;
     cursor: pointer;
+}
+
+.update-filter-button {
+    margin: 16px 8px;
+    width: calc(100% - 16px);
+    text-align: center;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+}
+
+.update-filter-button:hover {
+    background-color: pink;
+    color: black;
 }

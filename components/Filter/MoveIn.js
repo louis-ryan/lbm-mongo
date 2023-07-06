@@ -27,13 +27,10 @@ const MoveIn = ({ reveal, setReveal, deviceSize, filter, setFilter }) => {
     return (
         <>
             <div
+                className="filter-box"
                 style={{
                     border: activeCondition ? "#50554A 4px solid" : "2px solid #50554A",
-                    backgroundColor: "white",
-                    borderRadius: "8px",
-                    zIndex: "15",
                     width: reveal === "RENT" && deviceSize === "MOBILE" && "100%",
-                    boxShadow: "4px -4px 0px 0px #DCDBAB"
                 }}
             >
 
