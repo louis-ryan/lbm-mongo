@@ -109,16 +109,18 @@ const Note = () => {
 
                     <div style={{ height: "24px" }} />
 
+                    <PhotosDesk
+                        pics={note.pics}
+                    />
+
+                    <div style={{ height: "24px" }} />
+
 
                     <Details
                         note={note}
                         mapPath={mapPath}
                         latInPx={latInPx}
                         longInPx={longInPx}
-                    />
-
-                    <PhotosDesk
-                        pics={note.pics}
                     />
 
                 </div>

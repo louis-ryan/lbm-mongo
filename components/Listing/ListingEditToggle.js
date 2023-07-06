@@ -4,7 +4,7 @@ const ListingEditToggle = ({ mobileView, setMobileView }) => {
     return (
         <div
             onClick={() => mobileView === "NOTES" ? setMobileView("FILTERS") : setMobileView("NOTES")}
-            style={{ width: "calc(100% - 16px)", textAlign: "center", padding: "8px", margin: "24px 8px 0px 8px", backgroundColor: "black", color: "white", cursor: "pointer" }}
+            style={{ width: "calc(100% - 16px)", textAlign: "center", padding: "8px", margin: "24px 8px 0px 8px", backgroundColor: "black", color: "white", cursor: "pointer", borderRadius: "8px" }}
         >
             {mobileView === "FILTERS" ? (
                 <div style={{ display: "flex", justifyContent: "center" }}>

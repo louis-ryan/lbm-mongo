@@ -28,7 +28,7 @@ const Part1 = (props) => {
         <>
             <div style={{ height: "16px" }} />
 
-            <InputHeader header={'Part 1: Location'} />
+            <InputHeader header={'Part 1/5: Location'} />
 
             <PostCode
                 handlePost={props.handlePost}
@@ -78,8 +78,9 @@ const Part1 = (props) => {
                         {props.validAddresses.map((address) => {
                             return (
                                 <div
+                                    className="address-picker"
                                     key={address}
-                                    style={{ width: "100%", height: "40px", backgroundColor: props.form.address === address ? "black" : "white", paddingLeft: "16px", paddingTop: "8px", color: props.form.address === address && "white" }}
+                                    style={{  backgroundColor: props.form.address === address ? "black" : "white", color: props.form.address === address && "white" }}
                                     onClick={() => props.handleAddress(address)}>
                                     {address}
                                 </div>

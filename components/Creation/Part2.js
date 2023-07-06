@@ -1,3 +1,4 @@
+import { useState } from "react";
 import InputHeader from "./InputHeader";
 
 const Part2 = (props) => {
@@ -8,11 +9,15 @@ const Part2 = (props) => {
     }
 
 
+    const [extensionPossible, setExtensionPossible] = useState("")
+    const [readyToMove, setReadyToMove] = useState("")
+
+
     return (
         <>
             <div style={{ height: "16px" }} />
 
-            <InputHeader header={'Part 3: Contract'} />
+            <InputHeader header={'Part 3/5: Contract'} />
 
             <div>End of current contract</div>
 
@@ -24,32 +29,72 @@ const Part2 = (props) => {
 
             <div style={{ height: "24px" }} />
 
-            <div style={{ display: "flex", backgroundColor: "#e5e1e5", padding: "16px", borderRadius: "8px" }}>
+            <div>Will it be possible for the new tennant to extend their contract after this time?</div>
+            <div style={{ height: "8px" }} />
+            <div style={{ fontSize: "12px" }}>{"(This is not binding but if there is no possiblity of renewal enter 'No')"}</div>
+
+            <div style={{ display: "flex", justifyContent: "space-between", width: "100%", marginTop: "8px" }}>
                 <div
-                    onClick={() => props.handleContractTerminates(props.form.contractTerminates ? false : true)}
-                    style={{ height: "24px", minWidth: "40px", border: "1px solid grey", borderRadius: "40px", backgroundColor: `${!props.form.contractTerminates ? "pink" : "grey"}`, transform: "translateY(8px)" }}
+                    onClick={() => {
+                        setExtensionPossible("possible")
+                        props.handleContractTerminates(false)
+                    }}
+                    style={{ display: "flex", cursor: "pointer", justifyContent: "center", alignItems: "center", height: "80px", width: "49%", backgroundColor: extensionPossible === "possible" ? "pink" : "lightgrey" }}
                 >
-                    <div style={{ height: "20px", width: "20px", margin: "1px", backgroundColor: "white", border: "1px solid grey", borderRadius: "50%", transform: `translateX(${!props.form.contractTerminates ? "15px" : "0px"})`, transition: "300ms", cursor: "pointer" }} />
+                    Yes
                 </div>
-
-                <div style={{ width: "16px" }} />
-
-                <div>{'Contract extension after this date is possible.'}</div>
+                <div
+                    onClick={() => {
+                        setExtensionPossible("not_possible")
+                        props.handleContractTerminates(true)
+                    }}
+                    style={{ display: "flex", cursor: "pointer", justifyContent: "center", alignItems: "center", height: "80px", width: "49%", backgroundColor: extensionPossible === "not_possible" ? "pink" : "lightgrey" }}
+                >
+                    No
+                </div>
             </div>
-
-            <div style={{fontSize: "12px"}}>{'Further negotiations will be up to the new tennant.'}</div>
 
             <div style={{ height: "24px" }} />
 
-            <div>Earliest possible move in date for new tennant</div>
+            <div>Are you ready for a tennant to move in now?</div>
 
-            <input
-                type="date"
-                onChange={(e) => props.handleMoveInDate(e.target.value)}
-                style={{ width: "100%", fontFamily: "sans-serif", padding: "24px", fontSize: "24px" }}
-            />
+            <div style={{ display: "flex", justifyContent: "space-between", width: "100%", marginTop: "8px" }}>
+                <div
+                    onClick={() => {
+                        setReadyToMove("ready")
+                        let date = new Date();
+                        let options = { year: 'numeric', month: '2-digit', day: '2-digit' };
+                        let formattedDate = date.toLocaleDateString('en-GB', options).split('/').reverse().join('-');
+                        props.handleMoveInDate(formattedDate)
+                    }}
+                    style={{ display: "flex", cursor: "pointer", justifyContent: "center", alignItems: "center", height: "80px", width: "49%", backgroundColor: readyToMove === "ready" ? "pink" : "lightgrey" }}
+                >
+                    Yes
+                </div>
+                <div
+                    onClick={() => setReadyToMove("not_ready")}
+                    style={{ display: "flex", cursor: "pointer", justifyContent: "center", alignItems: "center", height: "80px", width: "49%", backgroundColor: readyToMove === "not_ready" ? "pink" : "lightgrey" }}
+                >
+                    No
+                </div>
+            </div>
 
-            <div style={{ height: "80px" }} />
+            {readyToMove === "not_ready" && (
+                <>
+                    <div style={{ height: "24px" }} />
+
+                    <div>Earliest possible move in date for new tennant</div>
+
+                    <input
+                        type="date"
+                        onChange={(e) => props.handleMoveInDate(e.target.value)}
+                        style={{ width: "100%", fontFamily: "sans-serif", padding: "24px", fontSize: "24px" }}
+                    />
+                </>
+            )}
+
+
+            <div style={{ height: "40px" }} />
 
             <div>Rent Calculated Weekly</div>
             <div className="rent-input">

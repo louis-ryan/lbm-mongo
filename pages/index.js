@@ -77,15 +77,24 @@ const Index = () => {
     return (
       <div style={{ width: "100%" }}>
         <div style={{ zoom: "0.8" }}>
+          <div style={{ position: "absolute", width: "100%", top: "-420px", left: "0px", zIndex: "-1", height: "720px", overflow: "hidden", filter: "brightness(0.8)", opacity: "1" }}>
+            <img
+              width="1500"
+              src={"https://www.austapestry.com.au/sites/default/files/tapestry/Mob1.jpg"}
+              style={{ width: "100%", marginTop: "340px", filter: "brightness(0.6) saturate(0.8) blur(1px)", transform: "scale(3.5)" }}
+            />
+          </div>
           <WelcomeComp user={user} filter={filter} setFilter={setFilter} deviceSize={"MOBILE"} />
         </div>
-        <ListingEditToggle mobileView={mobileView} setMobileView={setMobileView} />
-        {mobileView === "FILTERS" && (
-          <FilterComp filter={filter} setFilter={setFilter} updateFilter={updateFilter} filterUpdating={filterUpdating} notes={notes} deviceSize={"MOBILE"} />
-        )}
-        {mobileView === "NOTES" && (
-          <ListingComp notes={notes} rendering={rendering} unlimitedNotes={unlimitedNotes} skipping={skipping} setSkipping={setSkipping} getSkippedNotes={getSkippedNotes} deviceSize={"MOBILE"} />
-        )}
+        <div style={{ outline: "4px solid black", borderRadius: "16px", backgroundColor: "white", padding: "4px" }}>
+          <ListingEditToggle mobileView={mobileView} setMobileView={setMobileView} />
+          {mobileView === "FILTERS" && (
+            <FilterComp filter={filter} setFilter={setFilter} updateFilter={updateFilter} filterUpdating={filterUpdating} notes={notes} deviceSize={"MOBILE"} />
+          )}
+          {mobileView === "NOTES" && (
+            <ListingComp notes={notes} rendering={rendering} unlimitedNotes={unlimitedNotes} skipping={skipping} setSkipping={setSkipping} getSkippedNotes={getSkippedNotes} deviceSize={"MOBILE"} />
+          )}
+        </div>
       </div>
     )
   }

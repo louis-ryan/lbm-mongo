@@ -8,7 +8,7 @@ const Part4 = (props) => {
         <>
             <div style={{ height: "16px" }} />
 
-            <InputHeader header={'Part 5: Photos'} />
+            <InputHeader header={'Part 5/5: Photos'} />
 
             Upload some photos
 

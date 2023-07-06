@@ -1,3 +1,15 @@
+.address-picker {
+    padding-left: 16px;
+    padding-top: 8px;
+    width: 100%;
+    height: 40px;
+    cursor: pointer;
+}
+
+.address-picker:hover {
+    zoom: 1.05
+}
+
 .form-bool {
     text-align: center;
     padding: 8px;

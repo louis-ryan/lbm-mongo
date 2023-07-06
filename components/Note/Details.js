@@ -45,7 +45,7 @@ const Details = ({ note, mapPath, latInPx, longInPx }) => {
     return (
         <div style={{ padding: "8px", backgroundColor: "white" }} >
 
-            <div style={{ ...itemStyle, display: "flex" }}>
+            <div style={{ ...itemStyle, display: "flex", overflow: "hidden" }}>
 
                 <div style={{width: "50%"}}>
                     <h3>{"Property Location:"}</h3>
@@ -53,8 +53,8 @@ const Details = ({ note, mapPath, latInPx, longInPx }) => {
                 </div>
 
                 <div style={{
-                    transform: "scale(0.16) translateY(-600px) translateX(-600px)",
-                    height: "200px",
+                    transform: "scale(0.12) translateY(-600px) translateX(-600px)",
+                    height: "180px",
                     width: "50%"
                 }}>
 
