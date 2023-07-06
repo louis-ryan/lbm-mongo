@@ -36,6 +36,7 @@ const PostCode = (props) => {
                             }}
                             style={{ border: props.errors.address && "2px solid #a57583", width: "20%", height: "80px", textAlign: "center", fontSize: "24px", caretColor: "transparent" }}
                             autoComplete="new-password"
+                            type="number"
                         />
                     )
                 })

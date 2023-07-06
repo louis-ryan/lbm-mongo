@@ -84,33 +84,11 @@ const WelcomeComp = ({ user, filter, setFilter, deviceSize }) => {
                 <div style={{ height: "60px" }} />
                 <div style={{ fontSize: "32px" }}>Welcome {user && user.given_name}</div>
                 <div style={{ height: "40px" }} />
-                {/* <div style={{ fontSize: "16px" }}>You are filtering by the following options...</div>
-                <div style={{ marginTop: "24px", display: "flex", flexWrap: "wrap" }}>
-
-                    {labelsArr.map((label) => (
-                        <div
-                            key={label.name}
-                            onClick={() => setFilter(label.newFilter)}
-                            style={{ ...labelStyle, display: !label.condition ? "none" : "flex" }}
-                        >
-                            <div>
-                                <svg width="40px" height="40px" viewBox="0 0 40 40" style={{ height: "20px" }}>
-                                    <g id="Delete" stroke="none" strokeWidth="2" fillRule="evenodd">
-                                        <line x1="14.1585366" y1="14.1463415" x2="26.8414634" y2="25.8536585" id="Line" stroke="#FFFFFF" strokeLinecap="square"></line>
-                                        <line x1="25.8589744" y1="14.1463415" x2="15.1410256" y2="25.8536585" id="Line-20" stroke="#FFFFFF" strokeLinecap="square"></line>
-                                        <circle id="Oval" stroke="#FFFFFF" fill="black" cx="20.5" cy="19.5" r="15"></circle>
-                                    </g>
-                                </svg>
-                            </div>
-                            <div>{label.name}</div>
-                        </div>
-                    ))}
-                </div> */}
             </div>
         )
     } else {
         return (
-            <div style={{ width: "100%", padding: "16px", backgroundColor: "white", border: "1px solid grey", borderRadius: "8px" }}>
+            <div style={{ width: "100%", padding: "16px", color: "white" }}>
                 <Logo />
                 <div style={{ height: "16px" }} />
                 <div style={{ fontSize: "32px" }}>Welcome {user && user.given_name}</div>

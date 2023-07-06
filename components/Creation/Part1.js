@@ -12,7 +12,7 @@ const Part1 = (props) => {
         <>
             <div style={{ height: "16px" }} />
 
-            <InputHeader header={'Part 2: Property'} />
+            <InputHeader header={'Part 2/5: Property'} />
 
             <div style={{ display: "flex", justifyContent: "space-between" }}>
                 <div style={{ width: "48%" }}>
@@ -44,7 +44,10 @@ const Part1 = (props) => {
 
             <div style={{ height: "24px" }} />
 
-            <div style={{ marginBottom: "16px" }}>Does the property have...</div>
+            <div>
+                
+            </div>
+            <div style={{ marginBottom: "16px" }}><h3>{"Does the property have..."}</h3></div>
 
             <div style={{ display: "flex", justifyContent: "space-between", flexWrap: "wrap" }}>
 
@@ -110,7 +113,7 @@ const Part1 = (props) => {
             </div>
 
 
-            <div style={{ margin: "16px 0px" }}>Does the property share...</div>
+            <div style={{ margin: "16px 0px" }}><h3>{"Does the property share..."}</h3></div>
 
             <div style={{ display: "flex", justifyContent: "space-between" }}>
 
@@ -149,7 +152,7 @@ const Part1 = (props) => {
                 </div>
             </div>
 
-            <div style={{ margin: "16px 0px" }}>Is it less than 1km to a...</div>
+            <div style={{ margin: "16px 0px" }}><h3>{"Is it less than 1km to a..."}</h3></div>
 
             <div style={{ display: "flex", justifyContent: "space-between" }}>
 
