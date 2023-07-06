@@ -7,6 +7,7 @@ const Layout = ({ children }) => {
         <>
             <Navbar />
             <Head>
+                <link rel="icon" href="/favicon.ico" />
                 <title>LBM</title>
             </Head>
 
