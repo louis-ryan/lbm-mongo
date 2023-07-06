@@ -60,7 +60,7 @@ a {
     width: 100%;
     margin-top: 24px;
     border-radius: 8px;
-    border: 1px solid grey;
+    border: none;
     overflow: hidden;
     background-color: white;
     cursor: pointer;
@@ -68,8 +68,8 @@ a {
 }
 
 .card:hover {
-    outline: 4px solid lightgrey;
-    border: 4px solid lightgrey;
+    outline: 4px solid white;
+    border: 4px solid white;
 }
 
 .wrapper {

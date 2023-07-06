@@ -18,7 +18,7 @@ const FilterComp = ({ filter, setFilter, updateFilter, filterUpdating, notes, de
             <div style={{ height: "16px" }} />
 
             <div style={{ width: "100%", padding: "8px" }}>
-                <div>Selecting filtering options</div>
+                <div>{"Selecting filtering options"}</div>
             </div>
 
             <div style={{ height: "24px" }} />
@@ -44,11 +44,11 @@ const FilterComp = ({ filter, setFilter, updateFilter, filterUpdating, notes, de
             <div style={{ height: "8px" }} />
 
             <div
+                className='update-filter-button'
                 onClick={() => { updateFilter() }}
-                style={{ margin: "16px 8px", width: "calc(100% - 16px)", textAlign: "center", backgroundColor: "black", color: "white", cursor: "pointer", display: "flex", justifyContent: "center", alignItems: "center", height: "80px" }}
             >
                 {filterUpdating === "UPDATE" && (
-                    <div style={{ padding: "4px", fontSize: "16px"}}>{"UPDATE YOUR FILTER"}</div>
+                    <div style={{ padding: "4px", fontSize: "16px" }}>{"UPDATE YOUR FILTER"}</div>
                 )}
 
                 {filterUpdating === "UPDATING" && (
