@@ -1,11 +1,22 @@
 import { useEffect, useState } from 'react';
 import useGetInitialFilterObj from './useGetInitialFilterObj';
+import useFilterString from './useFilterString';
 
 function useGetFilter(user) {
 
     const [filter, setFilter] = useState(useGetInitialFilterObj())
     const [mount, setMount] = useState(true)
+    const [unlimitedNotes, setUnlimitedNotes] = useState(0)
+    const [initialised, setInitialised] = useState(false)
 
+
+    async function getNotes(filter) {
+        const filterString = useFilterString(filter, null, null)
+
+        const res = await fetch(`/api/notes/filter/${filterString}`);
+        const { data } = await res.json();
+        setUnlimitedNotes(data.length)
+    }
 
     useEffect(() => {
         if (!user) return
@@ -18,15 +29,27 @@ function useGetFilter(user) {
             if (typeof data !== 'object') return
 
             setFilter(data)
+            getNotes(data)
+            setInitialised(true)
+
         }
 
         getFilter()
         setMount(false)
     }, [user])
 
+
+    useEffect(() => {
+        if (!initialised) return
+        getNotes(filter)
+    }, [filter])
+
+
+
     return {
         filter: filter,
-        setFilter: setFilter
+        setFilter: setFilter,
+        unlimitedNotes: unlimitedNotes
     }
 }
 

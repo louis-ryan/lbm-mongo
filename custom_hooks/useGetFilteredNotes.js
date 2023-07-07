@@ -3,10 +3,11 @@ import useFilterString from './useFilterString';
 
 function useGetFilteredNotes(filter) {
 
-    const [notes, setNotes] = useState(0)
+    const [notes, setNotes] = useState([])
     const [rendering, setRendering] = useState(false)
     const [filterUpdating, setFilterUpdating] = useState("UPDATE")
     const [skipping, setSkipping] = useState(0)
+    const [initialised, setInitialised] = useState(false)
 
     if (!filter) return
 
@@ -30,6 +31,7 @@ function useGetFilteredNotes(filter) {
             setSkipping(0)
             setNotes(data)
             setTimeout(() => { setFilterUpdating("UPDATE"); setRendering(false) }, 1000)
+            setInitialised(true)
         }
         getNotes()
     }, [filter])
@@ -42,7 +44,8 @@ function useGetFilteredNotes(filter) {
         setFilterUpdating: setFilterUpdating,
         skipping: skipping,
         setSkipping: setSkipping,
-        getSkippedNotes: getSkippedNotes
+        getSkippedNotes: getSkippedNotes,
+        initialised: initialised
     };
 }
 

@@ -1,7 +1,7 @@
 const Photos = ({ pics }) => {
 
     return (
-        <div style={{ height: "calc(100vh - 240px)", overflow: "scroll" }} >
+        <div>
 
             {pics.map((pic, idx) => {
                 

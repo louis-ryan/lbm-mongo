@@ -29,7 +29,6 @@ const BrowseOptions = ({ unlimitedNotes, skipping, setSkipping, getSkippedNotes 
             </div>
         </div>
     )
-
 }
 
 export default BrowseOptions;

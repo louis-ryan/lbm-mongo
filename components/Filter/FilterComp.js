@@ -43,12 +43,14 @@ const FilterComp = ({ filter, setFilter, updateFilter, filterUpdating, notes, de
 
             <div style={{ height: "8px" }} />
 
+            <p style={{fontSize: "12px", padding: "8px"}}>By clicking 'SAVE AS MY FILTER', you will be sent an email each time a new property is listed that meets your filter parameters.</p>
+
             <div
                 className='update-filter-button'
                 onClick={() => { updateFilter() }}
             >
                 {filterUpdating === "UPDATE" && (
-                    <div style={{ padding: "4px", fontSize: "16px" }}>{"UPDATE YOUR FILTER"}</div>
+                    <div style={{ padding: "4px", fontSize: "16px" }}>{"SAVE AS MY FILTER"}</div>
                 )}
 
                 {filterUpdating === "UPDATING" && (

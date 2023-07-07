@@ -84,7 +84,7 @@ const PropertyInfo = (props) => {
                     display: "flex",
                     justifyContent: "center",
                     backgroundColor: "white",
-                    border: "1px solid grey",
+                    border: "4px solid black",
                     borderRadius: "16px"
                 }}
             >
