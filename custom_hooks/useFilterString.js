@@ -1,5 +1,3 @@
-import { useState } from 'react';
-
 function useFilterString(filter, limit, skipping) {
 
     return (

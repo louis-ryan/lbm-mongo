@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from 'react';
 import { useUser } from '@auth0/nextjs-auth0';
 import { useRouter } from 'next/router';
-import useGetUnlimitedNotes from '../custom_hooks/useGetUnlimitedNotes';
+// import useGetUnlimitedNotes from '../custom_hooks/useGetUnlimitedNotes';
 import fetch from 'isomorphic-unfetch';
 import FilterComp from '../components/Filter/FilterComp';
 import ListingComp from '../components/Listing/ListingComp';
@@ -21,9 +21,9 @@ const Index = () => {
   const { user } = useUser()
   const router = useRouter()
   const desktopComp = useRef()
-  const { filter, setFilter } = useGetFilter(user)
-  const unlimitedNotes = useGetUnlimitedNotes(filter)
-  const { notes, rendering, filterUpdating, setFilterUpdating, skipping, setSkipping, getSkippedNotes } = useGetFilteredNotes(filter)
+  const { filter, setFilter, unlimitedNotes } = useGetFilter(user)
+  // const unlimitedNotes = useGetUnlimitedNotes(filter)
+  const { notes, rendering, filterUpdating, setFilterUpdating, skipping, setSkipping, getSkippedNotes, initialised } = useGetFilteredNotes(filter)
   const { updateFilter } = useUpdateFilter(user, router, setFilterUpdating, filter, setFilter)
 
 
@@ -46,7 +46,7 @@ const Index = () => {
     deleteExpired()
   }, [])
 
-
+if (initialised) {
   if (windowWidth > 1200) {
     return (
       <div style={{ width: "100%", display: "flex", justifyContent: "center" }}>
@@ -98,6 +98,11 @@ const Index = () => {
       </div>
     )
   }
+} else {
+  <div></div>
+}
+
+ 
 
 
 }

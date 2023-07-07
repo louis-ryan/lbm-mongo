@@ -75,7 +75,7 @@ const RentFilter = ({ reveal, setReveal, deviceSize, filter, setFilter, notes })
      */
     useEffect(() => {
         getCompleteNotes()
-    }, [filter])
+    }, [])
 
 
     /**
