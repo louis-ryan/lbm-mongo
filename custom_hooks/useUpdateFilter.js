@@ -17,6 +17,18 @@ function useUpdateFilter(user, router, setFilterUpdating, filter, setFilter) {
         const { data } = await res.json();
         setFilter(data)
         setFilterUpdating("DONE")
+
+        if (data) {
+
+            const contactUrl = `api/filters/filter/${data._id}/contact`
+
+            const contactRes = await fetch(contactUrl)
+
+            const { contactData } = await contactRes.json();
+
+            console.log("contactData: ", contactData)
+
+        }
     }
 
     return {
