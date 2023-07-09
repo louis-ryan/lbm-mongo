@@ -50,12 +50,12 @@ const RentFilter = ({ reveal, setReveal, deviceSize, filter, setFilter, notes })
     async function getCompleteNotes() {
         var rentArr = []
 
-        const res = await fetch(`api/notes`);
+        const res = await fetch(`api/notes/rent`);
         const { data } = await res.json();
 
-        data.map((note) => {
-            if (!note.rent) return
-            rentArr.push(note.rent)
+        data.map((rent) => {
+            if (!rent) return
+            rentArr.push(rent)
         })
         var sortedRentArr = rentArr.sort((a, b) => { return a - b })
 
