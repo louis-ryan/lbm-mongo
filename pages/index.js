@@ -23,7 +23,7 @@ const Index = () => {
   const desktopComp = useRef()
   const { filter, setFilter, unlimitedNotes } = useGetFilter(user)
   // const unlimitedNotes = useGetUnlimitedNotes(filter)
-  const { notes, rendering, filterUpdating, setFilterUpdating, skipping, setSkipping, getSkippedNotes, initialised } = useGetFilteredNotes(filter)
+  const { notes, rendering, filterUpdating, setFilterUpdating, skipping, setSkipping, getSkippedNotes, initialised } = useGetFilteredNotes(filter, user)
   const { updateFilter } = useUpdateFilter(user, router, setFilterUpdating, filter, setFilter)
 
 

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import useFilterString from './useFilterString';
 
-function useGetFilteredNotes(filter) {
+function useGetFilteredNotes(filter, user) {
 
     const [notes, setNotes] = useState([])
     const [rendering, setRendering] = useState(false)
@@ -35,6 +35,17 @@ function useGetFilteredNotes(filter) {
         }
         getNotes()
     }, [filter])
+
+
+    // useEffect(() => {
+    //     if (user) return
+    //     async function getNotes() {
+    //         const res = await fetch(`api/notes`);
+    //         const { data } = await res.json();
+    //         setNotes(data)
+    //     }
+    //     getNotes()
+    // }, [])
 
 
     return {
