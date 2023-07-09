@@ -5,7 +5,7 @@ import BrowseOptions from './BrowseOptions';
 const ListingComp = ({ notes, getNotes, rendering, unlimitedNotes, skipping, setSkipping, getSkippedNotes, deviceSize }) => {
 
 
-    if (unlimitedNotes === 0) {
+    if (notes.length === 0) {
         return (
             <div style={{height: "100%", width: "100%", display: "flex", justifyContent: "center", alignItems: "center"}}>
                 There are no listings in your search filter. You might have to broaden your search

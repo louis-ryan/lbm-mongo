@@ -13,9 +13,9 @@ function useGetFilter(user) {
     async function getNotes(filter) {
         const filterString = useFilterString(filter, null, null)
 
-        const res = await fetch(`/api/notes/filter/${filterString}`);
+        const res = await fetch(`/api/notes/filter/${filterString}/int`);
         const { data } = await res.json();
-        setUnlimitedNotes(data.length)
+        setUnlimitedNotes(data)
     }
 
     useEffect(() => {
@@ -43,6 +43,11 @@ function useGetFilter(user) {
         if (!initialised) return
         getNotes(filter)
     }, [filter])
+
+    useEffect(() => {
+        if (user) return
+        getNotes(filter)
+    }, [])
 
 
 
