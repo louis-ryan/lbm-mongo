@@ -13,7 +13,7 @@ const Layout = ({ children }) => {
 
             {children}
 
-            <div style={{ width: "100%", height: "40px", display: "flex", justifyContent: "space-between", alignItems: "center"}}>
+            <div style={{ width: "100%", height: "40px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                 <div style={{ width: "240px", textAlign: "center" }}>
                     LBM v0.0.1
                 </div>

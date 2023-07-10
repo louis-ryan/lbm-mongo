@@ -3,45 +3,84 @@ import { useEffect, useState } from "react"
 const darkBackground = { width: "100vw", height: "calc(100vh + 4px)", zIndex: "600", backgroundColor: "black", marginTop: "-80px", opacity: "0.8" }
 
 const clickableContainer = { position: "absolute", top: "0px", width: "100vw", height: "100vh", zIndex: "601", marginTop: "-80px", display: "flex", justifyContent: "center", alignItems: "center" }
-const infoBox = { width: "600px", backgroundColor: "white", padding: "40px", borderRadius: "16px", height: "600px" }
+const infoBox = { width: "600px", backgroundColor: "white", padding: "40px" }
 const contactRow = { display: "flex", width: "100%", justifyContent: "space-between", height: "80px", alignItems: "center" }
 
 
 const ContactModal = ({ setContactShowing, user }) => {
 
     const [overModal, setOverModal] = useState(false)
+    const [contactInitialised, setContactInitialised] = useState("")
+    const [updateClickable, setUpdateClickable] = useState(false)
+
+    const [userContacts, setUserContacts] = useState({
+        name: user.name,
+        email: user.email,
+        phone: "",
+        social: ""
+    })
+
+
+    const patchContactInfo = async () => {
+        try {
+            await fetch(`api/users/contacts/${contactInitialised}`, {
+                method: 'PUT',
+                headers: { "Content-Type": "application/json", Accept: "application/json" },
+                body: JSON.stringify({
+                    userId: user.sub,
+                    userName: userContacts.name,
+                    userEmail: userContacts.email,
+                    userPhone: userContacts.phone,
+                    userSocial: userContacts.social
+                })
+            })
+        } catch (error) {
+            console.log("existing contact err: ", error);
+        }
+    }
+
+
+    const postContactInfo = async () => {
+        try {
+            await fetch('api/users/contacts', {
+                method: 'POST',
+                headers: { "Content-Type": "application/json", Accept: "application/json" },
+                body: JSON.stringify({
+                    userId: user.sub,
+                    userName: userContacts.name,
+                    userEmail: userContacts.email,
+                    userPhone: userContacts.phone,
+                    userSocial: userContacts.social
+                })
+            })
+        } catch (error) {
+            console.log("existing contact err: ", error);
+        }
+    }
 
 
     const checkForExistingContact = async () => {
-
-
         try {
             const res = await fetch('api/users/contacts', {
-                method: 'GET',
-                headers: { "Accept": "application/json", "Content-Type": "application/json" }
+                method: 'GET'
             })
-            const resJSON = await res.json()
+            const { data } = await res.json()
+
+            data.map((contact) => {
+                if (contact.userId === user.sub) {
+                    setContactInitialised(contact._id)
+                    setUserContacts({
+                        name: contact.userName,
+                        email: contact.userEmail,
+                        phone: contact.userPhone,
+                        social: contact.userSocial
+                    })
+                }
+            })
 
         } catch (error) {
-            console.log("create note err: ", error);
+            console.log("existing contact err: ", error);
         }
-
-
-
-
-
-        // try {
-        //     const res = await fetch('api/notes', {
-        //         method: 'POST',
-        //         headers: { "Accept": "application/json", "Content-Type": "application/json" },
-        //         body: JSON.stringify(form)
-        //     })
-        //     router.push("/");
-        //     const resJSON = await res.json()
-
-        // } catch (error) {
-        //     console.log("create note err: ", error);
-        // }
     }
 
 
@@ -63,15 +102,77 @@ const ContactModal = ({ setContactShowing, user }) => {
                     <h2>{"Contact Information"}</h2>
 
                     <div style={contactRow}>
-                        <div style={{ width: "30%" }}>{"PHONE: "}</div>
-                        <input style={{ width: "70%" }} />
+                        <div style={{ width: "30%" }}>{"NAME: "}</div>
+                        <input
+                            value={userContacts.name}
+                            style={{ width: "70%", padding: "8px", fontSize: "16px" }}
+                            onChange={(e) => {
+                                setUserContacts({ ...userContacts, name: e.target.value })
+                                if (e.target.value !== userContacts.name) {
+                                    setUpdateClickable(true)
+                                }
+                            }}
+                        />
                     </div>
 
                     <div style={contactRow}>
                         <div style={{ width: "30%" }}>{"EMAIL: "}</div>
-                        <div style={{ width: "70%" }}>{user.email}</div>
+                        <input
+                            value={userContacts.email}
+                            style={{ width: "70%", padding: "8px", fontSize: "16px" }}
+                            onChange={(e) => {
+                                setUserContacts({ ...userContacts, email: e.target.value })
+                                if (e.target.value !== userContacts.email) {
+                                    setUpdateClickable(true)
+                                }
+                            }}
+                        />
                     </div>
 
+                    <div style={contactRow}>
+                        <div style={{ width: "30%" }}>{"PHONE: "}</div>
+                        <input
+                            value={userContacts.phone}
+                            style={{ width: "70%", padding: "8px", fontSize: "16px" }}
+                            onChange={(e) => {
+                                setUserContacts({ ...userContacts, phone: e.target.value })
+                                if (e.target.value !== userContacts.phone) {
+                                    setUpdateClickable(true)
+                                }
+                            }}
+                        />
+                    </div>
+
+                    <div style={contactRow}>
+                        <div style={{ width: "30%" }}>{"SOCIAL: "}</div>
+                        <input
+                            value={userContacts.social}
+                            style={{ width: "70%", padding: "8px", fontSize: "16px" }}
+                            onChange={(e) => {
+                                setUserContacts({ ...userContacts, social: e.target.value })
+                                if (e.target.value !== userContacts.social) {
+                                    setUpdateClickable(true)
+                                }
+                            }}
+                        />
+                    </div>
+
+                    <div style={{ height: "40px" }} />
+
+                    {updateClickable && (
+                        <div
+                            style={{ width: "100%", backgroundColor: "black", padding: "24px", textAlign: "center", color: "white" }}
+                            onClick={() => {
+                                if (contactInitialised) {
+                                    patchContactInfo()
+                                } else {
+                                    postContactInfo()
+                                }
+                            }}
+                        >
+                            {"UPDATE CONTACT INFO"}
+                        </div>
+                    )}
                 </div>
             </div>
         </>

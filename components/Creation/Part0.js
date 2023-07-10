@@ -28,7 +28,11 @@ const Part1 = (props) => {
         <>
             <div style={{ height: "16px" }} />
 
-            <InputHeader header={'Part 1/5: Location'} />
+            {/* <InputHeader header={'Part 1/5: Location'} /> */}
+
+            <h1>{'Part 1/5: Location'}</h1>
+
+            <div style={{height: "40px"}}/>
 
             <PostCode
                 handlePost={props.handlePost}

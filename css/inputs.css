@@ -54,19 +54,19 @@ input::-webkit-inner-spin-button {
 }
 
 .slider-track-1 {
-    background: pink;
+    background: #00F2C4;
 }
 
 .slider-thumb {
     background: white;
-    border: 2px solid pink;
+    border: 2px solid black;
     width: 24px;
     height: 24px;
     color: unset;
     transform: translateY(-18px);
     border-radius: 50%;
     margin-top: 8px;
-    box-shadow: -2px 2px 0px 0px #D0C4CF;
+    box-shadow: -2px 2px 0px 0px pink;
     cursor: grab;
 }
 
