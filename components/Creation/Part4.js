@@ -8,7 +8,11 @@ const Part4 = (props) => {
         <>
             <div style={{ height: "16px" }} />
 
-            <InputHeader header={'Part 5/5: Photos'} />
+            {/* <InputHeader header={'Part 5/5: Photos'} /> */}
+
+            <h1>{'Part 5/5: Photos'}</h1>
+
+            <div style={{ height: "40px" }} />
 
             Upload some photos
 
@@ -28,7 +32,7 @@ const Part4 = (props) => {
                 })}
             </div>
 
-            <div style={{height: "24px"}} />
+            <div style={{ height: "24px" }} />
 
             <div style={{ width: "100%", display: "flex", justifyContent: "space-between" }}>
                 <div
@@ -47,7 +51,7 @@ const Part4 = (props) => {
                 </div>
             </div>
 
-            <div style={{height: "24px"}} />
+            <div style={{ height: "24px" }} />
 
         </>
     )

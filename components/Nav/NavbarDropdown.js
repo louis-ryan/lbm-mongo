@@ -18,7 +18,7 @@ const NavbarDropdown = ({ setUserOptions, setContactShowing }) => {
 
                 <div style={{ backgroundColor: "black", padding: "16px" }}>
 
-                    <div style={{ outline: "1px grey solid", width: "100%", padding: "16px", maxWidth: "600px" }}>
+                    <div style={{ outline: "1px grey solid", color: "white", width: "100%", padding: "16px", maxWidth: "600px", cursor: "pointer" }}>
                         <div
                             style={{ textDecoration: "none" }}
                             onClick={() => setContactShowing(true)}
@@ -29,10 +29,10 @@ const NavbarDropdown = ({ setUserOptions, setContactShowing }) => {
 
                     <div style={{ height: "8px" }} />
 
-                    <div style={{ outline: "1px grey solid", width: "100%", padding: "16px", maxWidth: "600px" }}>
+                    <div style={{ outline: "1px red solid", width: "100%", padding: "16px", maxWidth: "600px" }}>
                         <a
                             href="/api/auth/logout"
-                            style={{ textDecoration: "none" }}
+                            style={{ textDecoration: "none", color: "red" }}
                         >
                             Sign out
                         </a>

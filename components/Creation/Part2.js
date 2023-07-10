@@ -17,7 +17,11 @@ const Part2 = (props) => {
         <>
             <div style={{ height: "16px" }} />
 
-            <InputHeader header={'Part 3/5: Contract'} />
+            {/* <InputHeader header={'Part 3/5: Contract'} /> */}
+
+            <h1>{'Part 3/5: Contract'}</h1>
+
+            <div style={{ height: "40px" }} />
 
             <div>End of current contract</div>
 
@@ -39,7 +43,7 @@ const Part2 = (props) => {
                         setExtensionPossible("possible")
                         props.handleContractTerminates(false)
                     }}
-                    style={{ display: "flex", cursor: "pointer", justifyContent: "center", alignItems: "center", height: "80px", width: "49%", backgroundColor: extensionPossible === "possible" ? "pink" : "lightgrey" }}
+                    style={{ display: "flex", cursor: "pointer", justifyContent: "center", alignItems: "center", height: "80px", width: "49%", backgroundColor: extensionPossible === "possible" ? "#00F2C4" : "lightgrey", color: extensionPossible === "possible" && "black" }}
                 >
                     Yes
                 </div>
@@ -48,7 +52,7 @@ const Part2 = (props) => {
                         setExtensionPossible("not_possible")
                         props.handleContractTerminates(true)
                     }}
-                    style={{ display: "flex", cursor: "pointer", justifyContent: "center", alignItems: "center", height: "80px", width: "49%", backgroundColor: extensionPossible === "not_possible" ? "pink" : "lightgrey" }}
+                    style={{ display: "flex", cursor: "pointer", justifyContent: "center", alignItems: "center", height: "80px", width: "49%", backgroundColor: extensionPossible === "not_possible" ? "#00F2C4" : "lightgrey", color: extensionPossible === "not_possible" && "black" }}
                 >
                     No
                 </div>
@@ -67,13 +71,13 @@ const Part2 = (props) => {
                         let formattedDate = date.toLocaleDateString('en-GB', options).split('/').reverse().join('-');
                         props.handleMoveInDate(formattedDate)
                     }}
-                    style={{ display: "flex", cursor: "pointer", justifyContent: "center", alignItems: "center", height: "80px", width: "49%", backgroundColor: readyToMove === "ready" ? "pink" : "lightgrey" }}
+                    style={{ display: "flex", cursor: "pointer", justifyContent: "center", alignItems: "center", height: "80px", width: "49%", backgroundColor: readyToMove === "ready" ? "#00F2C4" : "lightgrey", color: readyToMove === "ready" && "black" }}
                 >
                     Yes
                 </div>
                 <div
                     onClick={() => setReadyToMove("not_ready")}
-                    style={{ display: "flex", cursor: "pointer", justifyContent: "center", alignItems: "center", height: "80px", width: "49%", backgroundColor: readyToMove === "not_ready" ? "pink" : "lightgrey" }}
+                    style={{ display: "flex", cursor: "pointer", justifyContent: "center", alignItems: "center", height: "80px", width: "49%", backgroundColor: readyToMove === "not_ready" ? "#00F2C4" : "lightgrey", color: readyToMove === "not_ready" && "black" }}
                 >
                     No
                 </div>

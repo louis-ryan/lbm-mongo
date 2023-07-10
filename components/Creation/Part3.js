@@ -11,9 +11,11 @@ const Part3 = (props) => {
         <>
             <div style={{ height: "16px" }} />
 
-            <InputHeader header={'Part 4/5: Description'} />
+            {/* <InputHeader header={'Part 4/5: Description'} /> */}
 
-            <div style={{ height: "24px" }} />
+            <h1>{'Part 4/5: Description'}</h1>
+
+            <div style={{ height: "40px" }} />
 
             Please provide a detailed description of your property
             <textarea
