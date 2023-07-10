@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 const darkBackground = { width: "100vw", height: "calc(100vh + 4px)", zIndex: "600", backgroundColor: "black", marginTop: "-80px", opacity: "0.8" }
 
@@ -10,6 +10,45 @@ const contactRow = { display: "flex", width: "100%", justifyContent: "space-betw
 const ContactModal = ({ setContactShowing, user }) => {
 
     const [overModal, setOverModal] = useState(false)
+
+
+    const checkForExistingContact = async () => {
+
+
+        try {
+            const res = await fetch('api/users/contacts', {
+                method: 'GET',
+                headers: { "Accept": "application/json", "Content-Type": "application/json" }
+            })
+            const resJSON = await res.json()
+
+        } catch (error) {
+            console.log("create note err: ", error);
+        }
+
+
+
+
+
+        // try {
+        //     const res = await fetch('api/notes', {
+        //         method: 'POST',
+        //         headers: { "Accept": "application/json", "Content-Type": "application/json" },
+        //         body: JSON.stringify(form)
+        //     })
+        //     router.push("/");
+        //     const resJSON = await res.json()
+
+        // } catch (error) {
+        //     console.log("create note err: ", error);
+        // }
+    }
+
+
+    useEffect(() => {
+        checkForExistingContact()
+    }, [])
+
 
     return (
         <>
