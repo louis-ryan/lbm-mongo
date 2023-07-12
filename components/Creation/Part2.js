@@ -19,7 +19,7 @@ const Part2 = (props) => {
 
             {/* <InputHeader header={'Part 3/5: Contract'} /> */}
 
-            <h1>{'Part 3/5: Contract'}</h1>
+            <h1>{'Part 3/6: Contract'}</h1>
 
             <div style={{ height: "40px" }} />
 
