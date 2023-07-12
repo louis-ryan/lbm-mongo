@@ -3,6 +3,8 @@ import Part1 from './Part1';
 import Part2 from './Part2';
 import Part3 from './Part3';
 import Part4 from './Part4';
+import Part5 from './Part5';
+import Part6 from './Part6';
 
 
 const Parts = ((props) => {
@@ -66,6 +68,25 @@ const Parts = ((props) => {
                     form={props.props.form}
                     setForm={props.props.setForm}
                     compressFile={props.props.compressFile}
+                />
+
+            )
+        case 5:
+            return (
+                <Part5
+                    errors={props.props.errors}
+                    setPart={props.props.setPart}
+                    form={props.props.form}
+                    setForm={props.props.setForm}
+                    user={props.props.user}
+                />
+            )
+        case 6:
+            return (
+                <Part6
+                    errors={props.props.errors}
+                    setPart={props.props.setPart}
+                    form={props.props.form}
                     handleSubmit={props.props.handleSubmit}
                 />
             )
@@ -89,8 +110,8 @@ const PropertyInfo = (props) => {
                 }}
             >
                 <form style={{
-                    width: "calc(100% - 32px)",
-                    maxWidth: "400px",
+                    width: props.part === 6 ? "90%" : "calc(100% - 32px)",
+                    maxWidth: props.part === 6 ? "90%" : "400px",
                     padding: "40px 0px"
                 }}>
 

@@ -50,6 +50,7 @@ const NewNote = () => {
                         handleContractTerminates={handleContractTerminates}
                         errors={errors}
                         form={form}
+                        user={user}
                         setForm={setForm}
                         formBools={formBools}
                         setFormBools={setFormBools}
@@ -97,6 +98,7 @@ const NewNote = () => {
                     handleContractTerminates={handleContractTerminates}
                     errors={errors}
                     form={form}
+                    user={user}
                     setForm={setForm}
                     formBools={formBools}
                     setFormBools={setFormBools}

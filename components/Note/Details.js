@@ -1,7 +1,7 @@
 import mapPath from './MapPath';
 
 
-const itemStyle = { border: "1px solid grey", borderRadius: "8px", padding: "16px", marginBottom: "16px" }
+const itemStyle = { border: "1px solid grey", borderRadius: "8px", padding: "16px", marginBottom: "16px", backgroundColor: "white" }
 
 
 const Details = ({ note, mapPath, latInPx, longInPx }) => {
@@ -43,7 +43,7 @@ const Details = ({ note, mapPath, latInPx, longInPx }) => {
 
 
     return (
-        <div style={{ padding: "8px", backgroundColor: "white" }} >
+        <div style={{ padding: "8px" }} >
 
             <div style={{ ...itemStyle, display: "flex", overflow: "hidden" }}>
 
