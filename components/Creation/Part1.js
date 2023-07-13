@@ -12,7 +12,11 @@ const Part1 = (props) => {
         <>
             <div style={{ height: "16px" }} />
 
-            <InputHeader header={'Part 2/5: Property'} />
+            {/* <InputHeader header={'Part 2/5: Property'} /> */}
+
+            <h1>{'Part 2/6: Property'}</h1>
+
+            <div style={{ height: "40px" }} />
 
             <div style={{ display: "flex", justifyContent: "space-between" }}>
                 <div style={{ width: "48%" }}>
@@ -45,7 +49,7 @@ const Part1 = (props) => {
             <div style={{ height: "24px" }} />
 
             <div>
-                
+
             </div>
             <div style={{ marginBottom: "16px" }}><h3>{"Does the property have..."}</h3></div>
 
@@ -53,7 +57,7 @@ const Part1 = (props) => {
 
                 <div
                     className="form-bool"
-                    style={{ width: "48%", border: props.formBools.petsAllowed && "4px solid pink", display: "flex", justifyContent: "center" }}
+                    style={{ width: "48%", backgroundColor: props.formBools.petsAllowed && "#00F2C4", display: "flex", justifyContent: "center" }}
                     onClick={() => props.setFormBools({ ...props.formBools, petsAllowed: props.formBools.petsAllowed === false ? true : false })}
                 >
                     <svg width="40px" height="40px" viewBox="0 0 40 40" style={{ marginTop: "16px" }}>
@@ -62,52 +66,52 @@ const Part1 = (props) => {
                         </g>
                     </svg>
                     <div style={{ width: "4px" }} />
-                    <p style={{ color: "grey", transform: "translateY(8px)" }}>Pets Allowed</p>
+                    <p style={{ color: props.formBools.petsAllowed && "black", transform: "translateY(8px)" }}>Pets Allowed</p>
                 </div>
 
                 <div
                     className="form-bool"
-                    style={{ width: "48%", border: props.formBools.parkingSpace && "4px solid pink", display: "flex", justifyContent: "center" }}
+                    style={{ width: "48%", backgroundColor: props.formBools.parkingSpace && "#00F2C4", display: "flex", justifyContent: "center" }}
                     onClick={() => props.setFormBools({ ...props.formBools, parkingSpace: props.formBools.parkingSpace === false ? true : false })}
                 >
                     <svg width="40px" height="40px" viewBox="0 0 40 40" style={{ marginTop: "16px" }}>
                         <g id="Parking" stroke="none" strokeWidth={props.formBools.parkingSpace ? '2' : '1'} fill="none" fillRule="evenodd"><ellipse id="Oval" stroke={props.formBools.parkingSpace ? "black" : "#979797"} cx="20.5" cy="19.5" rx="17" ry="16.5"></ellipse> <line x1="17.5" y1="10.4347826" x2="17.5" y2="29.5652174" id="Line-5" stroke={props.formBools.parkingSpace ? "black" : "#979797"} strokeLinecap="round"></line> <path d="M17.5,10.0255102 C23.1666667,10.0085034 26,11.6666667 26,15 C26,18.3333333 23.1666667,19.9914966 17.5,19.9744898" id="Line" stroke={props.formBools.parkingSpace ? "black" : "#979797"} strokeLinecap="square"></path> </g>
                     </svg>
                     <div style={{ width: "4px" }} />
-                    <p style={{ color: "grey", transform: "translateY(8px)" }}>Parking</p>
+                    <p style={{ color: props.formBools.parkingSpace && "black", transform: "translateY(8px)" }}>Parking</p>
                 </div>
 
                 <div style={{ width: "100%", height: "16px" }} />
 
                 <div
                     className="form-bool"
-                    style={{ width: "48%", border: props.formBools.outdoorArea && "4px solid pink", display: "flex", justifyContent: "center" }}
+                    style={{ width: "48%", backgroundColor: props.formBools.outdoorArea && "#00F2C4", display: "flex", justifyContent: "center" }}
                     onClick={() => props.setFormBools({ ...props.formBools, outdoorArea: props.formBools.outdoorArea === false ? true : false })}
                 >
                     <svg width="40px" height="40px" viewBox="0 0 40 40" style={{ marginTop: "16px" }}>
                         <g id="Outdoor" stroke="none" strokeWidth={props.formBools.outdoorArea ? '2' : '1'} fill="none" fillRule="evenodd"><path d="M29.5,31.5 L10.5,31.5 L10.5,7.15679952 C11.8325195,5.32443495 15.0498054,4.5 20,4.5 C24.9501946,4.5 28.1674805,5.32443495 29.5,7.15679952 L29.5,31.5 Z" id="Rectangle" stroke={props.formBools.outdoorArea ? "black" : "#979797"}></path><rect id="Rectangle" stroke={props.formBools.outdoorArea ? "black" : "#979797"} x="6.5" y="18.5" width="28" height="19" rx="2"></rect><line x1="13" y1="19.09375" x2="13" y2="36.90625" id="Line-2-Copy" stroke={props.formBools.outdoorArea ? "black" : "#979797"} strokeLinecap="square"></line><line x1="27" y1="19.09375" x2="27" y2="36.90625" id="Line-2-Copy-2" stroke={props.formBools.outdoorArea ? "black" : "#979797"} strokeLinecap="square"></line><line x1="20" y1="19.09375" x2="20" y2="36.90625" id="Line-2" stroke={props.formBools.outdoorArea ? "black" : "#979797"} strokeLinecap="square"></line><line x1="10.5" y1="31.5" x2="7.5" y2="36.5" id="Line-3" stroke={props.formBools.outdoorArea ? "black" : "#979797"} strokeLinecap="square"></line><line x1="29.5" y1="31.5" x2="33.5" y2="36.5" id="Line" stroke={props.formBools.outdoorArea ? "black" : "#979797"} strokeLinecap="square"></line><line x1="10.5" y1="11.5" x2="29.5" y2="11.5" id="Line-4" stroke={props.formBools.outdoorArea ? "black" : "#979797"} strokeLinecap="square"></line></g>
                     </svg>
                     <div style={{ width: "4px" }} />
-                    <p style={{ color: "grey", transform: "translateY(8px)" }}>Terrace</p>
+                    <p style={{ color: props.formBools.outdoorArea && "black", transform: "translateY(8px)" }}>Terrace</p>
                 </div>
 
                 <div
                     className="form-bool"
-                    style={{ width: "48%", border: props.formBools.garden && "4px solid pink", display: "flex", justifyContent: "center" }}
+                    style={{ width: "48%", backgroundColor: props.formBools.garden && "#00F2C4", display: "flex", justifyContent: "center" }}
                     onClick={() => props.setFormBools({ ...props.formBools, garden: props.formBools.garden === false ? true : false })}
                 >
                     <svg width="40px" height="40px" viewBox="0 0 40 40" style={{ marginTop: "16px" }}>
                         <g id="Garden" stroke="none" strokeWidth={props.formBools.garden ? '2' : '1'} fill="none" fillRule="evenodd">
                             <rect id="Rectangle" stroke={props.formBools.garden ? "black" : "#979797"} x="10.5" y="24.5" width="2" height="9"></rect>
                             <rect id="Rectangle-Copy" stroke={props.formBools.garden ? "black" : "#979797"} x="20.6911686" y="24.5" width="2" height="10"></rect>
-                            <path d="M22,33 C22.6666667,31.6666667 27.3333333,32.3333333 36,35" id="Line-13-Copy" stroke={props.formBools.garden ? "black" : "#979797"} fill="#FFFFFF" strokeLinecap="square"></path>
-                            <path d="M8.96915509,20.6620635 C9.14598406,19.8416553 9.3317624,18.9792946 9.49209166,18.0885765 C9.76773937,16.5572003 9.97682074,15.1099227 10.1636755,13.8159723 C10.434585,11.9399505 10.654346,10.3925407 10.9719306,9.39626681 C11.0790702,9.06016619 11.1912485,8.79382936 11.332389,8.61897116 C11.8087515,8.79382936 11.9209298,9.06016619 12.0280694,9.39626681 C12.345654,10.3925407 12.565415,11.9399505 12.8363245,13.8159723 C13.0231793,15.1099227 13.2322606,16.5572003 13.5079083,18.0885765 C13.6682376,18.9792946 13.8540159,19.8416553 14.0308449,20.6620635 C14.5253176,22.9561981 14.9956853,24.9143261 14.481403,26.1820188 C14.3110305,26.6019825 14.0146021,26.9284299 13.5511974,27.1477093 C13.0522709,27.3837974 12.380901,27.5 11.5,27.5 C10.619099,27.5 9.94772908,27.3837974 9.44880257,27.1477093 C8.98539785,26.9284299 8.68896948,26.6019825 8.51859705,26.1820188 C8.00431466,24.9143261 8.47468236,22.9561981 8.96915509,20.6620635 Z" id="Oval" stroke={props.formBools.garden ? "black" : "#979797"} fill="#FFFFFF"></path>
-                            <path d="M19.0475982,20.375482 C19.1973568,19.5579864 19.3534424,18.7057325 19.4937203,17.8289953 C19.7293016,16.3566123 19.9438368,14.8150167 20.1521207,13.3180874 C20.5365794,10.5549971 20.8981555,7.94528061 21.3352031,6.22007984 C21.4433264,5.7932743 21.5542335,5.42361572 21.6725367,5.12513666 C22.4048548,5.39713793 22.5482006,5.759828 22.6647969,6.22007984 C23.1018445,7.94528061 23.4634206,10.5549971 23.8478793,13.3180874 C24.0561632,14.8150167 24.2706984,16.3566123 24.5062797,17.8289953 C24.5695971,18.2247294 24.6336785,18.6154606 24.696785,19.0002397 C25.2079242,22.1168092 25.686695,24.8365421 25.071876,26.6078345 C24.8611442,27.2149523 24.5107519,27.6980829 23.9560194,28.0188825 C23.4015229,28.3395456 22.6593652,28.5 21.6911686,28.5 C20.7998529,28.5 20.1186231,28.3648624 19.6117735,28.0905074 C19.1209219,27.824812 18.8115112,27.4250592 18.629334,26.9187087 C18.0875129,25.41275 18.5502828,23.0902062 19.0475982,20.375482 Z" id="Oval-Copy" stroke={props.formBools.garden ? "black" : "#979797"} fill="#FFFFFF"></path>
-                            <path d="M4,35 C6,33.6666667 9.66666667,33 15,33 C20.3333333,33 24.3333333,33.6666667 27,35" id="Line-13" stroke={props.formBools.garden ? "black" : "#979797"} fill="#FFFFFF" strokeLinecap="square"></path>
+                            <path d="M22,33 C22.6666667,31.6666667 27.3333333,32.3333333 36,35" id="Line-13-Copy" stroke={props.formBools.garden ? "black" : "#979797"} strokeLinecap="square"></path>
+                            <path d="M8.96915509,20.6620635 C9.14598406,19.8416553 9.3317624,18.9792946 9.49209166,18.0885765 C9.76773937,16.5572003 9.97682074,15.1099227 10.1636755,13.8159723 C10.434585,11.9399505 10.654346,10.3925407 10.9719306,9.39626681 C11.0790702,9.06016619 11.1912485,8.79382936 11.332389,8.61897116 C11.8087515,8.79382936 11.9209298,9.06016619 12.0280694,9.39626681 C12.345654,10.3925407 12.565415,11.9399505 12.8363245,13.8159723 C13.0231793,15.1099227 13.2322606,16.5572003 13.5079083,18.0885765 C13.6682376,18.9792946 13.8540159,19.8416553 14.0308449,20.6620635 C14.5253176,22.9561981 14.9956853,24.9143261 14.481403,26.1820188 C14.3110305,26.6019825 14.0146021,26.9284299 13.5511974,27.1477093 C13.0522709,27.3837974 12.380901,27.5 11.5,27.5 C10.619099,27.5 9.94772908,27.3837974 9.44880257,27.1477093 C8.98539785,26.9284299 8.68896948,26.6019825 8.51859705,26.1820188 C8.00431466,24.9143261 8.47468236,22.9561981 8.96915509,20.6620635 Z" id="Oval" stroke={props.formBools.garden ? "black" : "#979797"} ></path>
+                            <path d="M19.0475982,20.375482 C19.1973568,19.5579864 19.3534424,18.7057325 19.4937203,17.8289953 C19.7293016,16.3566123 19.9438368,14.8150167 20.1521207,13.3180874 C20.5365794,10.5549971 20.8981555,7.94528061 21.3352031,6.22007984 C21.4433264,5.7932743 21.5542335,5.42361572 21.6725367,5.12513666 C22.4048548,5.39713793 22.5482006,5.759828 22.6647969,6.22007984 C23.1018445,7.94528061 23.4634206,10.5549971 23.8478793,13.3180874 C24.0561632,14.8150167 24.2706984,16.3566123 24.5062797,17.8289953 C24.5695971,18.2247294 24.6336785,18.6154606 24.696785,19.0002397 C25.2079242,22.1168092 25.686695,24.8365421 25.071876,26.6078345 C24.8611442,27.2149523 24.5107519,27.6980829 23.9560194,28.0188825 C23.4015229,28.3395456 22.6593652,28.5 21.6911686,28.5 C20.7998529,28.5 20.1186231,28.3648624 19.6117735,28.0905074 C19.1209219,27.824812 18.8115112,27.4250592 18.629334,26.9187087 C18.0875129,25.41275 18.5502828,23.0902062 19.0475982,20.375482 Z" id="Oval-Copy" stroke={props.formBools.garden ? "black" : "#979797"}></path>
+                            <path d="M4,35 C6,33.6666667 9.66666667,33 15,33 C20.3333333,33 24.3333333,33.6666667 27,35" id="Line-13" stroke={props.formBools.garden ? "black" : "#979797"} strokeLinecap="square"></path>
                         </g>
                     </svg>
                     <div style={{ width: "4px" }} />
-                    <p style={{ color: "grey", transform: "translateY(8px)" }}>Garden</p>
+                    <p style={{ color: props.formBools.garden && "black", transform: "translateY(8px)" }}>Garden</p>
                 </div>
 
             </div>
@@ -119,36 +123,36 @@ const Part1 = (props) => {
 
                 <div
                     className="form-bool"
-                    style={{ width: "48%", border: props.formBools.sharingWall && "4px solid pink", display: "flex", justifyContent: "center" }}
+                    style={{ width: "48%", backgroundColor: props.formBools.sharingWall && "#00F2C4", display: "flex", justifyContent: "center" }}
                     onClick={() => props.setFormBools({ ...props.formBools, sharingWall: props.formBools.sharingWall === false ? true : false })}
                 >
                     <svg width="40px" height="40px" viewBox="0 0 40 40" style={{ marginTop: "16px" }}>
                         <g id="Sharing-Wall" stroke="none" strokeWidth={props.formBools.sharingWall ? '2' : '1'} fill="none" fillRule="evenodd">
                             <g id="Group" transform="translate(1.000000, 4.000000)" stroke={props.formBools.sharingWall ? "black" : "#979797"}>
                                 <path d="M11.8246095,32.5 L1.42539053,32.5 L10.1753905,25.5 L20.5746095,25.5 L11.8246095,32.5 Z" id="Rectangle-Copy-3"></path>
-                                <path d="M21.5,24.5143054 L12.5,31.9393054 L12.5,8.48569461 L21.5,1.06069461 L21.5,24.5143054 Z" id="Rectangle" fill="#FFFFFF"></path>
-                                <path d="M36.608249,25.25 L27.8203702,32.5 L16.5,32.5 L16.5,8.48569461 L25.5,1.06069461 L25.5,25.25 L36.608249,25.25 Z" id="Combined-Shape" fill="#FFFFFF"></path>
+                                <path d="M21.5,24.5143054 L12.5,31.9393054 L12.5,8.48569461 L21.5,1.06069461 L21.5,24.5143054 Z" id="Rectangle"></path>
+                                <path d="M36.608249,25.25 L27.8203702,32.5 L16.5,32.5 L16.5,8.48569461 L25.5,1.06069461 L25.5,25.25 L36.608249,25.25 Z" id="Combined-Shape"></path>
                             </g>
                         </g>
                     </svg>
                     <div style={{ width: "4px" }} />
-                    <p style={{ color: "grey", transform: "translateY(8px)" }}>A wall</p>
+                    <p style={{ color: props.formBools.sharingWall && "black", transform: "translateY(8px)" }}>A wall</p>
                 </div>
 
                 <div
                     className="form-bool"
-                    style={{ width: "48%", border: props.formBools.sharingFloor && "4px solid pink", display: "flex", justifyContent: "center" }}
+                    style={{ width: "48%", backgroundColor: props.formBools.sharingFloor && "#00F2C4", display: "flex", justifyContent: "center" }}
                     onClick={() => props.setFormBools({ ...props.formBools, sharingFloor: props.formBools.sharingFloor === false ? true : false })}
                 >
                     <svg width="40px" height="40px" viewBox="0 0 40 40" style={{ marginTop: "16px" }}>
                         <g id="Sharing-Ceiling-or-floor" stroke="none" strokeWidth={props.formBools.sharingFloor ? '2' : '1'} fill="none" fillRule="evenodd">
                             <rect id="Rectangle-Copy-2" stroke={props.formBools.sharingFloor ? "black" : "#979797"} x="11.5" y="22.5" width="17" height="14"></rect>
-                            <path d="M33.7928932,27.5 L6.20710678,27.5 L11.2071068,22.5 L28.7928932,22.5 L33.7928932,27.5 Z" id="Rectangle-Copy" stroke={props.formBools.sharingFloor ? "black" : "#979797"} fill="#FFFFFF"></path>
-                            <path d="M28.5,4.5 L28.5,19.2071068 L33.7928932,24.5 L6.20710678,24.5 L11.5,19.2071068 L11.5,4.5 L28.5,4.5 Z" id="Combined-Shape" stroke={props.formBools.sharingFloor ? "black" : "#979797"} fill="#FFFFFF"></path>
+                            <path d="M33.7928932,27.5 L6.20710678,27.5 L11.2071068,22.5 L28.7928932,22.5 L33.7928932,27.5 Z" id="Rectangle-Copy" stroke={props.formBools.sharingFloor ? "black" : "#979797"} ></path>
+                            <path d="M28.5,4.5 L28.5,19.2071068 L33.7928932,24.5 L6.20710678,24.5 L11.5,19.2071068 L11.5,4.5 L28.5,4.5 Z" id="Combined-Shape" stroke={props.formBools.sharingFloor ? "black" : "#979797"} ></path>
                         </g>
                     </svg>
                     <div style={{ width: "4px" }} />
-                    <p style={{ color: "grey", transform: "translateY(8px)" }}>Floor or ceiling</p>
+                    <p style={{ color: props.formBools.sharingFloor && "black", transform: "translateY(8px)" }}>Floor or ceiling</p>
                 </div>
             </div>
 
@@ -158,7 +162,7 @@ const Part1 = (props) => {
 
                 <div
                     className="form-bool"
-                    style={{ width: "48%", border: props.formBools.supermarket && "4px solid pink", display: "flex", justifyContent: "center" }}
+                    style={{ width: "48%", backgroundColor: props.formBools.supermarket && "#00F2C4", display: "flex", justifyContent: "center" }}
                     onClick={() => props.setFormBools({ ...props.formBools, supermarket: props.formBools.supermarket === false ? true : false })}
                 >
                     <svg width="40px" height="40px" viewBox="0 0 40 40" style={{ marginTop: "16px" }}>
@@ -175,19 +179,19 @@ const Part1 = (props) => {
                         </g>
                     </svg>
                     <div style={{ width: "4px" }} />
-                    <p style={{ color: "grey", transform: "translateY(8px)" }}>Supermarket</p>
+                    <p style={{ color: props.formBools.supermarket && "black", transform: "translateY(8px)" }}>Supermarket</p>
                 </div>
 
                 <div
                     className="form-bool"
-                    style={{ width: "48%", border: props.formBools.trainStation && "4px solid pink", display: "flex", justifyContent: "center" }}
+                    style={{ width: "48%", backgroundColor: props.formBools.trainStation && "#00F2C4", display: "flex", justifyContent: "center" }}
                     onClick={() => props.setFormBools({ ...props.formBools, trainStation: props.formBools.trainStation === false ? true : false })}
                 >
                     <svg width="40px" height="40px" viewBox="0 0 40 40" style={{ marginTop: "16px" }}>
                         <g id="Train" stroke="none" strokeWidth={props.formBools.trainStation ? "2" : "1"} fill="none" fillRule="evenodd"><rect id="Rectangle" stroke={props.formBools.trainStation ? "black" : "#979797"} x="8.5" y="6.5" width="23" height="26" rx="5"></rect><line x1="9.5" y1="10.5" x2="30.5" y2="10.5" id="Line-8" stroke={props.formBools.trainStation ? "black" : "#979797"} strokeLinecap="square"></line> <line x1="9" y1="23" x2="31" y2="23" id="Line" stroke={props.formBools.trainStation ? "black" : "#979797"} strokeLinecap="square"></line>  <line x1="20" y1="11" x2="20" y2="22" id="Line-9" stroke={props.formBools.trainStation ? "black" : "#979797"} strokeLinecap="square"></line>   <circle id="Oval" stroke={props.formBools.trainStation ? "black" : "#979797"} cx="13.5" cy="27.5" r="1"></circle>  <circle id="Oval-Copy" stroke={props.formBools.trainStation ? "black" : "#979797"} cx="26.5" cy="27.5" r="1"></circle> <line x1="11.5" y1="32.5" x2="9.5" y2="35.5" id="Line-10" stroke={props.formBools.trainStation ? "black" : "#979797"} strokeLinecap="round"></line>  <line x1="28.5" y1="32.5" x2="30.5" y2="35.5" id="Line-2" stroke={props.formBools.trainStation ? "black" : "#979797"} strokeLinecap="round"></line></g>
                     </svg>
                     <div style={{ width: "4px" }} />
-                    <p style={{ color: "grey", transform: "translateY(8px)" }}>Trainstation</p>
+                    <p style={{ color: props.formBools.trainStation && "black", transform: "translateY(8px)" }}>Trainstation</p>
                 </div>
             </div>
 

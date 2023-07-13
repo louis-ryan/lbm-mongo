@@ -158,9 +158,10 @@ const Location = ({ reveal, setReveal, deviceSize, filter, setFilter }) => {
                                 <div style={{
                                     width: "50%",
                                     height: "100%",
-                                    backgroundColor: view === "AREA" && "black",
+                                    backgroundColor: view === "AREA" && "#00F2C4",
                                     padding: "16px",
-                                    color: view === "AREA" && "white",
+                                    color: view === "AREA" && "black",
+                                    cursor: "pointer"
                                 }}>
                                     AREA
                                 </div>
@@ -168,9 +169,10 @@ const Location = ({ reveal, setReveal, deviceSize, filter, setFilter }) => {
                                 <div style={{
                                     width: "50%",
                                     height: "100%",
-                                    backgroundColor: view === "ADDRESS" && "black",
+                                    backgroundColor: view === "ADDRESS" && "#00F2C4",
                                     padding: "16px",
-                                    color: view === "ADDRESS" && "white",
+                                    color: view === "ADDRESS" && "black",
+                                    cursor: "pointer"
                                 }}>
                                     ADDRESSES
                                 </div>
@@ -202,10 +204,10 @@ const Location = ({ reveal, setReveal, deviceSize, filter, setFilter }) => {
                                                 key={area}
                                                 onClick={(e) => { e.stopPropagation(); handleAreaSelection(area) }}
                                                 style={{
-                                                    backgroundColor: areaSelectedArr.indexOf(area) === -1 ? "white" : "pink",
+                                                    backgroundColor: areaSelectedArr.indexOf(area) === -1 ? "white" : "#00F2C4",
                                                     width: "49%",
                                                     padding: "16px 4px",
-                                                    border: areaSelectedArr.indexOf(area) === -1 ? "1px solid grey" : "2px solid black",
+                                                    border: "1px solid grey",
                                                     textAlign: "center",
                                                     marginTop: "6px",
                                                     borderRadius: "4px",
@@ -252,6 +254,7 @@ const Location = ({ reveal, setReveal, deviceSize, filter, setFilter }) => {
                                                     fontSize: "12px",
                                                     borderRadius: "8px",
                                                     height: "30px",
+                                                    cursor: "pointer"
                                                 }}
                                                 onClick={(e) => handleAddressRemove(e, idx)}
                                             >
@@ -268,7 +271,7 @@ const Location = ({ reveal, setReveal, deviceSize, filter, setFilter }) => {
                                         e.preventDefault()
                                         setFilter({ ...filter, addresses: [] })
                                     }}
-                                    style={{ width: "100%", textAlign: "center", padding: "16px", backgroundColor: "black", color: "white" }}
+                                    style={{ width: "100%", textAlign: "center", padding: "16px", backgroundColor: "black", color: "white", cursor: "pointer" }}
                                 >
                                     CLEAR ADDRESSES
                                 </div>

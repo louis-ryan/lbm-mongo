@@ -7,9 +7,9 @@ function useNoteHandleEvents(form, setForm, post, setPost, setValidAddresses, se
                 headers: { "Accept": "application/json", "Content-Type": "application/json" },
                 body: JSON.stringify(form)
             })
-            router.push("/");
             const resJSON = await res.json()
             if (res.status === 201) {
+                router.push(`/${resJSON.data._id}`);
                 const res = await fetch('api/filters/contact', {
                     method: 'POST',
                     headers: { "Accept": "application/json", "Content-Type": "application/json" },

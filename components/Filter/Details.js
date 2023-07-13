@@ -5,7 +5,7 @@ const Rooms = ({ reveal, setReveal, deviceSize, filter, setFilter }) => {
 
     const activeCondition = (filter.petsAllowed || filter.parkingSpace || filter.terrace || filter.garden || filter.noSharedWalls || filter.noSharedFloor || filter.walkToSupermarket || filter.walkToTrain)
 
-    const detailStyle = { width: "100%", padding: "8px 0px", textAlign: "center", border: "1px solid grey", marginBottom: "4px" }
+    const detailStyle = { width: "100%", padding: "8px 0px", textAlign: "center", border: "1px solid grey", marginBottom: "4px", cursor: "pointer" }
 
     const boolArray = [
         { name: 'Pets allowed', var: 'petsAllowed' },
@@ -75,7 +75,11 @@ const Rooms = ({ reveal, setReveal, deviceSize, filter, setFilter }) => {
                                                 { ...filter, [bool.var]: false } :
                                                 { ...filter, [bool.var]: true }
                                         )}
-                                    style={{ ...detailStyle, backgroundColor: filter[bool.var] && "pink" }}
+                                    style={{
+                                        ...detailStyle,
+                                        backgroundColor: filter[bool.var] && "#00F2C4",
+                                        color: filter[bool.var] && "black"
+                                    }}
                                 >
                                     {bool.name}
                                 </div>
