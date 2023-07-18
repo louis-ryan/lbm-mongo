@@ -40,25 +40,26 @@ export default async (req, res) => {
             )
 
 
-            try {
-                await fetch(`${process.env.AUTH0_BASE_URL}/api/contact`, {
-                    method: "POST",
-                    body: JSON.stringify({
-                        name: filter.userName,
-                        email: filter.userEmail,
-                        subject: 'You have updated your search parameters.',
-                        content: "hellooo"
-                    }),
-                    headers: { "Content-Type": "application/json", Accept: "application/json" },
-                }).then((res) => {
-                    if (!res.ok) throw new Error("Failed to send message");
-                    return res.json();
-                })
-            } catch (error) {
-                console.log("send email err: ", error)
-            }
+            await fetch(`${process.env.AUTH0_BASE_URL}/api/contact`, {
+                method: "POST",
+                body: JSON.stringify({
+                    name: filter.userName,
+                    email: filter.userEmail,
+                    subject: 'You have updated your search parameters.',
+                    content: "hellooo"
+                }),
+                headers: { "Content-Type": "application/json", Accept: "application/json" },
+            }).then((res) => {
+                if (!res.ok) throw new Error("Failed to send message");
+                return res.json();
+            })
+
         };
-        sendEmail()
+
+        setTimeout(() => {
+            sendEmail()
+        }, 2000)
+
 
         res.status(201).json({ message: "Email notifying of updated filter successful" })
     } catch (error) {
