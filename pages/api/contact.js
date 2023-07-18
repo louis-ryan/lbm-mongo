@@ -21,7 +21,10 @@ const handler = async (req, res) => {
     try {
       await transporter.sendMail({
         from: "info.leasebreakersmelbourne@gmail.com",
-        to: data.email,
+        to: 
+        // data.email
+        "louis.sw.ryan@gmail.com"
+        ,
         subject: data.subject,
         html: `
         <!DOCTYPE html>
