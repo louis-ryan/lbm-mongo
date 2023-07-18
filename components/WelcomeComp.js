@@ -1,8 +1,11 @@
+import { useState, useEffect } from 'react'
 import Logo from './Logo'
 
-const WelcomeComp = ({ user, filter, setFilter, deviceSize }) => {
 
-    const labelStyle = { padding: "8px 32px 4px 16px", borderRadius: "8px", margin: "8px 8px 0px 0px", cursor: "pointer", border: "black 4px solid", backgroundColor: "white", color: "black" }
+const labelStyle = { padding: "8px 32px 4px 16px", borderRadius: "8px", margin: "8px 8px 0px 0px", cursor: "pointer", border: "black 4px solid", backgroundColor: "white", color: "black" }
+
+
+const WelcomeComp = ({ user, filter, setFilter, deviceSize }) => {
 
     const labelsArr = [
         {
@@ -89,11 +92,9 @@ const WelcomeComp = ({ user, filter, setFilter, deviceSize }) => {
     } else {
         return (
             <div style={{ width: "100%", padding: "16px", color: "white" }}>
-                <Logo />
-                <div style={{ height: "16px" }} />
+                <div style={{ height: "80px" }} />
                 <div style={{ fontSize: "32px" }}>Welcome {user && user.given_name}</div>
                 <div style={{ height: "24px" }} />
-                <div style={{ fontSize: "16px" }}>You are filtering by the following options...</div>
                 <div style={{ marginTop: "24px", display: "flex", flexWrap: "wrap" }}>
 
                     {labelsArr.map((label) => (

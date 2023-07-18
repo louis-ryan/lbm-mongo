@@ -81,12 +81,12 @@ if (initialised) {
             <img
               width="1500"
               src={"https://www.austapestry.com.au/sites/default/files/tapestry/Mob1.jpg"}
-              style={{ width: "100%", marginTop: "340px", filter: "brightness(0.6) saturate(0.8) blur(1px)", transform: "scale(3.5)" }}
+              style={{ width: "100%", marginTop: "340px", filter: "brightness(0.6) saturate(0.4) blur(0px)", transform: "scale(3.5)" }}
             />
           </div>
           <WelcomeComp user={user} filter={filter} setFilter={setFilter} deviceSize={"MOBILE"} />
         </div>
-        <div style={{ outline: "4px solid black", borderRadius: "16px", backgroundColor: "white", padding: "4px" }}>
+        <div style={{ borderRadius: "16px", backgroundColor: "rgb(241, 241, 241)", padding: "4px" }}>
           <ListingEditToggle mobileView={mobileView} setMobileView={setMobileView} />
           {mobileView === "FILTERS" && (
             <FilterComp filter={filter} setFilter={setFilter} updateFilter={updateFilter} filterUpdating={filterUpdating} notes={notes} deviceSize={"MOBILE"} />

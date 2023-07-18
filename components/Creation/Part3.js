@@ -1,11 +1,17 @@
-import InputHeader from "./InputHeader";
 
 const Part3 = (props) => {
 
+    const nextCondition = (
+        props.form.description &&
+        props.form.description.length < 201
+    )
+       
+
     const handleNextButton = {
-        opacity: props.form.description ? "1" : "0.5",
-        pointerEvents: props.form.description ? "inherit" : "none",
+        opacity: nextCondition ? "1" : "0.5",
+        pointerEvents: nextCondition ? "inherit" : "none",
     }
+
 
     return (
         <>
@@ -18,12 +24,23 @@ const Part3 = (props) => {
             <div style={{ height: "40px" }} />
 
             Please provide a detailed description of your property
+
+            <div style={{ height: "24px" }} />
+
             <textarea
                 name='description'
                 onChange={props.handleChange}
                 value={props.form.description}
-                style={{ border: "1px solid grey", width: "100%", resize: "none", fontFamily: "unset", fontSize: "24px" }}
+                style={{ border: "1px solid grey", width: "100%", resize: "none", fontFamily: "unset", fontSize: "24px", height: "240px", border: props.errors.description && "2px solid #a57583" }}
             />
+
+            {`${props.form.description ? props.form.description.length : "0"}/200`}
+
+            {props.errors.description && (
+                <p style={{ background: "#a57583", color: "white", borderRadius: "4px", marginTop: "4px", padding: "8px" }}>
+                    {props.errors.description}
+                </p>
+            )}
 
             <div style={{ height: "24px" }} />
 

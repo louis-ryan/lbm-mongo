@@ -41,13 +41,13 @@ export default async (req, res) => {
 
 
             try {
-                await fetch('https://lbm-property.vercel.app/api/contact', {
+                await fetch(`${process.env.AUTH0_BASE_URL}/api/contact`, {
                     method: "POST",
                     body: JSON.stringify({
                         name: filter.userName,
                         email: filter.userEmail,
                         subject: 'You have updated your search parameters.',
-                        content: content,
+                        content: content
                     }),
                     headers: { "Content-Type": "application/json", Accept: "application/json" },
                 }).then((res) => {
