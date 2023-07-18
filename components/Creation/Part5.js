@@ -65,7 +65,6 @@ const Part5 = (props) => {
 
             data.map((contact) => {
                 if (contact.userId === props.user.sub) {
-                    console.log("matches")
                     setContactInitialised(contact._id)
                     setUserContacts({
                         name: contact.userName,
