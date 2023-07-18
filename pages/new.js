@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useUser } from '@auth0/nextjs-auth0';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -19,10 +19,55 @@ const NewNote = () => {
     const [errors, setErrors] = useState({});
     const router = useRouter();
     const [form, setForm] = useState(useNoteFormInit());
+    console.log("form: ", form)
     const { formBools, setFormBools, post, setPost } = useNoteFormatForm(user, form, setForm);
     const { setMapCoords, latInPx, longInPx, validAddresses, setValidAddresses } = useNotePostcodeQuery(form, setForm, errors, setErrors);
     const [handleSubmit, handleChange, handleRent, handlePost, handleMoveInDate, handleContractEnds, handleContractTerminates, handleAddress, handleClearPost] = useNoteHandleEvents(form, setForm, post, setPost, setValidAddresses, setMapCoords, router, errors, setErrors)
     const { compressFile } = useNoteImageUpload(form, setForm, errors, setErrors)
+
+
+    useEffect(() => {
+        const endOfContract = new Date(form.contractEnds)
+        const today = new Date()
+
+        const endOfContractUnix = Math.floor(endOfContract.getTime() / 1000);
+        const todayUnix = Math.floor(today.getTime() / 1000);
+
+        if (endOfContractUnix > 0) {
+            if (todayUnix > endOfContractUnix) {
+                setErrors({ ...errors, contractEnds: "The end of contract date may not be earlier than today's date" })
+            } else {
+                setErrors({ ...errors, contractEnds: null })
+            }
+        }
+    }, [form])
+
+
+    useEffect(() => {
+        const endOfContract = new Date(form.contractEnds)
+        const moveInDate = new Date(form.moveInDate)
+
+        const endOfContractUnix = Math.floor(endOfContract.getTime() / 1000);
+        const moveInDateUnix = Math.floor(moveInDate.getTime() / 1000);
+
+        if (moveInDateUnix > 0) {
+            if (moveInDateUnix > endOfContractUnix) {
+                setErrors({ ...errors, moveInDate: "Your move in date must be before the date of the contract ending" })
+            } else {
+                setErrors({ ...errors, moveInDate: null })
+            }
+        }
+    }, [form])
+
+
+    useEffect(() => {
+        if (form.description?.length > 200) {
+            setErrors({ ...errors, description: "You have too many characters in your description" })
+        } else {
+            setErrors({ ...errors, description: null })
+        }
+    }, [form])
+
 
 
     if (windowWidth > 1200) {

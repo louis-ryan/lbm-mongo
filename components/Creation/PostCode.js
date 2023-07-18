@@ -44,7 +44,7 @@ const PostCode = (props) => {
             </div>
 
             {props.errors.address && (
-                <p style={{ background: "#a57583", borderRadius: "4px", marginTop: "4px", padding: "8px" }}>
+                <p style={{ background: "#a57583", color: "white", borderRadius: "4px", marginTop: "4px", padding: "8px" }}>
                     {props.errors.address}
                 </p>
             )}

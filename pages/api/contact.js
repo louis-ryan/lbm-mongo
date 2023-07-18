@@ -7,8 +7,6 @@ const handler = async (req, res) => {
 
     const data = req.body;
 
-    console.log("req body: ", req.body)
-
     if (!data) { return res.status(400).send({ message: "Bad request" }) }
 
     try {

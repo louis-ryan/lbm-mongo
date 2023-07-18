@@ -1,16 +1,25 @@
 import { useState } from "react";
-import InputHeader from "./InputHeader";
+
 
 const Part2 = (props) => {
-
-    const handleNextButton = {
-        opacity: props.form.contractEnds && props.form.rent ? "1" : "0.5",
-        pointerEvents: props.form.contractEnds && props.form.rent ? "inherit" : "none",
-    }
 
 
     const [extensionPossible, setExtensionPossible] = useState("")
     const [readyToMove, setReadyToMove] = useState("")
+
+
+    const nextCondition = (
+        props.form.contractEnds &&
+        props.form.rent &&
+        props.form.moveInDate &&
+        !props.errors.contractEnds &&
+        !props.errors.moveInDate
+    )
+
+    const handleNextButton = {
+        opacity: nextCondition ? "1" : "0.5",
+        pointerEvents: nextCondition ? "inherit" : "none",
+    }
 
 
     return (
@@ -28,12 +37,19 @@ const Part2 = (props) => {
             <input
                 type="date"
                 onChange={(e) => props.handleContractEnds(e.target.value)}
-                style={{ width: "100%", fontFamily: "sans-serif", padding: "24px", fontSize: "24px" }}
+                style={{ width: "100%", fontFamily: "sans-serif", padding: "24px", fontSize: "24px", border: props.errors.contractEnds && "2px solid #a57583" }}
             />
+
+            {props.errors.contractEnds && (
+                <p style={{ background: "#a57583", color: "white", borderRadius: "4px", marginTop: "4px", padding: "8px" }}>
+                    {props.errors.contractEnds}
+                </p>
+            )}
 
             <div style={{ height: "24px" }} />
 
             <div>Will it be possible for the new tennant to extend their contract after this time?</div>
+
             <div style={{ height: "8px" }} />
             <div style={{ fontSize: "12px" }}>{"(This is not binding but if there is no possiblity of renewal enter 'No')"}</div>
 
@@ -92,8 +108,14 @@ const Part2 = (props) => {
                     <input
                         type="date"
                         onChange={(e) => props.handleMoveInDate(e.target.value)}
-                        style={{ width: "100%", fontFamily: "sans-serif", padding: "24px", fontSize: "24px" }}
+                        style={{ width: "100%", fontFamily: "sans-serif", padding: "24px", fontSize: "24px", border: props.errors.moveInDate && "2px solid #a57583" }}
                     />
+
+                    {props.errors.moveInDate && (
+                        <p style={{ background: "#a57583", color: "white", borderRadius: "4px", marginTop: "4px", padding: "8px" }}>
+                            {props.errors.moveInDate}
+                        </p>
+                    )}
                 </>
             )}
 
