@@ -47,7 +47,7 @@ export default async (req, res) => {
                         name: filter.userName,
                         email: filter.userEmail,
                         subject: 'You have updated your search parameters.',
-                        content: content
+                        content: "hellooo"
                     }),
                     headers: { "Content-Type": "application/json", Accept: "application/json" },
                 }).then((res) => {
