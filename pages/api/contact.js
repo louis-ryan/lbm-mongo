@@ -1,9 +1,18 @@
-import { transporter } from "../../utils/nodeMailer";
+// import { transporter } from "../../utils/nodeMailer";
 
+import nodemailer from "nodemailer";
 
 const handler = async (req, res) => {
 
   if (req.method === "POST") {
+
+    const transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: "info.leasebreakersmelbourne@gmail.com",
+        pass: "wcybrggapbxoegrr"
+      },
+    });
 
     const data = req.body;
 
