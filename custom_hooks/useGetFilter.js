@@ -5,6 +5,7 @@ import useFilterString from './useFilterString';
 function useGetFilter(user) {
 
     const [filter, setFilter] = useState(useGetInitialFilterObj())
+    const [lastFilterFromServer, setLastFilterFromServer] = useState(useGetInitialFilterObj())
     const [mount, setMount] = useState(true)
     const [unlimitedNotes, setUnlimitedNotes] = useState(0)
     const [initialised, setInitialised] = useState(false)
@@ -29,6 +30,7 @@ function useGetFilter(user) {
             if (typeof data !== 'object') return
 
             setFilter(data)
+            setLastFilterFromServer(data)
             getNotes(data)
             setInitialised(true)
 
@@ -53,7 +55,9 @@ function useGetFilter(user) {
 
     return {
         filter: filter,
+        lastFilterFromServer: lastFilterFromServer,
         setFilter: setFilter,
+        setLastFilterFromServer: setLastFilterFromServer,
         unlimitedNotes: unlimitedNotes
     }
 }

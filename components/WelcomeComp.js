@@ -1,5 +1,4 @@
-import { useState, useEffect } from 'react'
-import Logo from './Logo'
+import useWelcomeCompLabelArr from "../custom_hooks/useWelcomCompLabelArr"
 
 
 const labelStyle = { padding: "8px 32px 4px 16px", borderRadius: "8px", margin: "8px 8px 0px 0px", cursor: "pointer", border: "black 4px solid", backgroundColor: "white", color: "black" }
@@ -7,101 +6,51 @@ const labelStyle = { padding: "8px 32px 4px 16px", borderRadius: "8px", margin: 
 
 const WelcomeComp = ({ user, filter, setFilter, deviceSize }) => {
 
-    const labelsArr = [
-        {
-            name: 'Location',
-            condition: (filter.addresses.length > 0),
-            newFilter: { ...filter, addresses: [], selectedAreas: [] }
-        },
-        {
-            name: 'Rent',
-            condition: ((filter.selectedRentVal[0] > filter.minRentVal || filter.selectedRentVal[1] < filter.maxRentVal)),
-            newFilter: { ...filter, selectedRentVal: [filter.minRentVal, filter.maxRentVal] }
-        },
-        {
-            name: 'Bed/Livingrooms',
-            condition: (filter.minBed > 0),
-            newFilter: { ...filter, minBed: 0 }
-        },
-        {
-            name: 'Bathrooms',
-            condition: (filter.minBath > 0),
-            newFilter: { ...filter, minBath: 0 }
-        },
-        {
-            name: 'Pets allowed',
-            condition: (filter.petsAllowed),
-            newFilter: { ...filter, petsAllowed: false }
-        },
-        {
-            name: 'Parking space',
-            condition: (filter.parkingSpace),
-            newFilter: { ...filter, parkingSpace: false }
-        },
-        {
-            name: 'Terrace',
-            condition: (filter.terrace),
-            newFilter: { ...filter, terrace: false }
-        },
-        {
-            name: 'Garden',
-            condition: (filter.garden),
-            newFilter: { ...filter, garden: false }
-        },
-        {
-            name: 'No shared walls',
-            condition: (filter.noSharedWalls),
-            newFilter: { ...filter, noSharedWalls: false }
-        },
-        {
-            name: 'No shared floor or ceiling',
-            condition: (filter.noSharedFloor),
-            newFilter: { ...filter, noSharedFloor: false }
-        },
-        {
-            name: 'Supermarket less than 1 km',
-            condition: (filter.walkToSupermarket),
-            newFilter: { ...filter, walkToSupermarket: false }
-        },
-        {
-            name: 'Train station less than 1 km',
-            condition: (filter.walkToTrain),
-            newFilter: { ...filter, walkToTrain: false }
-        },
-        {
-            name: 'Earliest move-in date',
-            condition: (filter.moveInEarliest),
-            newFilter: { ...filter, moveInEarliest: null }
-        },
-        {
-            name: 'Latest move-in date',
-            condition: (filter.moveInLatest),
-            newFilter: { ...filter, moveInLatest: null }
-        }
-    ]
+
+    const [activeLabelArr, labelsArr, setAllowSetArr] = useWelcomeCompLabelArr(filter)
 
 
     if (deviceSize === "DESKTOP") {
         return (
-            <div style={{ width: "100%", borderRadius: "8px", color: "white" }}>
+            <div style={{ width: "100%", borderRadius: "8px" }}>
                 <div style={{ height: "60px" }} />
                 <div style={{ fontSize: "32px" }}>Welcome {user && user.given_name}</div>
-                <div style={{ height: "40px" }} />
+                <div style={{ height: "24px" }} />
             </div>
         )
     } else {
         return (
-            <div style={{ width: "100%", padding: "16px", color: "white" }}>
-                <div style={{ height: "80px" }} />
-                <div style={{ fontSize: "32px" }}>Welcome {user && user.given_name}</div>
+            <div style={{ width: "100%", padding: "16px" }}>
+                <div style={{height: "24px"}}/>
+                <img
+                    src="https://images.squarespace-cdn.com/content/v1/56dce00a45bf214a0b3fadf3/5cf24fcb-d5dc-44b2-a321-b28ee3d3e00d/lbm_new_logo.png?format=500w"
+                    style={{ height: "80px" }}
+                />
+                <div style={{height: "24px"}}/>
+                <div style={{ fontSize: "24px" }}>
+                    {`Welcome 
+                        ${user && user.given_name} 
+                        `}
+                </div>
+
                 <div style={{ height: "24px" }} />
+
+                {activeLabelArr.length > 0 && (
+                    <div style={{ fontSize: "16px" }}>
+                        {"you are filtering by the following search parametres"}
+                    </div>
+                )}
+                <div style={{ height: "8px" }} />
                 <div style={{ marginTop: "24px", display: "flex", flexWrap: "wrap" }}>
 
                     {labelsArr.map((label) => (
                         <div
                             key={label.name}
-                            onClick={() => setFilter(label.newFilter)}
                             style={{ ...labelStyle, display: !label.condition ? "none" : "flex" }}
+                            onClick={() => {
+                                setFilter(label.newFilter)
+                                setAllowSetArr(true)
+                            }}
                         >
                             <div>
                                 <svg width="40px" height="40px" viewBox="0 0 40 40" style={{ height: "20px", filter: "invert(1)" }}>
@@ -114,7 +63,8 @@ const WelcomeComp = ({ user, filter, setFilter, deviceSize }) => {
                             </div>
                             <div>{label.name}</div>
                         </div>
-                    ))}
+                    )
+                    )}
                 </div>
             </div>
         )

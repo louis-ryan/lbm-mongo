@@ -17,13 +17,13 @@ export default async (req, res) => {
                         <tr> 
                             <td style=" padding: 0 0 0 0; font-size: 16px; line-height: 25px; color: #232323; " class="padding message-content" > 
                                 <img src="https://images.squarespace-cdn.com/content/v1/56dce00a45bf214a0b3fadf3/5cf24fcb-d5dc-44b2-a321-b28ee3d3e00d/lbm_new_logo.png?format=2500w" alt="LBM logo"/>
-                                <h2> Hi, ${filter.userName} You have the filter for your property search</h2>
+                                <h2> Hi, ${filter.userName} You have updated the filter for your property search</h2>
                         
                                 <div> You will be notified by email whenever a new property is listed that meets your new search paramters.</div>
                             
                                 <h2> Click below to return to the platform</h2>
 
-                                <a href="https://lbm-property.vercel.app/">
+                                <a href="${process.env.AUTH0_BASE_URL}/">
                                     <div style=" background-color: black; text-align: center; padding: 16px; color: white; cursor: pointer; text-decoration: none; "> 
                                         To the Lease Breakers platform
                                     </div>
