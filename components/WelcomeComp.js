@@ -21,12 +21,22 @@ const WelcomeComp = ({ user, filter, setFilter, deviceSize }) => {
     } else {
         return (
             <div style={{ width: "100%", padding: "16px" }}>
-                <div style={{height: "24px"}}/>
-                <img
-                    src="https://images.squarespace-cdn.com/content/v1/56dce00a45bf214a0b3fadf3/5cf24fcb-d5dc-44b2-a321-b28ee3d3e00d/lbm_new_logo.png?format=500w"
-                    style={{ height: "80px" }}
-                />
-                <div style={{height: "24px"}}/>
+                <div style={{ height: "24px" }} />
+                {user !== undefined ? (
+                    <div style={{borderRadius: "50%", overflow: "hidden", width: "80px"}}>
+                        <img
+                            src={user.picture}
+                            style={{ height: "80px", width: "80px" }}
+                        />
+                    </div>
+                ) : (
+                    <img
+                        src="https://images.squarespace-cdn.com/content/v1/56dce00a45bf214a0b3fadf3/5cf24fcb-d5dc-44b2-a321-b28ee3d3e00d/lbm_new_logo.png?format=500w"
+                        style={{ height: "80px" }}
+                    />
+                )}
+
+                <div style={{ height: "24px" }} />
                 <div style={{ fontSize: "24px" }}>
                     {`Welcome 
                         ${user && user.given_name} 

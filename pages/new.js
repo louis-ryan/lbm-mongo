@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { useUser } from '@auth0/nextjs-auth0';
-import Link from 'next/link';
 import { useRouter } from 'next/router';
 import PropertyInfo from '../components/Creation/PropertyInfo';
 import useWindowWidth from '../custom_hooks/useWindowWidth';
@@ -107,7 +106,7 @@ const NewNote = () => {
         )
     } else {
         return (
-            <div style={{ width: "100vw", height: "calc(100vh - 114.5px)", backgroundColor: "darkgray", position: "fixed", top: "0px", overflow: "scroll" }}>
+            <div style={{ width: "100vw", height: "calc(100vh - 98.5px)", backgroundColor: "darkgray", position: "fixed", top: "0px", overflow: "scroll" }}>
                 <div style={{ marginTop: "40px", backgroundColor: "rgb(241, 241, 241)", borderRadius: "16px 16px 0px 0px", boxShadow: "0px 0px 52px 0px black" }}>
                     <div style={{ width: "100%", display: "flex", justifyContent: "center" }}>
                         <div style={{ width: "calc(100% - 32px)", maxWidth: "400px" }}>
