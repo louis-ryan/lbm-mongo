@@ -65,22 +65,20 @@ const Index = () => {
       )
     } else {
       return (
-        <div style={{ width: "100vw", height: "calc(100vh - 98.5px)", backgroundColor: "darkgray", position: "fixed", top: "0px", overflowY: "scroll", overflowX: "hidden" }}>
-          <div style={{ marginTop: "40px", backgroundColor: "rgb(241, 241, 241)", borderRadius: "16px 16px 0px 0px", boxShadow: "0px 0px 52px 0px black" }}>
-            <div style={{ zoom: "0.8"}}>
-              <WelcomeComp user={user} filter={filter} setFilter={setFilter} deviceSize={"MOBILE"} />
-            </div>
-            <div style={{ borderRadius: "16px", backgroundColor: "rgb(241, 241, 241)", padding: "4px" }}>
-              <ListingEditToggle mobileView={mobileView} setMobileView={setMobileView} />
-              {mobileView === "FILTERS" && (
-                <FilterComp filter={filter} lastFilterFromServer={lastFilterFromServer} setFilter={setFilter} updateFilter={updateFilter} filterUpdating={filterUpdating} notes={notes} deviceSize={"MOBILE"} />
-              )}
-              {mobileView === "NOTES" && (
-                <ListingComp notes={notes} rendering={rendering} unlimitedNotes={unlimitedNotes} skipping={skipping} setSkipping={setSkipping} getSkippedNotes={getSkippedNotes} deviceSize={"MOBILE"} />
-              )}
-            </div>
+        <>
+          <div style={{ zoom: "0.8" }}>
+            <WelcomeComp user={user} filter={filter} setFilter={setFilter} deviceSize={"MOBILE"} />
           </div>
-        </div>
+          <div style={{ borderRadius: "16px", backgroundColor: "rgb(241, 241, 241)", padding: "4px" }}>
+            <ListingEditToggle mobileView={mobileView} setMobileView={setMobileView} />
+            {mobileView === "FILTERS" && (
+              <FilterComp filter={filter} lastFilterFromServer={lastFilterFromServer} setFilter={setFilter} updateFilter={updateFilter} filterUpdating={filterUpdating} notes={notes} deviceSize={"MOBILE"} />
+            )}
+            {mobileView === "NOTES" && (
+              <ListingComp notes={notes} rendering={rendering} unlimitedNotes={unlimitedNotes} skipping={skipping} setSkipping={setSkipping} getSkippedNotes={getSkippedNotes} deviceSize={"MOBILE"} />
+            )}
+          </div>
+        </>
       )
     }
   } else {
