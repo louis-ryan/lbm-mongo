@@ -66,7 +66,7 @@ const Navbar = () => {
 
                         }}
                     >
-                        <svg width="60px" height="60px" viewBox="0 0 2365 2365">
+                        <svg width="40px" height="40px" viewBox="0 0 2365 2365">
                             <g id="LBM_button_home" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                 <circle id="Oval" stroke="#1F1F1F" stroke-width="80" cx="1182.5" cy="1182.5" r="1142.5"></circle>
                                 <g id="Group-2" transform="translate(513.000000, 539.000000)">
@@ -99,7 +99,7 @@ const Navbar = () => {
                             }
                         }}
                     >
-                        <svg width="60px" height="60px" viewBox="0 0 2365 2365">
+                        <svg width="40px" height="40px" viewBox="0 0 2365 2365">
                             <g id="LBM_button_new" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                 <path d="M1182.5,0 C1835.57672,0 2365,529.423283 2365,1182.5 C2365,1835.57672 1835.57672,2365 1182.5,2365 C529.423283,2365 0,1835.57672 0,1182.5 C0,529.423283 529.423283,0 1182.5,0 Z M1182,275 C1114.62126,275 1060,329.621261 1060,397 L1060,397 L1060,1061 L396,1061 C328.621261,1061 274,1115.62126 274,1183 C274,1250.37874 328.621261,1305 396,1305 L396,1305 L1060,1305 L1060,1969 C1060,2036.37874 1114.62126,2091 1182,2091 C1249.37874,2091 1304,2036.37874 1304,1969 L1304,1969 L1304,1305 L1968,1305 C2035.37874,1305 2090,1250.37874 2090,1183 C2090,1115.62126 2035.37874,1061 1968,1061 L1968,1061 L1304,1061 L1304,397 C1304,329.621261 1249.37874,275 1182,275 Z" id="Combined-Shape" fill="#1F1F1F"></path>
                             </g>
@@ -119,7 +119,7 @@ const Navbar = () => {
                             }
                         }}
                     >
-                        <svg width="60px" height="60px" viewBox="0 0 2365 2365">
+                        <svg width="40px" height="40px" viewBox="0 0 2365 2365">
                             <g id="LBM_button_signout" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                 <circle id="Oval" stroke="#1F1F1F" stroke-width="80" cx="1182.5" cy="1182.5" r="1142.5"></circle>
                                 <g id="Group" transform="translate(542.000000, 700.000000)" stroke="#C3C3C3" stroke-linecap="round" stroke-width="111">

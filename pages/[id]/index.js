@@ -261,30 +261,28 @@ const Note = () => {
     } else {
         return (
 
-            <div style={{ width: "100vw", height: "calc(100vh - 98.5px)", backgroundColor: "darkgray", position: "fixed", top: "0px", overflow: "scroll" }}>
-                <div style={{ marginTop: "40px", backgroundColor: "rgb(241, 241, 241)", borderRadius: "16px 16px 0px 0px", boxShadow: "0px 0px 52px 0px black" }}>
+            <>
 
-                    <div style={{ height: "24px" }} />
-                    <div style={{padding: "8px"}}>
-                        <h1>Property</h1>
-                        <div>Listed by {note.breakerName}</div>
-                    </div>
+                <div style={{ height: "24px" }} />
+                <div style={{ padding: "8px" }}>
+                    <h1>Property</h1>
+                    <div>Listed by {note.breakerName}</div>
+                </div>
 
-                    <div style={{ height: "24px" }} />
+                <div style={{ height: "24px" }} />
 
-                    <Details
-                        note={note}
-                        mapPath={mapPath}
-                        latInPx={latInPx}
-                        longInPx={longInPx}
-                    />
+                <Details
+                    note={note}
+                    mapPath={mapPath}
+                    latInPx={latInPx}
+                    longInPx={longInPx}
+                />
 
-                    <Photos
-                        pics={note.pics}
-                    />
+                <Photos
+                    pics={note.pics}
+                />
 
-                </div >
-            </div>
+            </>
 
         )
     }

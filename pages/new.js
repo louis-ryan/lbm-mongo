@@ -106,45 +106,43 @@ const NewNote = () => {
         )
     } else {
         return (
-            <div style={{ width: "100vw", height: "calc(100vh - 98.5px)", backgroundColor: "darkgray", position: "fixed", top: "0px", overflow: "scroll" }}>
-                <div style={{ marginTop: "40px", backgroundColor: "rgb(241, 241, 241)", borderRadius: "16px 16px 0px 0px", boxShadow: "0px 0px 52px 0px black" }}>
-                    <div style={{ width: "100%", display: "flex", justifyContent: "center" }}>
-                        <div style={{ width: "calc(100% - 32px)", maxWidth: "400px" }}>
-                            <div style={{ height: "24px" }} />
-                            <div>
-                                <h1>Create Post</h1>
-                            </div>
-                            <div style={{ height: "24px" }} />
+            <>
+                <div style={{ width: "100%", display: "flex", justifyContent: "center" }}>
+                    <div style={{ width: "calc(100% - 32px)", maxWidth: "400px" }}>
+                        <div style={{ height: "24px" }} />
+                        <div>
+                            <h1>Create Post</h1>
                         </div>
+                        <div style={{ height: "24px" }} />
                     </div>
-                    <PropertyInfo
-                        handleChange={handleChange}
-                        handlePost={handlePost}
-                        handleMoveInDate={handleMoveInDate}
-                        handleContractEnds={handleContractEnds}
-                        handleAddress={handleAddress}
-                        handleContractTerminates={handleContractTerminates}
-                        errors={errors}
-                        form={form}
-                        user={user}
-                        setForm={setForm}
-                        formBools={formBools}
-                        setFormBools={setFormBools}
-                        compressFile={compressFile}
-                        handleSubmit={handleSubmit}
-                        part={part}
-                        setPart={setPart}
-                        postCode={form.postCode}
-                        validAddresses={validAddresses}
-                        latInPx={latInPx}
-                        longInPx={longInPx}
-                        handleClearPost={handleClearPost}
-                        post={post}
-                        handleRent={handleRent}
-                        device={"MOBILE"}
-                    />
                 </div>
-            </div>
+                <PropertyInfo
+                    handleChange={handleChange}
+                    handlePost={handlePost}
+                    handleMoveInDate={handleMoveInDate}
+                    handleContractEnds={handleContractEnds}
+                    handleAddress={handleAddress}
+                    handleContractTerminates={handleContractTerminates}
+                    errors={errors}
+                    form={form}
+                    user={user}
+                    setForm={setForm}
+                    formBools={formBools}
+                    setFormBools={setFormBools}
+                    compressFile={compressFile}
+                    handleSubmit={handleSubmit}
+                    part={part}
+                    setPart={setPart}
+                    postCode={form.postCode}
+                    validAddresses={validAddresses}
+                    latInPx={latInPx}
+                    longInPx={longInPx}
+                    handleClearPost={handleClearPost}
+                    post={post}
+                    handleRent={handleRent}
+                    device={"MOBILE"}
+                />
+            </>
         )
     }
 
