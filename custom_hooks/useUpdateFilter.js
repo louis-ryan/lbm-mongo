@@ -1,6 +1,6 @@
 import useFormatFilterBody from "./useFormatFilterBody";
 
-function useUpdateFilter(user, router, setFilterUpdating, filter, setFilter) {
+function useUpdateFilter(user, router, setFilterUpdating, filter, setFilter, setLastFilterFromServer) {
 
     async function updateFilter() {
         if (!user) { router.push("/api/auth/login"); return }
@@ -16,6 +16,7 @@ function useUpdateFilter(user, router, setFilterUpdating, filter, setFilter) {
         })
         const { data } = await res.json();
         setFilter(data)
+        setLastFilterFromServer(data)
         setFilterUpdating("DONE")
 
         if (data) {

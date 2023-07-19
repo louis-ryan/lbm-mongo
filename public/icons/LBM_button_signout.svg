@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="2365px" height="2365px" viewBox="0 0 2365 2365" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 62 (91390) - https://sketch.com -->
+    <title>LBM_button_signout</title>
+    <desc>Created with Sketch.</desc>
+    <g id="LBM_button_signout" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <circle id="Oval" stroke="#1F1F1F" stroke-width="80" cx="1182.5" cy="1182.5" r="1142.5"></circle>
+        <g id="Group" transform="translate(542.000000, 700.000000)" stroke="#C3C3C3" stroke-linecap="round" stroke-width="111">
+            <polyline id="Line" points="885 0 0 0 0 905 885 905"></polyline>
+            <line x1="442.5" y1="452.5" x2="1346.5" y2="453.5" id="Line-2"></line>
+            <polyline id="Line-4" points="1164 181 1399 442.998326 1164 700"></polyline>
+        </g>
+        <g id="Group" transform="translate(502.000000, 730.000000)" stroke="#D97777" stroke-linecap="round" stroke-width="111">
+            <polyline id="Line" points="885 0 0 0 0 905 885 905"></polyline>
+            <line x1="442.5" y1="452.5" x2="1346.5" y2="453.5" id="Line-2"></line>
+            <polyline id="Line-4" points="1164 181 1399 442.998326 1164 700"></polyline>
+        </g>
+    </g>
+</svg>

@@ -157,9 +157,6 @@ const Note = () => {
                         <div style={coverPic}>
                             <img src={note.pics[0].url} style={{ width: "100%", filter: "blur(2px)" }} />
                         </div>
-                        <div onClick={() => { router.push('/') }} style={{ position: "absolute", top: "16px", left: "24px", cursor: "pointer" }} >
-                            <img src="https://images.squarespace-cdn.com/content/v1/56dce00a45bf214a0b3fadf3/5cf24fcb-d5dc-44b2-a321-b28ee3d3e00d/lbm_new_logo.png?format=500w" />
-                        </div>
                         <div style={{ height: "140px" }} />
 
                         {note.breakerId === user.sub ? (
@@ -177,7 +174,7 @@ const Note = () => {
                             <>
                                 <h1 style={{ color: "white" }}>Property in {note.address}</h1>
                                 <div style={{ display: "flex" }}>
-                                    <div style={{ width: "40px", height: "40px", borderRadius: "50%", overflow: "hidden" }}>  <img height="40px" width="40px" src={note.breakerPicture} alt="breaker picture" /></div>
+                                    <div style={{ width: "40px", height: "40px", borderRadius: "50%", overflow: "hidden" }}>  <img height="40px" width="40px" src={note && note.breakerPicture} alt="breaker picture" /></div>
                                     <div style={{ width: "16px" }} />
                                     <h2 style={{ color: "white", transform: "translateY(-12px)" }}>Listed by {note.breakerName}</h2>
                                 </div>
@@ -264,31 +261,30 @@ const Note = () => {
     } else {
         return (
 
-            <div style={{ width: "100%" }}>
+            <div style={{ width: "100vw", height: "calc(100vh - 114.5px)", backgroundColor: "darkgray", position: "fixed", top: "0px", overflow: "scroll" }}>
+                <div style={{ marginTop: "40px", backgroundColor: "rgb(241, 241, 241)", borderRadius: "16px 16px 0px 0px", boxShadow: "0px 0px 52px 0px black" }}>
 
-                <div style={{ height: "80px" }} />
+                    <div style={{ height: "24px" }} />
+                    <div style={{padding: "8px"}}>
+                        <h1>Property</h1>
+                        <div>Listed by {note.breakerName}</div>
+                    </div>
 
-                <div onClick={() => { router.push('/') }} style={{ padding: "24px" }}>
-                    {'< BACK TO LISTINGS'}
-                </div>
+                    <div style={{ height: "24px" }} />
 
-                <div style={{ height: "24px" }} />
+                    <Details
+                        note={note}
+                        mapPath={mapPath}
+                        latInPx={latInPx}
+                        longInPx={longInPx}
+                    />
 
-                <div style={{ height: "24px" }} />
+                    <Photos
+                        pics={note.pics}
+                    />
 
-
-                <Details
-                    note={note}
-                    mapPath={mapPath}
-                    latInPx={latInPx}
-                    longInPx={longInPx}
-                />
-
-                <Photos
-                    pics={note.pics}
-                />
-
-            </div >
+                </div >
+            </div>
 
         )
     }

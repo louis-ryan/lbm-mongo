@@ -13,11 +13,11 @@ const Layout = ({ children }) => {
 
             {children}
 
-            <div style={{ width: "100%", height: "40px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                <div style={{ width: "240px", textAlign: "center" }}>
+            <div style={{ position: "fixed", bottom: "0px", width: "100%", height: "40px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                <div style={{ width: "120px", textAlign: "center" }}>
                     LBM v0.0.1
                 </div>
-                <div style={{ width: "240px", textAlign: "center" }}>
+                <div style={{ width: "120px", textAlign: "center" }}>
                     2023
                 </div>
             </div>
