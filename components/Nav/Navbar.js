@@ -53,7 +53,7 @@ const Navbar = () => {
     } else {
 
         return (
-            <div style={{ width: "100vw", position: "fixed", bottom: "0px", left: "0px", backgroundColor: "white", zIndex: "400", display: "flex", justifyContent: "space-around", alignItems: "center", boxShadow: "0px 0px 40px 0px black", padding: "16px" }}>
+            <div style={{ width: "100vw", position: "fixed", bottom: "0px", left: "0px", backgroundColor: "white", zIndex: "400", display: "flex", justifyContent: "space-around", alignItems: "center", boxShadow: "0px 0px 40px 0px black", padding: "8px" }}>
 
                 <div>
                     <div

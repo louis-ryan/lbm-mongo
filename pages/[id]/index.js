@@ -261,7 +261,7 @@ const Note = () => {
     } else {
         return (
 
-            <div style={{ width: "100vw", height: "calc(100vh - 114.5px)", backgroundColor: "darkgray", position: "fixed", top: "0px", overflow: "scroll" }}>
+            <div style={{ width: "100vw", height: "calc(100vh - 98.5px)", backgroundColor: "darkgray", position: "fixed", top: "0px", overflow: "scroll" }}>
                 <div style={{ marginTop: "40px", backgroundColor: "rgb(241, 241, 241)", borderRadius: "16px 16px 0px 0px", boxShadow: "0px 0px 52px 0px black" }}>
 
                     <div style={{ height: "24px" }} />
