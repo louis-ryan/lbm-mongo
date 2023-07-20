@@ -8,7 +8,7 @@ body {
     overflow-x: hidden;
     background-color: rgb(241, 241, 241);
     color: grey;
-    font-family:Arial, Helvetica, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     margin: 0px;
     overflow-wrap: break-word;
 }
@@ -55,9 +55,24 @@ a {
     color: rgb(142, 142, 142);
 }
 
-#content-card {
+#mobile-container {
+    width: 100vw;
+    height: calc(100vh - 78.5px);
+    background-color: pink;
+    position: fixed;
+    top: 0px;
+    overflow: scroll;
+    overscroll-behavior: none
+}
+
+#mobile-content-card {
+    margin-top: 80px;
+    background-color: rgb(241, 241, 241);
+    border-radius: 16px 16px 0px 0px;
+    box-shadow: 0px 0px 24px 0px black;
     animation-name: content-card-enters;
     animation-duration: 2s;
+    transform: translateY(0px);
 }
 
 .card {
@@ -109,6 +124,11 @@ a {
 
 
 @keyframes content-card-enters {
-    0%    { transform:translateY(1200px); }
-    100%  { transform:translateY(0px); }
-  }
+    0% {
+        transform: translateY(1200px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}

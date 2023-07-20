@@ -6,6 +6,8 @@ const Layout = ({ children }) => {
 
     const windowWidth = useWindowWidth()
 
+    const imgSrc = "https://images.squarespace-cdn.com/content/v1/56dce00a45bf214a0b3fadf3/60149970-ce98-49e7-8b04-5739ee538798/LBM_hero_img.png?format=2500w"
+
     if (windowWidth > 1200) {
         return (
             <>
@@ -36,25 +38,13 @@ const Layout = ({ children }) => {
                     <title>LBM</title>
                 </Head>
 
-                <div style={{ width: "100vw", height: "calc(100vh - 78.5px)", backgroundColor: "pink", position: "fixed", top: "0px", overflow: "scroll", overscrollBehavior: "none" }}>
+                <div id="mobile-container">
                     <div style={{ zIndex: "-1", position: "fixed" }}>
-                        <img
-                            src="https://images.squarespace-cdn.com/content/v1/56dce00a45bf214a0b3fadf3/60149970-ce98-49e7-8b04-5739ee538798/LBM_hero_img.png?format=2500w"
-                            style={{ width: "100%", }}
-                        />
-                        <img
-                            src="https://images.squarespace-cdn.com/content/v1/56dce00a45bf214a0b3fadf3/60149970-ce98-49e7-8b04-5739ee538798/LBM_hero_img.png?format=2500w"
-                            style={{ width: "100%", }}
-                        />
-                        <img
-                            src="https://images.squarespace-cdn.com/content/v1/56dce00a45bf214a0b3fadf3/60149970-ce98-49e7-8b04-5739ee538798/LBM_hero_img.png?format=2500w"
-                            style={{ width: "100%", }}
-                        />
+                        <img src={imgSrc} style={{ width: "100%" }} />
+                        <img src={imgSrc} style={{ width: "100%" }} />
+                        <img src={imgSrc} style={{ width: "100%" }} />
                     </div>
-                    <div
-                        id="content-card"
-                        style={{ marginTop: "80px", backgroundColor: "rgb(241, 241, 241)", borderRadius: "16px 16px 0px 0px", boxShadow: "0px 0px 24px 0px black" }}
-                    >
+                    <div id="mobile-content-card">
                         {children}
                     </div>
                 </div>
