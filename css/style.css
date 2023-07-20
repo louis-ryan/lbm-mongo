@@ -55,6 +55,11 @@ a {
     color: rgb(142, 142, 142);
 }
 
+#content-card {
+    animation-name: content-card-enters;
+    animation-duration: 2s;
+}
+
 .card {
     height: 320px;
     width: 100%;
@@ -101,3 +106,9 @@ a {
 .view-selector-option:hover {
     filter: brightness(0);
 }
+
+
+@keyframes content-card-enters {
+    0%    { transform:translateY(1200px); }
+    100%  { transform:translateY(0px); }
+  }

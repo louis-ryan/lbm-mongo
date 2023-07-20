@@ -23,7 +23,7 @@ const WelcomeComp = ({ user, filter, setFilter, deviceSize }) => {
             <div style={{ width: "100%", padding: "16px" }}>
                 <div style={{ height: "24px" }} />
                 {user !== undefined ? (
-                    <div style={{borderRadius: "50%", overflow: "hidden", width: "80px"}}>
+                    <div style={{ borderRadius: "50%", overflow: "hidden", width: "80px" }}>
                         <img
                             src={user.picture}
                             style={{ height: "80px", width: "80px" }}
@@ -36,12 +36,14 @@ const WelcomeComp = ({ user, filter, setFilter, deviceSize }) => {
                     />
                 )}
 
-                <div style={{ height: "24px" }} />
-                <div style={{ fontSize: "24px" }}>
-                    {`Welcome 
-                        ${user && user.given_name} 
-                        `}
-                </div>
+                {user !== undefined && (
+                    <>
+                        <div style={{ height: "24px" }} />
+                        <div style={{ fontSize: "24px" }}>
+                            {`Welcome ${user.given_name} `}
+                        </div>
+                    </>
+                )}
 
                 <div style={{ height: "24px" }} />
 
