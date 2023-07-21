@@ -1,5 +1,10 @@
 .navbar-container {
+    position: fixed;
+    top: 4px;
+    right: 4px;
+    width: 120px;
     display: flex;
+    justify-content: space-between;
     margin: 8px;
     background-color: white;
     padding: 8px 12px 4px 12px;

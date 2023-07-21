@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="2365px" height="2365px" viewBox="0 0 2365 2365" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 62 (91390) - https://sketch.com -->
+    <title>LBM_button_signin</title>
+    <desc>Created with Sketch.</desc>
+    <g id="LBM_button_signin" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <circle id="Oval" stroke="#1F1F1F" stroke-width="80" cx="1182.5" cy="1182.5" r="1142.5"></circle>
+        <g id="Group" transform="translate(1123.000000, 1167.500000) scale(-1, 1) translate(-1123.000000, -1167.500000) translate(520.000000, 715.000000)" stroke="#C3C3C3" stroke-linecap="round" stroke-width="111">
+            <polyline id="Line" points="339 0 0 0 0 905 339 905"></polyline>
+            <line x1="301.5" y1="452.5" x2="1205.5" y2="453.5" id="Line-2" transform="translate(753.500000, 453.000000) scale(-1, 1) translate(-753.500000, -453.000000) "></line>
+            <polyline id="Line-4" transform="translate(400.500000, 440.500000) scale(-1, 1) translate(-400.500000, -440.500000) " points="283 181 518 442.998326 283 700"></polyline>
+        </g>
+        <g id="Group" transform="translate(1095.500000, 1197.500000) scale(-1, 1) translate(-1095.500000, -1197.500000) translate(480.000000, 745.000000)" stroke="#77A9D9" stroke-linecap="round" stroke-width="111">
+            <polyline id="Line" points="339 3.69482223e-12 0 3.69482223e-12 0 905 339 905"></polyline>
+            <line x1="326.5" y1="452.5" x2="1230.5" y2="453.5" id="Line-2" transform="translate(778.500000, 453.000000) scale(-1, 1) translate(-778.500000, -453.000000) "></line>
+            <polyline id="Line-4" transform="translate(425.500000, 440.500000) scale(-1, 1) translate(-425.500000, -440.500000) " points="308 181 543 442.998326 308 700"></polyline>
+        </g>
+    </g>
+</svg>

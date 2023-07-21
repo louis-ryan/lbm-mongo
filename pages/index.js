@@ -1,7 +1,6 @@
 import { useEffect, useState, useRef } from 'react';
 import { useUser } from '@auth0/nextjs-auth0';
 import { useRouter } from 'next/router';
-// import useGetUnlimitedNotes from '../custom_hooks/useGetUnlimitedNotes';
 import fetch from 'isomorphic-unfetch';
 import FilterComp from '../components/Filter/FilterComp';
 import ListingComp from '../components/Listing/ListingComp';
@@ -21,21 +20,10 @@ const Index = () => {
   const { user } = useUser()
   const router = useRouter()
   const desktopComp = useRef()
-  const { filter, lastFilterFromServer, setFilter, setLastFilterFromServer, unlimitedNotes } = useGetFilter(user)
-  // const unlimitedNotes = useGetUnlimitedNotes(filter)
+
+  const { lastFilterFromServer, setLastFilterFromServer, unlimitedNotes, filter, setFilter } = useGetFilter(user)
   const { notes, rendering, filterUpdating, setFilterUpdating, skipping, setSkipping, getSkippedNotes, initialised } = useGetFilteredNotes(filter, user)
-  const { updateFilter } = useUpdateFilter(user, router, setFilterUpdating, filter, setFilter, setLastFilterFromServer)
-
-
-  /**
-   * Handle redirections after auth0 login
-   */
-  // useEffect(() => {
-  //   if (!localStorage.getItem("redirect_to")) return
-  //   const route = localStorage.getItem("redirect_to")
-  //   window.location.replace(route)
-  //   localStorage.removeItem("redirect_to")
-  // })
+  const { updateFilter, deleteFilter } = useUpdateFilter(user, router, setFilterUpdating, filter, setFilter, setLastFilterFromServer)
 
 
   /**
@@ -54,7 +42,7 @@ const Index = () => {
             <WelcomeComp user={user} filter={filter} setFilter={setFilter} deviceSize={"DESKTOP"} />
             <div style={{ display: "flex", justifyContent: "space-between" }}>
               <div style={{ width: "29%" }}>
-                <FilterComp filter={filter} lastFilterFromServer={lastFilterFromServer} setFilter={setFilter} updateFilter={updateFilter} filterUpdating={filterUpdating} notes={notes} deviceSize={"DESKTOP"} />
+                <FilterComp filter={filter} lastFilterFromServer={lastFilterFromServer} setFilter={setFilter} updateFilter={updateFilter} deleteFilter={deleteFilter} filterUpdating={filterUpdating} notes={notes} deviceSize={"DESKTOP"} />
               </div>
               <div style={{ width: "69%" }}>
                 <ListingComp notes={notes} rendering={rendering} unlimitedNotes={unlimitedNotes} skipping={skipping} setSkipping={setSkipping} getSkippedNotes={getSkippedNotes} deviceSize={"DESKTOP"} />
@@ -72,7 +60,7 @@ const Index = () => {
           <div style={{ borderRadius: "16px", backgroundColor: "rgb(241, 241, 241)", padding: "4px" }}>
             <ListingEditToggle mobileView={mobileView} setMobileView={setMobileView} />
             {mobileView === "FILTERS" && (
-              <FilterComp filter={filter} lastFilterFromServer={lastFilterFromServer} setFilter={setFilter} updateFilter={updateFilter} filterUpdating={filterUpdating} notes={notes} deviceSize={"MOBILE"} />
+              <FilterComp filter={filter} lastFilterFromServer={lastFilterFromServer} setFilter={setFilter} updateFilter={updateFilter} deleteFilter={deleteFilter} filterUpdating={filterUpdating} notes={notes} deviceSize={"MOBILE"} />
             )}
             {mobileView === "NOTES" && (
               <ListingComp notes={notes} rendering={rendering} unlimitedNotes={unlimitedNotes} skipping={skipping} setSkipping={setSkipping} getSkippedNotes={getSkippedNotes} deviceSize={"MOBILE"} />

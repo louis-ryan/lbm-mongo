@@ -21,13 +21,16 @@ const Navbar = () => {
 
     if (windowWidth > 1200) {
         return (
-            <div style={{ position: "fixed", zIndex: "10", opacity: "0.95", top: "0px", right: "0px", width: "100%" }}>
-                <div style={{ display: "flex", justifyContent: "space-between" }}>
+            <>
 
-                    <div onClick={() => router.push('/')} style={{ zoom: "0.72", cursor: "pointer", marginTop: "8px" }}>
-                        <img src="https://images.squarespace-cdn.com/content/v1/56dce00a45bf214a0b3fadf3/5cf24fcb-d5dc-44b2-a321-b28ee3d3e00d/lbm_new_logo.png?format=500w" />
-                    </div>
+                <div
+                    onClick={() => router.push('/')}
+                    style={{ position: "fixed", top: "8px", left: "4px", zoom: "0.72", cursor: "pointer", marginTop: "8px" }}
+                >
+                    <img src="https://images.squarespace-cdn.com/content/v1/56dce00a45bf214a0b3fadf3/5cf24fcb-d5dc-44b2-a321-b28ee3d3e00d/lbm_new_logo.png?format=500w" />
+                </div>
 
+                <div>
                     <NavbarUserOptions
                         userOptions={userOptions}
                         setUserOptions={setUserOptions}
@@ -48,15 +51,16 @@ const Navbar = () => {
                     />
                 )}
 
-            </div>
+            </>
         )
     } else {
 
         return (
             <div style={{ width: "100vw", position: "fixed", bottom: "0px", left: "0px", backgroundColor: "white", zIndex: "400", display: "flex", justifyContent: "space-around", alignItems: "center", boxShadow: "0px 0px 40px 8px black", padding: "8px" }}>
 
-                <div>
+                <div style={{ width: "calc(100% / 3)" }}>
                     <div
+                        style={{ textAlign: "center" }}
                         onClick={() => {
                             if (user !== undefined) {
                                 router.push('/')
@@ -89,8 +93,9 @@ const Navbar = () => {
                 </div>
 
 
-                <div>
+                <div style={{ width: "calc(100% / 3)" }}>
                     <div
+                        style={{ textAlign: "center" }}
                         onClick={() => {
                             if (user !== undefined) {
                                 router.push('/new')
@@ -109,8 +114,9 @@ const Navbar = () => {
                 </div>
 
 
-                <div>
+                <div style={{ width: "calc(100% / 3)" }}>
                     <div
+                        style={{ textAlign: "center" }}
                         onClick={() => {
                             if (user !== undefined) {
                                 router.push('/api/auth/logout')
@@ -119,23 +125,48 @@ const Navbar = () => {
                             }
                         }}
                     >
-                        <svg width="40px" height="40px" viewBox="0 0 2365 2365">
-                            <g id="LBM_button_signout" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                <circle id="Oval" stroke="#1F1F1F" stroke-width="80" cx="1182.5" cy="1182.5" r="1142.5"></circle>
-                                <g id="Group" transform="translate(542.000000, 700.000000)" stroke="#C3C3C3" stroke-linecap="round" stroke-width="111">
-                                    <polyline id="Line" points="885 0 0 0 0 905 885 905"></polyline>
-                                    <line x1="442.5" y1="452.5" x2="1346.5" y2="453.5" id="Line-2"></line>
-                                    <polyline id="Line-4" points="1164 181 1399 442.998326 1164 700"></polyline>
+                        {user !== undefined ? (
+                            <svg width="40px" height="40px" viewBox="0 0 2365 2365">
+                                <g id="LBM_button_signout" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                    <circle id="Oval" stroke="#1F1F1F" stroke-width="80" cx="1182.5" cy="1182.5" r="1142.5"></circle>
+                                    <g id="Group" transform="translate(542.000000, 700.000000)" stroke="#C3C3C3" stroke-linecap="round" stroke-width="111">
+                                        <polyline id="Line" points="885 0 0 0 0 905 885 905"></polyline>
+                                        <line x1="442.5" y1="452.5" x2="1346.5" y2="453.5" id="Line-2"></line>
+                                        <polyline id="Line-4" points="1164 181 1399 442.998326 1164 700"></polyline>
+                                    </g>
+                                    <g id="Group" transform="translate(502.000000, 730.000000)" stroke="#D97777" stroke-linecap="round" stroke-width="111">
+                                        <polyline id="Line" points="885 0 0 0 0 905 885 905"></polyline>
+                                        <line x1="442.5" y1="452.5" x2="1346.5" y2="453.5" id="Line-2"></line>
+                                        <polyline id="Line-4" points="1164 181 1399 442.998326 1164 700"></polyline>
+                                    </g>
                                 </g>
-                                <g id="Group" transform="translate(502.000000, 730.000000)" stroke="#D97777" stroke-linecap="round" stroke-width="111">
-                                    <polyline id="Line" points="885 0 0 0 0 905 885 905"></polyline>
-                                    <line x1="442.5" y1="452.5" x2="1346.5" y2="453.5" id="Line-2"></line>
-                                    <polyline id="Line-4" points="1164 181 1399 442.998326 1164 700"></polyline>
+                            </svg>
+                        ) : (
+                            <svg width="40px" height="40px" viewBox="0 0 2365 2365">
+                                <g id="LBM_button_signin" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                    <circle id="Oval" stroke="#1F1F1F" stroke-width="80" cx="1182.5" cy="1182.5" r="1142.5"></circle>
+                                    <g id="Group" transform="translate(1123.000000, 1167.500000) scale(-1, 1) translate(-1123.000000, -1167.500000) translate(520.000000, 715.000000)" stroke="#C3C3C3" stroke-linecap="round" stroke-width="111">
+                                        <polyline id="Line" points="339 0 0 0 0 905 339 905"></polyline>
+                                        <line x1="301.5" y1="452.5" x2="1205.5" y2="453.5" id="Line-2" transform="translate(753.500000, 453.000000) scale(-1, 1) translate(-753.500000, -453.000000) "></line>
+                                        <polyline id="Line-4" transform="translate(400.500000, 440.500000) scale(-1, 1) translate(-400.500000, -440.500000) " points="283 181 518 442.998326 283 700"></polyline>
+                                    </g>
+                                    <g id="Group" transform="translate(1095.500000, 1197.500000) scale(-1, 1) translate(-1095.500000, -1197.500000) translate(480.000000, 745.000000)" stroke="#77A9D9" stroke-linecap="round" stroke-width="111">
+                                        <polyline id="Line" points="339 3.69482223e-12 0 3.69482223e-12 0 905 339 905"></polyline>
+                                        <line x1="326.5" y1="452.5" x2="1230.5" y2="453.5" id="Line-2" transform="translate(778.500000, 453.000000) scale(-1, 1) translate(-778.500000, -453.000000) "></line>
+                                        <polyline id="Line-4" transform="translate(425.500000, 440.500000) scale(-1, 1) translate(-425.500000, -440.500000) " points="308 181 543 442.998326 308 700"></polyline>
+                                    </g>
                                 </g>
-                            </g>
-                        </svg>
+                            </svg>
+                        )}
+
                     </div>
-                    <div style={{ textAlign: "center" }}>sign out</div>
+                    <div style={{ textAlign: "center" }}>
+                        {user !== undefined ? (
+                            "sign out"
+                        ) : (
+                            "sign in"
+                        )}
+                    </div>
                 </div>
 
             </div>

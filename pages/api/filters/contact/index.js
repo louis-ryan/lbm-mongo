@@ -142,25 +142,27 @@ export default async (req, res) => {
 
                     if (filter.email === req.body.breakerEmail) return
 
-                    // console.log("matching?? ",
-                    //     addressWithinArr,
-                    //     higherThanMinRent,
-                    //     lowerThanMaxRent,
-                    //     canMoveInAfterEarliest,
-                    //     canMoveInBeforeLatest,
-                    //     petsMatch,
-                    //     parkingMatch,
-                    //     outdoorMatch,
-                    //     gardenMatch,
-                    //     wallMatch,
-                    //     floorMatch,
-                    //     supermarketMatch,
-                    //     trainMatch,
-                    //     higherThanMinBed,
-                    //     higherThanMinBath
-                    // )
+                    console.log("matching for: ",
+                        filter.userName,
+                        filter.userEmail,
+                        ">>>>>>>>>>",
+                        addressWithinArr,
+                        higherThanMinRent,
+                        lowerThanMaxRent,
+                        canMoveInAfterEarliest,
+                        canMoveInBeforeLatest,
+                        petsMatch,
+                        parkingMatch,
+                        outdoorMatch,
+                        gardenMatch,
+                        wallMatch,
+                        floorMatch,
+                        supermarketMatch,
+                        trainMatch,
+                        higherThanMinBed,
+                        higherThanMinBath
+                    )
 
-                    // process
 
                     if (
                         addressWithinArr === true &&
@@ -181,50 +183,54 @@ export default async (req, res) => {
                     ) {
                         async function sendEmail() {
 
+                            console.log("should be working for: ", filter.userEmail)
+
                             const content = (
                                 `
-                                  <table width="100%" border="0" cellspacing="0" cellpadding="0">  <tr> 
-                                    <td style=" padding: 0 0 0 0; font-size: 16px; line-height: 25px; color: #232323; " class="padding message-content" > 
-                                      <img src="https://images.squarespace-cdn.com/content/v1/56dce00a45bf214a0b3fadf3/008f08a2-5fcb-42a6-baaf-6950d53bf71d/LBM.png?format=2500w" alt="LBM logo"/>
-                                      <h2> A new property matches your current search parameters! </h2>
-                                      <table width="100%" border="0" cellspacing="0" cellpadding="0" > <tr> 
-                                        <td style=" width: 20%;  ">
-                                          <img src=${req.body.pics[0].url} alt="picture of email sender" /> 
-                                        </td>
-                                        <td style=" width: 80%; background-color: #e5e1e5; padding: 16px "> 
-                                          <div> ${req.body.description} </div>
-                                        </td> 
-                                      </tr> </table>
-                                      <h2>
-                                        Click below to reply
-                                      </h2>
-                                      <a href="https://lbm-property.vercel.app/${req.body._id}" >
-                                        <div style=" background-color: black; text-align: center; padding: 16px; color: white; cursor: pointer; text-decoration: none; "> 
-                                          To your account 
-                                        </div>
-                                      </a>
-                                    </td>
-                                  </tr> </table> 
-                              `
-                              )
+                                <table width="100%" border="0" cellspacing="0" cellpadding="0">  
+                                    <tr> 
+                                        <td style=" padding: 0 0 0 0; font-size: 16px; line-height: 25px; color: #232323; " class="padding message-content" > 
+                                            <img src="https://images.squarespace-cdn.com/content/v1/56dce00a45bf214a0b3fadf3/5cf24fcb-d5dc-44b2-a321-b28ee3d3e00d/lbm_new_logo.png?format=2500w" alt="LBM logo"/>
+                                            <h2> A new property matches your current search parameters! </h2>
+                                            <table width="100%" border="0" cellspacing="0" cellpadding="0" > 
+                                                <tr> 
+                                                    <td style=" width: 20% ">
+                                                        <img src=${req.body.pics[0].url} alt="picture of email sender" /> 
+                                                    </td>
+                                                    <td style=" width: 80%; background-color: #e5e1e5; padding: 16px "> 
+                                                        <div> ${req.body.description} </div>
+                                                    </td> 
+                                                </tr> 
+                                            </table>
 
-                            try {
-                                await fetch('https://lbm-property.vercel.app/api/contact', {
-                                    method: "POST",
-                                    body: JSON.stringify({
-                                        name: filter.userName,
-                                        email: filter.userEmail,
-                                        subject: 'A new property matches your filter!',
-                                        content: content
-                                    }),
-                                    headers: { "Content-Type": "application/json", Accept: "application/json" },
-                                }).then((res) => {
-                                    if (!res.ok) throw new Error("Failed to send message");
-                                    return res.json();
-                                })
-                            } catch (error) {
-                                console.log("send email err: ", error)
-                            }
+                                            <h2> Click below to reply </h2>
+
+                                            <a href=${process.env.AUTH0_BASE_URL}/${req.body._id} >
+                                                <div style=" background-color: black; text-align: center; padding: 16px; color: white; cursor: pointer; text-decoration: none; "> 
+                                                    To your account 
+                                                </div>
+                                            </a>
+                                        </td>
+                                      </tr>
+                                  </table> 
+                              `
+                            )
+
+
+                            await fetch(`${process.env.AUTH0_BASE_URL}/api/contact`, {
+                                method: "POST",
+                                body: JSON.stringify({
+                                    name: filter.userName,
+                                    email: filter.userEmail,
+                                    subject: 'A new property matches your filter!',
+                                    content: content
+                                }),
+                                headers: { "Content-Type": "application/json", Accept: "application/json" },
+                            }).then((res) => {
+                                if (!res.ok) throw new Error("Failed to send message");
+                                return res.json();
+                            })
+
                         };
                         sendEmail()
                     }

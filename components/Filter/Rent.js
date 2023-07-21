@@ -1,119 +1,22 @@
-import { useEffect, useState } from "react";
+import useRentHandler from "../../custom_hooks/useRentHandler";
 import FilterHeader from "./FilterHeader";
 import ReactSlider from 'react-slider'
 
 
-const RentFilter = ({ reveal, setReveal, deviceSize, filter, setFilter, notes }) => {
-
-    const [minVal, setMinVal] = useState(null)
-    const [maxVal, setMaxVal] = useState(null)
-    const [rentArr, setRentArr] = useState([])
-
-    const [selectedVal, setSelectedVal] = useState([minVal, maxVal])
-
-    const [graphicArr, setGraphicArr] = useState([{}])
-    const [highestFreq, setHighestFreq] = useState(0)
-
-    const activeCondition = (minVal && maxVal && (filter.selectedRentVal[0] !== minVal || filter.selectedRentVal[1] !== maxVal))
-    const setValCondition = (filter.selectedRentVal[0] !== selectedVal[0] || filter.selectedRentVal[1] !== selectedVal[1])
-
-    const graphicStyle = { height: "72px", width: "100%", display: "flex", justifyContent: "space-between", alignItems: "baseline" }
+const graphicStyle = { height: "72px", width: "100%", display: "flex", justifyContent: "space-between", alignItems: "baseline" }
 
 
-    const handleSetGraphicArr = (sortedRentArr) => {
-        var newGraphicArr = [{}]
-
-        var newHighestFreq = 0
-
-        for (var i = minVal; i <= maxVal; i++) {
-            var availableArr = []
-            sortedRentArr.map((rent) => {
-                if (i === rent) {
-                    availableArr.push(rent)
-                }
-            })
-
-            if (availableArr.length > newHighestFreq) {
-                newHighestFreq = availableArr.length
-            }
-
-            newGraphicArr.push({
-                rentVal: i,
-                numberWithVal: availableArr.length
-            })
-        }
-        setGraphicArr(newGraphicArr)
-        setHighestFreq(newHighestFreq)
-    }
+const RentFilter = ({ reveal, setReveal, filter, setFilter }) => {
 
 
-    async function getCompleteNotes() {
-        var rentArr = []
-
-        const res = await fetch(`api/notes/rent`);
-        const { data } = await res.json();
-
-        data.map((rent) => {
-            if (!rent) return
-            rentArr.push(rent)
-        })
-        var sortedRentArr = rentArr.sort((a, b) => { return a - b })
-
-        setMinVal(sortedRentArr[0])
-        setMaxVal(sortedRentArr[sortedRentArr.length - 1])
-        setRentArr(sortedRentArr)
-    }
-
-
-    useEffect(() => {
-        handleSetGraphicArr(rentArr)
-    }, [rentArr])
-
-
-    /**
-     * Map notes and assign Min and Max to range
-     */
-    useEffect(() => {
-        getCompleteNotes()
-    }, [])
-
-
-    /**
-     * Set init selection based on min and max
-     */
-    useEffect(() => {
-        if (filter.selectedRentVal !== []) {
-            setSelectedVal([filter.selectedRentVal[0], filter.selectedRentVal[1]])
-        } else {
-            setSelectedVal([minVal, maxVal])
-        }
-    }, [filter, minVal, maxVal])
-
-
-    /**
-     * Set init selection if no auth user
-     */
-    useEffect(() => {
-        if (filter.selectedRentVal[0] === null && filter.selectedRentVal[1] === null) {
-            setSelectedVal([minVal, maxVal])
-            setFilter({
-                ...filter,
-                minRentVal: minVal,
-                maxRentVal: maxVal,
-                selectedRentVal: [minVal, maxVal],
-            })
-        }
-    }, [minVal, maxVal])
+    const [graphicArr, highestFreq, activeCondition, setValCondition, selectedVal, setSelectedVal, minVal, maxVal] = useRentHandler(filter, setFilter)
 
 
     return (
         <>
             <div
                 className="filter-box"
-                style={{
-                    border: activeCondition ? "#50554A 4px solid" : "2px solid #50554A",
-                    width: reveal === "RENT" && deviceSize === "MOBILE" && "100%",
-                }}
+                style={{ border: activeCondition ? "#50554A 4px solid" : "2px solid #50554A" }}
             >
 
                 <FilterHeader

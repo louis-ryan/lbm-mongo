@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import useGetInitialFilterObj from './useGetInitialFilterObj';
 import useFilterString from './useFilterString';
+import useGetInitialFilterObj from './useGetInitialFilterObj';
 
 function useGetFilter(user) {
 
@@ -11,7 +11,7 @@ function useGetFilter(user) {
     const [initialised, setInitialised] = useState(false)
 
 
-    async function getNotes(filter) {
+    async function getNotesInt(filter) {
         const filterString = useFilterString(filter, null, null)
 
         const res = await fetch(`/api/notes/filter/${filterString}/int`);
@@ -31,7 +31,7 @@ function useGetFilter(user) {
 
             setFilter(data)
             setLastFilterFromServer(data)
-            getNotes(data)
+            getNotesInt(data)
             setInitialised(true)
 
         }
@@ -43,13 +43,24 @@ function useGetFilter(user) {
 
     useEffect(() => {
         if (!initialised) return
-        getNotes(filter)
+        getNotesInt(filter)
     }, [filter])
 
     useEffect(() => {
         if (user) return
-        getNotes(filter)
+        getNotesInt(filter)
     }, [])
+
+
+    // useEffect(() => {
+
+    //     const noFilter = filter.userId === null
+
+    //     if (!noFilter) return
+
+    //     getNotes(filter)
+
+    // }, [filter])
 
 
 
