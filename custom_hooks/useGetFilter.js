@@ -8,16 +8,19 @@ function useGetFilter(user) {
     const [lastFilterFromServer, setLastFilterFromServer] = useState(useGetInitialFilterObj())
     const [mount, setMount] = useState(true)
     const [unlimitedNotes, setUnlimitedNotes] = useState(0)
-    const [initialised, setInitialised] = useState(false)
 
 
-    async function getNotesInt(filter) {
-        const filterString = useFilterString(filter, null, null)
+    useEffect(() => {
+        async function getNotesInt() {
+            const filterString = useFilterString(filter, null, null)
+    
+            const res = await fetch(`/api/notes/filter/${filterString}/int`);
+            const { data } = await res.json();
+            setUnlimitedNotes(data)
+        }
+        getNotesInt()
+    }, [filter])
 
-        const res = await fetch(`/api/notes/filter/${filterString}/int`);
-        const { data } = await res.json();
-        setUnlimitedNotes(data)
-    }
 
     useEffect(() => {
         if (!user) return
@@ -31,36 +34,12 @@ function useGetFilter(user) {
 
             setFilter(data)
             setLastFilterFromServer(data)
-            getNotesInt(data)
-            setInitialised(true)
 
         }
 
         getFilter()
         setMount(false)
     }, [user])
-
-
-    useEffect(() => {
-        if (!initialised) return
-        getNotesInt(filter)
-    }, [filter])
-
-    useEffect(() => {
-        if (user) return
-        getNotesInt(filter)
-    }, [])
-
-
-    // useEffect(() => {
-
-    //     const noFilter = filter.userId === null
-
-    //     if (!noFilter) return
-
-    //     getNotes(filter)
-
-    // }, [filter])
 
 
 
