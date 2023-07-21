@@ -18,10 +18,7 @@ const Rooms = ({ reveal, setReveal, deviceSize, filter, setFilter }) => {
         <>
             <div
                 className="filter-box"
-                style={{
-                    border: activeCondition ? "#50554A 4px solid" : "2px solid #50554A",
-                    width: reveal === "RENT" && deviceSize === "MOBILE" && "100%",
-                }}
+                style={{ border: activeCondition ? "#50554A 4px solid" : "2px solid #50554A" }}
             >
 
                 <FilterHeader

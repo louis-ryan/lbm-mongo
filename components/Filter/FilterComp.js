@@ -7,7 +7,7 @@ import Details from './Details'
 import MoveIn from './MoveIn'
 
 
-const FilterComp = ({ filter, lastFilterFromServer, setFilter, updateFilter, filterUpdating, notes, deviceSize }) => {
+const FilterComp = ({ filter, lastFilterFromServer, setFilter, updateFilter, deleteFilter, filterUpdating, notes, deviceSize }) => {
 
     const [reveal, setReveal] = useState("NONE")
 
@@ -43,16 +43,27 @@ const FilterComp = ({ filter, lastFilterFromServer, setFilter, updateFilter, fil
 
             <div style={{ height: "8px" }} />
 
-            {lastFilterFromServer !== filter && (
-                <>
-                    <p style={{ fontSize: "12px", padding: "8px" }}>By clicking 'SAVE AS MY FILTER', you will be sent an email each time a new property is listed that meets your filter parameters.</p>
+            {filter.userEmail === null ? (
+                <p style={{ fontSize: "12px", padding: "8px" }}>{"You currently have NO filter saved and will not recieve emails about new properties"}</p>
+            ) : (
+                <p style={{ fontSize: "12px", padding: "8px" }}>{"You have a filter saved and may recieve emails. Click 'DELETE MY STORED FILTER' to stop all emails."}</p>
+            )}
 
+            {lastFilterFromServer !== filter && (
+
+                <div>
                     <div
                         className='update-filter-button'
                         onClick={() => { updateFilter() }}
                     >
                         {filterUpdating === "UPDATE" && (
-                            <div style={{ padding: "4px", fontSize: "16px" }}>{"SAVE AS MY FILTER"}</div>
+                            <div style={{ padding: "4px", fontSize: "16px" }}>
+                                {filter.userEmail === null ? (
+                                    "CREATE FILTER"
+                                ) : (
+                                    "UPDATE MY FILTER"
+                                )}
+                            </div>
                         )}
 
                         {filterUpdating === "UPDATING" && (
@@ -77,8 +88,20 @@ const FilterComp = ({ filter, lastFilterFromServer, setFilter, updateFilter, fil
                         )}
 
                     </div>
-                </>
+                </div>
 
+            )}
+
+            {filter.userEmail !== null && (
+                <div style={{ padding: "8px" }}>
+                    <div
+                        onClick={() => { deleteFilter() }}
+                        style={{ fontSize: "16px", fontWeight: "800px", textDecoration: "underline", color: "black", cursor: "pointer", width: "100%", textAlign: "center", padding: "16px", border: "2px solid black" }}
+                    >
+                        {"DELETE MY STORED FILTER"}
+                    </div>
+                    <div style={{ height: "40px" }} />
+                </div>
             )}
 
         </div>

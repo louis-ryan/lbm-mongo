@@ -127,10 +127,7 @@ const Location = ({ reveal, setReveal, deviceSize, filter, setFilter }) => {
         <>
             <div
                 className="filter-box"
-                style={{
-                    border: filter.addresses.length && filter.addresses.length > 0 ? "#50554A 4px solid" : "2px solid #50554A",
-                    width: reveal === "LOCATION" && deviceSize === "MOBILE" && "100%",
-                }}
+                style={{ border: filter.addresses.length && filter.addresses.length > 0 ? "#50554A 4px solid" : "2px solid #50554A" }}
             >
 
                 <FilterHeader

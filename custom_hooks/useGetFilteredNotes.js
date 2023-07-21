@@ -12,6 +12,19 @@ function useGetFilteredNotes(filter, user) {
     if (!filter) return
 
 
+    async function getInitNotes() {
+        setRendering(true)
+        const filterString = useFilterString(filter, 5, 0)
+        const res = await fetch(`api/notes/filter/${filterString}`);
+        const { data } = await res.json();
+        console.log("data: ", data)
+        setSkipping(0)
+        setNotes(data)
+        setTimeout(() => { setFilterUpdating("UPDATE"); setRendering(false) }, 1000)
+        setInitialised(true)
+    }
+
+
     async function getSkippedNotes(numSkipped) {
         setRendering(true)
         const filterString = useFilterString(filter, 5, numSkipped)
@@ -23,29 +36,8 @@ function useGetFilteredNotes(filter, user) {
 
 
     useEffect(() => {
-        async function getNotes() {
-            setRendering(true)
-            const filterString = useFilterString(filter, 5, 0)
-            const res = await fetch(`api/notes/filter/${filterString}`);
-            const { data } = await res.json();
-            setSkipping(0)
-            setNotes(data)
-            setTimeout(() => { setFilterUpdating("UPDATE"); setRendering(false) }, 1000)
-            setInitialised(true)
-        }
-        getNotes()
+        getInitNotes()
     }, [filter])
-
-
-    // useEffect(() => {
-    //     if (user) return
-    //     async function getNotes() {
-    //         const res = await fetch(`api/notes`);
-    //         const { data } = await res.json();
-    //         setNotes(data)
-    //     }
-    //     getNotes()
-    // }, [])
 
 
     return {
