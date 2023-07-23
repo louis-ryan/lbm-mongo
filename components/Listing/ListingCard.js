@@ -12,9 +12,9 @@ const ListingCard = ({ note, rendering, deviceSize }) => {
     
     const handleCardRoute = () => {
         if (user) {
-            router.push(`/${note._id}#Details`)
+            router.push(`/${note._id}`)
         } else {
-            localStorage.setItem("redirect_to", `/${note._id}#Details`)
+            localStorage.setItem("redirect_to", `/${note._id}`)
             router.push("/api/auth/login")
         }
     }

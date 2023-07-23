@@ -9,6 +9,8 @@ export default async (req, res) => {
 
     const filter = await Filter.findById(id);
 
+    console.log("filter from contact: ", filter)
+
     try {
         async function sendEmail() {
             const content = (

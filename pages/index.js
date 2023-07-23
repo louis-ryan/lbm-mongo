@@ -14,15 +14,13 @@ import useUpdateFilter from '../custom_hooks/useUpdateFilter';
 
 const Index = () => {
 
-
   const windowWidth = useWindowWidth()
   const [mobileView, setMobileView] = useState("NOTES")
   const { user } = useUser()
   const router = useRouter()
   const desktopComp = useRef()
-
-  const { lastFilterFromServer, setLastFilterFromServer, unlimitedNotes, filter, setFilter } = useGetFilter(user)
-  const { notes, rendering, filterUpdating, setFilterUpdating, skipping, setSkipping, getSkippedNotes, initialised } = useGetFilteredNotes(filter, user)
+  const { lastFilterFromServer, setLastFilterFromServer, filter, setFilter } = useGetFilter(user)
+  const { notes, unlimitedNotes, rendering, filterUpdating, setFilterUpdating, skipping, setSkipping, getSkippedNotes, initialised } = useGetFilteredNotes(filter, user)
   const { updateFilter, deleteFilter } = useUpdateFilter(user, router, setFilterUpdating, filter, setFilter, setLastFilterFromServer)
 
 

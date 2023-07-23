@@ -11,6 +11,8 @@ function useRentHandler(filter, setFilter) {
     const [graphicArr, setGraphicArr] = useState([{}])
     const [highestFreq, setHighestFreq] = useState(0)
 
+    const [valuesAdded, setValuesAdded] = useState(false)
+
     const activeCondition = (minVal && maxVal && (filter.selectedRentVal[0] !== minVal || filter.selectedRentVal[1] !== maxVal))
     const setValCondition = (filter.selectedRentVal[0] !== selectedVal[0] || filter.selectedRentVal[1] !== selectedVal[1])
 
@@ -89,6 +91,7 @@ function useRentHandler(filter, setFilter) {
      * Set init selection if no auth user
      */
     useEffect(() => {
+        if (valuesAdded) return
         if (filter.selectedRentVal[0] === null && filter.selectedRentVal[1] === null) {
             setSelectedVal([minVal, maxVal])
             setFilter({
@@ -98,6 +101,13 @@ function useRentHandler(filter, setFilter) {
                 selectedRentVal: [minVal, maxVal],
             })
         }
+
+        const valNullFromFilter = filter.selectedRentVal[0] === null
+
+        if (valNullFromFilter) return
+
+        setValuesAdded(true)
+
     })
 
 

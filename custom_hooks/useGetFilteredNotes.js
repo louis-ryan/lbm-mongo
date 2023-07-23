@@ -1,15 +1,25 @@
 import { useEffect, useState } from 'react';
 import useFilterString from './useFilterString';
 
-function useGetFilteredNotes(filter, user) {
+function useGetFilteredNotes(filter) {
 
     const [notes, setNotes] = useState([])
+    const [unlimitedNotes, setUnlimitedNotes] = useState(0)
     const [rendering, setRendering] = useState(false)
     const [filterUpdating, setFilterUpdating] = useState("UPDATE")
     const [skipping, setSkipping] = useState(0)
     const [initialised, setInitialised] = useState(false)
 
     if (!filter) return
+
+
+    async function getNotesInt() {
+        const filterString = useFilterString(filter, null, null)
+
+        const res = await fetch(`/api/notes/filter/${filterString}/int`);
+        const { data } = await res.json();
+        setUnlimitedNotes(data)
+    }
 
 
     async function getInitNotes() {
@@ -36,11 +46,13 @@ function useGetFilteredNotes(filter, user) {
 
     useEffect(() => {
         getInitNotes()
+        getNotesInt()
     }, [filter])
 
 
     return {
         notes: notes,
+        unlimitedNotes: unlimitedNotes,
         rendering: rendering,
         filterUpdating: filterUpdating,
         setFilterUpdating: setFilterUpdating,

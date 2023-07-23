@@ -3,6 +3,7 @@ import useGetInitialFilterObj from "./useGetInitialFilterObj";
 
 function useUpdateFilter(user, router, setFilterUpdating, filter, setFilter, setLastFilterFromServer) {
 
+
     async function updateFilter() {
 
         if (!user) {
@@ -51,6 +52,29 @@ function useUpdateFilter(user, router, setFilterUpdating, filter, setFilter, set
 
 
     async function deleteFilter() {
+
+
+        async function updateRentFilter() {
+            var rentArr = []
+    
+            const res = await fetch(`api/notes/rent`);
+            const { data } = await res.json();
+    
+            data.map((rent) => {
+                if (!rent) return
+                rentArr.push(rent)
+            })
+            var sortedRentArr = rentArr.sort((a, b) => { return a - b })
+
+            setFilter({
+                ...filter,
+                minRentVal: sortedRentArr[0],
+                maxRentVal: sortedRentArr[sortedRentArr.length - 1],
+                selectedRentVal: [sortedRentArr[0], sortedRentArr[sortedRentArr.length - 1]],
+            })
+        }
+
+
         if (!user) { router.push("/api/auth/login"); return }
 
         await fetch(`api/filters/filter/${filter._id}`, {
@@ -59,7 +83,10 @@ function useUpdateFilter(user, router, setFilterUpdating, filter, setFilter, set
         })
         setFilter(useGetInitialFilterObj())
         setLastFilterFromServer(useGetInitialFilterObj())
+        updateRentFilter()
     }
+
+
 
 
     return {
