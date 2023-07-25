@@ -67,29 +67,22 @@ function useRentHandler(filter, setFilter) {
 
 
     async function getCompleteNotes() {
-        var rentArr = []
 
         const res = await fetch(`api/notes/rent`);
         const { data } = await res.json();
 
-        data.map((rent) => {
-            if (!rent) return
-            rentArr.push(rent)
-        })
-        var sortedRentArr = rentArr.sort((a, b) => { return a - b })
+        setMinVal(data[0])
+        setMaxVal(data[data.length - 1])
+        setRentArr(data)
 
-        setMinVal(sortedRentArr[0])
-        setMaxVal(sortedRentArr[sortedRentArr.length - 1])
-        setRentArr(sortedRentArr)
-
-        setInitVals(sortedRentArr)
+        setInitVals(data)
 
         const noFilter = filter.userId === null
 
         if (noFilter) {
             if (!user) return
             if (!mounted) return
-            setSelectedVal([sortedRentArr[0], sortedRentArr[sortedRentArr.length - 1]])
+            setSelectedVal([data[0], data[data.length - 1]])
             setMounted(false)
         }
 
@@ -108,25 +101,6 @@ function useRentHandler(filter, setFilter) {
     useEffect(() => {
         getCompleteNotes()
     }, [filter])
-
-
-    /**
-     * Set init selection if no auth user
-     */
-    useEffect(() => {
-        if (user !== undefined) return
-
-        if (filter.selectedRentVal[0] === null && filter.selectedRentVal[1] === null) {
-
-            setSelectedVal([minVal, maxVal])
-            setFilter({
-                ...filter,
-                minRentVal: minVal,
-                maxRentVal: maxVal,
-                selectedRentVal: [minVal, maxVal],
-            })
-        }
-    })
 
 
     return [

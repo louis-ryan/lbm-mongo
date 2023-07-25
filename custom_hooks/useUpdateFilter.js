@@ -13,13 +13,6 @@ function useUpdateFilter(user, router, setFilterUpdating, filter, setFilter, set
 
         setFilterUpdating("UPDATING")
 
-        // if (filter.userId) {
-        //     await fetch(`api/filters/delete/${user.sub}`, {
-        //         method: 'DELETE',
-        //         headers: { "Accept": "application/json", "Content-Type": "application/json" },
-        //     })
-        // }
-
         const body = useFormatFilterBody(filter, user)
 
         const res = await fetch('api/filters', {
