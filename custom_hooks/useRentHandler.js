@@ -1,6 +1,10 @@
 import { useState, useEffect } from 'react'
+import { useUser } from '@auth0/nextjs-auth0';
+
 
 function useRentHandler(filter, setFilter) {
+
+    const { user } = useUser()
 
     const [minVal, setMinVal] = useState(null)
     const [maxVal, setMaxVal] = useState(null)
@@ -11,9 +15,18 @@ function useRentHandler(filter, setFilter) {
     const [graphicArr, setGraphicArr] = useState([{}])
     const [highestFreq, setHighestFreq] = useState(0)
 
-    const [valuesAdded, setValuesAdded] = useState(false)
+    const [mounted, setMounted] = useState(true)
 
-    const activeCondition = (minVal && maxVal && (filter.selectedRentVal[0] !== minVal || filter.selectedRentVal[1] !== maxVal))
+    var activeCondition
+
+    if (filter.userId) {
+        activeCondition = (minVal && maxVal && (filter.selectedRentVal[0] !== minVal || filter.selectedRentVal[1] !== maxVal))
+    } else {
+        activeCondition = (minVal && maxVal && (selectedVal[0] !== minVal || selectedVal[1] !== maxVal))
+    }
+
+
+
     const setValCondition = (filter.selectedRentVal[0] !== selectedVal[0] || filter.selectedRentVal[1] !== selectedVal[1])
 
 
@@ -44,6 +57,15 @@ function useRentHandler(filter, setFilter) {
     }
 
 
+    const setInitVals = (sortedRentArr) => {
+        if (sortedRentArr !== []) {
+            setSelectedVal([filter.selectedRentVal[0], filter.selectedRentVal[1]])
+        } else {
+            setSelectedVal([minVal, maxVal])
+        }
+    }
+
+
     async function getCompleteNotes() {
         var rentArr = []
 
@@ -59,6 +81,19 @@ function useRentHandler(filter, setFilter) {
         setMinVal(sortedRentArr[0])
         setMaxVal(sortedRentArr[sortedRentArr.length - 1])
         setRentArr(sortedRentArr)
+
+        setInitVals(sortedRentArr)
+
+        const noFilter = filter.userId === null
+
+        if (noFilter) {
+            if (!user) return
+            if (!mounted) return
+            setSelectedVal([sortedRentArr[0], sortedRentArr[sortedRentArr.length - 1]])
+            setMounted(false)
+        }
+
+
     }
 
 
@@ -72,27 +107,17 @@ function useRentHandler(filter, setFilter) {
      */
     useEffect(() => {
         getCompleteNotes()
-    }, [])
-
-
-    /**
-     * Set init selection based on min and max
-     */
-    useEffect(() => {
-        if (filter.selectedRentVal !== []) {
-            setSelectedVal([filter.selectedRentVal[0], filter.selectedRentVal[1]])
-        } else {
-            setSelectedVal([minVal, maxVal])
-        }
-    }, [filter, minVal, maxVal])
+    }, [filter])
 
 
     /**
      * Set init selection if no auth user
      */
     useEffect(() => {
-        if (valuesAdded) return
+        if (user !== undefined) return
+
         if (filter.selectedRentVal[0] === null && filter.selectedRentVal[1] === null) {
+
             setSelectedVal([minVal, maxVal])
             setFilter({
                 ...filter,
@@ -101,13 +126,6 @@ function useRentHandler(filter, setFilter) {
                 selectedRentVal: [minVal, maxVal],
             })
         }
-
-        const valNullFromFilter = filter.selectedRentVal[0] === null
-
-        if (valNullFromFilter) return
-
-        setValuesAdded(true)
-
     })
 
 

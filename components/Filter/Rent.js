@@ -1,4 +1,3 @@
-import useRentHandler from "../../custom_hooks/useRentHandler";
 import FilterHeader from "./FilterHeader";
 import ReactSlider from 'react-slider'
 
@@ -6,10 +5,10 @@ import ReactSlider from 'react-slider'
 const graphicStyle = { height: "72px", width: "100%", display: "flex", justifyContent: "space-between", alignItems: "baseline" }
 
 
-const RentFilter = ({ reveal, setReveal, filter, setFilter }) => {
+const RentFilter = ({ reveal, setReveal, filter, setFilter, rentProps }) => {
 
 
-    const [graphicArr, highestFreq, activeCondition, setValCondition, selectedVal, setSelectedVal, minVal, maxVal] = useRentHandler(filter, setFilter)
+    const [graphicArr, highestFreq, activeCondition, setValCondition, selectedVal, setSelectedVal, minVal, maxVal] = rentProps
 
 
     return (

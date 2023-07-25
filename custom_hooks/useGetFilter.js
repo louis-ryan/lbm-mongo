@@ -4,7 +4,6 @@ import useGetInitialFilterObj from './useGetInitialFilterObj';
 function useGetFilter(user) {
 
     const [filter, setFilter] = useState(useGetInitialFilterObj())
-    console.log("filter: ", filter)
     const [lastFilterFromServer, setLastFilterFromServer] = useState(useGetInitialFilterObj())
     const [mount, setMount] = useState(true)
 

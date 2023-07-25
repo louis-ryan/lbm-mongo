@@ -10,6 +10,7 @@ import useGetFilteredNotes from '../custom_hooks/useGetFilteredNotes';
 import useGetFilter from '../custom_hooks/useGetFilter';
 import ListingEditToggle from '../components/Listing/ListingEditToggle';
 import useUpdateFilter from '../custom_hooks/useUpdateFilter';
+import useRentHandler from '../custom_hooks/useRentHandler';
 
 
 const Index = () => {
@@ -22,6 +23,7 @@ const Index = () => {
   const { lastFilterFromServer, setLastFilterFromServer, filter, setFilter } = useGetFilter(user)
   const { notes, unlimitedNotes, rendering, filterUpdating, setFilterUpdating, skipping, setSkipping, getSkippedNotes, initialised } = useGetFilteredNotes(filter, user)
   const { updateFilter, deleteFilter } = useUpdateFilter(user, router, setFilterUpdating, filter, setFilter, setLastFilterFromServer)
+  const rentProps = useRentHandler(filter, setFilter)
 
 
   /**
@@ -40,7 +42,7 @@ const Index = () => {
             <WelcomeComp user={user} filter={filter} setFilter={setFilter} deviceSize={"DESKTOP"} />
             <div style={{ display: "flex", justifyContent: "space-between" }}>
               <div style={{ width: "29%" }}>
-                <FilterComp filter={filter} lastFilterFromServer={lastFilterFromServer} setFilter={setFilter} updateFilter={updateFilter} deleteFilter={deleteFilter} filterUpdating={filterUpdating} notes={notes} deviceSize={"DESKTOP"} />
+                <FilterComp filter={filter} lastFilterFromServer={lastFilterFromServer} setFilter={setFilter} updateFilter={updateFilter} deleteFilter={deleteFilter} filterUpdating={filterUpdating} notes={notes} rentProps={rentProps} deviceSize={"DESKTOP"} />
               </div>
               <div style={{ width: "69%" }}>
                 <ListingComp notes={notes} rendering={rendering} unlimitedNotes={unlimitedNotes} skipping={skipping} setSkipping={setSkipping} getSkippedNotes={getSkippedNotes} deviceSize={"DESKTOP"} />
@@ -58,7 +60,7 @@ const Index = () => {
           <div style={{ borderRadius: "16px", backgroundColor: "rgb(241, 241, 241)", padding: "4px" }}>
             <ListingEditToggle mobileView={mobileView} setMobileView={setMobileView} />
             {mobileView === "FILTERS" && (
-              <FilterComp filter={filter} lastFilterFromServer={lastFilterFromServer} setFilter={setFilter} updateFilter={updateFilter} deleteFilter={deleteFilter} filterUpdating={filterUpdating} notes={notes} deviceSize={"MOBILE"} />
+              <FilterComp filter={filter} lastFilterFromServer={lastFilterFromServer} setFilter={setFilter} updateFilter={updateFilter} deleteFilter={deleteFilter} filterUpdating={filterUpdating} notes={notes} rentProps={rentProps} deviceSize={"MOBILE"} />
             )}
             {mobileView === "NOTES" && (
               <ListingComp notes={notes} rendering={rendering} unlimitedNotes={unlimitedNotes} skipping={skipping} setSkipping={setSkipping} getSkippedNotes={getSkippedNotes} deviceSize={"MOBILE"} />
