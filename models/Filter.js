@@ -22,7 +22,7 @@ const FilterSchema = new mongoose.Schema({
     ],
     rent: [
         {
-            type: String
+            type: Number
         }
     ],
     minRentVal: {

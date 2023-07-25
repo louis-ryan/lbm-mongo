@@ -11,6 +11,14 @@ export default async (req, res) => {
 
         const notes = await Note.find({});
 
+        let rentArr = []
+
+        notes.map((note) => {
+            rentArr.push(note.rent)
+        })
+
+        var sortedRentArr = rentArr.sort((a, b) => { return a - b })
+
         const filter = await Filter.find({ userId: userId });
 
         if (!filter) {
@@ -20,19 +28,21 @@ export default async (req, res) => {
         var lastFilter = filter[filter.length - 1]
 
 
+
+
         var noFilters = (lastFilter === undefined)
 
         if (noFilters) {
             lastFilter = {
                 addresses: [],
                 selectedAreas: [],
-                rent: [notes],
+                rent: sortedRentArr,
                 selectedRentVal: [
-                    notes[0],
-                    notes[notes.length - 1]
+                    sortedRentArr[0],
+                    sortedRentArr[sortedRentArr.length - 1]
                 ],
-                minRentVal: notes[0],
-                maxRentVal: notes[notes.length - 1],
+                minRentVal: sortedRentArr[0],
+                maxRentVal: sortedRentArr[sortedRentArr.length - 1],
                 minBed: 0,
                 minBath: 0,
                 petsAllowed: false,
