@@ -7,7 +7,7 @@ import Details from './Details'
 import MoveIn from './MoveIn'
 
 
-const FilterComp = ({ filter, lastFilterFromServer, setFilter, updateFilter, deleteFilter, filterUpdating, notes, deviceSize }) => {
+const FilterComp = ({ filter, lastFilterFromServer, setFilter, updateFilter, deleteFilter, filterUpdating, notes, rentProps, deviceSize }) => {
 
     const [reveal, setReveal] = useState("NONE")
 
@@ -27,7 +27,7 @@ const FilterComp = ({ filter, lastFilterFromServer, setFilter, updateFilter, del
 
             <div style={{ height: "8px" }} />
 
-            <Rent reveal={reveal} setReveal={setReveal} deviceSize={deviceSize} filter={filter} setFilter={setFilter} notes={notes} />
+            <Rent reveal={reveal} setReveal={setReveal} filter={filter} setFilter={setFilter} rentProps={rentProps} />
 
             <div style={{ height: "8px" }} />
 
