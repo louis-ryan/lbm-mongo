@@ -13,6 +13,13 @@ const Action = (props) => {
         setMobilePromoState
     } = props
 
+    const oneSecondTimer = () => {
+        setTimeout(function () {
+            setMobilePromoState("PROMO")
+            tenSecondTimer()
+        }, 1000);
+    }
+
 
     if (deviceSize === "DESKTOP") {
         return (
@@ -137,9 +144,9 @@ const Action = (props) => {
                             setContactReveal(true)
                             if (contactView === "NONE") {
                                 setContactView("PROMO")
-                                setMobilePromoState("PROMO")
+                                setMobilePromoState("PROMO_INIT")
                             }
-                            tenSecondTimer()
+                            oneSecondTimer()
                         }}
                     >
 
