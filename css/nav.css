@@ -32,3 +32,17 @@
 .navbar-create:hover {
     filter: brightness(1.2);
 }
+
+.contact-button {
+    width: 100%;
+    background-color: black;
+    padding: 24px;
+    text-align: center;
+    color: white;
+}
+
+.contact-button:hover {
+    background-color: pink;
+    color: black;
+    cursor: pointer;
+}

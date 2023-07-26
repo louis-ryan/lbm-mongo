@@ -82,9 +82,7 @@ a {
     border-radius: 0px;
     border: none;
     overflow: hidden;
-    background-color: white;
     cursor: pointer;
-    box-shadow: inset 0px 0px 0px 4px lightgrey;
 }
 
 .card:hover {

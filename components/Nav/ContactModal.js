@@ -66,17 +66,17 @@ const ContactModal = ({ setContactShowing, user }) => {
             })
             const { data } = await res.json()
 
-            data.map((contact) => {
-                if (contact.userId === user.sub) {
-                    setContactInitialised(contact._id)
-                    setUserContacts({
-                        name: contact.userName,
-                        email: contact.userEmail,
-                        phone: contact.userPhone,
-                        social: contact.userSocial
-                    })
-                }
+            if (data._id) {
+                setContactInitialised(data._id)
+            }
+
+            setUserContacts({
+                name: data.userName,
+                email: data.userEmail,
+                phone: data.userPhone,
+                social: data.userSocial
             })
+
 
         } catch (error) {
             console.log("existing contact err: ", error);
@@ -161,7 +161,7 @@ const ContactModal = ({ setContactShowing, user }) => {
 
                     {updateClickable && (
                         <div
-                            style={{ width: "100%", backgroundColor: "black", padding: "24px", textAlign: "center", color: "white" }}
+                            className="contact-button"
                             onClick={() => {
                                 if (contactInitialised) {
                                     patchContactInfo()
