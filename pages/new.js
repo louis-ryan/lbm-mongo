@@ -1,6 +1,5 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useUser } from '@auth0/nextjs-auth0';
-import Link from 'next/link';
 import { useRouter } from 'next/router';
 import PropertyInfo from '../components/Creation/PropertyInfo';
 import useWindowWidth from '../custom_hooks/useWindowWidth';
@@ -25,21 +24,56 @@ const NewNote = () => {
     const { compressFile } = useNoteImageUpload(form, setForm, errors, setErrors)
 
 
+    useEffect(() => {
+        const endOfContract = new Date(form.contractEnds)
+        const today = new Date()
+
+        const endOfContractUnix = Math.floor(endOfContract.getTime() / 1000);
+        const todayUnix = Math.floor(today.getTime() / 1000);
+
+        if (endOfContractUnix > 0) {
+            if (todayUnix > endOfContractUnix) {
+                setErrors({ ...errors, contractEnds: "The end of contract date may not be earlier than today's date" })
+            } else {
+                setErrors({ ...errors, contractEnds: null })
+            }
+        }
+    }, [form])
+
+
+    useEffect(() => {
+        const endOfContract = new Date(form.contractEnds)
+        const moveInDate = new Date(form.moveInDate)
+
+        const endOfContractUnix = Math.floor(endOfContract.getTime() / 1000);
+        const moveInDateUnix = Math.floor(moveInDate.getTime() / 1000);
+
+        if (moveInDateUnix > 0) {
+            if (moveInDateUnix > endOfContractUnix) {
+                setErrors({ ...errors, moveInDate: "Your move in date must be before the date of the contract ending" })
+            } else {
+                setErrors({ ...errors, moveInDate: null })
+            }
+        }
+    }, [form])
+
+
+    useEffect(() => {
+        if (form.description?.length > 200) {
+            setErrors({ ...errors, description: "You have too many characters in your description" })
+        } else {
+            setErrors({ ...errors, description: null })
+        }
+    }, [form])
+
+
+
     if (windowWidth > 1200) {
         return (
             <div style={{ width: "100%", display: "flex", justifyContent: "center" }}>
-                <div style={{ marginTop: "120px", zoom: "0.8" }}>
-                    <div style={{ position: "absolute", width: "100%", top: "-420px", left: "0px", zIndex: "-1", height: "720px", overflow: "hidden", filter: "brightness(0.5)", opacity: "0.8" }}>
-                        <img
-                            src="https://www.artgallery.nsw.gov.au/media/thumbnails/prize_images/ODOHERTY_Chris_LandscapeWithCarboneDOBELL2006_AGNSW_PP.jpg.800x668_q85.jpg"
-                            style={{ width: "100%", marginTop: "200px" }}
-                        />
-                    </div>
-                    <div onClick={() => router.push('/')} style={{ position: "absolute", top: "16px", left: "24px", cursor: "pointer" }}>
-                        <img src="https://images.squarespace-cdn.com/content/v1/56dce00a45bf214a0b3fadf3/5cf24fcb-d5dc-44b2-a321-b28ee3d3e00d/lbm_new_logo.png?format=500w" />
-                    </div>
+                <div style={{ marginTop: "80px", zoom: "0.8" }}>
                     <div style={{ height: "40px" }} />
-                    <h1 style={{ color: "white" }}>Create Post</h1>
+                    <h1>Create Post</h1>
                     <div style={{ height: "16px" }} />
                     <PropertyInfo
                         handleChange={handleChange}
@@ -72,20 +106,13 @@ const NewNote = () => {
         )
     } else {
         return (
-            <div style={{ marginBottom: "40px" }}>
-                <div style={{ position: "absolute", width: "100%", top: "-420px", left: "0px", zIndex: "-1", height: "720px", overflow: "hidden", filter: "brightness(0.5)", opacity: "0.8" }}>
-                    <img
-                        src="https://www.artgallery.nsw.gov.au/media/thumbnails/prize_images/ODOHERTY_Chris_LandscapeWithCarboneDOBELL2006_AGNSW_PP.jpg.800x668_q85.jpg"
-                        style={{ width: "100%", marginTop: "320px" }}
-                    />
-                </div>
+            <>
                 <div style={{ width: "100%", display: "flex", justifyContent: "center" }}>
                     <div style={{ width: "calc(100% - 32px)", maxWidth: "400px" }}>
                         <div style={{ height: "24px" }} />
-                        <div><h1 style={{ color: "white" }}>Create Post</h1></div>
-                        <Link href="/">
-                            <h4 style={{ color: "white", fontWeight: "800", cursor: "pointer" }}>{'< Back to listings'}</h4>
-                        </Link>
+                        <div>
+                            <h1>Create Post</h1>
+                        </div>
                         <div style={{ height: "24px" }} />
                     </div>
                 </div>
@@ -115,7 +142,7 @@ const NewNote = () => {
                     handleRent={handleRent}
                     device={"MOBILE"}
                 />
-            </div>
+            </>
         )
     }
 

@@ -61,22 +61,24 @@ const ContactModal = ({ setContactShowing, user }) => {
 
     const checkForExistingContact = async () => {
         try {
-            const res = await fetch('api/users/contacts', {
+            const res = await fetch(`api/users/contacts/mine/${user.sub}`, {
                 method: 'GET'
             })
             const { data } = await res.json()
 
-            data.map((contact) => {
-                if (contact.userId === user.sub) {
-                    setContactInitialised(contact._id)
-                    setUserContacts({
-                        name: contact.userName,
-                        email: contact.userEmail,
-                        phone: contact.userPhone,
-                        social: contact.userSocial
-                    })
-                }
+            console.log("data: ", data)
+
+            if (data._id) {
+                setContactInitialised(data._id)
+            }
+
+            setUserContacts({
+                name: data.userName,
+                email: data.userEmail,
+                phone: data.userPhone,
+                social: data.userSocial
             })
+
 
         } catch (error) {
             console.log("existing contact err: ", error);
@@ -101,7 +103,7 @@ const ContactModal = ({ setContactShowing, user }) => {
                 >
                     <h2>{"Contact Information"}</h2>
 
-                    <div style={contactRow}>
+                    {/* <div style={contactRow}>
                         <div style={{ width: "30%" }}>{"NAME: "}</div>
                         <input
                             value={userContacts.name}
@@ -113,7 +115,7 @@ const ContactModal = ({ setContactShowing, user }) => {
                                 }
                             }}
                         />
-                    </div>
+                    </div> */}
 
                     <div style={contactRow}>
                         <div style={{ width: "30%" }}>{"EMAIL: "}</div>
@@ -161,12 +163,14 @@ const ContactModal = ({ setContactShowing, user }) => {
 
                     {updateClickable && (
                         <div
-                            style={{ width: "100%", backgroundColor: "black", padding: "24px", textAlign: "center", color: "white" }}
+                            className="contact-button"
                             onClick={() => {
                                 if (contactInitialised) {
                                     patchContactInfo()
+                                    setContactShowing(false)
                                 } else {
                                     postContactInfo()
+                                    setContactShowing(false)
                                 }
                             }}
                         >

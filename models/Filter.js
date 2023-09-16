@@ -22,7 +22,7 @@ const FilterSchema = new mongoose.Schema({
     ],
     rent: [
         {
-            type: String
+            type: Number
         }
     ],
     minRentVal: {
@@ -71,6 +71,9 @@ const FilterSchema = new mongoose.Schema({
     },
     moveInLatest: {
         type: Date
+    },
+    notesOrder: {
+        type: String
     }
 })
 

@@ -25,6 +25,22 @@ export default async (req, res) => {
             } catch (error) {
                 res.status(400).json({ success: false });
             }
+        case 'DELETE':
+            try {
+                const deletedFilter = await Filter.deleteOne({ _id: id });
+
+                if (!deletedFilter) {
+                    return res.status(400).json({ success: false })
+                }
+
+                res.status(200).json({ success: true, data: {} });
+            } catch (error) {
+                res.status(400).json({ success: false })
+            }
+            break;
+        default:
+            res.status(400).json({ success: false })
+            break;
     }
 
 }

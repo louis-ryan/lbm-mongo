@@ -1,4 +1,5 @@
 function useGetInitialFilterObj() {
+    
 
     return {
         addresses: [],
@@ -21,7 +22,8 @@ function useGetInitialFilterObj() {
         moveInLatest: null,
         userId: null,
         userName: null,
-        userEmail: null
+        userEmail: null,
+        notesOrder: "Contract (desc)"
     };
 }
 

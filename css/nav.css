@@ -1,10 +1,15 @@
 .navbar-container {
+    position: fixed;
+    top: 4px;
+    right: 4px;
+    width: 120px;
     display: flex;
+    justify-content: space-between;
     margin: 8px;
     background-color: white;
     padding: 8px 12px 4px 12px;
     border-radius: 48px;
-    border: black 4px solid;
+    border: black 3px solid;
 }
 
 .navbar {
@@ -26,4 +31,18 @@
 
 .navbar-create:hover {
     filter: brightness(1.2);
+}
+
+.contact-button {
+    width: 100%;
+    background-color: black;
+    padding: 24px;
+    text-align: center;
+    color: white;
+}
+
+.contact-button:hover {
+    background-color: pink;
+    color: black;
+    cursor: pointer;
 }

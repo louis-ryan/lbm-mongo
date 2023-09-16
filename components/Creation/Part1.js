@@ -1,4 +1,5 @@
 import InputHeader from "./InputHeader"
+import { useEffect } from "react";
 
 const Part1 = (props) => {
 

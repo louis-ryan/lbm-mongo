@@ -7,9 +7,16 @@ import Details from './Details'
 import MoveIn from './MoveIn'
 
 
-const FilterComp = ({ filter, setFilter, updateFilter, filterUpdating, notes, deviceSize }) => {
+const FilterComp = ({ filter, lastFilterFromServer, setFilter, updateFilter, deleteFilter, filterUpdating, notes, rentProps, deviceSize, notesOrder, setNotesOrder }) => {
 
     const [reveal, setReveal] = useState("NONE")
+    const [sortOptions, setSortOptions] = useState(false)
+
+
+    const selectOrderOption = (option) => {
+        setFilter({ ...filter, notesOrder: option })
+        setSortOptions(false)
+    }
 
 
     return (
@@ -17,9 +24,25 @@ const FilterComp = ({ filter, setFilter, updateFilter, filterUpdating, notes, de
 
             <div style={{ height: "16px" }} />
 
-            <div style={{ width: "100%", padding: "8px" }}>
-                <div>{"Selecting filtering options"}</div>
+            <div style={{ width: "100%", padding: "8px", display: "flex", justifyContent: "space-between" }}>
+                <div>{"Filtering options"}</div>
+
+                <div className="sort-by-button" style={{ display: "flex" }}>
+                    <div onClick={() => { setSortOptions((prev) => prev ? false : true) }}>
+                        {`Sort by: ${filter.notesOrder}`}
+                    </div>
+                    <div style={{ marginLeft: "4px", transform: sortOptions ? "" : "rotate(180deg)" }}>∆</div>
+                </div>
             </div>
+
+            {sortOptions && (
+                <div>
+                    <div onClick={() => selectOrderOption("Contract (desc)")} className="order-option">{"Time left on Contract (Descending)"}</div>
+                    <div onClick={() => selectOrderOption("Contract (asc)")} className="order-option">{"Time left on Contract (Ascending)"}</div>
+                    <div onClick={() => selectOrderOption("Created (desc)")} className="order-option">{"Date created (Descending)"}</div>
+                    <div onClick={() => selectOrderOption("Created (asc)")} className="order-option">{"Date created (Ascending)"}</div>
+                </div>
+            )}
 
             <div style={{ height: "24px" }} />
 
@@ -27,7 +50,7 @@ const FilterComp = ({ filter, setFilter, updateFilter, filterUpdating, notes, de
 
             <div style={{ height: "8px" }} />
 
-            <Rent reveal={reveal} setReveal={setReveal} deviceSize={deviceSize} filter={filter} setFilter={setFilter} notes={notes} />
+            <Rent reveal={reveal} setReveal={setReveal} filter={filter} setFilter={setFilter} rentProps={rentProps} />
 
             <div style={{ height: "8px" }} />
 
@@ -43,38 +66,66 @@ const FilterComp = ({ filter, setFilter, updateFilter, filterUpdating, notes, de
 
             <div style={{ height: "8px" }} />
 
-            <p style={{fontSize: "12px", padding: "8px"}}>By clicking 'SAVE AS MY FILTER', you will be sent an email each time a new property is listed that meets your filter parameters.</p>
+            {/* {filter.userEmail === null ? (
+                <p style={{ fontSize: "12px", padding: "8px" }}>{"You currently have NO filter saved and will not recieve emails about new properties"}</p>
+            ) : (
+                <p style={{ fontSize: "12px", padding: "8px" }}>{"You have a filter saved and may recieve emails. Click 'DELETE MY STORED FILTER' to stop all emails."}</p>
+            )} */}
 
-            <div
-                className='update-filter-button'
-                onClick={() => { updateFilter() }}
-            >
-                {filterUpdating === "UPDATE" && (
-                    <div style={{ padding: "4px", fontSize: "16px" }}>{"SAVE AS MY FILTER"}</div>
-                )}
+            {lastFilterFromServer !== filter && (
 
-                {filterUpdating === "UPDATING" && (
-                    <div style={{ filter: "saturate(0) brightness(1.5)" }}>
-                        <Blocks
-                            height="24"
-                            width="24"
-                            color="pink"
-                            radius="0"
-                            wrapperClassName="blocks-loader-ani"
-                        />
+                <div>
+                    <div
+                        className='update-filter-button'
+                        onClick={() => { updateFilter() }}
+                    >
+                        {filterUpdating === "UPDATE" && (
+                            <div style={{ padding: "4px", fontSize: "16px" }}>
+                                {filter.userEmail === null ? (
+                                    "CREATE FILTER"
+                                ) : (
+                                    "UPDATE MY FILTER"
+                                )}
+                            </div>
+                        )}
+
+                        {filterUpdating === "UPDATING" && (
+                            <div style={{ filter: "saturate(0) brightness(1.5)" }}>
+                                <Blocks
+                                    height="24"
+                                    width="24"
+                                    color="pink"
+                                    radius="0"
+                                    wrapperClassName="blocks-loader-ani"
+                                />
+                            </div>
+                        )}
+
+                        {filterUpdating === "DONE" && (
+                            <svg width="24px" height="24px" viewBox="0 0 40 40" version="1.1">
+                                <g id="Tick" stroke="none" strokeWidth="4" fill="none" fillRule="evenodd">
+                                    <circle id="Oval" fill="black" cx="20" cy="20" r="20"></circle>
+                                    <polyline id="Line-11" stroke="#FFFFFF" strokeLinecap="round" points="30.5 11 17.5 29 10 23"></polyline>
+                                </g>
+                            </svg>
+                        )}
+
                     </div>
-                )}
+                </div>
 
-                {filterUpdating === "DONE" && (
-                    <svg width="24px" height="24px" viewBox="0 0 40 40" version="1.1">
-                        <g id="Tick" stroke="none" strokeWidth="4" fill="none" fillRule="evenodd">
-                            <circle id="Oval" fill="black" cx="20" cy="20" r="20"></circle>
-                            <polyline id="Line-11" stroke="#FFFFFF" strokeLinecap="round" points="30.5 11 17.5 29 10 23"></polyline>
-                        </g>
-                    </svg>
-                )}
+            )}
 
-            </div>
+            {/* {filter.userEmail !== null && (
+                <div style={{ padding: "8px" }}>
+                    <div
+                        onClick={() => { deleteFilter() }}
+                        style={{ fontSize: "16px", fontWeight: "800px", textDecoration: "underline", color: "black", cursor: "pointer", width: "100%", textAlign: "center", padding: "16px", border: "2px solid black" }}
+                    >
+                        {"DELETE MY STORED FILTER"}
+                    </div>
+                    <div style={{ height: "40px" }} />
+                </div>
+            )} */}
 
         </div>
     )

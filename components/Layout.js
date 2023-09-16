@@ -1,28 +1,51 @@
-import Head from 'next/head';
+
 import Navbar from './Nav/Navbar';
+import useWindowWidth from '../custom_hooks/useWindowWidth';
 
 const Layout = ({ children }) => {
 
-    return (
-        <>
-            <Navbar />
-            <Head>
-                <link rel="icon" href="/favicon.ico" />
-                <title>LBM</title>
-            </Head>
+    const windowWidth = useWindowWidth()
 
-            {children}
+    const imgSrc = "https://images.squarespace-cdn.com/content/v1/56dce00a45bf214a0b3fadf3/60149970-ce98-49e7-8b04-5739ee538798/LBM_hero_img.png?format=2500w"
 
-            <div style={{ width: "100%", height: "40px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                <div style={{ width: "240px", textAlign: "center" }}>
-                    LBM v0.0.1
+    if (windowWidth > 1200) {
+        return (
+            <>
+                <Navbar />
+
+                {children}
+
+                <div style={{ position: "fixed", bottom: "0px", width: "100%", height: "40px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                    <div style={{ width: "120px", textAlign: "center" }}>
+                        LBM v0.0.1
+                    </div>
+                    <div style={{ width: "120px", textAlign: "center" }}>
+                        2023
+                    </div>
                 </div>
-                <div style={{ width: "240px", textAlign: "center" }}>
-                    2023
+            </>
+        )
+    } else {
+        return (
+            <>
+
+                <div id="mobile-container">
+                    <div style={{ zIndex: "-1", position: "fixed" }}>
+                        <img src={imgSrc} style={{ width: "100%" }} />
+                        <img src={imgSrc} style={{ width: "100%" }} />
+                        <img src={imgSrc} style={{ width: "100%" }} />
+                    </div>
+                    <div id="mobile-content-card">
+                        {children}
+                    </div>
                 </div>
-            </div>
-        </>
-    )
+
+                <Navbar />
+
+            </>
+        )
+    }
+
 }
 
 export default Layout;

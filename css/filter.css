@@ -3,6 +3,7 @@
     border-radius: 8px;
     z-index: 15;
     box-shadow: 4px -4px 0px 0px grey;
+    width: calc(100% - 4px)
 }
 
 .filter-box:hover {
@@ -31,5 +32,24 @@
 
 .update-filter-button:hover {
     background-color: pink;
+    color: black;
+}
+
+.sort-by-button {
+    cursor: pointer;
+}
+
+.sort-by-button:hover {
+    color: black;
+}
+
+.order-option {
+    text-align: right;
+    padding: 4px 0px;
+    cursor: pointer;
+}
+
+.order-option:hover {
+    background-color: lightgray;
     color: black;
 }

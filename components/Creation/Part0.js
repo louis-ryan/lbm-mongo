@@ -14,6 +14,11 @@ const Part1 = (props) => {
     }
 
 
+    useEffect(() => {
+        // Scroll to the top of the page
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+
     /**
      * If only one option in addresses list, select by default
      */

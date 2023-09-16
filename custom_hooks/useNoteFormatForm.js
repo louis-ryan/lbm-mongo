@@ -24,8 +24,8 @@ function useNoteFormatForm(user, form, setForm) {
             garden: formBools.garden,
             sharingWall: formBools.sharingWall,
             sharingFloor: formBools.sharingFloor,
-            supermarket: formBools.supermarket,
-            trainStation: formBools.trainStation,
+            walkToSupermarket: formBools.supermarket,
+            walkToStation: formBools.trainStation,
             postCode: `${post.postCode1 + post.postCode2 + post.postCode3 + post.postCode4}`
         })
     }, [user, post, formBools])
