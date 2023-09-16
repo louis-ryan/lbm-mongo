@@ -8,7 +8,7 @@ const Part6 = (props) => {
     const tenSecondTimer = () => {
         setTimeout(function () {
             setSubmitFormView("SUBMIT")
-        }, 10000)
+        }, 0) // back to 10 seconds once we have ads
     }
 
 

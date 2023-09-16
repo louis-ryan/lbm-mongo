@@ -10,6 +10,8 @@ export default async (req, res) => {
     var searchSkip = 10
     var filterObject = {}
 
+    var sortObj = { contractEnds: -1 }
+
     const listOfFilters = filter.split(";")
 
     listOfFilters.map((singleFilter) => {
@@ -23,6 +25,15 @@ export default async (req, res) => {
 
             case "searchSkip":
                 searchSkip = value
+                break;
+
+            case "notesOrder":
+                var orderArr = value.split(" ")
+
+                if (orderArr[0] === "Contract" && orderArr[1] === "(desc)") { sortObj = { contractEnds: -1 } }
+                if (orderArr[0] === "Contract" && orderArr[1] === "(asc)") { sortObj = { contractEnds: 1 } }
+                if (orderArr[0] === "Created" && orderArr[1] === "(desc)") { sortObj = { date: -1 } }
+                if (orderArr[0] === "Created" && orderArr[1] === "(asc)") { sortObj = { date: 1 } }
                 break;
 
             case "address":
@@ -88,15 +99,9 @@ export default async (req, res) => {
             case "moveIn":
                 const moveInArr = value.split(",")
 
-                if (moveInArr[0] === '' && moveInArr[1] === '') return
+                if (moveInArr[0] === '') return
 
-                if (moveInArr[1] === '') {
-                    filterObject = { ...filterObject, moveInDate: { $gte: moveInArr[0] } }
-                } else if (moveInArr[0] === '') {
-                    filterObject = { ...filterObject, moveInDate: { $lte: moveInArr[1] } }
-                } else {
-                    filterObject = { ...filterObject, moveInDate: { $gte: moveInArr[0], $lte: moveInArr[1] } }
-                }
+                filterObject = { ...filterObject, moveInDate: { $lte: moveInArr[0] } }
                 break;
         }
     })
@@ -104,6 +109,7 @@ export default async (req, res) => {
 
     try {
         const notes = await Note.find(filterObject)
+            .sort(sortObj)
             .skip(Number(searchSkip))
             .limit(Number(searchLimit))
 

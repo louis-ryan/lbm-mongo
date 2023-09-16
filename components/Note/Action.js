@@ -52,7 +52,7 @@ const Action = (props) => {
 
                                 {/* <div style={{ position: "absolute", color: "blue", marginLeft: "720px", marginTop: "520px", fontSize: "16px", fontWeight: "800" }}>{"quick ad"}</div> */}
 
-                                <a
+                                {/* <a
                                     href="https://www.redbubble.com/i/throw-pillow/Surreal-Suburban-Landscape-by-billbayer89/148450601.5X2YF"
                                     target="_blank"
                                 >
@@ -60,7 +60,7 @@ const Action = (props) => {
                                         src="https://images.squarespace-cdn.com/content/v1/56dce00a45bf214a0b3fadf3/67ac49fa-ce0b-414a-9859-b96968745ff5/throw_pillow_promo.png?format=2500w"
                                         style={{ width: "100%" }}
                                     />
-                                </a>
+                                </a> */}
                             </div>
                         ) : (
                             <div style={{ width: "80%", fontSize: "32px", fontWeight: "800" }}>
@@ -110,7 +110,7 @@ const Action = (props) => {
 
                     {/* <div style={{ position: "absolute", color: "blue", marginLeft: "720px", marginTop: "520px", fontSize: "16px", fontWeight: "800" }}>{"quick ad"}</div> */}
 
-                    <a
+                    {/* <a
                         href="https://www.redbubble.com/i/throw-pillow/Surreal-Suburban-Landscape-by-billbayer89/148450601.5X2YF"
                         target="_blank"
                     >
@@ -118,7 +118,7 @@ const Action = (props) => {
                             src="https://images.squarespace-cdn.com/content/v1/56dce00a45bf214a0b3fadf3/67ac49fa-ce0b-414a-9859-b96968745ff5/throw_pillow_promo.png?format=2500w"
                             style={{ width: "100%" }}
                         />
-                    </a>
+                    </a> */}
                 </div>
             )
         } else {
@@ -157,7 +157,7 @@ const Action = (props) => {
                                 <div style={{ position: "fixed", width: "100vw", height: "100vh", top: "0px", left: "0px", zIndex: "600", backgroundColor: "white", overflow: "hidden" }}>
 
                                     {/* <div style={{ position: "absolute", color: "blue", marginLeft: "720px", marginTop: "520px", fontSize: "16px", fontWeight: "800" }}>{"quick ad"}</div> */}
-
+{/* 
                                     <a
                                         href="https://www.redbubble.com/i/throw-pillow/Surreal-Suburban-Landscape-by-billbayer89/148450601.5X2YF"
                                         target="_blank"
@@ -166,7 +166,7 @@ const Action = (props) => {
                                             src="https://images.squarespace-cdn.com/content/v1/56dce00a45bf214a0b3fadf3/67ac49fa-ce0b-414a-9859-b96968745ff5/throw_pillow_promo.png?format=2500w"
                                             style={{ width: "100%" }}
                                         />
-                                    </a>
+                                    </a> */}
                                 </div>
                             ) : (
                                 <div style={{ width: "90%", fontSize: "16px", fontWeight: "800" }}>

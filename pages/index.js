@@ -21,9 +21,9 @@ const Index = () => {
   const router = useRouter()
   const desktopComp = useRef()
   const { lastFilterFromServer, setLastFilterFromServer, filter, setFilter } = useGetFilter(user)
-  const { notes, unlimitedNotes, rendering, filterUpdating, setFilterUpdating, skipping, setSkipping, getSkippedNotes, initialised } = useGetFilteredNotes(filter, user)
+  const { notes, unlimitedNotes, rendering, filterUpdating, setFilterUpdating, skipping, setSkipping, getSkippedNotes, initialised } = useGetFilteredNotes(filter)
   const { updateFilter, deleteFilter } = useUpdateFilter(user, router, setFilterUpdating, filter, setFilter, setLastFilterFromServer)
-  const rentProps = useRentHandler(filter, setFilter)
+  const rentProps = useRentHandler(filter, setFilter, user)
 
 
   /**
@@ -70,7 +70,7 @@ const Index = () => {
       )
     }
   } else {
-    <div></div>
+    <div>Loading</div>
   }
 
 

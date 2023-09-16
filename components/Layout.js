@@ -1,4 +1,4 @@
-import Head from 'next/head';
+
 import Navbar from './Nav/Navbar';
 import useWindowWidth from '../custom_hooks/useWindowWidth';
 
@@ -12,10 +12,6 @@ const Layout = ({ children }) => {
         return (
             <>
                 <Navbar />
-                <Head>
-                    <link rel="icon" href="/favicon.ico" />
-                    <title>LBM</title>
-                </Head>
 
                 {children}
 
@@ -32,11 +28,6 @@ const Layout = ({ children }) => {
     } else {
         return (
             <>
-
-                <Head>
-                    <link rel="icon" href="/favicon.ico" />
-                    <title>LBM</title>
-                </Head>
 
                 <div id="mobile-container">
                     <div style={{ zIndex: "-1", position: "fixed" }}>

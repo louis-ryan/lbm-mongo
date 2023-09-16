@@ -27,8 +27,8 @@ function useUpdateFilter(user, router, setFilterUpdating, filter, setFilter, set
         setLastFilterFromServer(data)
         setFilterUpdating("DONE")
 
-        if (!data) return
-        await fetch(`api/filters/filter/${data._id}/contact`)
+        // if (!data) return
+        // await fetch(`api/filters/filter/${data._id}/contact`)
 
 
     }

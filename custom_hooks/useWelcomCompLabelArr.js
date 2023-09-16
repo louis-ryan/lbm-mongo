@@ -104,6 +104,7 @@ function useWelcomeCompLabelArr(filter) {
      * Init arr
      */
     useEffect(() => {
+        
         setAllowSetArr(true)
     }, [filter])
 

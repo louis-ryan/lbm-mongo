@@ -11,7 +11,7 @@ export default async (req, res) => {
             try {
                 const contacts = await Contact.find({});
 
-                res.status(200).json({ success: true, data: contacts[contacts.length - 1] })
+                res.status(200).json({ success: true, data: contacts })
             } catch (error) {
                 res.status(400).json({ success: false });
             }

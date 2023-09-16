@@ -93,7 +93,7 @@ const Note = ({ setMobilePromoState }) => {
             setContactView("CONTACT")
             setMobilePromoState("CONTACT")
             getContactDetails()
-        }, 10000); // Set delay for 10 seconds
+        }, 0); // Make 10 seconds again once there are ads
     }
 
 
