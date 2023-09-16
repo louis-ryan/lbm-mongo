@@ -3,6 +3,7 @@ function useFilterString(filter, limit, skipping) {
     return (
         `searchLimit=${limit};` +
         `searchSkip=${skipping};` +
+        `notesOrder=${filter.notesOrder};` +
         `address=${filter.addresses.join()};` +
         `rent=${filter.selectedRentVal};` +
         `minBed=${filter.minBed};` +

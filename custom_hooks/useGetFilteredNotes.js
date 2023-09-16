@@ -27,6 +27,7 @@ function useGetFilteredNotes(filter) {
         const filterString = useFilterString(filter, 5, 0)
         const res = await fetch(`api/notes/filter/${filterString}`);
         const { data } = await res.json();
+        console.log("notes: ", data)
         setSkipping(0)
         setNotes(data)
         setTimeout(() => { setFilterUpdating("UPDATE"); setRendering(false) }, 1000)
@@ -42,6 +43,8 @@ function useGetFilteredNotes(filter) {
         setNotes(data)
         setTimeout(() => { setFilterUpdating("UPDATE"); setRendering(false) }, 1000)
     }
+
+
 
 
     useEffect(() => {

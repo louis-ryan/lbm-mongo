@@ -58,22 +58,23 @@ const Part5 = (props) => {
 
     const checkForExistingContact = async () => {
         try {
-            const res = await fetch('api/users/contacts', {
+            const res = await fetch(`api/users/contacts/mine/${props.user.sub}`, {
                 method: 'GET'
             })
             const { data } = await res.json()
 
-            data.map((contact) => {
-                if (contact.userId === props.user.sub) {
-                    setContactInitialised(contact._id)
-                    setUserContacts({
-                        name: contact.userName,
-                        email: contact.userEmail,
-                        phone: contact.userPhone,
-                        social: contact.userSocial
-                    })
-                }
+
+            if (data._id) {
+                setContactInitialised(data._id)
+            }
+
+            setUserContacts({
+                name: data.userName,
+                email: data.userEmail,
+                phone: data.userPhone,
+                social: data.userSocial
             })
+
 
         } catch (error) {
             console.log("existing contact err: ", error);
@@ -153,24 +154,6 @@ const Part5 = (props) => {
 
             <div style={{ height: "40px" }} />
 
-            {updateClickable && (
-                <div
-                    style={{ width: "100%", backgroundColor: "black", padding: "24px", textAlign: "center", color: "white" }}
-                    onClick={() => {
-                        if (contactInitialised) {
-                            patchContactInfo()
-                        } else {
-                            postContactInfo()
-                        }
-                    }}
-                >
-                    {"UPDATE CONTACT INFO"}
-                </div>
-            )}
-
-
-            <div style={{height: "24px"}}/>
-
 
 
             <div style={{ width: "100%", display: "flex", justifyContent: "space-between" }}>
@@ -184,7 +167,14 @@ const Part5 = (props) => {
 
                 <div
                     className="button primary"
-                    onClick={() => props.setPart(6)}
+                    onClick={() => {
+                        props.setPart(6)
+                        if (contactInitialised) {
+                            patchContactInfo()
+                        } else {
+                            postContactInfo()
+                        }
+                    }}
                     style={{ width: "48%" }}
                 >
                     Final Step

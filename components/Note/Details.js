@@ -94,6 +94,43 @@ const Details = ({ note, mapPath, latInPx, longInPx, deviceSize }) => {
                 </svg>
             )
         },
+        {
+            name: "trainstation walking distance",
+            status: note.walkToStation,
+            svg: (
+                <svg width="40px" height="40px" viewBox="0 0 40 40">
+                    <g id="Train" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                        <rect id="Rectangle" stroke="#979797" x="8.5" y="6.5" width="23" height="26" rx="5"></rect>
+                        <line x1="9.5" y1="10.5" x2="30.5" y2="10.5" id="Line-8" stroke="#979797" stroke-linecap="square"></line>
+                        <line x1="9" y1="23" x2="31" y2="23" id="Line" stroke="#979797" stroke-linecap="square"></line>
+                        <line x1="20" y1="11" x2="20" y2="22" id="Line-9" stroke="#979797" stroke-linecap="square"></line>
+                        <circle id="Oval" stroke="#979797" cx="13.5" cy="27.5" r="1"></circle>
+                        <circle id="Oval-Copy" stroke="#979797" cx="26.5" cy="27.5" r="1"></circle>
+                        <line x1="11.5" y1="32.5" x2="9.5" y2="35.5" id="Line-10" stroke="#979797" stroke-linecap="round"></line>
+                        <line x1="28.5" y1="32.5" x2="30.5" y2="35.5" id="Line-2" stroke="#979797" stroke-linecap="round"></line>
+                    </g>
+                </svg>
+            )
+        },
+        {
+            name: "supermarket walking distance",
+            status: note.walkToSupermarket,
+            svg: (
+                <svg width="40px" height="40px" viewBox="0 0 40 40">
+                    <g id="Shopping" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                        <polyline id="Line-6" stroke="#979797" stroke-linecap="round" points="3 9 6 9.5 11 30 32 30"></polyline>
+                        <circle id="Oval" stroke="#979797" cx="13.5" cy="32.5" r="2"></circle>
+                        <circle id="Oval-Copy" stroke="#979797" cx="28.5" cy="32.5" r="2"></circle>
+                        <line x1="29" y1="16.9444444" x2="29" y2="24.0555556" id="Line-2-Copy" stroke="#979797" stroke-linecap="square"></line>
+                        <line x1="24" y1="16.9444444" x2="24" y2="24.0555556" id="Line-2-Copy-2" stroke="#979797" stroke-linecap="square"></line>
+                        <line x1="19" y1="16.9444444" x2="19" y2="24.0555556" id="Line-2-Copy-3" stroke="#979797" stroke-linecap="square"></line>
+                        <line x1="14" y1="16.9444444" x2="14" y2="24.0555556" id="Line-2" stroke="#979797" stroke-linecap="square"></line>
+                        <polyline id="Line-7" stroke="#979797" stroke-linecap="square" points="10.5 24.5 31.5 24.5 34 16 34 14 8 14"></polyline>
+                        <line x1="8.5" y1="16.5" x2="33.5" y2="16.5" id="Line" stroke="#979797" stroke-linecap="square"></line>
+                    </g>
+                </svg>
+            )
+        },
     ]
 
 

@@ -21,6 +21,7 @@ function useFormatFilterBody(filter, user) {
     walkToTrain: filter.walkToTrain,
     moveInEarliest: filter.moveInEarliest,
     moveInLatest: filter.moveInLatest,
+    notesOrder: filter.notesOrder,
     userId: user.sub,
     userName: user.given_name,
     userEmail: user.email

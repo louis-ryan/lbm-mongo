@@ -7,9 +7,16 @@ import Details from './Details'
 import MoveIn from './MoveIn'
 
 
-const FilterComp = ({ filter, lastFilterFromServer, setFilter, updateFilter, deleteFilter, filterUpdating, notes, rentProps, deviceSize }) => {
+const FilterComp = ({ filter, lastFilterFromServer, setFilter, updateFilter, deleteFilter, filterUpdating, notes, rentProps, deviceSize, notesOrder, setNotesOrder }) => {
 
     const [reveal, setReveal] = useState("NONE")
+    const [sortOptions, setSortOptions] = useState(false)
+
+
+    const selectOrderOption = (option) => {
+        setFilter({ ...filter, notesOrder: option })
+        setSortOptions(false)
+    }
 
 
     return (
@@ -17,9 +24,25 @@ const FilterComp = ({ filter, lastFilterFromServer, setFilter, updateFilter, del
 
             <div style={{ height: "16px" }} />
 
-            <div style={{ width: "100%", padding: "8px" }}>
-                <div>{"Selecting filtering options"}</div>
+            <div style={{ width: "100%", padding: "8px", display: "flex", justifyContent: "space-between" }}>
+                <div>{"Filtering options"}</div>
+
+                <div className="sort-by-button" style={{ display: "flex" }}>
+                    <div onClick={() => { setSortOptions((prev) => prev ? false : true) }}>
+                        {`Sort by: ${filter.notesOrder}`}
+                    </div>
+                    <div style={{ marginLeft: "4px", transform: sortOptions ? "" : "rotate(180deg)" }}>∆</div>
+                </div>
             </div>
+
+            {sortOptions && (
+                <div>
+                    <div onClick={() => selectOrderOption("Contract (desc)")} className="order-option">{"Time left on Contract (Descending)"}</div>
+                    <div onClick={() => selectOrderOption("Contract (asc)")} className="order-option">{"Time left on Contract (Ascending)"}</div>
+                    <div onClick={() => selectOrderOption("Created (desc)")} className="order-option">{"Date created (Descending)"}</div>
+                    <div onClick={() => selectOrderOption("Created (asc)")} className="order-option">{"Date created (Ascending)"}</div>
+                </div>
+            )}
 
             <div style={{ height: "24px" }} />
 
@@ -43,11 +66,11 @@ const FilterComp = ({ filter, lastFilterFromServer, setFilter, updateFilter, del
 
             <div style={{ height: "8px" }} />
 
-            {filter.userEmail === null ? (
+            {/* {filter.userEmail === null ? (
                 <p style={{ fontSize: "12px", padding: "8px" }}>{"You currently have NO filter saved and will not recieve emails about new properties"}</p>
             ) : (
                 <p style={{ fontSize: "12px", padding: "8px" }}>{"You have a filter saved and may recieve emails. Click 'DELETE MY STORED FILTER' to stop all emails."}</p>
-            )}
+            )} */}
 
             {lastFilterFromServer !== filter && (
 
@@ -92,7 +115,7 @@ const FilterComp = ({ filter, lastFilterFromServer, setFilter, updateFilter, del
 
             )}
 
-            {filter.userEmail !== null && (
+            {/* {filter.userEmail !== null && (
                 <div style={{ padding: "8px" }}>
                     <div
                         onClick={() => { deleteFilter() }}
@@ -102,7 +125,7 @@ const FilterComp = ({ filter, lastFilterFromServer, setFilter, updateFilter, del
                     </div>
                     <div style={{ height: "40px" }} />
                 </div>
-            )}
+            )} */}
 
         </div>
     )

@@ -17,9 +17,7 @@ export default async (req, res) => {
                     rentArr.push(note.rent)
                 })
 
-                var sortedRentArr = rentArr.sort((a, b) => { return a - b })
-
-                res.status(200).json({ success: true, data: sortedRentArr })
+                res.status(200).json({ success: true, data: rentArr })
             } catch (error) {
                 res.status(400).json({ success: false });
             }

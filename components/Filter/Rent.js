@@ -10,7 +10,6 @@ const RentFilter = ({ reveal, setReveal, filter, setFilter, rentProps }) => {
 
     const [graphicArr, highestFreq, activeCondition, setValCondition, selectedVal, setSelectedVal, minVal, maxVal] = rentProps
 
-
     return (
         <>
             <div

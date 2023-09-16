@@ -71,6 +71,9 @@ const FilterSchema = new mongoose.Schema({
     },
     moveInLatest: {
         type: Date
+    },
+    notesOrder: {
+        type: String
     }
 })
 
