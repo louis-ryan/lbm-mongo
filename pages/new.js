@@ -68,12 +68,12 @@ const NewNote = () => {
 
 
 
-    if (windowWidth > 1200) {
+    if (windowWidth > 1200 || !windowWidth) {
         return (
             <div style={{ width: "100%", display: "flex", justifyContent: "center" }}>
                 <div style={{ marginTop: "80px", zoom: "0.8" }}>
                     <div style={{ height: "40px" }} />
-                    <h1>Create Post</h1>
+                    <h1>Create Listing</h1>
                     <div style={{ height: "16px" }} />
                     <PropertyInfo
                         handleChange={handleChange}
@@ -104,14 +104,16 @@ const NewNote = () => {
                 </div>
             </div>
         )
-    } else {
+    }
+
+    if (windowWidth <= 1200) {
         return (
             <>
                 <div style={{ width: "100%", display: "flex", justifyContent: "center" }}>
                     <div style={{ width: "calc(100% - 32px)", maxWidth: "400px" }}>
                         <div style={{ height: "24px" }} />
                         <div>
-                            <h1>Create Post</h1>
+                            <h1>Create Listing</h1>
                         </div>
                         <div style={{ height: "24px" }} />
                     </div>

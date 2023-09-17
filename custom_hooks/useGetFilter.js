@@ -16,8 +16,6 @@ function useGetFilter(user) {
             const res = await fetch(`api/filters/user/${user.sub}`)
             const { data } = await res.json();
 
-            console.log("data: ", data)
-
             if (typeof data !== 'object') return
 
             setFilter(data)

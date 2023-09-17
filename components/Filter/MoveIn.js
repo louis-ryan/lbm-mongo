@@ -32,8 +32,6 @@ const MoveIn = ({ reveal, setReveal, filter, setFilter }) => {
         return inputDate <= today;
     }
 
-    console.log(todaysDateGreaterThanFilter())
-
     const headerSubTitle = (
         `${filter.moveInEarliest ? todaysDateGreaterThanFilter() ? 'Ready to move!' : 'Ready by ' + filter.moveInEarliest : ''}`
     )
