@@ -8,7 +8,7 @@ const Layout = ({ children }) => {
 
     const imgSrc = "https://images.squarespace-cdn.com/content/v1/56dce00a45bf214a0b3fadf3/60149970-ce98-49e7-8b04-5739ee538798/LBM_hero_img.png?format=2500w"
 
-    if (windowWidth > 1200) {
+    if (windowWidth > 1200 || !windowWidth) {
         return (
             <>
                 <Navbar />
@@ -25,10 +25,11 @@ const Layout = ({ children }) => {
                 </div>
             </>
         )
-    } else {
+    }
+
+    if (windowWidth <= 1200) {
         return (
             <>
-
                 <div id="mobile-container">
                     <div style={{ zIndex: "-1", position: "fixed" }}>
                         <img src={imgSrc} style={{ width: "100%" }} />
@@ -41,7 +42,6 @@ const Layout = ({ children }) => {
                 </div>
 
                 <Navbar />
-
             </>
         )
     }

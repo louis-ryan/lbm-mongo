@@ -8,6 +8,11 @@ const Part1 = (props) => {
         pointerEvents: props.form.numRoom && props.form.numBath ? "inherit" : "none",
     }
 
+    useEffect(() => {
+        // Scroll to the top of the page
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }, []);
+
 
     return (
         <>

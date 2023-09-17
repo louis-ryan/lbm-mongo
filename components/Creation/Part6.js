@@ -18,6 +18,13 @@ const Part6 = (props) => {
     }, [])
 
 
+
+    useEffect(() => {
+        // Scroll to the top of the page
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }, []);
+
+
     if (submitFormView !== "SUBMIT") {
         return (
             <>
@@ -32,7 +39,7 @@ const Part6 = (props) => {
         )
     } else {
         return (
-            <div style={{ padding: "80px" }}>
+            <div style={{ padding: props.device === "DESKTOP" ? "80px" : "24px" }}>
                 <div style={{ height: "16px" }} />
 
                 <h1>{'Review and Submit'}</h1>
