@@ -1,8 +1,15 @@
+import { useEffect } from "react";
 import InputHeader from "./InputHeader";
 import PicUpload from "./PicUpload";
 
 
 const Part4 = (props) => {
+
+
+    useEffect(() => {
+        // Scroll to the top of the page
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }, []);
 
     return (
         <>

@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 
 const Part3 = (props) => {
 
@@ -11,6 +12,12 @@ const Part3 = (props) => {
         opacity: nextCondition ? "1" : "0.5",
         pointerEvents: nextCondition ? "inherit" : "none",
     }
+
+
+    useEffect(() => {
+        // Scroll to the top of the page
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }, []);
 
 
     return (

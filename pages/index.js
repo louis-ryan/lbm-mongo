@@ -24,7 +24,7 @@ const Index = () => {
   const { notes, unlimitedNotes, rendering, filterUpdating, setFilterUpdating, skipping, setSkipping, getSkippedNotes, initialised } = useGetFilteredNotes(filter)
   const { updateFilter, deleteFilter } = useUpdateFilter(user, router, setFilterUpdating, filter, setFilter, setLastFilterFromServer)
   const rentProps = useRentHandler(filter, setFilter, user)
-
+  
 
   /**
    * Check for expired posts and delete them
@@ -35,7 +35,7 @@ const Index = () => {
   }, [])
 
   if (initialised) {
-    if (windowWidth > 1200) {
+    if (windowWidth > 1200 || windowWidth === null) {
       return (
         <div style={{ width: "100%", display: "flex", justifyContent: "center" }}>
           <div ref={desktopComp} style={{ marginTop: "80px", width: "1200px", zoom: "0.72" }}>
@@ -51,7 +51,9 @@ const Index = () => {
           </div>
         </div >
       )
-    } else {
+    }
+
+    if (windowWidth <= 1200) {
       return (
         <>
           <div style={{ zoom: "0.8" }}>
@@ -70,7 +72,7 @@ const Index = () => {
       )
     }
   } else {
-    <div>Loading</div>
+    <div></div>
   }
 
 

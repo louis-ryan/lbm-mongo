@@ -88,6 +88,7 @@ const Parts = ((props) => {
                     setPart={props.props.setPart}
                     form={props.props.form}
                     handleSubmit={props.props.handleSubmit}
+                    device={props.props.device}
                 />
             )
     }
@@ -98,21 +99,21 @@ const PropertyInfo = (props) => {
 
 
     return (
-        <div style={{ display: "flex", justifyContent: "center" }}>
+        <div style={{ display: "flex", justifyContent: "center", marginBottom: props.device === "DESKTOP" && "120px" }}>
             <div
                 style={{
                     width: props.device === "DESKTOP" ? "920px" : "100%",
                     display: "flex",
                     justifyContent: "center",
-                    backgroundColor: "white",
-                    border: "4px solid black",
-                    borderRadius: "16px"
+                    backgroundColor: props.device === "DESKTOP" && "white",
+                    boxShadow: props.device === "DESKTOP" && "0px 0px 40px darkgrey",
+                    borderRadius: "8px",
                 }}
             >
                 <form style={{
                     width: props.part === 6 ? "90%" : "calc(100% - 32px)",
                     maxWidth: props.part === 6 ? "90%" : "400px",
-                    padding: "40px 0px"
+                    padding: props.device === "DESKTOP" ? "40px 0px" : "20px 0px 80px 0px"
                 }}>
 
                     <Parts props={props} />

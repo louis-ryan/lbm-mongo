@@ -1,6 +1,6 @@
 
 
-const NavbarDropdown = ({ setUserOptions, setContactShowing }) => {
+const NavbarDropdown = ({ setUserOptions, setContactShowing, myListings }) => {
 
     return (
 
@@ -8,7 +8,7 @@ const NavbarDropdown = ({ setUserOptions, setContactShowing }) => {
             onClick={() => setUserOptions(false)}
             style={{ position: "absolute", width: "100vw", height: "100vh", zIndex: "9", top: "0px", right: "0px" }}
         >
-            <div style={{ position: "absolute", width: "208px", zIndex: "10", top: "48px", right: "24px" }}>
+            <div style={{ position: "absolute", width: "208px", zIndex: "10", top: "48px", right: "40px" }}>
 
                 <svg width="62px" height="40px" viewBox="0 0 62 40" style={{ transform: "translate(116px, 4px)" }}>
                     <g id="Logging-Arrow" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
@@ -16,18 +16,44 @@ const NavbarDropdown = ({ setUserOptions, setContactShowing }) => {
                     </g>
                 </svg>
 
-                <div style={{ backgroundColor: "black", padding: "16px" }}>
+                <div style={{ backgroundColor: "black", padding: "16px", maxHeight: "600px", overflow: "scroll" }}>
 
-                    <div style={{ outline: "1px grey solid", color: "white", width: "100%", padding: "16px", maxWidth: "600px", cursor: "pointer" }}>
+                    <div
+                        onClick={() => setContactShowing(true)}
+                        style={{ outline: "1px grey solid", color: "white", width: "100%", padding: "16px", maxWidth: "600px", cursor: "pointer" }}
+                    >
                         <div
                             style={{ textDecoration: "none" }}
-                            onClick={() => setContactShowing(true)}
+
                         >
                             Contact
                         </div>
                     </div>
 
                     <div style={{ height: "8px" }} />
+
+                    {myListings.map((listing) => (
+
+                        <a
+                            key={listing._id}
+                            href={`/${listing._id}`}
+                            style={{ outline: "1px grey solid", color: "white", width: "100%", padding: "16px", maxWidth: "600px", cursor: "pointer", display: "flex", marginBottom: "8px", textDecoration: "none" }}
+                        >
+                            <div style={{ width: "40px", overflow: "hidden" }}>
+                                <img
+                                    src={listing.pics[0].url}
+                                    style={{ height: "40px" }}
+                                />
+                            </div>
+
+                            <div style={{ width: "8px" }} />
+
+                            <div style={{ fontSize: "12px", textDecoration: "none" }}>
+                                {"Your property in " + listing.address}
+                            </div>
+
+                        </a>
+                    ))}
 
                     <div style={{ outline: "1px red solid", width: "100%", padding: "16px", maxWidth: "600px" }}>
                         <a
