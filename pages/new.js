@@ -68,7 +68,7 @@ const NewNote = () => {
 
 
 
-    if (windowWidth > 1200 || !windowWidth) {
+    if (windowWidth > 800 || !windowWidth) {
         return (
             <div style={{ width: "100%", display: "flex", justifyContent: "center" }}>
                 <div style={{ marginTop: "80px", zoom: "0.8" }}>
@@ -106,7 +106,7 @@ const NewNote = () => {
         )
     }
 
-    if (windowWidth <= 1200) {
+    if (windowWidth <= 800) {
         return (
             <>
                 <div style={{ width: "100%", display: "flex", justifyContent: "center" }}>

@@ -8,10 +8,10 @@ const Layout = ({ children }) => {
 
     const imgSrc = "https://images.squarespace-cdn.com/content/v1/56dce00a45bf214a0b3fadf3/60149970-ce98-49e7-8b04-5739ee538798/LBM_hero_img.png?format=2500w"
 
-    if (windowWidth > 1200 || !windowWidth) {
+    if (windowWidth > 800 || !windowWidth) {
         return (
             <>
-                <Navbar />
+                <Navbar setNameChange={children.props.setNameChange} />
 
                 {children}
 
@@ -27,7 +27,7 @@ const Layout = ({ children }) => {
         )
     }
 
-    if (windowWidth <= 1200) {
+    if (windowWidth <= 800) {
         return (
             <>
                 <div id="mobile-container">

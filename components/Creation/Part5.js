@@ -11,7 +11,7 @@ const Part5 = (props) => {
     const [updateClickable, setUpdateClickable] = useState(false)
 
     const [userContacts, setUserContacts] = useState({
-        name: props.user.name,
+        name: props.user.given_name,
         email: props.user.email,
         phone: "",
         social: ""
@@ -21,7 +21,7 @@ const Part5 = (props) => {
     useEffect(() => {
         // Scroll to the top of the page
         window.scrollTo({ top: 0, behavior: 'smooth' });
-      }, []);
+    }, []);
 
 
     const patchContactInfo = async () => {
@@ -103,6 +103,20 @@ const Part5 = (props) => {
             Confirm your contact details
 
             <p>You are not required to give your phne number but it can make the process faster.</p>
+
+            <div style={contactRow}>
+                <div style={{ width: "30%" }}>{"NAME: "}</div>
+                <input
+                    value={userContacts.name}
+                    style={{ width: "70%", padding: "8px", fontSize: "16px" }}
+                    onChange={(e) => {
+                        setUserContacts({ ...userContacts, name: e.target.value })
+                        if (e.target.value !== userContacts.name) {
+                            setUpdateClickable(true)
+                        }
+                    }}
+                />
+            </div>
 
             <div style={contactRow}>
                 <div style={{ width: "30%" }}>{"EMAIL: "}</div>
