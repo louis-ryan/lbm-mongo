@@ -1,24 +1,58 @@
-import useWelcomeCompLabelArr from "../custom_hooks/useWelcomCompLabelArr"
+import { useState, useEffect } from 'react';
+import useWelcomeCompLabelArr from "../custom_hooks/useWelcomCompLabelArr";
 
 
 const labelStyle = { padding: "8px 32px 4px 16px", borderRadius: "8px", margin: "8px 8px 0px 0px", cursor: "pointer", border: "black 4px solid", backgroundColor: "white", color: "black" }
 
 
-const WelcomeComp = ({ user, filter, setFilter, deviceSize }) => {
+const WelcomeComp = ({ user, filter, setFilter, deviceSize, nameChange, setNameChange }) => {
 
 
     const [activeLabelArr, labelsArr, setAllowSetArr] = useWelcomeCompLabelArr(filter)
+
+    const [userName, setUserName] = useState("")
+
+
+    const checkForExistingContact = async () => {
+        try {
+            const res = await fetch(`api/users/contacts/mine/${user.sub}`, {
+                method: 'GET'
+            })
+            const { data } = await res.json()
+
+            if (data.userName) { setUserName(data.userName) }
+            else if (user.given_name) { setUserName(user.given_name) }
+            else { setUserName(user.name) }
+
+        } catch (error) {
+            console.log("existing contact err: ", error);
+        }
+    }
+
+    useEffect(() => {
+        if (!nameChange) return
+        checkForExistingContact()
+
+        setNameChange(false)
+    }, [nameChange])
+
+
+    useEffect(() => {
+        checkForExistingContact()
+    }, [])
 
 
     if (deviceSize === "DESKTOP") {
         return (
             <div style={{ width: "100%", borderRadius: "8px" }}>
                 <div style={{ height: "60px" }} />
-                <div style={{ fontSize: "32px" }}>Welcome {user && user.given_name}</div>
+                <div style={{ fontSize: "32px" }}>Welcome {userName}</div>
                 <div style={{ height: "24px" }} />
             </div>
         )
-    } else {
+    }
+
+    if (deviceSize === "MOBILE") {
         return (
             <div style={{ width: "100%", padding: "16px" }}>
                 <div style={{ height: "24px" }} />
@@ -37,8 +71,8 @@ const WelcomeComp = ({ user, filter, setFilter, deviceSize }) => {
                                     style={{ height: "40px", width: "40px", }}
                                 />
                             </div>
-                            <div style={{width: "8px"}}/>
-                            <div>{`Welcome ${user.given_name} `}</div>
+                            <div style={{ width: "8px" }} />
+                            <div>{`Welcome ${userName} `}</div>
                         </div>
                     </>
                 )}

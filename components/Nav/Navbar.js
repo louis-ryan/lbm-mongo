@@ -7,7 +7,7 @@ import ContactModal from './ContactModal';
 import useWindowWidth from '../../custom_hooks/useWindowWidth';
 
 
-const Navbar = () => {
+const Navbar = (props) => {
 
     const [userOptions, setUserOptions] = useState(false)
     const [contactShowing, setContactShowing] = useState(false)
@@ -33,7 +33,7 @@ const Navbar = () => {
 
 
 
-    if (windowWidth > 1200 || !windowWidth) {
+    if (windowWidth > 800 || !windowWidth) {
         return (
             <>
 
@@ -63,13 +63,14 @@ const Navbar = () => {
                     <ContactModal
                         setContactShowing={setContactShowing}
                         user={user}
+                        setNameChange={props.setNameChange}
                     />
                 )}
             </>
         )
     }
 
-    if (windowWidth <= 1200) {
+    if (windowWidth <= 800) {
 
         return (
             <div style={{ width: "100vw", position: "fixed", bottom: "0px", left: "0px", backgroundColor: "white", zIndex: "400", display: "flex", justifyContent: "space-around", alignItems: "center", boxShadow: "0px 0px 40px 8px black", padding: "8px" }}>

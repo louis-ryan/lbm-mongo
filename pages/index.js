@@ -13,7 +13,7 @@ import useUpdateFilter from '../custom_hooks/useUpdateFilter';
 import useRentHandler from '../custom_hooks/useRentHandler';
 
 
-const Index = () => {
+const Index = (props) => {
 
   const windowWidth = useWindowWidth()
   const [mobileView, setMobileView] = useState("NOTES")
@@ -24,7 +24,7 @@ const Index = () => {
   const { notes, unlimitedNotes, rendering, filterUpdating, setFilterUpdating, skipping, setSkipping, getSkippedNotes, initialised } = useGetFilteredNotes(filter)
   const { updateFilter, deleteFilter } = useUpdateFilter(user, router, setFilterUpdating, filter, setFilter, setLastFilterFromServer)
   const rentProps = useRentHandler(filter, setFilter, user)
-  
+
 
   /**
    * Check for expired posts and delete them
@@ -34,12 +34,13 @@ const Index = () => {
     deleteExpired()
   }, [])
 
+
   if (initialised) {
-    if (windowWidth > 1200 || windowWidth === null) {
+    if (windowWidth > 800 || windowWidth === null) {
       return (
         <div style={{ width: "100%", display: "flex", justifyContent: "center" }}>
           <div ref={desktopComp} style={{ marginTop: "80px", width: "1200px", zoom: "0.72" }}>
-            <WelcomeComp user={user} filter={filter} setFilter={setFilter} deviceSize={"DESKTOP"} />
+            <WelcomeComp user={user} filter={filter} setFilter={setFilter} deviceSize={"DESKTOP"} nameChange={props.nameChange} setNameChange={props.setNameChange} />
             <div style={{ display: "flex", justifyContent: "space-between" }}>
               <div style={{ width: "29%" }}>
                 <FilterComp filter={filter} lastFilterFromServer={lastFilterFromServer} setFilter={setFilter} updateFilter={updateFilter} deleteFilter={deleteFilter} filterUpdating={filterUpdating} notes={notes} rentProps={rentProps} deviceSize={"DESKTOP"} />
@@ -53,11 +54,11 @@ const Index = () => {
       )
     }
 
-    if (windowWidth <= 1200) {
+    if (windowWidth <= 800) {
       return (
         <>
           <div style={{ zoom: "0.8" }}>
-            <WelcomeComp user={user} filter={filter} setFilter={setFilter} deviceSize={"MOBILE"} />
+            <WelcomeComp user={user} filter={filter} setFilter={setFilter} deviceSize={"MOBILE"} nameChange={props.nameChange} setNameChange={props.setNameChange} />
           </div>
           <div style={{ borderRadius: "16px", backgroundColor: "rgb(241, 241, 241)", padding: "4px" }}>
             <ListingEditToggle mobileView={mobileView} setMobileView={setMobileView} />
