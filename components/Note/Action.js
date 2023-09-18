@@ -20,7 +20,6 @@ const Action = (props) => {
         }, 1000);
     }
 
-
     if (deviceSize === "DESKTOP") {
         return (
             <>
@@ -65,7 +64,11 @@ const Action = (props) => {
                         ) : (
                             <div style={{ width: "80%", fontSize: "32px", fontWeight: "800" }}>
 
-                                <div>{user.given_name}´s Contact Details</div>
+                                {user.given_name ? (
+                                    <div>{user.given_name}´s Contact Details</div>
+                                ) : (
+                                    <div>Contact Details</div>
+                                )}
 
                                 <div style={{ height: "24px" }} />
 
@@ -103,7 +106,9 @@ const Action = (props) => {
             </>
 
         )
-    } else {
+    }
+
+    if (deviceSize === "MOBILE") {
         if (contactView === "PROMO") {
             return (
                 <div style={{ position: "fixed", width: "100vw", height: "100vh", top: "0px", left: "0px", zIndex: "600", backgroundColor: "white", overflow: "hidden" }}>
@@ -157,7 +162,7 @@ const Action = (props) => {
                                 <div style={{ position: "fixed", width: "100vw", height: "100vh", top: "0px", left: "0px", zIndex: "600", backgroundColor: "white", overflow: "hidden" }}>
 
                                     {/* <div style={{ position: "absolute", color: "blue", marginLeft: "720px", marginTop: "520px", fontSize: "16px", fontWeight: "800" }}>{"quick ad"}</div> */}
-{/* 
+                                    {/* 
                                     <a
                                         href="https://www.redbubble.com/i/throw-pillow/Surreal-Suburban-Landscape-by-billbayer89/148450601.5X2YF"
                                         target="_blank"
@@ -171,7 +176,12 @@ const Action = (props) => {
                             ) : (
                                 <div style={{ width: "90%", fontSize: "16px", fontWeight: "800" }}>
 
-                                    <div>{user.given_name}´s Contact Details</div>
+                                    {user.given_name ? (
+                                        <div>{user.given_name}´s Contact Details</div>
+                                    ) : (
+                                        <div>Contact Details</div>
+                                    )}
+
 
                                     <div style={{ height: "24px" }} />
 

@@ -59,7 +59,7 @@ const NewNote = () => {
 
 
     useEffect(() => {
-        if (form.description?.length > 200) {
+        if (form.description?.length > 1000) {
             setErrors({ ...errors, description: "You have too many characters in your description" })
         } else {
             setErrors({ ...errors, description: null })
