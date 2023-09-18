@@ -4,7 +4,7 @@ const Part3 = (props) => {
 
     const nextCondition = (
         props.form.description &&
-        props.form.description.length < 201
+        props.form.description.length <= 1000
     )
        
 
@@ -41,7 +41,7 @@ const Part3 = (props) => {
                 style={{ border: "1px solid grey", width: "100%", resize: "none", fontFamily: "unset", fontSize: "24px", height: "240px", border: props.errors.description && "2px solid #a57583" }}
             />
 
-            {`${props.form.description ? props.form.description.length : "0"}/200`}
+            {`${props.form.description ? props.form.description.length : "0"}/1000`}
 
             {props.errors.description && (
                 <p style={{ background: "#a57583", color: "white", borderRadius: "4px", marginTop: "4px", padding: "8px" }}>

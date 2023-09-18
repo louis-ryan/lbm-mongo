@@ -29,7 +29,7 @@ const FilterComp = ({ filter, lastFilterFromServer, setFilter, updateFilter, del
 
                 <div className="sort-by-button" style={{ display: "flex" }}>
                     <div onClick={() => { setSortOptions((prev) => prev ? false : true) }}>
-                        {`Sort by: ${filter.notesOrder}`}
+                        {`Sort by: ${filter.notesOrder ? filter.notesOrder : "Created (asc)"}`}
                     </div>
                     <div style={{ marginLeft: "4px", transform: sortOptions ? "" : "rotate(180deg)" }}>∆</div>
                 </div>
