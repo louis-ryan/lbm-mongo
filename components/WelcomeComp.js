@@ -38,8 +38,9 @@ const WelcomeComp = ({ user, filter, setFilter, deviceSize, nameChange, setNameC
 
 
     useEffect(() => {
+        if (!user) return
         checkForExistingContact()
-    }, [])
+    }, [user])
 
 
     if (deviceSize === "DESKTOP") {
