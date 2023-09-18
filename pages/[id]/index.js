@@ -40,6 +40,7 @@ const Note = ({ setMobilePromoState }) => {
     const [contactReveal, setContactReveal] = useState(false)
     const [contactView, setContactView] = useState("NONE")
     const [contactDetails, setContactDetails] = useState({
+        name: "",
         email: "",
         phone: "",
         social: ""
@@ -75,6 +76,7 @@ const Note = ({ setMobilePromoState }) => {
             const { data } = await res.json()
 
             setContactDetails({
+                name: data.userName,
                 email: data.userEmail,
                 phone: data.userPhone,
                 social: data.userSocial
@@ -92,9 +94,14 @@ const Note = ({ setMobilePromoState }) => {
         setTimeout(function () {
             setContactView("CONTACT")
             setMobilePromoState("CONTACT")
-            getContactDetails()
         }, 0); // Make 10 seconds again once there are ads
     }
+
+
+    useEffect(() => {
+        if (!note) return
+        getContactDetails()
+    }, [note])
 
 
     useEffect(() => {
@@ -119,7 +126,7 @@ const Note = ({ setMobilePromoState }) => {
 
     if (!note) return
     if (!user) return
-    if (windowWidth > 1200) {
+    if (windowWidth > 800 || !windowWidth) {
         return (
             <>
 
@@ -172,7 +179,7 @@ const Note = ({ setMobilePromoState }) => {
                                 <div style={{ display: "flex" }}>
                                     <div style={{ width: "40px", height: "40px", borderRadius: "50%", overflow: "hidden" }}>  <img height="40px" width="40px" src={note && note.breakerPicture} alt="breaker picture" /></div>
                                     <div style={{ width: "16px" }} />
-                                    <h2 style={{ color: "white", transform: "translateY(-12px)" }}>Listed by {note.breakerName}</h2>
+                                    <h2 style={{ color: "white", transform: "translateY(-12px)" }}>Listed by {contactDetails.name}</h2>
                                 </div>
 
                                 <Action
@@ -228,7 +235,9 @@ const Note = ({ setMobilePromoState }) => {
                 </div >
             </>
         )
-    } else {
+    }
+
+    if (windowWidth <= 800) {
         return (
 
             <>
@@ -274,7 +283,7 @@ const Note = ({ setMobilePromoState }) => {
                         <div style={{ display: "flex", alignItems: "center" }}>
                             <div style={{ width: "40px", height: "40px", borderRadius: "50%", overflow: "hidden" }}>  <img height="40px" width="40px" src={note && note.breakerPicture} alt="breaker picture" /></div>
                             <div style={{ width: "16px" }} />
-                            <div>Listed by {note.breakerName}</div>
+                            <div>Listed by {contactDetails.name}</div>
                         </div>
 
                         <div style={{ height: "24px" }} />

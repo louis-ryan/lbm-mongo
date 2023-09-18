@@ -64,11 +64,7 @@ const Action = (props) => {
                         ) : (
                             <div style={{ width: "80%", fontSize: "32px", fontWeight: "800" }}>
 
-                                {user.given_name ? (
-                                    <div>{user.given_name}´s Contact Details</div>
-                                ) : (
-                                    <div>Contact Details</div>
-                                )}
+                                <div>{contactDetails.name}'s Contact Details</div>
 
                                 <div style={{ height: "24px" }} />
 
@@ -176,12 +172,7 @@ const Action = (props) => {
                             ) : (
                                 <div style={{ width: "90%", fontSize: "16px", fontWeight: "800" }}>
 
-                                    {user.given_name ? (
-                                        <div>{user.given_name}´s Contact Details</div>
-                                    ) : (
-                                        <div>Contact Details</div>
-                                    )}
-
+                                    <div>{contactDetails.name}'s Contact Details</div>
 
                                     <div style={{ height: "24px" }} />
 

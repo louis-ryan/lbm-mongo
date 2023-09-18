@@ -7,14 +7,14 @@ const infoBox = { width: "600px", backgroundColor: "white", padding: "40px", bor
 const contactRow = { display: "flex", width: "100%", justifyContent: "space-between", height: "80px", alignItems: "center" }
 
 
-const ContactModal = ({ setContactShowing, user }) => {
+const ContactModal = ({ setContactShowing, user, setNameChange }) => {
 
     const [overModal, setOverModal] = useState(false)
     const [contactInitialised, setContactInitialised] = useState("")
     const [updateClickable, setUpdateClickable] = useState(false)
 
     const [userContacts, setUserContacts] = useState({
-        name: user.name,
+        name: user.given_name,
         email: user.email,
         phone: "",
         social: ""
@@ -34,6 +34,7 @@ const ContactModal = ({ setContactShowing, user }) => {
                     userSocial: userContacts.social
                 })
             })
+            setNameChange(true)
         } catch (error) {
             console.log("existing contact err: ", error);
         }
@@ -53,6 +54,7 @@ const ContactModal = ({ setContactShowing, user }) => {
                     userSocial: userContacts.social
                 })
             })
+            setNameChange(true)
         } catch (error) {
             console.log("existing contact err: ", error);
         }
@@ -65,8 +67,6 @@ const ContactModal = ({ setContactShowing, user }) => {
                 method: 'GET'
             })
             const { data } = await res.json()
-
-            console.log("data: ", data)
 
             if (data._id) {
                 setContactInitialised(data._id)
@@ -109,6 +109,20 @@ const ContactModal = ({ setContactShowing, user }) => {
                     </div>
 
                     <h2>{"Contact Information"}</h2>
+
+                    <div style={contactRow}>
+                        <div style={{ width: "30%" }}>{"NAME: "}</div>
+                        <input
+                            value={userContacts.name}
+                            style={{ width: "70%", padding: "8px", fontSize: "16px" }}
+                            onChange={(e) => {
+                                setUserContacts({ ...userContacts, name: e.target.value })
+                                if (e.target.value !== userContacts.name) {
+                                    setUpdateClickable(true)
+                                }
+                            }}
+                        />
+                    </div>
 
                     <div style={contactRow}>
                         <div style={{ width: "30%" }}>{"EMAIL: "}</div>

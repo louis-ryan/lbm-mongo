@@ -16,6 +16,7 @@ import '../css/loaders.css';
 function MyApp({ Component, pageProps }) {
 
     const [mobilePromoState, setMobilePromoState] = useState("NONE")
+    const [nameChange, setNameChange] = useState(false)
 
     return (
         <>
@@ -24,8 +25,8 @@ function MyApp({ Component, pageProps }) {
                 <title>LBM</title>
             </Head>
             <UserProvider>
-                <Layout>
-                    <Component {...pageProps} setMobilePromoState={setMobilePromoState} />
+                <Layout setNameChange={setNameChange}>
+                    <Component {...pageProps} setMobilePromoState={setMobilePromoState} nameChange={nameChange} setNameChange={setNameChange} />
                 </Layout>
             </UserProvider>
         </>
