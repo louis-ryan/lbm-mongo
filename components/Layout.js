@@ -46,7 +46,7 @@ const Layout = ({ children }) => {
             <>
                 {facebookBrowser && (
                     <div style={{ position: "fixed", top: "0", left: "0", width: "100vw", height: "100vh", zIndex: "999", display: "flex", justifyContent: "center", alignItems: "center" }}>
-                        <div style={{ width: "80%", padding: "24px", backgroundColor: "white", boxShadow: "0px 0px 40px black" }}>
+                        <div style={{ width: "80%", padding: "24px", backgroundColor: "white", boxShadow: "0px 0px 40px black", borderRadius: "8px" }}>
                             <h2>{"It looks like you are trying to access this platform using Facebook's mobile browser."}</h2>
                             <h6>{"Unfortunately Facebook will not allow you to authenticate yourself using Google."}</h6>
                             <h6>{"For best results, use Chrome or your preferred browser on Desktop or Mobile"}</h6>
