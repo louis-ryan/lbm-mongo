@@ -11,9 +11,15 @@ input:hover {
     border: grey 2px solid;
 }
 
-input:focus {
+input:focus,
+input:active {
     border: black 2px solid;
+}
 
+input.error {
+    border: rgb(165, 117, 131) 2px solid;
+    color: rgb(165, 117, 131);
+    cursor: text;
 }
 
 textarea {
@@ -30,8 +36,15 @@ textarea:hover {
     border: grey 2px solid;
 }
 
-textarea:focus {
+textarea:focus,
+textarea:active {
     border: grey 2px solid;
+}
+
+textarea.error {
+    border: rgb(165, 117, 131) 2px solid;
+    color: rgb(165, 117, 131);
+    cursor: text;
 }
 
 .date {
@@ -108,10 +121,10 @@ input::-webkit-inner-spin-button {
 
 /* Date Input */
 
-input::-webkit-calendar-picker-indicator{
+input::-webkit-calendar-picker-indicator {
     display: none;
 }
 
-input[type="date"]::-webkit-input-placeholder{ 
+input[type="date"]::-webkit-input-placeholder {
     visibility: hidden !important;
 }

@@ -1,8 +1,9 @@
+import ContactDetails from './ContactDetails'
+
 const Action = (props) => {
 
 
     const {
-        user,
         contactReveal,
         setContactReveal,
         contactView,
@@ -10,7 +11,8 @@ const Action = (props) => {
         contactDetails,
         tenSecondTimer,
         deviceSize,
-        setMobilePromoState
+        setMobilePromoState,
+        address
     } = props
 
     const oneSecondTimer = () => {
@@ -23,7 +25,6 @@ const Action = (props) => {
     if (deviceSize === "DESKTOP") {
         return (
             <>
-
                 <div
                     style={{
                         width: "100%",
@@ -63,44 +64,13 @@ const Action = (props) => {
                             </div>
                         ) : (
                             <div style={{ width: "80%", fontSize: "32px", fontWeight: "800" }}>
-
-                                <div>{contactDetails.name}'s Contact Details</div>
-
-                                <div style={{ height: "24px" }} />
-
-                                <div style={{ width: "100%", display: "flex", justifyContent: "space-between" }}>
-                                    <div>Email:</div>
-                                    <div>{contactDetails.email}</div>
-                                </div>
-
-                                <div style={{ height: "24px" }} />
-
-                                {contactDetails.phone && (
-                                    <div style={{ width: "100%", display: "flex", justifyContent: "space-between" }}>
-                                        <div>Phone:</div>
-                                        <div>{contactDetails.phone}</div>
-                                    </div>
-                                )}
-
-                                <div style={{ height: "24px" }} />
-
-                                {contactDetails.social && (
-                                    <div style={{ width: "100%", display: "flex", justifyContent: "space-between" }}>
-                                        <div>Social:</div>
-                                        <div>{contactDetails.social}</div>
-                                    </div>
-                                )}
+                                <ContactDetails contactDetails={contactDetails} address={address} />
                             </div>
                         )
                     )}
-
                 </div>
                 <div style={{ height: "8px", width: contactView === "NONE" ? "0%" : "100%", backgroundColor: "#00F2C4", transition: "linear 10s", borderRadius: "8px", marginTop: "4px", display: contactView === "CONTACT" && "none" }} />
-
-
-
             </>
-
         )
     }
 
@@ -124,10 +94,7 @@ const Action = (props) => {
             )
         } else {
             return (
-
                 <>
-
-
                     <div
                         style={{
                             width: "100%",
@@ -171,46 +138,15 @@ const Action = (props) => {
                                 </div>
                             ) : (
                                 <div style={{ width: "90%", fontSize: "16px", fontWeight: "800" }}>
-
-                                    <div>{contactDetails.name}'s Contact Details</div>
-
-                                    <div style={{ height: "24px" }} />
-
-                                    <div style={{ width: "100%", display: "flex", justifyContent: "space-between" }}>
-                                        <div>Email:</div>
-                                        <div>{contactDetails.email}</div>
-                                    </div>
-
-                                    <div style={{ height: "24px" }} />
-
-                                    {contactDetails.phone && (
-                                        <div style={{ width: "100%", display: "flex", justifyContent: "space-between" }}>
-                                            <div>Phone:</div>
-                                            <div>{contactDetails.phone}</div>
-                                        </div>
-                                    )}
-
-                                    <div style={{ height: "24px" }} />
-
-                                    {contactDetails.social && (
-                                        <div style={{ width: "100%", display: "flex", justifyContent: "space-between" }}>
-                                            <div>Social:</div>
-                                            <div>{contactDetails.social}</div>
-                                        </div>
-                                    )}
+                                    <ContactDetails contactDetails={contactDetails} address={address} />
                                 </div>
                             )
                         )}
-
-
                     </div>
                 </>
-
             )
         }
-
     }
-
 }
 
 export default Action;

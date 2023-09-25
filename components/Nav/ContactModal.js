@@ -12,13 +12,20 @@ const ContactModal = ({ setContactShowing, user, setNameChange }) => {
     const [overModal, setOverModal] = useState(false)
     const [contactInitialised, setContactInitialised] = useState("")
     const [updateClickable, setUpdateClickable] = useState(false)
-
     const [userContacts, setUserContacts] = useState({
         name: user.given_name,
         email: user.email,
         phone: "",
         social: ""
     })
+    const [errors, setErrors] = useState({
+        name: "",
+        email: "",
+        phone: "",
+        social: ""
+    })
+
+    const noContactMethods = userContacts.email === "" && userContacts.phone === "" && userContacts.social === ""
 
 
     const patchContactInfo = async () => {
@@ -91,6 +98,29 @@ const ContactModal = ({ setContactShowing, user, setNameChange }) => {
     }, [])
 
 
+    useEffect(() => {
+        if (userContacts.social.includes("facebook.com/") && userContacts.social.includes("https://")) {
+            setErrors({ ...errors, social: "" })
+        } else {
+            setErrors({ ...errors, social: "Make sure your facebook address is correctly formatted (including 'https://')" })
+        }
+
+        if (userContacts.social === "") {
+            setErrors({ ...errors, social: "" })
+        }
+    }, [userContacts.social])
+
+
+    useEffect(() => {
+        if (userContacts.name && userContacts.name.length > 0) {
+            setErrors({ ...errors, name: "" })
+        } else {
+            setErrors({ ...errors, name: "You must include a name in your contacts" })
+        }
+    }, [userContacts.name])
+
+
+
     return (
         <>
             <div style={darkBackground} />
@@ -113,7 +143,9 @@ const ContactModal = ({ setContactShowing, user, setNameChange }) => {
                     <div style={contactRow}>
                         <div style={{ width: "30%" }}>{"NAME: "}</div>
                         <input
+                            className={errors.name ? "error" : ""}
                             value={userContacts.name}
+                            placeholder="Your Name"
                             style={{ width: "70%", padding: "8px", fontSize: "16px" }}
                             onChange={(e) => {
                                 setUserContacts({ ...userContacts, name: e.target.value })
@@ -128,6 +160,7 @@ const ContactModal = ({ setContactShowing, user, setNameChange }) => {
                         <div style={{ width: "30%" }}>{"EMAIL: "}</div>
                         <input
                             value={userContacts.email}
+                            placeholder="your.email@mailclient.com"
                             style={{ width: "70%", padding: "8px", fontSize: "16px" }}
                             onChange={(e) => {
                                 setUserContacts({ ...userContacts, email: e.target.value })
@@ -142,6 +175,7 @@ const ContactModal = ({ setContactShowing, user, setNameChange }) => {
                         <div style={{ width: "30%" }}>{"PHONE: "}</div>
                         <input
                             value={userContacts.phone}
+                            placeholder="0000 000 000"
                             style={{ width: "70%", padding: "8px", fontSize: "16px" }}
                             onChange={(e) => {
                                 setUserContacts({ ...userContacts, phone: e.target.value })
@@ -153,9 +187,11 @@ const ContactModal = ({ setContactShowing, user, setNameChange }) => {
                     </div>
 
                     <div style={contactRow}>
-                        <div style={{ width: "30%" }}>{"SOCIAL: "}</div>
+                        <div style={{ width: "30%" }}>{"FACEBOOK: "}</div>
                         <input
+                            className={errors.social ? "error" : ""}
                             value={userContacts.social}
+                            placeholder="https://www.facebook.com/your-profile-path/"
                             style={{ width: "70%", padding: "8px", fontSize: "16px" }}
                             onChange={(e) => {
                                 setUserContacts({ ...userContacts, social: e.target.value })
@@ -168,7 +204,7 @@ const ContactModal = ({ setContactShowing, user, setNameChange }) => {
 
                     <div style={{ height: "40px" }} />
 
-                    {updateClickable && (
+                    {updateClickable && !errors.social && !errors.name && !noContactMethods && (
                         <div
                             className="contact-button"
                             onClick={() => {
@@ -183,6 +219,18 @@ const ContactModal = ({ setContactShowing, user, setNameChange }) => {
                         >
                             {"UPDATE CONTACT INFO"}
                         </div>
+                    )}
+
+                    {errors.name && (
+                        <div style={{ width: "100%", padding: "16px", backgroundColor: "rgb(165, 117, 131)", borderRadius: "4px", color: "white", fontSize: "14px", marginBottom: "4px" }}>{errors.name}</div>
+                    )}
+
+                    {errors.social && (
+                        <div style={{ width: "100%", padding: "16px", backgroundColor: "rgb(165, 117, 131)", borderRadius: "4px", color: "white", fontSize: "14px", marginBottom: "4px" }}>{errors.social}</div>
+                    )}
+
+                    {noContactMethods && (
+                        <div style={{ width: "100%", padding: "16px", backgroundColor: "rgb(165, 117, 131)", borderRadius: "4px", color: "white", fontSize: "14px", marginBottom: "4px" }}>{"You must have at least one method of contact"}</div>
                     )}
                 </div>
             </div>

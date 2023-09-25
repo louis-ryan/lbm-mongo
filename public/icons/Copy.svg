@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="40px" height="40px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 62 (91390) - https://sketch.com -->
+    <title>Copy</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Copy" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M36.5,5.5 L36.5,25.5 C36.5,25.9142136 36.3321068,26.2892136 36.0606602,26.5606602 C35.7892136,26.8321068 35.4142136,27 35,27 L29.5,27 L29.5,13.5 C29.5,12.8434119 29.246857,12.2459624 28.832907,11.7998542 C28.4116751,11.3458984 27.8238211,11.0489084 27.1667598,11.005492 L12.5,11.000181 L12.5,5.5 C12.5,5.08578644 12.6678932,4.71078644 12.9393398,4.43933983 C13.2107864,4.16789322 13.5857864,4 14,4 L35,4 C35.4142136,4 35.7892136,4.16789322 36.0606602,4.43933983 C36.3321068,4.71078644 36.5,5.08578644 36.5,5.5 Z" id="Combined-Shape" stroke="#979797"></path>
+        <rect id="Rectangle" stroke="#979797" x="3.5" y="11" width="26" height="25" rx="2"></rect>
+    </g>
+</svg>
