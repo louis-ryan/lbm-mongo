@@ -13,8 +13,11 @@ const BrowseOptions = ({ unlimitedNotes, skipping, setSkipping, getSkippedNotes 
                     setSkipping(skipping - 5)
                     getSkippedNotes(skipping - 5)
                 }}
+                style={{ display: "flex" }}
             >
-                PREV
+                <div style={{ transform: "rotate(270deg)" }}>{"∆"}</div>
+                <div style={{ width: "8px" }} />
+                <div>{"Prev"}</div>
             </div>
 
             <div
@@ -24,8 +27,11 @@ const BrowseOptions = ({ unlimitedNotes, skipping, setSkipping, getSkippedNotes 
                     setSkipping(skipping + 5)
                     getSkippedNotes(skipping + 5)
                 }}
+                style={{ display: "flex" }}
             >
-                NEXT
+                <div>{"Next"}</div>
+                <div style={{ width: "8px" }} />
+                <div style={{ transform: "rotate(90deg)" }}>{"∆"}</div>
             </div>
         </div>
     )

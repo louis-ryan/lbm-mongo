@@ -191,7 +191,7 @@ const Details = ({ note, mapPath, latInPx, longInPx, deviceSize }) => {
                     </svg>
 
                     <div style={{ position: "absolute", width: "1600px", height: "1600px", zIndex: "20", marginTop: "-1600px" }}>
-                        <div style={{ width: "120px", height: "120px", backgroundColor: "white", marginLeft: `${longInPx - 120}px`, marginTop: `${latInPx - 120}px`, borderRadius: "50%", border: "1px solid grey" }}></div>
+                        <div style={{ width: "120px", height: "120px", backgroundColor: "white", marginLeft: `${longInPx - 120}px`, marginTop: `${latInPx - 120}px`, borderRadius: "50%", boxShadow: "0px 0px 200px 0px black" }}></div>
                     </div>
 
 
