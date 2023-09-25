@@ -6,7 +6,7 @@ const NavbarDropdown = ({ setUserOptions, setContactShowing, myListings }) => {
 
         <div
             onClick={() => setUserOptions(false)}
-            style={{ position: "absolute", width: "100vw", height: "100vh", zIndex: "9", top: "0px", right: "0px" }}
+            style={{ position: "fixed", width: "100vw", height: "100vh", zIndex: "9", top: "0px", right: "0px" }}
         >
             <div style={{ position: "absolute", width: "208px", zIndex: "10", top: "48px", right: "40px" }}>
 
@@ -40,10 +40,18 @@ const NavbarDropdown = ({ setUserOptions, setContactShowing, myListings }) => {
                             style={{ outline: "1px grey solid", color: "white", width: "100%", padding: "16px", maxWidth: "600px", cursor: "pointer", display: "flex", marginBottom: "8px", textDecoration: "none" }}
                         >
                             <div style={{ width: "40px", overflow: "hidden" }}>
-                                <img
-                                    src={listing.pics[0].url}
-                                    style={{ height: "40px" }}
-                                />
+                                {listing.pics[0] ? (
+                                    <img
+                                        src={listing.pics[0].url}
+                                        style={{ height: "40px" }}
+                                    />
+                                ) : (
+                                    <img
+                                        src="https://images.squarespace-cdn.com/content/v1/56dce00a45bf214a0b3fadf3/60149970-ce98-49e7-8b04-5739ee538798/LBM_hero_img.png?format=2500w"
+                                        style={{ height: "40px" }}
+                                    />
+                                )}
+
                             </div>
 
                             <div style={{ width: "8px" }} />

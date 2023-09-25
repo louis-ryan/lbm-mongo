@@ -158,7 +158,12 @@ const Note = ({ setMobilePromoState }) => {
                 <div style={desktopCont}>
                     <div style={desktopComp}>
                         <div style={coverPic}>
-                            <img src={note.pics[0].url} style={{ width: "100%", filter: "blur(4px)" }} />
+                            {note.pics[0] ? (
+                                <img src={note.pics[0].url} style={{ width: "100%", filter: "blur(4px)" }} />
+                            ) : (
+                                <img src="https://images.squarespace-cdn.com/content/v1/56dce00a45bf214a0b3fadf3/60149970-ce98-49e7-8b04-5739ee538798/LBM_hero_img.png?format=2500w" style={{ width: "100%", filter: "blur(4px)" }} />
+                            )}
+
                         </div>
                         <div style={{ height: "140px" }} />
 
@@ -191,7 +196,8 @@ const Note = ({ setMobilePromoState }) => {
                                     contactDetails={contactDetails}
                                     tenSecondTimer={tenSecondTimer}
                                     deviceSize={"DESKTOP"}
-                                    setMobilePromoState={setMobilePromoState}
+                                    address={note.address}
+                                // setMobilePromoState={setMobilePromoState}
                                 />
                             </>
 
@@ -225,7 +231,8 @@ const Note = ({ setMobilePromoState }) => {
                                 contactDetails={contactDetails}
                                 tenSecondTimer={tenSecondTimer}
                                 deviceSize={"DESKTOP"}
-                                setMobilePromoState={setMobilePromoState}
+                                address={note.address}
+                            // setMobilePromoState={setMobilePromoState}
                             />
                         )}
 
@@ -297,7 +304,8 @@ const Note = ({ setMobilePromoState }) => {
                             contactDetails={contactDetails}
                             tenSecondTimer={tenSecondTimer}
                             deviceSize={"MOBILE"}
-                            setMobilePromoState={setMobilePromoState}
+                            address={note.address}
+                        // setMobilePromoState={setMobilePromoState}
                         />
                     </div>
 
@@ -330,7 +338,8 @@ const Note = ({ setMobilePromoState }) => {
                             contactDetails={contactDetails}
                             tenSecondTimer={tenSecondTimer}
                             deviceSize={"MOBILE"}
-                            setMobilePromoState={setMobilePromoState}
+                            address={note.address}
+                        // setMobilePromoState={setMobilePromoState}
                         />
                     </div>
                 )}
