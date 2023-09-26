@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@auth0/nextjs-auth0": "^1.7.0",
+    "ansi-html": "^0.0.9",
     "aws-sdk": "^2.1409.0",
     "axios": "^1.4.0",
     "cors": "^2.8.5",
@@ -21,6 +22,7 @@
     "next-auth": "^4.22.1",
     "next-optimized-images": "^2.6.2",
     "nodemailer": "^6.8.0",
+    "normalize.css": "^8.0.1",
     "react": "^18.1.0",
     "react-csv": "^2.2.2",
     "react-datepicker": "^4.8.0",
@@ -31,10 +33,12 @@
     "react-slider": "^2.0.4",
     "tslib": "^2.6.0",
     "util": "^0.12.4",
+    "webpack-dev-server": "^4.15.1",
     "ws": "^8.11.0"
   },
   "devDependencies": {
     "@svgr/webpack": "^6.5.1",
-    "@webpack-cli/generators": "^0.1.9"
+    "@webpack-cli/generators": "^0.1.9",
+    "webpack-cli": "^5.1.4"
   }
 }
