@@ -62,9 +62,7 @@ const Layout = ({ children }) => {
 
                 <div id="mobile-container">
                     <div style={{ zIndex: "-1", position: "fixed" }}>
-                        <img src={imgSrc} style={{ width: "100%" }} />
-                        <img src={imgSrc} style={{ width: "100%" }} />
-                        <img src={imgSrc} style={{ width: "100%" }} />
+                        <img src={imgSrc} style={{ height: "100vh", filter: "blur(2px) brightness(0.6)" }} />
                     </div>
                     <div id="mobile-content-card">
                         {children}

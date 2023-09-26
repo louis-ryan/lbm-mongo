@@ -197,7 +197,7 @@ const Note = ({ setMobilePromoState }) => {
                                     tenSecondTimer={tenSecondTimer}
                                     deviceSize={"DESKTOP"}
                                     address={note.address}
-                                // setMobilePromoState={setMobilePromoState}
+                                    setMobilePromoState={setMobilePromoState}
                                 />
                             </>
 
@@ -232,7 +232,7 @@ const Note = ({ setMobilePromoState }) => {
                                 tenSecondTimer={tenSecondTimer}
                                 deviceSize={"DESKTOP"}
                                 address={note.address}
-                            // setMobilePromoState={setMobilePromoState}
+                                setMobilePromoState={setMobilePromoState}
                             />
                         )}
 
@@ -305,7 +305,7 @@ const Note = ({ setMobilePromoState }) => {
                             tenSecondTimer={tenSecondTimer}
                             deviceSize={"MOBILE"}
                             address={note.address}
-                        // setMobilePromoState={setMobilePromoState}
+                            setMobilePromoState={setMobilePromoState}
                         />
                     </div>
 
@@ -339,7 +339,7 @@ const Note = ({ setMobilePromoState }) => {
                             tenSecondTimer={tenSecondTimer}
                             deviceSize={"MOBILE"}
                             address={note.address}
-                        // setMobilePromoState={setMobilePromoState}
+                            setMobilePromoState={setMobilePromoState}
                         />
                     </div>
                 )}
