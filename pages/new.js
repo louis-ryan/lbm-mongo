@@ -25,7 +25,7 @@ const NewNote = () => {
 
 
     useEffect(() => {
-        if (user !== undefined) return
+        if (form && user !== undefined) return
         router.push("/api/auth/login")
     })
 
