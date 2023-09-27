@@ -25,6 +25,12 @@ const NewNote = () => {
 
 
     useEffect(() => {
+        if (user !== undefined) return
+        router.push("/api/auth/login")
+    })
+
+
+    useEffect(() => {
         const endOfContract = new Date(form.contractEnds)
         const today = new Date()
 
