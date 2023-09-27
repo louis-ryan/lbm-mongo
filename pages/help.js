@@ -3,11 +3,15 @@ import magpie from '../public/Magpie.svg';
 import logo from '../public/LBM_logo.svg';
 import download from '../public/Download.svg';
 import useWindowWidth from '../custom_hooks/useWindowWidth';
+import { useUser } from '@auth0/nextjs-auth0';
+import { useRouter } from 'next/router';
 
 
 const Help = () => {
 
     const windowWidth = useWindowWidth()
+    const router = useRouter()
+    const { user } = useUser()
 
 
     const wrapper = { width: "100%", display: "flex", justifyContent: "center", paddingTop: "120px" }
@@ -45,15 +49,19 @@ const Help = () => {
                         <li>
                             <strong>Find a suitable tenant:</strong>
                             <p>It's your responsibility to find someone who will take over the lease. Ensure they are reliable and can meet the terms of the lease.</p>
-                            <a style={{ textDecoration: "none" }} href={`/new`} target="_blank">
-                                <div
-                                    className="button primary"
-                                    onClick={() => localStorage.setItem("redirect_to", `/new`)}
-                                    style={{ maxWidth: "400px" }}
-                                >
-                                    List your rental property here to find a tennant
-                                </div>
-                            </a>
+                            <div
+                                className="button primary"
+                                onClick={() => {
+                                    if (user === undefined) {
+                                        router.push("/api/auth/login")
+                                    } else {
+                                        router.push("/new")
+                                    }
+                                }}
+                                style={{ maxWidth: "400px" }}
+                            >
+                                List your rental property here to find a tennant
+                            </div>
                             <div style={{ height: "24px" }} />
                         </li>
 
