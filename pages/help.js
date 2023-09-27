@@ -49,19 +49,14 @@ const Help = () => {
                         <li>
                             <strong>Find a suitable tenant:</strong>
                             <p>It's your responsibility to find someone who will take over the lease. Ensure they are reliable and can meet the terms of the lease.</p>
-                            <div
-                                className="button primary"
-                                onClick={() => {
-                                    if (user === undefined) {
-                                        router.push("/api/auth/login")
-                                    } else {
-                                        router.push("/new")
-                                    }
-                                }}
-                                style={{ maxWidth: "400px" }}
-                            >
-                                List your rental property here to find a tennant
-                            </div>
+                            <a href={user === undefined ? "/api/auth/login" : "/new"} target="_blank" style={{ textDecoration: "none" }}>
+                                <div
+                                    className="button primary"
+                                    style={{ maxWidth: "400px" }}
+                                >
+                                    List your rental property here to find a tennant
+                                </div>
+                            </a>
                             <div style={{ height: "24px" }} />
                         </li>
 
