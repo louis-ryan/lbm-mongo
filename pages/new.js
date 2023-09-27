@@ -25,6 +25,18 @@ const NewNote = () => {
 
 
     useEffect(() => {
+        const timer = setTimeout(() => {
+            if (user === undefined) {
+                router.push("/api/auth/login");
+            }
+        }, 2000);  // 2000 milliseconds = 2 seconds
+    
+        // Cleanup function to clear the timeout if the component is unmounted before 2 seconds
+        return () => clearTimeout(timer);
+    }, [user]);
+
+
+    useEffect(() => {
         const endOfContract = new Date(form.contractEnds)
         const today = new Date()
 

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="40px" height="40px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 62 (91390) - https://sketch.com -->
+    <title>Download</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Download" stroke="none" stroke-width="1.5" fill="none" fill-rule="evenodd" stroke-linecap="square">
+        <path d="M6.66530874,4 L6.6589893,18.0000004 C6.65618697,20.2091384 8.44623941,22.0008076 10.6553782,22.0018047 C10.65598,22.001805 10.6565819,22.0018051 10.6571837,22 L28.6571837,22 C30.8663227,22.0018051 32.6571837,20.2109441 32.6571837,18.0018051 C32.6571837,18.0012033 32.6571836,18.0006014 32.6553782,18.0000004 L32.6490587,4 L32.6490587,4" id="Line-12" stroke="#979797" transform="translate(19.657184, 13.000000) scale(1, -1) translate(-19.657184, -13.000000) "></path>
+        <polyline id="Line-2" stroke="#979797" transform="translate(19.657184, 33.000000) scale(1, -1) translate(-19.657184, -33.000000) " points="13.6571837 36 19.6571837 30 25.6571837 36"></polyline>
+        <line x1="19.6571837" y1="15" x2="19.6571837" y2="35" id="Line" stroke="#979797" transform="translate(19.657184, 25.000000) scale(1, -1) translate(-19.657184, -25.000000) "></line>
+    </g>
+</svg>

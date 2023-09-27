@@ -55,6 +55,25 @@ a {
     color: rgb(142, 142, 142);
 }
 
+ol {
+    list-style: none;
+    counter-reset: li-counter;
+}
+
+li {
+    margin: 80px 0px;
+}
+
+li::before {
+    counter-increment: li-counter;
+    content: counter(li-counter) ".";
+    margin-right: 10px;
+    font-size: 32px;
+    font-weight: 800;
+    margin-top: 40px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
 #mobile-container {
     width: 100vw;
     height: calc(100vh - 78.5px);

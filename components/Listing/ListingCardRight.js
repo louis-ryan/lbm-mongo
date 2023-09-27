@@ -8,7 +8,7 @@ const ListingCardRight = ({ note }) => {
             {note.pics.length > 0 ? (
                 note.pics.map((pic, idx) => {
                     return (
-                        <span key={idx}>
+                        <span key={idx} style={{marginRight: "4px"}}>
                             <img
                                 alt="note image"
                                 src={pic.url}
