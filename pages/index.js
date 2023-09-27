@@ -35,17 +35,6 @@ const Index = (props) => {
   }, [])
 
 
-  useEffect(() => {
-    const redirect = localStorage.getItem('redirect_to')
-
-    if (redirect === "/new") {
-      router.push("/new")
-    }
-
-    localStorage.setItem("redirect_to", "")
-  })
-
-
   if (initialised) {
     if (windowWidth > 800 || windowWidth === null) {
       return (
