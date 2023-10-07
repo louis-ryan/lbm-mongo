@@ -35,6 +35,18 @@ const Index = (props) => {
   }, [])
 
 
+  /**
+   * Get rid of the unncessary chars from route when auth with facebook
+   */
+  useEffect(() => {
+    if (window.location.hash === '#_=_') {
+      history.replaceState
+        ? history.replaceState(null, null, window.location.href.split('#')[0])
+        : window.location.hash = '';
+    }
+  }, [])
+
+
   if (initialised) {
     if (windowWidth > 800 || windowWidth === null) {
       return (
@@ -75,10 +87,6 @@ const Index = (props) => {
   } else {
     <div></div>
   }
-
-
-
-
 }
 
 export default Index;

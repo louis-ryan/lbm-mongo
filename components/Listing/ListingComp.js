@@ -23,6 +23,7 @@ const ListingComp = ({ notes, getNotes, rendering, unlimitedNotes, skipping, set
                     skipping={skipping}
                     setSkipping={setSkipping}
                     getSkippedNotes={getSkippedNotes}
+                    deviceSize={deviceSize}
                 />
 
                 {notes && notes.map((note, idx) => {
@@ -44,6 +45,7 @@ const ListingComp = ({ notes, getNotes, rendering, unlimitedNotes, skipping, set
                     skipping={skipping}
                     setSkipping={setSkipping}
                     getSkippedNotes={getSkippedNotes}
+                    deviceSize={deviceSize}
                 />
 
                 <div style={{ height: "80px" }} />

@@ -121,15 +121,6 @@ const NewNote = () => {
     if (windowWidth <= 800) {
         return (
             <>
-                <div style={{ width: "100%", display: "flex", justifyContent: "center" }}>
-                    <div style={{ width: "calc(100% - 32px)", maxWidth: "400px" }}>
-                        <div style={{ height: "24px" }} />
-                        <div>
-                            <h1>Create Listing</h1>
-                        </div>
-                        <div style={{ height: "24px" }} />
-                    </div>
-                </div>
                 <PropertyInfo
                     handleChange={handleChange}
                     handlePost={handlePost}
