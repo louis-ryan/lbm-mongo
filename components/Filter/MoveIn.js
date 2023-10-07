@@ -84,6 +84,7 @@ const MoveIn = ({ reveal, setReveal, filter, setFilter }) => {
 
                             <div>
                                 <button
+                                    className="toggle button"
                                     onClick={() => {
                                         let today = new Date();
                                         let yyyy = today.getFullYear();
@@ -94,7 +95,7 @@ const MoveIn = ({ reveal, setReveal, filter, setFilter }) => {
 
                                         setFilter({ ...filter, moveInEarliest: formattedDate })
                                     }}
-                                    style={{ width: "100%", height: "40px", backgroundColor: todaysDateGreaterThanFilter() ? "rgb(0, 242, 196)" :  "white" }}
+                                    style={{ width: "100%", height: "40px", backgroundColor: todaysDateGreaterThanFilter() ? "rgb(0, 242, 196)" : "white", color: todaysDateGreaterThanFilter() && "black" }}
                                 >
                                     Ready to move!
                                 </button>
@@ -113,12 +114,9 @@ const MoveIn = ({ reveal, setReveal, filter, setFilter }) => {
 
                             <div>
                                 <button
-                                    onClick={() => {
-
-
-                                        setFilter({ ...filter, moveInEarliest: "" })
-                                    }}
-                                    style={{ width: "100%", height: "40px", backgroundColor: "white" }}
+                                    className="secondary button"
+                                    onClick={() => setFilter({ ...filter, moveInEarliest: "" })}
+                                    style={{ width: "100%", height: "40px" }}
                                 >
                                     Clear
                                 </button>

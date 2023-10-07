@@ -8,6 +8,8 @@
     padding: 8px 16px;
 }
 
+/* Primary */
+
 .primary {
     background-color: black;
     color: white;
@@ -24,6 +26,8 @@
     background-color: white;
     color: black;
 }
+
+/* Secondary */
 
 .secondary {
     background-color: white;
@@ -51,6 +55,24 @@
     background-color: pink;
     color: black;
 }
+
+/* Toggle */
+
+.toggle {
+    background-color: white;
+    border: 1px solid grey;
+    color: grey;
+    font-weight: 400;
+}
+
+.toggle:hover {
+    background-color: white;
+    border: 1px solid black;
+    color: black;
+    font-weight: 400;
+}
+
+/* Browse */
 
 .browse-button {
     color: unset;

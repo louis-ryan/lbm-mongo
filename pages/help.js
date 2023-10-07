@@ -74,12 +74,16 @@ const Help = () => {
                                     <div>• Fill out a 'Tenant Transfer' application form. We have prepared one for you below.</div>
                                     <div style={{ height: "16px" }} />
                                     <Link href="/api/downloadPdf">
-                                        <a download>
-                                            <div style={{ width: "80px", height: "120px", border: "1px solid grey", cursor: "pointer", display: "flex", justifyContent: "center", alignItems: "center", }}>
-                                                <div style={{ textAlign: "center" }}>
-                                                    <img src={download} alt="download_icon" />
-                                                    <div style={{ textAlign: "center" }}>download pdf</div>
-                                                </div>
+                                        <a download style={{ textDecoration: "none" }}>
+                                            <div
+                                                className="button primary"
+                                                style={{ maxWidth: "400px", display: "flex" }}
+                                                onMouseEnter={() => document.getElementById("downloadIcon").style.filter = "invert(1)"}
+                                                onMouseLeave={() => document.getElementById("downloadIcon").style.filter = "none"}
+                                            >
+                                                <img id="downloadIcon" src={download} alt="download" style={{ zoom: "0.6" }} />
+                                                <div style={{ width: "8px" }} />
+                                                <div>Tenant transfer pdf</div>
                                             </div>
                                         </a>
                                     </Link>

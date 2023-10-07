@@ -24,8 +24,10 @@ const FilterComp = ({ filter, lastFilterFromServer, setFilter, updateFilter, del
 
             <div style={{ height: "16px" }} />
 
-            <div style={{ width: "100%", padding: "8px", display: "flex", justifyContent: "space-between" }}>
-                <div>{"Filtering options"}</div>
+            <div style={{ width: "100%", padding: "8px", display: "flex", justifyContent: "space-between", fontSize: deviceSize === "MOBILE" && "20px" }}>
+                {deviceSize === "DESKTOP" && (
+                    <div>{"Filtering options"}</div>
+                )}
 
                 <div className="sort-by-button" style={{ display: "flex" }}>
                     <div onClick={() => { setSortOptions((prev) => prev ? false : true) }}>
@@ -36,11 +38,11 @@ const FilterComp = ({ filter, lastFilterFromServer, setFilter, updateFilter, del
             </div>
 
             {sortOptions && (
-                <div>
-                    <div onClick={() => selectOrderOption("Contract (desc)")} className="order-option">{"Time left on Contract (Descending)"}</div>
-                    <div onClick={() => selectOrderOption("Contract (asc)")} className="order-option">{"Time left on Contract (Ascending)"}</div>
-                    <div onClick={() => selectOrderOption("Created (desc)")} className="order-option">{"Date created (Descending)"}</div>
-                    <div onClick={() => selectOrderOption("Created (asc)")} className="order-option">{"Date created (Ascending)"}</div>
+                <div style={{ fontSize: deviceSize === "MOBILE" && "20px", marginTop: "16px" }}>
+                    <div onClick={() => selectOrderOption("Contract (desc)")} className="order-option"><div>{"Time left on Contract"}</div><div>{"(Descending)"}</div></div>
+                    <div onClick={() => selectOrderOption("Contract (asc)")} className="order-option"><div>{"Time left on Contract"}</div><div>{"(Ascending)"}</div></div>
+                    <div onClick={() => selectOrderOption("Created (desc)")} className="order-option"><div>{"Date created"}</div><div>{"(Descending)"}</div></div>
+                    <div onClick={() => selectOrderOption("Created (asc)")} className="order-option"><div>{"Date created"}</div><div>{"(Ascending)"}</div></div>
                 </div>
             )}
 
@@ -126,6 +128,10 @@ const FilterComp = ({ filter, lastFilterFromServer, setFilter, updateFilter, del
                     <div style={{ height: "40px" }} />
                 </div>
             )} */}
+
+            {deviceSize === "MOBILE" && (
+                <div style={{ height: "120px" }} />
+            )}
 
         </div>
     )

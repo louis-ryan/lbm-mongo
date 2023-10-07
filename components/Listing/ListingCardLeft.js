@@ -60,17 +60,17 @@ const ListingCardLeft = ({ note, deviceSize }) => {
         )
     }
 
-    if (deviceSize === "MOBILE") {
-        return (
-            <div style={{ position: "absolute", zIndex: "2", color: "white", transform: "translate(8px, 8px)", backgroundColor: "black", opacity: "0.6", padding: "16px", borderRadius: "4px" }}>
-                <div>{`• ${note.address && note.address}`}</div>
-                <div style={{ height: "4px" }} />
-                <div>{`• $${note.rent && note.rent}pw`}</div>
-                <div style={{ height: "4px" }} />
-                <div>{`• ${note.contractEnds && remainingMonths} months left on contract`}</div>
-            </div>
-        )
-    }
+    // if (deviceSize === "MOBILE") {
+    //     return (
+    //         <div style={{ position: "absolute", zIndex: "2", color: "white", transform: "translate(8px, 8px)", backgroundColor: "black", opacity: "0.6", padding: "16px", borderRadius: "4px" }}>
+    //             <div>{`• ${note.address && note.address}`}</div>
+    //             <div style={{ height: "4px" }} />
+    //             <div>{`• $${note.rent && note.rent}pw`}</div>
+    //             <div style={{ height: "4px" }} />
+    //             <div>{`• ${note.contractEnds && remainingMonths} months left on contract`}</div>
+    //         </div>
+    //     )
+    // }
 
 }
 
