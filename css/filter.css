@@ -44,9 +44,11 @@
 }
 
 .order-option {
-    text-align: right;
-    padding: 4px 0px;
+    padding: 8px;
     cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
 }
 
 .order-option:hover {

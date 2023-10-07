@@ -5,7 +5,7 @@ const Rooms = ({ reveal, setReveal, deviceSize, filter, setFilter }) => {
 
     const activeCondition = (filter.petsAllowed || filter.parkingSpace || filter.terrace || filter.garden || filter.noSharedWalls || filter.noSharedFloor || filter.walkToSupermarket || filter.walkToTrain)
 
-    const detailStyle = { width: "100%", padding: "8px 0px", textAlign: "center", border: "1px solid grey", marginBottom: "4px", cursor: "pointer" }
+    const detailStyle = { width: "100%", textAlign: "center", marginBottom: "4px", cursor: "pointer", height: "40px" }
 
     const boolArray = [
         { name: 'Pets allowed', var: 'petsAllowed' },
@@ -64,7 +64,8 @@ const Rooms = ({ reveal, setReveal, deviceSize, filter, setFilter }) => {
                             <div style={{ height: "24px" }} />
 
                             {boolArray.map((bool) => (
-                                <div
+                                <button
+                                    className="toggle button"
                                     key={bool.var}
                                     onClick={() =>
                                         setFilter(() =>
@@ -79,7 +80,7 @@ const Rooms = ({ reveal, setReveal, deviceSize, filter, setFilter }) => {
                                     }}
                                 >
                                     {bool.name}
-                                </div>
+                                </button>
                             ))}
 
                             <div style={{ height: "40px" }} />

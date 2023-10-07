@@ -1,10 +1,12 @@
 
-const BrowseOptions = ({ unlimitedNotes, skipping, setSkipping, getSkippedNotes }) => {
+const BrowseOptions = ({ unlimitedNotes, skipping, setSkipping, getSkippedNotes, deviceSize }) => {
 
     return (
-        <div style={{ width: "100%", display: "flex", justifyContent: "space-between", padding: "8px" }}>
+        <div style={{ width: "100%", display: "flex", justifyContent: "space-between", padding: "8px", fontSize: deviceSize === "MOBILE" && "20px" }}>
 
-            <div>  Viewing {skipping + 1} to {skipping + 5 > unlimitedNotes ? unlimitedNotes : skipping + 5} of {unlimitedNotes} </div>
+            {deviceSize === "DESKTOP" && (
+                <div>  Viewing {skipping + 1} to {skipping + 5 > unlimitedNotes ? unlimitedNotes : skipping + 5} of {unlimitedNotes} </div>
+            )}
 
             <div
                 className="browse-button"
