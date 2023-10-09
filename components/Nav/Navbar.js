@@ -42,7 +42,7 @@ const Navbar = (props) => {
             <>
                 <div
                     onClick={() => router.push('/')}
-                    style={{ position: "fixed", top: "8px", left: "4px", zoom: "0.72", cursor: "pointer", marginTop: "8px" }}
+                    style={{ position: "fixed", zIndex: "30", top: "8px", left: "4px", zoom: "0.72", cursor: "pointer", marginTop: "8px" }}
                 >
                     <img src="https://images.squarespace-cdn.com/content/v1/56dce00a45bf214a0b3fadf3/5cf24fcb-d5dc-44b2-a321-b28ee3d3e00d/lbm_new_logo.png?format=500w" />
                 </div>
@@ -83,7 +83,7 @@ const Navbar = (props) => {
                         style={{ textAlign: "center" }}
                         onClick={() => { if (user !== undefined) { router.push('/') } else { router.push("/api/auth/login") } }}
                     >
-                        <img className="mobile-nav-button" src={homeButton} alt="home button" style={{ height: "40px", outline: router.asPath === '/' && "4px solid pink"  }} />
+                        <img className="mobile-nav-button" src={homeButton} alt="home button" style={{ height: "40px", border: router.asPath === '/' && "4px solid pink" }} />
                     </div>
                     <div style={{ textAlign: "center" }}>home</div>
                 </div>
@@ -94,7 +94,7 @@ const Navbar = (props) => {
                         style={{ textAlign: "center" }}
                         onClick={() => { if (user !== undefined) { router.push('/new') } else { router.push("/api/auth/login") } }}
                     >
-                        <img className="mobile-nav-button" src={newButton} alt="new button" style={{ height: "40px", outline: router.asPath === '/new' && "4px solid pink" }} />
+                        <img className="mobile-nav-button" src={newButton} alt="new button" style={{ height: "40px", border: router.asPath === '/new' && "4px solid pink" }} />
                     </div>
                     <div style={{ textAlign: "center" }}>new</div>
                 </div>
