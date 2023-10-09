@@ -25,7 +25,7 @@ const Details = ({ note, mapPath, latInPx, longInPx, deviceSize }) => {
 
         },
         {
-            name: "outdoor area",
+            name: "terrace",
             status: note.outdoorArea,
             svg: (
                 <svg width="40px" height="40px" viewBox="0 0 40 40">
@@ -43,7 +43,7 @@ const Details = ({ note, mapPath, latInPx, longInPx, deviceSize }) => {
             )
         },
         {
-            name: "pets",
+            name: "pets allowed",
             status: note.petsAllowed,
             svg: (
                 <svg width="40px" height="40px" viewBox="0 0 40 40">
@@ -67,12 +67,12 @@ const Details = ({ note, mapPath, latInPx, longInPx, deviceSize }) => {
             )
         },
         {
-            name: "sharing wall",
-            status: note.sharingWall,
+            name: "no shared wall",
+            status: !note.sharingWall,
             svg: (
                 <svg width="40px" height="40px" viewBox="0 0 40 40">
                     <g id="Sharing-Wall" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
-                        <g id="Group" transform="translate(1.000000, 4.000000)" stroke="#979797">
+                        <g id="Group" transform="translate(1.000000, 4.000000)" stroke="red">
                             <path d="M11.8246095,32.5 L1.42539053,32.5 L10.1753905,25.5 L20.5746095,25.5 L11.8246095,32.5 Z" id="Rectangle-Copy-3"></path>
                             <path d="M21.5,24.5143054 L12.5,31.9393054 L12.5,8.48569461 L21.5,1.06069461 L21.5,24.5143054 Z" id="Rectangle" fill="#FFFFFF"></path>
                             <path d="M36.608249,25.25 L27.8203702,32.5 L16.5,32.5 L16.5,8.48569461 L25.5,1.06069461 L25.5,25.25 L36.608249,25.25 Z" id="Combined-Shape" fill="#FFFFFF"></path>
@@ -82,14 +82,14 @@ const Details = ({ note, mapPath, latInPx, longInPx, deviceSize }) => {
             )
         },
         {
-            name: "sharing floor",
-            status: note.sharingFloor,
+            name: "no shared floor or ceiling",
+            status: !note.sharingFloor,
             svg: (
                 <svg width="40px" height="40px" viewBox="0 0 40 40">
                     <g id="Sharing-Ceiling-or-floor" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
-                        <rect id="Rectangle-Copy-2" stroke="#979797" x="11.5" y="22.5" width="17" height="14"></rect>
-                        <path d="M33.7928932,27.5 L6.20710678,27.5 L11.2071068,22.5 L28.7928932,22.5 L33.7928932,27.5 Z" id="Rectangle-Copy" stroke="#979797" fill="#FFFFFF"></path>
-                        <path d="M28.5,4.5 L28.5,19.2071068 L33.7928932,24.5 L6.20710678,24.5 L11.5,19.2071068 L11.5,4.5 L28.5,4.5 Z" id="Combined-Shape" stroke="#979797" fill="#FFFFFF"></path>
+                        <rect id="Rectangle-Copy-2" stroke="red" x="11.5" y="22.5" width="17" height="14"></rect>
+                        <path d="M33.7928932,27.5 L6.20710678,27.5 L11.2071068,22.5 L28.7928932,22.5 L33.7928932,27.5 Z" id="Rectangle-Copy" stroke="red" fill="#FFFFFF"></path>
+                        <path d="M28.5,4.5 L28.5,19.2071068 L33.7928932,24.5 L6.20710678,24.5 L11.5,19.2071068 L11.5,4.5 L28.5,4.5 Z" id="Combined-Shape" stroke="red" fill="#FFFFFF"></path>
                     </g>
                 </svg>
             )
@@ -199,16 +199,24 @@ const Details = ({ note, mapPath, latInPx, longInPx, deviceSize }) => {
             </div>
 
             <div style={{ display: "flex", justifyContent: "space-between" }}>
-
-                <div style={{ ...itemStyle, width: "32%" }}>
-                    <h3>{deviceSize === "DESKTOP" ? "Rent pw:" : "Rent:"}</h3>
+                <div style={{ ...itemStyle, width: "49%" }}>
+                    <h3>{"Rent pw:"}</h3>
                     <div style={{ width: "100%", textAlign: "center" }}>
                         <h1>{`$${note.rent}`}</h1>
                     </div>
                 </div>
 
+                <div style={{ ...itemStyle, width: "49%" }}>
+                    <h3>{"Bond:"}</h3>
+                    <div style={{ width: "100%", textAlign: "center" }}>
+                        <h1>{`$${note.bond ? note.bond : "0"}`}</h1>
+                    </div>
+                </div>
+            </div>
+
+            <div style={{ display: "flex", justifyContent: "space-between" }}>
                 <div style={{ ...itemStyle, width: "32%" }}>
-                    <h3>{deviceSize === "DESKTOP" ? "Bed/Living Rooms:" : "Rooms:"}</h3>
+                    <h3>{deviceSize === "DESKTOP" ? "Bedrooms:" : "Rooms:"}</h3>
                     <div style={{ width: "100%", textAlign: "center" }}>
                         <h1>{note.numRoom}</h1>
                     </div>
@@ -221,6 +229,12 @@ const Details = ({ note, mapPath, latInPx, longInPx, deviceSize }) => {
                     </div>
                 </div>
 
+                <div style={{ ...itemStyle, width: "32%" }}>
+                    <h3>{deviceSize === "DESKTOP" ? "Outdoor Area?" : "Outdoor:"}</h3>
+                    <div style={{ width: "100%", textAlign: "center" }}>
+                        <h1>{note.outdoorArea || note.garden ? "Yes" : "No"}</h1>
+                    </div>
+                </div>
             </div>
 
             <div style={{ display: "flex", justifyContent: "space-between" }}>
@@ -270,7 +284,7 @@ const Details = ({ note, mapPath, latInPx, longInPx, deviceSize }) => {
                         return (
                             <div key={idx} style={{ width: deviceSize === "DESKTOP" ? "calc(100% / 4)" : "calc(100% / 2)", padding: "24px" }}>
                                 <div style={{ display: "flex", justifyContent: "center" }}>
-                                    <div style={{ width: "80px", height: "80px", border: "1px solid #979797", borderRadius: "50%", display: "flex", justifyContent: "center", alignItems: "center" }}>
+                                    <div style={{ width: "80px", height: "80px", border: (feature.name === "no shared floor or ceiling" || feature.name === "no shared wall") ? "1px solid red" : "1px solid #979797", borderRadius: "50%", display: "flex", justifyContent: "center", alignItems: "center" }}>
                                         {feature.svg}
                                     </div>
                                 </div>

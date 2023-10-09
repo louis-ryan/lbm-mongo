@@ -24,7 +24,7 @@ const Part2 = (props) => {
     useEffect(() => {
         // Scroll to the top of the page
         window.scrollTo({ top: 0, behavior: 'smooth' });
-      }, []);
+    }, []);
 
 
     return (
@@ -136,6 +136,25 @@ const Part2 = (props) => {
                     placeholder='0'
                     control='input'
                     name='rent'
+                    type='number'
+                    onChange={props.handleRent}
+                    style={{ width: "100%", fontSize: "32px", height: "80px", border: "none" }}
+                />
+                <div style={{ fontSize: "32px", margin: "24px 0px 0px 8px" }}>AUD</div>
+            </div>
+
+            <div style={{ height: "40px" }} />
+
+            <div>Bond</div>
+            <div style={{ fontSize: "12px" }}>{"(Leave blank if there is no bond to be paid)"}</div>
+            <div className="rent-input">
+                <div style={{ fontSize: "32px", margin: "24px 8px 0px 0px" }}>$</div>
+                <input
+                    className="rent-field"
+                    value={props.form.rent === 0 ? '' : props.form.bond}
+                    placeholder='0'
+                    control='input'
+                    name='bond'
                     type='number'
                     onChange={props.handleRent}
                     style={{ width: "100%", fontSize: "32px", height: "80px", border: "none" }}

@@ -26,7 +26,7 @@ const Part1 = (props) => {
 
             <div style={{ display: "flex", justifyContent: "space-between" }}>
                 <div style={{ width: "48%" }}>
-                    <div>Living/Bedrooms</div>
+                    <div>Bedrooms</div>
                     <input
                         control='input'
                         name='numRoom'
