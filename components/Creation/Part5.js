@@ -8,7 +8,7 @@ const Part5 = (props) => {
 
 
     const [contactInitialised, setContactInitialised] = useState("")
-    const [updateClickable, setUpdateClickable] = useState(false)
+    const [updateClickable, setUpdateClickable] = useState(true)
 
     const [userContacts, setUserContacts] = useState({
         name: props.user.given_name,

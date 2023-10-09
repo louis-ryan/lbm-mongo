@@ -84,6 +84,10 @@ const NoteSchema = new mongoose.Schema({
         type: Number,
         required: false
     },
+    bond: {
+        type: Number,
+        required: false
+    },
     walkToStation: {
         type: Boolean,
         required: false

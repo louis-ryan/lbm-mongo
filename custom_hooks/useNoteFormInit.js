@@ -4,6 +4,7 @@ function useNoteFormInit() {
         numBath: '',
         numRoom: '',
         rent: '',
+        bond: '',
         date: '',
         moveInDate: '',
         contractEnds: '',

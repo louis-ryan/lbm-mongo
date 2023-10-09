@@ -26,6 +26,27 @@ const Index = (props) => {
   const rentProps = useRentHandler(filter, setFilter, user)
 
 
+  const [isFixed, setIsFixed] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Change 300 to the scrollY position where you want the change to occur
+      if (window.scrollY > 160) {
+        setIsFixed(true);
+      } else {
+        setIsFixed(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    // Clean-up the event listener on component unmount
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+
   /**
    * Check for expired posts and delete them
    */
@@ -54,10 +75,11 @@ const Index = (props) => {
           <div ref={desktopComp} style={{ marginTop: "80px", width: "1200px", zoom: "0.72" }}>
             <WelcomeComp user={user} filter={filter} setFilter={setFilter} deviceSize={"DESKTOP"} nameChange={props.nameChange} setNameChange={props.setNameChange} />
             <div style={{ display: "flex", justifyContent: "space-between" }}>
-              <div style={{ width: "29%" }}>
+              <div style={{ width: "332px", position: isFixed && "fixed", transform: isFixed && "translateY(-224px)" }}>
                 <FilterComp filter={filter} lastFilterFromServer={lastFilterFromServer} setFilter={setFilter} updateFilter={updateFilter} deleteFilter={deleteFilter} filterUpdating={filterUpdating} notes={notes} rentProps={rentProps} deviceSize={"DESKTOP"} />
               </div>
-              <div style={{ width: "69%" }}>
+              {isFixed && (<div style={{ width: "332px" }} />)}
+              <div style={{ width: "calc(100% - 348px)" }}>
                 <ListingComp notes={notes} rendering={rendering} unlimitedNotes={unlimitedNotes} skipping={skipping} setSkipping={setSkipping} getSkippedNotes={getSkippedNotes} deviceSize={"DESKTOP"} />
               </div>
             </div>
