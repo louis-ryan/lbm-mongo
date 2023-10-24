@@ -10,12 +10,18 @@ export default async (req, res) => {
     var searchSkip = 10
     var filterObject = {}
 
+    let userId;
+
     const listOfFilters = filter.split(";")
 
     listOfFilters.map((singleFilter) => {
         const [key, value] = singleFilter.split("=")
 
         switch (key) {
+
+            case "userId":
+                userId = value;
+                break;
 
             case "searchLimit":
                 searchLimit = value
@@ -29,6 +35,12 @@ export default async (req, res) => {
                 const arrayOfPlaceNames = value.split(",")
                 if (arrayOfPlaceNames[0] === '') return
                 filterObject = { ...filterObject, address: arrayOfPlaceNames }
+                break;
+
+            case "type":
+                if (!value) return
+                const valueArray = value.split(",");
+                filterObject = { ...filterObject, type: { $in: valueArray } }
                 break;
 
             case "rent":
@@ -94,6 +106,11 @@ export default async (req, res) => {
                 break;
         }
     })
+
+
+    if (userId) {
+        filterObject = { ...filterObject, breakerId: { $ne: userId } } // Exclude notes made by the user
+    }
 
 
     try {

@@ -1,4 +1,5 @@
 import FilterHeader from "./FilterHeader";
+import detailsIcon from '../../public/filter_icons/Details.svg';
 
 
 const Rooms = ({ reveal, setReveal, deviceSize, filter, setFilter }) => {
@@ -29,30 +30,16 @@ const Rooms = ({ reveal, setReveal, deviceSize, filter, setFilter }) => {
     }
 
 
-
     return (
         <>
-            <div
-                className="filter-box"
-                style={{ border: activeCondition ? "#50554A 4px solid" : "2px solid #50554A" }}
-            >
+            <div className={`filter-box ${activeCondition && "selected"}`}>
 
                 <FilterHeader
                     headerTitle={'Details'}
                     headerSubTitle={getHeaderSubtitle()}
                     activeCondition={activeCondition}
-                    onClick={() => reveal === "DETAILS" ? setReveal("NONE") : setReveal("DETAILS")}
-                    icon={
-                        <g id="Details" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
-                            <circle id="Oval" stroke="#979797" cx="6" cy="9" r="2.5"></circle>
-                            <circle id="Oval-Copy" stroke="#979797" cx="6" cy="20" r="2.5"></circle>
-                            <circle id="Oval-Copy-2" stroke="#979797" cx="6" cy="31" r="2.5"></circle>
-                            <rect id="Rectangle" stroke="#979797" x="13.5" y="7.5" width="22" height="3" rx="1.5"></rect>
-                            <rect id="Rectangle-Copy" stroke="#979797" x="13.5" y="18.5" width="22" height="3" rx="1.5"></rect>
-                            <rect id="Rectangle-Copy-2" stroke="#979797" x="13.5" y="29.5" width="22" height="3" rx="1.5"></rect>
-                        </g>
-                    }
-
+                    onClick={() => {reveal === "DETAILS" ? setReveal("NONE") : setReveal("DETAILS"); window.scrollTo({ top: 340, behavior: 'smooth' })}}
+                    icon={detailsIcon}
                 />
 
                 {reveal === "DETAILS" &&

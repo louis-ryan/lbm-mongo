@@ -25,7 +25,7 @@ function MyApp({ Component, pageProps }) {
                 <title>LBM</title>
             </Head>
             <UserProvider>
-                <Layout setNameChange={setNameChange}>
+                <Layout nameChange={nameChange} setNameChange={setNameChange}>
                     <Component {...pageProps} setMobilePromoState={setMobilePromoState} nameChange={nameChange} setNameChange={setNameChange} />
                 </Layout>
             </UserProvider>

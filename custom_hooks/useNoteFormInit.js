@@ -1,6 +1,7 @@
 function useNoteFormInit() {
 
     return {
+        type: '',
         numBath: '',
         numRoom: '',
         rent: '',
@@ -8,7 +9,7 @@ function useNoteFormInit() {
         date: '',
         moveInDate: '',
         contractEnds: '',
-        contractTerminates: false
+        contractTerminates: ''
     }
 }
 

@@ -1,6 +1,8 @@
 import Part0 from './Part0';
 import Part1 from './Part1';
+import Part1a from './Part1a';
 import Part2 from './Part2';
+import Part2a from './Part2a';
 import Part3 from './Part3';
 import Part4 from './Part4';
 import Part5 from './Part5';
@@ -13,6 +15,7 @@ const Parts = ((props) => {
         case 0:
             return (
                 <Part0
+                    part={0}
                     errors={props.props.errors}
                     form={props.props.form}
                     setPart={props.props.setPart}
@@ -30,17 +33,33 @@ const Parts = ((props) => {
         case 1:
             return (
                 <Part1
+                    part={1}
                     errors={props.props.errors}
                     form={props.props.form}
                     setPart={props.props.setPart}
                     handleChange={props.props.handleChange}
                     formBools={props.props.formBools}
                     setFormBools={props.props.setFormBools}
+                    handleType={props.props.handleType}
                 />
             )
         case 2:
             return (
+                <Part1a
+                    part={2}
+                    errors={props.props.errors}
+                    form={props.props.form}
+                    setPart={props.props.setPart}
+                    handleChange={props.props.handleChange}
+                    formBools={props.props.formBools}
+                    setFormBools={props.props.setFormBools}
+                    handleType={props.props.handleType}
+                />
+            )
+        case 3:
+            return (
                 <Part2
+                    part={3}
                     errors={props.props.errors}
                     setPart={props.props.setPart}
                     form={props.props.form}
@@ -51,18 +70,34 @@ const Parts = ((props) => {
                     handleRent={props.props.handleRent}
                 />
             )
-        case 3:
+        case 4:
+            return (
+                <Part2a
+                    part={4}
+                    errors={props.props.errors}
+                    setPart={props.props.setPart}
+                    form={props.props.form}
+                    setForm={props.props.setForm}
+                    handleContractEnds={props.props.handleContractEnds}
+                    handleContractTerminates={props.props.handleContractTerminates}
+                    handleMoveInDate={props.props.handleMoveInDate}
+                    handleRent={props.props.handleRent}
+                />
+            )
+        case 5:
             return (
                 <Part3
+                    part={5}
                     errors={props.props.errors}
                     setPart={props.props.setPart}
                     form={props.props.form}
                     handleChange={props.props.handleChange}
                 />
             )
-        case 4:
+        case 6:
             return (
                 <Part4
+                    part={6}
                     errors={props.props.errors}
                     setPart={props.props.setPart}
                     form={props.props.form}
@@ -71,9 +106,10 @@ const Parts = ((props) => {
                 />
 
             )
-        case 5:
+        case 7:
             return (
                 <Part5
+                    part={7}
                     errors={props.props.errors}
                     setPart={props.props.setPart}
                     form={props.props.form}
@@ -81,9 +117,10 @@ const Parts = ((props) => {
                     user={props.props.user}
                 />
             )
-        case 6:
+        case 8:
             return (
                 <Part6
+                    part={8}
                     errors={props.props.errors}
                     setPart={props.props.setPart}
                     form={props.props.form}
@@ -102,17 +139,17 @@ const PropertyInfo = (props) => {
         <div style={{ display: "flex", justifyContent: "center", marginBottom: props.device === "DESKTOP" && "120px" }}>
             <div
                 style={{
-                    width: props.device === "DESKTOP" ? "920px" : "100%",
+                    width: props.device === "DESKTOP" ? "720px" : "100%",
                     display: "flex",
                     justifyContent: "center",
                     backgroundColor: props.device === "DESKTOP" && "white",
-                    boxShadow: props.device === "DESKTOP" && "0px 0px 40px darkgrey",
+                    border: "1px solid rgb(181, 181, 181)",
                     borderRadius: "8px",
                 }}
             >
                 <form style={{
-                    width: props.part === 6 ? "90%" : "calc(100% - 32px)",
-                    maxWidth: props.part === 6 ? "90%" : "400px",
+                    width: "calc(100% - 32px)",
+                    maxWidth: "400px",
                     padding: props.device === "DESKTOP" ? "40px 0px" : "20px 0px 80px 0px"
                 }}>
 

@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import mapArr from './MapArr';
 import FilterHeader from "./FilterHeader";
+import locationIcon from '../../public/filter_icons/Location.svg';
 
 
-const Location = ({ reveal, setReveal, deviceSize, filter, setFilter }) => {
+const Location = ({ reveal, setReveal, filter, setFilter }) => {
 
     const [view, setView] = useState("AREA")
     const [filterRendered, setFilterRendered] = useState(false)
@@ -11,6 +12,8 @@ const Location = ({ reveal, setReveal, deviceSize, filter, setFilter }) => {
     const [areaSelectedArr, setAreaSelectedArr] = useState([])
     const [selectionArr, setSelectionArr] = useState([])
     const [areasArr, setAreasArr] = useState([])
+
+    const activeCondition = filter.addresses.length && filter.addresses.length > 0
 
 
     const handleFilterAdd = (postCodes, areaSelectedArr) => {
@@ -125,22 +128,14 @@ const Location = ({ reveal, setReveal, deviceSize, filter, setFilter }) => {
 
     return (
         <>
-            <div
-                className="filter-box"
-                style={{ border: filter.addresses.length && filter.addresses.length > 0 ? "#50554A 4px solid" : "2px solid #50554A" }}
-            >
+            <div className={`filter-box ${activeCondition && "selected"}`}>
 
                 <FilterHeader
                     headerTitle={'Location'}
                     headerSubTitle={`${filter.addresses.length} addresses in your filter`}
                     activeCondition={filter.addresses.length && filter.addresses.length > 0}
-                    onClick={() => reveal === "LOCATION" ? setReveal("NONE") : setReveal("LOCATION")}
-                    icon={
-                        <g id="Location" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
-                            <path d="M8.5,14 C8.5,10.8243627 9.78718134,7.94936269 11.868272,5.86827202 C13.9493627,3.78718134 16.8243627,2.5 20,2.5 C23.1756373,2.5 26.0506373,3.78718134 28.131728,5.86827202 C30.2128187,7.94936269 31.5,10.8243627 31.5,14 C31.5,18.2947181 27.6325211,25.9965025 19.9995546,37.1176651 C12.3669984,25.9955456 8.5,18.2944513 8.5,14 Z" id="Oval" stroke="#979797"></path>
-                            <circle id="Oval" stroke="#979797" cx="20" cy="13" r="6.5"></circle>
-                        </g>
-                    }
+                    onClick={() => { reveal === "LOCATION" ? setReveal("NONE") : setReveal("LOCATION"); window.scrollTo({ top: 172, behavior: 'smooth' }) }}
+                    icon={locationIcon}
                 />
 
                 {reveal === "LOCATION" &&
@@ -179,7 +174,7 @@ const Location = ({ reveal, setReveal, deviceSize, filter, setFilter }) => {
                         {view === "AREA" && (
                             <>
 
-                                <div style={{ height: "312px", margin: "-16px 0px 0px 16px", transform: "scale(0.2) translateY(-520px) translateX(-680px)" }}>
+                                <div style={{ height: "240px", margin: "-16px 0px 0px 16px", transform: "scale(0.16) translateY(-640px) translateX(-720px)" }}>
                                     {mapArr.map((map, idx) => {
                                         return (
                                             <div key={idx}>
@@ -209,7 +204,8 @@ const Location = ({ reveal, setReveal, deviceSize, filter, setFilter }) => {
                                                     marginTop: "6px",
                                                     borderRadius: "4px",
                                                     color: areaSelectedArr.indexOf(area) === -1 ? "grey" : "black",
-                                                    cursor: "pointer"
+                                                    cursor: "pointer",
+                                                    fontSize: "12px"
                                                 }}
                                             >
                                                 <div>{area}</div>

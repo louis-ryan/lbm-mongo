@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="40px" height="40px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 62 (91390) - https://sketch.com -->
+    <title>Rooms</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Rooms" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M31,31 L9,31 L9,22 C9,21.7238576 9.11192881,21.4738576 9.29289322,21.2928932 C9.47385763,21.1119288 9.72385763,21 10,21 L20,21 L30,21 C30.2761424,21 30.5261424,21.1119288 30.7071068,21.2928932 C30.8880712,21.4738576 31,21.7238576 31,22 L31,31 Z" id="Rectangle" stroke="#B5B5B5" stroke-width="2"></path>
+        <path d="M9,18 L9,32 L4,32 L4,18 C4,17.7238576 4.11192881,17.4738576 4.29289322,17.2928932 C4.47385763,17.1119288 4.72385763,17 5,17 L8,17 C8.27614237,17 8.52614237,17.1119288 8.70710678,17.2928932 C8.88807119,17.4738576 9,17.7238576 9,18 Z" id="Rectangle" stroke="#B5B5B5" stroke-width="2"></path>
+        <path d="M31,21 L9,21 L9,14 C9,12.6192881 9.55964406,11.3692881 10.4644661,10.4644661 C11.3692881,9.55964406 12.6192881,9 14,9 L26,9 C27.3807119,9 28.6307119,9.55964406 29.5355339,10.4644661 C30.4403559,11.3692881 31,12.6192881 31,14 L31,21 Z" id="Rectangle" stroke="#B5B5B5" stroke-width="2"></path>
+        <path d="" id="Rectangle" stroke="#B5B5B5" stroke-width="2"></path>
+        <path d="" id="Rectangle-Copy-3" stroke="#B5B5B5" stroke-width="2"></path>
+        <path d="" id="Rectangle-Copy-4" stroke="#B5B5B5" stroke-width="2"></path>
+        <path d="" id="Rectangle-Copy-2" stroke="#B5B5B5" stroke-width="2"></path>
+        <path d="M36,18 L36,32 L31,32 L31,18 C31,17.7238576 31.1119288,17.4738576 31.2928932,17.2928932 C31.4738576,17.1119288 31.7238576,17 32,17 L35,17 C35.2761424,17 35.5261424,17.1119288 35.7071068,17.2928932 C35.8880712,17.4738576 36,17.7238576 36,18 Z" id="Rectangle-Copy" stroke="#B5B5B5" stroke-width="2"></path>
+        <path d="M13,25 C15.3333333,24.3333333 17.6666667,24 20,24 C22.3333333,24 24.6666667,24.3333333 27,25" id="Line-14" stroke="#B5B5B5" stroke-width="2" stroke-linecap="square"></path>
+        <line x1="12.5" y1="17.5" x2="12.5" y2="19.5" id="Line-15" stroke="#B5B5B5" stroke-width="2" stroke-linecap="square"></line>
+        <line x1="27.5" y1="17.5" x2="27.5" y2="20.5" id="Line-15-Copy" stroke="#B5B5B5" stroke-width="2" stroke-linecap="square"></line>
+    </g>
+</svg>

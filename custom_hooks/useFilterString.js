@@ -1,10 +1,12 @@
 function useFilterString(filter, limit, skipping) {
 
     return (
+        `userId=${filter.userId};` +
         `searchLimit=${limit};` +
         `searchSkip=${skipping};` +
         `notesOrder=${filter.notesOrder};` +
         `address=${filter.addresses.join()};` +
+        `type=${filter.type};` +
         `rent=${filter.selectedRentVal};` +
         `minBed=${filter.minBed};` +
         `minBath=${filter.minBath};` +
