@@ -1,4 +1,6 @@
-import mongoose from 'mongoose';
+const mongoose = require('mongoose');
+require('dotenv').config();
+
 
 const connection = {};
 
@@ -16,4 +18,4 @@ async function dbConnect() {
     connection.isConnected = db.connections[0].readyState;
 }
 
-export default dbConnect;
+module.exports = dbConnect;

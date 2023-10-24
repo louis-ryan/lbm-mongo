@@ -74,7 +74,12 @@ const FilterSchema = new mongoose.Schema({
     },
     notesOrder: {
         type: String
-    }
+    },
+    type: [
+        {
+            type: String
+        }
+    ]
 })
 
 module.exports = mongoose.models.Filter || mongoose.model('Filter', FilterSchema);

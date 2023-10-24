@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useUser } from '@auth0/nextjs-auth0';
 import { useRouter } from 'next/router';
+import logo from '../../public/LBM_rounded.svg'
 import NavbarUserOptions from './NavbarUserOptions';
 import NavbarDropdown from './NavbarDropdown'
 import ContactModal from './ContactModal';
@@ -42,9 +43,9 @@ const Navbar = (props) => {
             <>
                 <div
                     onClick={() => router.push('/')}
-                    style={{ position: "fixed", zIndex: "30", top: "8px", left: "4px", zoom: "0.72", cursor: "pointer", marginTop: "8px" }}
+                    style={{ position: "fixed", zIndex: "30", top: "4px", left: "4px", cursor: "pointer", marginTop: "8px" }}
                 >
-                    <img src="https://images.squarespace-cdn.com/content/v1/56dce00a45bf214a0b3fadf3/5cf24fcb-d5dc-44b2-a321-b28ee3d3e00d/lbm_new_logo.png?format=500w" />
+                    <img src={logo} style={{ height: "60px" }} />
                 </div>
 
                 <div>

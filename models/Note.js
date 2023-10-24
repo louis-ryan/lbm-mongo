@@ -104,6 +104,11 @@ const NoteSchema = new mongoose.Schema({
         type: Boolean,
         required: false
     },
+    type: {
+        type: String,
+        required: true,
+        default: 'APARTMENT'
+    }
 })
 
 module.exports = mongoose.models.Note || mongoose.model('Note', NoteSchema);

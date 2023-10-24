@@ -1,16 +1,20 @@
 import { useState, useEffect } from "react";
+import NavButtons from "./NavButtons";
 
 
 const Part2 = (props) => {
 
 
-    const [extensionPossible, setExtensionPossible] = useState("")
     const [readyToMove, setReadyToMove] = useState("")
+
+
+    let date = new Date();
+    let options = { year: 'numeric', month: '2-digit', day: '2-digit' };
+    let formattedDate = date.toLocaleDateString('en-GB', options).split('/').reverse().join('-');
 
 
     const nextCondition = (
         props.form.contractEnds &&
-        props.form.rent &&
         props.form.moveInDate &&
         !props.errors.contractEnds &&
         !props.errors.moveInDate
@@ -27,21 +31,30 @@ const Part2 = (props) => {
     }, []);
 
 
+    useEffect(() => {
+        if (!props.form.moveInDate) return
+        if (formattedDate === props.form.moveInDate) {
+            setReadyToMove("ready")
+        } else {
+            setReadyToMove("not_ready")
+        }
+    }, [])
+
+
     return (
         <>
             <div style={{ height: "16px" }} />
 
-            {/* <InputHeader header={'Part 3/5: Contract'} /> */}
-
-            <h1>{'Part 3/6: Contract'}</h1>
+            <h1>{'Part 4/8: Dates'}</h1>
 
             <div style={{ height: "40px" }} />
 
-            <div>End of current contract</div>
+            <h3>End of current contract</h3>
 
             <input
                 type="date"
                 onChange={(e) => props.handleContractEnds(e.target.value)}
+                value={props.form.contractEnds}
                 style={{ width: "100%", fontFamily: "sans-serif", padding: "24px", fontSize: "24px", border: props.errors.contractEnds && "2px solid #a57583" }}
             />
 
@@ -53,27 +66,21 @@ const Part2 = (props) => {
 
             <div style={{ height: "24px" }} />
 
-            <div>Will it be possible for the new tennant to extend their contract after this time?</div>
+            <h3>Will it be possible for the new tennant to extend their contract after this time?</h3>
 
             <div style={{ height: "8px" }} />
             <div style={{ fontSize: "12px" }}>{"(This is not binding but if there is no possiblity of renewal enter 'No')"}</div>
 
             <div style={{ display: "flex", justifyContent: "space-between", width: "100%", marginTop: "8px" }}>
                 <div
-                    onClick={() => {
-                        setExtensionPossible("possible")
-                        props.handleContractTerminates(false)
-                    }}
-                    style={{ display: "flex", cursor: "pointer", justifyContent: "center", alignItems: "center", height: "80px", width: "49%", backgroundColor: extensionPossible === "possible" ? "#00F2C4" : "lightgrey", color: extensionPossible === "possible" && "black" }}
+                    onClick={() => props.handleContractTerminates(false)}
+                    style={{ display: "flex", cursor: "pointer", justifyContent: "center", alignItems: "center", height: "80px", width: "49%", backgroundColor: !props.form.contractTerminates ? "#00F2C4" : "lightgrey", color: !props.form.contractTerminates && "black" }}
                 >
                     Yes
                 </div>
                 <div
-                    onClick={() => {
-                        setExtensionPossible("not_possible")
-                        props.handleContractTerminates(true)
-                    }}
-                    style={{ display: "flex", cursor: "pointer", justifyContent: "center", alignItems: "center", height: "80px", width: "49%", backgroundColor: extensionPossible === "not_possible" ? "#00F2C4" : "lightgrey", color: extensionPossible === "not_possible" && "black" }}
+                    onClick={() => props.handleContractTerminates(true)}
+                    style={{ display: "flex", cursor: "pointer", justifyContent: "center", alignItems: "center", height: "80px", width: "49%", backgroundColor: props.form.contractTerminates ? "#00F2C4" : "lightgrey", color: props.form.contractTerminates && "black" }}
                 >
                     No
                 </div>
@@ -81,15 +88,12 @@ const Part2 = (props) => {
 
             <div style={{ height: "24px" }} />
 
-            <div>Are you ready for a tennant to move in now?</div>
+            <h3>Are you ready for a tennant to move in now?</h3>
 
             <div style={{ display: "flex", justifyContent: "space-between", width: "100%", marginTop: "8px" }}>
                 <div
                     onClick={() => {
                         setReadyToMove("ready")
-                        let date = new Date();
-                        let options = { year: 'numeric', month: '2-digit', day: '2-digit' };
-                        let formattedDate = date.toLocaleDateString('en-GB', options).split('/').reverse().join('-');
                         props.handleMoveInDate(formattedDate)
                     }}
                     style={{ display: "flex", cursor: "pointer", justifyContent: "center", alignItems: "center", height: "80px", width: "49%", backgroundColor: readyToMove === "ready" ? "#00F2C4" : "lightgrey", color: readyToMove === "ready" && "black" }}
@@ -97,7 +101,10 @@ const Part2 = (props) => {
                     Yes
                 </div>
                 <div
-                    onClick={() => setReadyToMove("not_ready")}
+                    onClick={() => {
+                        setReadyToMove("not_ready")
+                        props.handleMoveInDate("")
+                    }}
                     style={{ display: "flex", cursor: "pointer", justifyContent: "center", alignItems: "center", height: "80px", width: "49%", backgroundColor: readyToMove === "not_ready" ? "#00F2C4" : "lightgrey", color: readyToMove === "not_ready" && "black" }}
                 >
                     No
@@ -108,11 +115,12 @@ const Part2 = (props) => {
                 <>
                     <div style={{ height: "24px" }} />
 
-                    <div>Earliest possible move in date for new tennant</div>
+                    <h3>Earliest possible move in date for new tennant</h3>
 
                     <input
                         type="date"
                         onChange={(e) => props.handleMoveInDate(e.target.value)}
+                        value={props.form.moveInDate}
                         style={{ width: "100%", fontFamily: "sans-serif", padding: "24px", fontSize: "24px", border: props.errors.moveInDate && "2px solid #a57583" }}
                     />
 
@@ -124,64 +132,13 @@ const Part2 = (props) => {
                 </>
             )}
 
-
             <div style={{ height: "40px" }} />
 
-            <div>Rent Calculated Weekly</div>
-            <div className="rent-input">
-                <div style={{ fontSize: "32px", margin: "24px 8px 0px 0px" }}>$</div>
-                <input
-                    className="rent-field"
-                    value={props.form.rent === 0 ? '' : props.form.rent}
-                    placeholder='0'
-                    control='input'
-                    name='rent'
-                    type='number'
-                    onChange={props.handleRent}
-                    style={{ width: "100%", fontSize: "32px", height: "80px", border: "none" }}
-                />
-                <div style={{ fontSize: "32px", margin: "24px 0px 0px 8px" }}>AUD</div>
-            </div>
-
-            <div style={{ height: "40px" }} />
-
-            <div>Bond</div>
-            <div style={{ fontSize: "12px" }}>{"(Leave blank if there is no bond to be paid)"}</div>
-            <div className="rent-input">
-                <div style={{ fontSize: "32px", margin: "24px 8px 0px 0px" }}>$</div>
-                <input
-                    className="rent-field"
-                    value={props.form.rent === 0 ? '' : props.form.bond}
-                    placeholder='0'
-                    control='input'
-                    name='bond'
-                    type='number'
-                    onChange={props.handleRent}
-                    style={{ width: "100%", fontSize: "32px", height: "80px", border: "none" }}
-                />
-                <div style={{ fontSize: "32px", margin: "24px 0px 0px 8px" }}>AUD</div>
-            </div>
-
-            <div style={{ height: "40px" }} />
-
-            <div style={{ width: "100%", display: "flex", justifyContent: "space-between" }}>
-                <div
-                    className="button secondary"
-                    onClick={() => props.setPart(1)}
-                    style={{ width: "48%" }}
-                >
-                    Back
-                </div>
-
-                <div
-                    className="button primary"
-                    onClick={() => props.setPart(3)}
-                    style={{ ...handleNextButton, width: "48%" }}
-                >
-                    Next
-                </div>
-            </div>
-
+            <NavButtons
+                part={props.part}
+                handleNextButton={handleNextButton}
+                props={props}
+            />
         </>
     )
 }

@@ -6,7 +6,7 @@ const NavbarDropdown = ({ setUserOptions, setContactShowing, myListings }) => {
 
         <div
             onClick={() => setUserOptions(false)}
-            style={{ position: "fixed", width: "100vw", height: "100vh", zIndex: "9", top: "0px", right: "0px" }}
+            style={{ position: "fixed", width: "100vw", height: "100vh", zIndex: "200", top: "0px", right: "0px" }}
         >
             <div style={{ position: "absolute", width: "208px", zIndex: "10", top: "48px", right: "40px" }}>
 

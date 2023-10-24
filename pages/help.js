@@ -4,13 +4,11 @@ import logo from '../public/LBM_logo.svg';
 import download from '../public/Download.svg';
 import useWindowWidth from '../custom_hooks/useWindowWidth';
 import { useUser } from '@auth0/nextjs-auth0';
-import { useRouter } from 'next/router';
 
 
 const Help = () => {
 
     const windowWidth = useWindowWidth()
-    const router = useRouter()
     const { user } = useUser()
 
 
@@ -81,7 +79,7 @@ const Help = () => {
                                                 onMouseEnter={() => document.getElementById("downloadIcon").style.filter = "invert(1)"}
                                                 onMouseLeave={() => document.getElementById("downloadIcon").style.filter = "none"}
                                             >
-                                                <img id="downloadIcon" src={download} alt="download" style={{ zoom: "0.6" }} />
+                                                <img id="downloadIcon" src={download} alt="download" style={{ height: "20px" }} />
                                                 <div style={{ width: "8px" }} />
                                                 <div>Tenant transfer pdf</div>
                                             </div>

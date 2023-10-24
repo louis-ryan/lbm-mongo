@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="40px" height="40px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 62 (91390) - https://sketch.com -->
+    <title>Move In</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Move-In" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M34,35 L14,35 C11.790861,35 9.790861,34.1045695 8.34314575,32.6568542 C6.8954305,31.209139 6,29.209139 6,27 L6,8 L9,8 L9,10 L14,10 L14,8 L26,8 L26,10 L31,10 L31,8 L34,8 L34,35 Z" id="Rectangle" stroke="#B5B5B5" stroke-width="2"></path>
+        <rect id="Rectangle" stroke="#B5B5B5" stroke-width="2" x="10" y="5" width="3" height="5"></rect>
+        <rect id="Rectangle-Copy" stroke="#B5B5B5" stroke-width="2" x="27" y="5" width="3" height="5"></rect>
+        <path d="M31,32 L15,32 L15,27 L9,27 L9,15 L31,15 L31,32 Z" id="Rectangle" stroke="#B5B5B5" stroke-width="2"></path>
+        <line x1="23.5" y1="17.5" x2="25.5" y2="19.5" id="Line-17" stroke="#B5B5B5" stroke-width="2" stroke-linecap="square"></line>
+        <line x1="23.5" y1="19.5" x2="25.5" y2="17.5" id="Line-2" stroke="#B5B5B5" stroke-width="2" stroke-linecap="square"></line>
+        <line x1="17.5" y1="17.5" x2="19.5" y2="19.5" id="Line-18" stroke="#B5B5B5" stroke-width="2" stroke-linecap="square"></line>
+        <line x1="17.5" y1="19.5" x2="19.5" y2="17.5" id="Line-3" stroke="#B5B5B5" stroke-width="2" stroke-linecap="square"></line>
+        <line x1="11.5" y1="17.5" x2="13.5" y2="19.5" id="Line-19" stroke="#B5B5B5" stroke-width="2" stroke-linecap="square"></line>
+        <line x1="11.5" y1="19.5" x2="13.5" y2="17.5" id="Line-4" stroke="#B5B5B5" stroke-width="2" stroke-linecap="square"></line>
+        <line x1="6.5" y1="27.5" x2="12.5" y2="27.5" id="Line-16" stroke="#B5B5B5" stroke-width="2" stroke-linecap="square"></line>
+        <line x1="14.5" y1="34.5" x2="14.5" y2="27.5" id="Line" stroke="#B5B5B5" stroke-width="2" stroke-linecap="square"></line>
+    </g>
+</svg>

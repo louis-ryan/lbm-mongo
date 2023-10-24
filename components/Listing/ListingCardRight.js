@@ -12,14 +12,14 @@ const ListingCardRight = ({ note }) => {
                             <img
                                 alt="note image"
                                 src={pic.url}
-                                style={{ height: "320px" }}
+                                style={{ height: "240px" }}
                             />
                         </span>
                     )
                 })
             ) : (
-                <div style={{ height: "320px", width: "100%", height: "100%", backgroundColor: "grey" }}>
-                    <div style={{ height: "320px", color: "white", display: "flex", justifyContent: "center", alignItems: "center", fontSize: "24px", overflow: "hidden" }}>
+                <div style={{ height: "240px", width: "100%", height: "100%", backgroundColor: "grey" }}>
+                    <div style={{ height: "240px", color: "white", display: "flex", justifyContent: "center", alignItems: "center", fontSize: "24px", overflow: "hidden" }}>
 
                         <img
                             alt="blank image"

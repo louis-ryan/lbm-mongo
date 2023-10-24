@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="80px" height="80px" viewBox="0 0 80 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 62 (91390) - https://sketch.com -->
+    <title>Student Accom</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#5E4C34" offset="0%"></stop>
+            <stop stop-color="#A99173" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Student-Accom" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <polygon id="Rectangle" fill="#546954" points="10.9411765 63 69.0588235 63 78 70 2 70"></polygon>
+        <rect id="Rectangle" stroke="#979797" fill="#D8D8D8" x="14.5" y="36.5" width="51" height="29"></rect>
+        <rect id="Rectangle-Copy-18" fill="#665A4B" x="19" y="36" width="52" height="30"></rect>
+        <path d="M9,27.0810811 C13,26.3603604 16,26 18,26 C20,26 23,26.3603604 27,27.0810811 L27,66 L9,66 L9,27.0810811 Z" id="Rectangle" fill="url(#linearGradient-1)"></path>
+        <path d="M53,27.0810811 C57,26.3603604 60,26 62,26 C64,26 67,26.3603604 71,27.0810811 L71,66 L53,66 L53,27.0810811 Z" id="Rectangle-Copy" fill="url(#linearGradient-1)"></path>
+        <rect id="Rectangle" fill="#3F3F3F" x="34" y="54" width="13" height="12"></rect>
+        <path d="M12,36 C12,35.3333333 12.6666667,35 14,35 C15.3333333,35 16,35.3333333 16,36 L16,41 L12,41 L12,36 Z" id="Rectangle" fill="#E2D9B3"></path>
+        <path d="M56,36 C56,35.3333333 56.6666667,35 58,35 C59.3333333,35 60,35.3333333 60,36 L60,41 L56,41 L56,36 Z" id="Rectangle-Copy-9" fill="#E0DDD1"></path>
+        <rect id="Rectangle-Copy-5" fill="#3F3F3F" x="12" y="50" width="4" height="5"></rect>
+        <rect id="Rectangle-Copy-11" fill="#3F3F3F" x="56" y="50" width="4" height="5"></rect>
+        <path d="M20,36 C20,35.3333333 20.6666667,35 22,35 C23.3333333,35 24,35.3333333 24,36 L24,41 L20,41 L20,36 Z" id="Rectangle-Copy-2" fill="#FFFBEB"></path>
+        <path d="M64,36 C64,35.3333333 64.6666667,35 66,35 C67.3333333,35 68,35.3333333 68,36 L68,41 L64,41 L64,36 Z" id="Rectangle-Copy-13" fill="#EAC969"></path>
+        <rect id="Rectangle-Copy-6" fill="#ECD0A0" x="20" y="50" width="4" height="5"></rect>
+        <rect id="Rectangle-Copy-15" fill="#E8E8E8" x="64" y="50" width="4" height="5"></rect>
+        <path d="M29,43 C29,42.3333333 29.6666667,42 31,42 C32.3333333,42 33,42.3333333 33,43 L33,48 L29,48 L29,43 Z" id="Rectangle" fill="#DDB166"></path>
+        <path d="M47,43 C47,42.3333333 47.6666667,42 49,42 C50.3333333,42 51,42.3333333 51,43 L51,48 L47,48 L47,43 Z" id="Rectangle-Copy-17" fill="#3F3F3F"></path>
+    </g>
+</svg>

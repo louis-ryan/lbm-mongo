@@ -46,6 +46,9 @@ function useNoteHandleEvents(form, setForm, post, setPost, setValidAddresses, se
         setErrors({ ...errors, address: null })
     }
 
+    const handleType = (val) => { setForm({ ...form, type: val }) }
+
+
     return [
         handleSubmit,
         handleChange,
@@ -55,7 +58,8 @@ function useNoteHandleEvents(form, setForm, post, setPost, setValidAddresses, se
         handleContractEnds,
         handleContractTerminates,
         handleAddress,
-        handleClearPost
+        handleClearPost,
+        handleType
     ]
 }
 

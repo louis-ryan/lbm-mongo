@@ -26,27 +26,6 @@ const Index = (props) => {
   const rentProps = useRentHandler(filter, setFilter, user)
 
 
-  const [isFixed, setIsFixed] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      // Change 300 to the scrollY position where you want the change to occur
-      if (window.scrollY > 160) {
-        setIsFixed(true);
-      } else {
-        setIsFixed(false);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-
-    // Clean-up the event listener on component unmount
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
-
   /**
    * Check for expired posts and delete them
    */
@@ -72,14 +51,18 @@ const Index = (props) => {
     if (windowWidth > 800 || windowWidth === null) {
       return (
         <div style={{ width: "100%", display: "flex", justifyContent: "center" }}>
-          <div ref={desktopComp} style={{ marginTop: "80px", width: "1200px", zoom: "0.72" }}>
-            <WelcomeComp user={user} filter={filter} setFilter={setFilter} deviceSize={"DESKTOP"} nameChange={props.nameChange} setNameChange={props.setNameChange} />
+          <div ref={desktopComp} style={{ marginTop: "24px", width: "920px" }}>
+            {windowWidth > 1220 ? (
+              <WelcomeComp user={user} filter={filter} setFilter={setFilter} deviceSize={"DESKTOP"} nameChange={props.nameChange} setNameChange={props.setNameChange} />
+            ) : (
+              <div style={{ height: "72px" }} />
+            )}
+            <div style={{ width: "100%", height: "1px", backgroundColor: "rgb(181, 181, 181)", marginTop: "48px" }} />
             <div style={{ display: "flex", justifyContent: "space-between" }}>
-              <div style={{ width: "332px", position: isFixed && "fixed", transform: isFixed && "translateY(-224px)" }}>
+              <div style={{ width: "280px", opacity: !rentProps[6] && "0", transitionDuration: "500ms", transitionDelay: "1s" }}>
                 <FilterComp filter={filter} lastFilterFromServer={lastFilterFromServer} setFilter={setFilter} updateFilter={updateFilter} deleteFilter={deleteFilter} filterUpdating={filterUpdating} notes={notes} rentProps={rentProps} deviceSize={"DESKTOP"} />
               </div>
-              {isFixed && (<div style={{ width: "332px" }} />)}
-              <div style={{ width: "calc(100% - 348px)" }}>
+              <div style={{ width: "calc(100% - 288px)" }}>
                 <ListingComp notes={notes} rendering={rendering} unlimitedNotes={unlimitedNotes} skipping={skipping} setSkipping={setSkipping} getSkippedNotes={getSkippedNotes} deviceSize={"DESKTOP"} />
               </div>
             </div>
@@ -91,10 +74,10 @@ const Index = (props) => {
     if (windowWidth <= 800) {
       return (
         <>
-          <div style={{ zoom: "0.8" }}>
-            <WelcomeComp user={user} filter={filter} setFilter={setFilter} deviceSize={"MOBILE"} nameChange={props.nameChange} setNameChange={props.setNameChange} />
-          </div>
-          <div style={{ borderRadius: "16px", backgroundColor: "rgb(241, 241, 241)", padding: "4px" }}>
+
+          <WelcomeComp user={user} filter={filter} setFilter={setFilter} deviceSize={"MOBILE"} nameChange={props.nameChange} setNameChange={props.setNameChange} />
+
+          <div style={{ borderRadius: "16px", padding: "4px" }}>
             <ListingEditToggle mobileView={mobileView} setMobileView={setMobileView} />
             {mobileView === "FILTERS" && (
               <FilterComp filter={filter} lastFilterFromServer={lastFilterFromServer} setFilter={setFilter} updateFilter={updateFilter} deleteFilter={deleteFilter} filterUpdating={filterUpdating} notes={notes} rentProps={rentProps} deviceSize={"MOBILE"} />
@@ -107,7 +90,9 @@ const Index = (props) => {
       )
     }
   } else {
-    <div></div>
+    <div style={{ width: "100%", height: "100%", display: "flex", justifyContent: "center", alignItems: "center" }}>
+      LOADING...
+    </div>
   }
 }
 

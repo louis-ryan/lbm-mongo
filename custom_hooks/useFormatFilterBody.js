@@ -4,6 +4,7 @@ function useFormatFilterBody(filter, user) {
 
   return {
     addresses: filter.addresses,
+    type: filter.type,
     selectedAreas: filter.selectedAreas,
     rent: filter.rent,
     minRentVal: filter.minRentVal,

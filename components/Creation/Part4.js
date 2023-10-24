@@ -1,27 +1,30 @@
 import { useEffect } from "react";
-import InputHeader from "./InputHeader";
 import PicUpload from "./PicUpload";
+import NavButtons from "./NavButtons";
 
 
 const Part4 = (props) => {
+
+    const handleNextButton = {
+        opacity: "1",
+        pointerEvents: "inherit",
+    }
 
 
     useEffect(() => {
         // Scroll to the top of the page
         window.scrollTo({ top: 0, behavior: 'smooth' });
-      }, []);
+    }, []);
 
     return (
         <>
             <div style={{ height: "16px" }} />
 
-            {/* <InputHeader header={'Part 5/5: Photos'} /> */}
-
-            <h1>{'Part 5/6: Photos'}</h1>
+            <h1>{'Part 7/8: Photos'}</h1>
 
             <div style={{ height: "40px" }} />
 
-            Upload some photos
+            <h3>Upload some photos</h3>
 
             <div style={{ height: "4px" }} />
 
@@ -41,25 +44,11 @@ const Part4 = (props) => {
 
             <div style={{ height: "24px" }} />
 
-            <div style={{ width: "100%", display: "flex", justifyContent: "space-between" }}>
-                <div
-                    className="button secondary"
-                    onClick={() => props.setPart(3)}
-                    style={{ width: "48%" }}
-                >
-                    Back
-                </div>
-                <div
-                    className="button primary"
-                    onClick={() => props.setPart(5)}
-                    style={{ width: "48%" }}
-                >
-                    Next
-                </div>
-            </div>
-
-            <div style={{ height: "24px" }} />
-
+            <NavButtons
+                part={props.part}
+                handleNextButton={handleNextButton}
+                props={props}
+            />
         </>
     )
 }
