@@ -45,10 +45,13 @@ const WelcomeComp = ({ user, filter, setFilter, deviceSize, nameChange, setNameC
 
     if (deviceSize === "DESKTOP") {
         return (
-            <div style={{ width: "100%", borderRadius: "8px" }}>
-                <div style={{ height: "60px" }} />
-                <div style={{ fontSize: "32px" }}>Welcome {userName}</div>
-                <div style={{ height: "24px" }} />
+            <div style={{ width: "100%", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                <h2>Welcome {userName}</h2>
+                <h4>
+                    Get the complete guide to breaking lease 
+                    <a> </a>
+                    <a href='/help' target='_blank'>here</a>
+                </h4>
             </div>
         )
     }

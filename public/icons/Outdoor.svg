@@ -3,7 +3,7 @@
     <!-- Generator: Sketch 62 (91390) - https://sketch.com -->
     <title>Outdoor</title>
     <desc>Created with Sketch.</desc>
-    <g id="Outdoor" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+    <g id="Outdoor" stroke="none" stroke-width="2" fill="none" fill-rule="evenodd">
         <path d="M29.5,31.5 L10.5,31.5 L10.5,7.15679952 C11.8325195,5.32443495 15.0498054,4.5 20,4.5 C24.9501946,4.5 28.1674805,5.32443495 29.5,7.15679952 L29.5,31.5 Z" id="Rectangle" stroke="#979797"></path>
         <rect id="Rectangle" stroke="#979797" x="6.5" y="18.5" width="28" height="19" rx="2"></rect>
         <line x1="13" y1="19.09375" x2="13" y2="36.90625" id="Line-2-Copy" stroke="#979797" stroke-linecap="square"></line>

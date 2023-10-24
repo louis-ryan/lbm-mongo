@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import NavButtons from "./NavButtons";
 
 const Part3 = (props) => {
 
@@ -24,13 +25,11 @@ const Part3 = (props) => {
         <>
             <div style={{ height: "16px" }} />
 
-            {/* <InputHeader header={'Part 4/5: Description'} /> */}
-
-            <h1>{'Part 4/6: Description'}</h1>
+            <h1>{'Part 6/8: Description'}</h1>
 
             <div style={{ height: "40px" }} />
 
-            Please provide a detailed description of your property
+            <h3>Please provide a detailed description of your property</h3>
 
             <div style={{ height: "24px" }} />
 
@@ -51,24 +50,11 @@ const Part3 = (props) => {
 
             <div style={{ height: "24px" }} />
 
-            <div style={{ width: "100%", display: "flex", justifyContent: "space-between" }}>
-                <div
-                    className="button secondary"
-                    onClick={() => props.setPart(2)}
-                    style={{ width: "48%" }}
-                >
-                    Back
-                </div>
-
-                <div
-                    className="button primary"
-                    onClick={() => props.setPart(4)}
-                    style={{ ...handleNextButton, width: "48%" }}
-                >
-                    Next
-                </div>
-            </div>
-
+            <NavButtons
+                part={props.part}
+                handleNextButton={handleNextButton}
+                props={props}
+            />
         </>
     )
 }

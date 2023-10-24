@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="80px" height="80px" viewBox="0 0 80 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 62 (91390) - https://sketch.com -->
+    <title>Townhouse</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#986767" offset="0%"></stop>
+            <stop stop-color="#B18F8F" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-2">
+            <stop stop-color="#8A795E" offset="0%"></stop>
+            <stop stop-color="#CBBDA8" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-3">
+            <stop stop-color="#EBB9B9" offset="0%"></stop>
+            <stop stop-color="#9E8383" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Townhouse" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <polygon id="Rectangle" fill="#546954" points="11.7058824 63 68.2941176 63 77 70 3 70"></polygon>
+        <rect id="Rectangle" fill="url(#linearGradient-1)" x="18" y="29" width="22" height="32"></rect>
+        <rect id="Rectangle-Copy" fill="url(#linearGradient-2)" x="40" y="29" width="22" height="32"></rect>
+        <rect id="Rectangle" fill="#DAD4AB" x="22" y="35" width="4" height="6"></rect>
+        <rect id="Rectangle-Copy-3" fill="#FBF9EE" x="32" y="35" width="4" height="6"></rect>
+        <rect id="Rectangle-Copy-4" fill="#6F6F6F" x="44" y="35" width="4" height="6"></rect>
+        <rect id="Rectangle-Copy-5" fill="#E8C175" x="54" y="35" width="4" height="6"></rect>
+        <polygon id="Rectangle" fill="url(#linearGradient-3)" points="18 24 62 24 66 31 14 31"></polygon>
+        <rect id="Rectangle" fill="#A0A0A0" x="12" y="61" width="56" height="5"></rect>
+        <rect id="Rectangle" fill="#826242" x="25" y="50" width="8" height="11"></rect>
+        <rect id="Rectangle-Copy-2" fill="#826242" x="47" y="50" width="8" height="11"></rect>
+    </g>
+</svg>

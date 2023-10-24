@@ -31,13 +31,13 @@
 
 .secondary {
     background-color: white;
-    border: 1px solid black;
+    border: 1px solid grey;
     color: black;
     font-weight: 600;
 }
 
 .secondary:hover {
-    filter: brightness(1.2);
+    background-color: #06F1C4;
 }
 
 
@@ -77,8 +77,34 @@
 .browse-button {
     color: unset;
     cursor: pointer;
+    font-weight: 600;
 }
 
 .browse-button:hover {
     color: black;
+}
+
+/* Property type selector */
+
+.type-selector {
+    background-color: white;
+    filter: saturate(0);
+    cursor: pointer;
+    opacity: 0.56;
+    border: grey 1px solid;
+    border-radius: 4px;
+    padding: 24px;
+    text-align: center;
+}
+
+.type-selector:hover {
+    background-color: pink;
+    filter: saturate(1);
+    opacity: 1;
+}
+
+.type-selector.selected {
+    filter: saturate(1);
+    opacity: 1;
+    border: black 2px solid;
 }

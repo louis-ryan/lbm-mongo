@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="80px" height="80px" viewBox="0 0 80 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 62 (91390) - https://sketch.com -->
+    <title>Apartment</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#6E835A" offset="0%"></stop>
+            <stop stop-color="#C6CDBF" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-2">
+            <stop stop-color="#5C5C5C" offset="0%"></stop>
+            <stop stop-color="#B4B4B4" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-3">
+            <stop stop-color="#A8A5A5" offset="0%"></stop>
+            <stop stop-color="#D8D8D8" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Apartment" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <polygon id="Rectangle" fill="#546954" points="11.7058824 63 68.2941176 63 77 70 3 70"></polygon>
+        <g id="Group" transform="translate(15.000000, 13.000000)">
+            <rect id="Rectangle" fill="url(#linearGradient-1)" x="34" y="38" width="16" height="15"></rect>
+            <polygon id="Rectangle" fill="#73757F" points="34 35 51 37 51 42 34 42"></polygon>
+            <g id="Group-2" transform="translate(0.000000, 27.000000)">
+                <polygon id="Rectangle" fill="url(#linearGradient-2)" points="0 10 12 0 12 26 0 26"></polygon>
+                <rect id="Rectangle" fill="#DAD1B5" x="4" y="11" width="8" height="2"></rect>
+                <rect id="Rectangle-Copy-14" fill="#DAD1B5" x="4" y="15" width="8" height="2"></rect>
+                <rect id="Rectangle-Copy-15" fill="#DAD1B5" x="4" y="19" width="8" height="2"></rect>
+            </g>
+            <polygon id="Rectangle" fill="url(#linearGradient-3)" points="11 2 35 0 35 53 11 53"></polygon>
+            <rect id="Rectangle" fill="#6B6B6B" x="14" y="6" width="6" height="6"></rect>
+            <rect id="Rectangle-Copy-3" fill="#6B6B6B" x="14" y="14" width="6" height="6"></rect>
+            <rect id="Rectangle-Copy-6" fill="#E4DABF" x="14" y="22" width="6" height="6"></rect>
+            <rect id="Rectangle-Copy-9" fill="#CFB88C" x="14" y="30" width="6" height="6"></rect>
+            <rect id="Rectangle-Copy-12" fill="#6B6B6B" x="14" y="38" width="6" height="6"></rect>
+            <rect id="Rectangle-Copy" fill="#E9BF6F" x="26" y="6" width="6" height="6"></rect>
+            <rect id="Rectangle-Copy-4" fill="#D5D3B5" x="26" y="14" width="6" height="6"></rect>
+            <rect id="Rectangle-Copy-7" fill="#6B6B6B" x="26" y="22" width="6" height="6"></rect>
+            <rect id="Rectangle-Copy-10" fill="#E4DB5D" x="26" y="30" width="6" height="6"></rect>
+            <rect id="Rectangle-Copy-13" fill="#DEDCCA" x="26" y="38" width="6" height="6"></rect>
+            <rect id="Rectangle-Copy-2" fill="#E9E06F" x="20" y="6" width="6" height="6"></rect>
+            <rect id="Rectangle-Copy-5" fill="#6B6B6B" x="20" y="14" width="6" height="6"></rect>
+            <rect id="Rectangle-Copy-8" fill="#E3BD37" x="20" y="22" width="6" height="6"></rect>
+            <rect id="Rectangle-Copy-11" fill="#6B6B6B" x="20" y="30" width="6" height="6"></rect>
+        </g>
+    </g>
+</svg>

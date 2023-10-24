@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="40px" height="40px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 62 (91390) - https://sketch.com -->
+    <title>House Type</title>
+    <desc>Created with Sketch.</desc>
+    <g id="House-Type" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M10.5857864,11 L6,15.5857864 L6,11 L10.5857864,11 Z" id="Rectangle" stroke="#B5B5B5" stroke-width="2"></path>
+        <path d="M36.5857864,23 L23,23 L23,18 L26.4142136,18 L22.4142136,14 L27.5857864,14 L36.5857864,23 Z" id="Rectangle-Copy-2" stroke="#B5B5B5" stroke-width="2"></path>
+        <path d="M23,18 L23,32 L17.6111111,32 L17.6111111,26.5777778 C17.6111111,25.7186682 17.2628881,24.9408904 16.6998878,24.37789 C16.1368874,23.8148896 15.3591096,23.4666667 14.5,23.4666667 C13.6408904,23.4666667 12.8631126,23.8148896 12.3001122,24.37789 C11.7371119,24.9408904 11.3888889,25.7186682 11.3888889,26.5777778 L11.3888889,32 L6,32 L6,18 L4.2605517,18 L12.4423699,9 L16.5857864,9 L25.5857864,18 L23,18 Z" id="Combined-Shape" stroke="#B5B5B5" stroke-width="2"></path>
+        <rect id="Rectangle-Copy" stroke="#B5B5B5" stroke-width="2" x="23" y="23" width="11" height="9"></rect>
+    </g>
+</svg>

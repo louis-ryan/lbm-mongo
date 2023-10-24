@@ -20,18 +20,19 @@ const NewNote = () => {
     const [form, setForm] = useState(useNoteFormInit());
     const { formBools, setFormBools, post, setPost } = useNoteFormatForm(user, form, setForm);
     const { setMapCoords, latInPx, longInPx, validAddresses, setValidAddresses } = useNotePostcodeQuery(form, setForm, errors, setErrors);
-    const [handleSubmit, handleChange, handleRent, handlePost, handleMoveInDate, handleContractEnds, handleContractTerminates, handleAddress, handleClearPost] = useNoteHandleEvents(form, setForm, post, setPost, setValidAddresses, setMapCoords, router, errors, setErrors)
+    const [handleSubmit, handleChange, handleRent, handlePost, handleMoveInDate, handleContractEnds, handleContractTerminates, handleAddress, handleClearPost, handleType] = useNoteHandleEvents(form, setForm, post, setPost, setValidAddresses, setMapCoords, router, errors, setErrors)
     const { compressFile } = useNoteImageUpload(form, setForm, errors, setErrors)
 
 
+    /**
+     * Redirect to home if no user
+     */
     useEffect(() => {
         const timer = setTimeout(() => {
             if (user === undefined) {
                 router.push("/api/auth/login");
             }
-        }, 2000);  // 2000 milliseconds = 2 seconds
-    
-        // Cleanup function to clear the timeout if the component is unmounted before 2 seconds
+        }, 2000);
         return () => clearTimeout(timer);
     }, [user]);
 
@@ -83,9 +84,28 @@ const NewNote = () => {
     if (windowWidth > 800 || !windowWidth) {
         return (
             <div style={{ width: "100%", display: "flex", justifyContent: "center" }}>
-                <div style={{ marginTop: "80px", zoom: "0.8" }}>
+                <div style={{ marginTop: "80px" }}>
                     <div style={{ height: "40px" }} />
                     <h1>Create Listing</h1>
+                    <div style={{ height: "16px" }} />
+
+                    {part < 8 && (
+                        <div style={{ width: "100%", height: "40px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+
+                            {
+                                [1, 2, 3, 4, 5, 6, 7, 8].map((num) => (
+                                    <div key={num} style={{ width: "24px", height: "24px", display: "flex", justifyContent: "center", alignItems: "center", backgroundColor: "white", borderRadius: "50%", fontWeight: "600", border: (num - 1) <= part ? "2px solid black" : "1px solid rgb(181, 181, 181)", color: (num - 1) <= part ? "black" : "initial" }}>
+                                        {`${num}`}
+                                    </div>
+                                ))
+                            }
+
+                            <div style={{ position: "absolute", zIndex: "-1", width: `${(part * 100)}px`, margin: "0px 12px", height: "2px", backgroundColor: "rgb(103, 103, 103)", transition: "2s" }} />
+
+                        </div>
+                    )}
+
+
                     <div style={{ height: "16px" }} />
                     <PropertyInfo
                         handleChange={handleChange}
@@ -112,6 +132,7 @@ const NewNote = () => {
                         post={post}
                         handleRent={handleRent}
                         device={"DESKTOP"}
+                        handleType={handleType}
                     />
                 </div>
             </div>
@@ -146,6 +167,7 @@ const NewNote = () => {
                     post={post}
                     handleRent={handleRent}
                     device={"MOBILE"}
+                    handleType={handleType}
                 />
             </>
         )

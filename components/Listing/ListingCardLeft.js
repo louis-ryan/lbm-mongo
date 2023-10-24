@@ -1,20 +1,20 @@
-
 const Address = ({ note }) => (
     <div className='note-tag' >
-        <svg width="24px" height="24px" viewBox="0 0 40 40">
+        <svg width="16px" height="16px" viewBox="0 0 40 40">
             <g id="Location" stroke="none" strokeWidth="2" fill="none" fillRule="evenodd">
                 <path d="M8.5,14 C8.5,10.8243627 9.78718134,7.94936269 11.868272,5.86827202 C13.9493627,3.78718134 16.8243627,2.5 20,2.5 C23.1756373,2.5 26.0506373,3.78718134 28.131728,5.86827202 C30.2128187,7.94936269 31.5,10.8243627 31.5,14 C31.5,18.2947181 27.6325211,25.9965025 19.9995546,37.1176651 C12.3669984,25.9955456 8.5,18.2944513 8.5,14 Z" id="Oval" stroke="white"></path>
                 <circle id="Oval" stroke="white" cx="20" cy="13" r="6.5"></circle>
             </g>
         </svg>
         <div style={{ width: "8px" }} />
-        <div style={{ transform: "translateY(4px)", marginRight: "16px" }}>{note.address && note.address}</div>
+        <div>{note.address && note.address}</div>
     </div>
 )
 
+
 const Rent = ({ note }) => (
     <div className='note-tag'>
-        <svg width="24px" height="24px" viewBox="0 0 40 40">
+        <svg width="16px" height="16px" viewBox="0 0 40 40">
             <g id="Rent" stroke="none" strokeWidth="2" fill="none" fillRule="evenodd">
                 <ellipse id="Oval-Copy-5" stroke="white" cx="20" cy="23.5" rx="14.5" ry="2"></ellipse>
                 <path d="M33.6774381,25.9921909 C32.9416449,26.2882512 31.8625403,26.551547 30.5244022,26.77457 C27.8309728,27.2234749 24.1099621,27.5 20.0020815,27.5000043 C15.5813995,27.4816007 11.9547671,27.1992414 9.33648516,26.7510736 C8.0412418,26.5293685 6.99832008,26.2694729 6.28771729,25.9780366 C5.99011378,25.8559818 5.75657805,25.7331378 5.60172232,25.6004738 C5.7187161,25.3204411 5.83608144,25.2331693 5.98965142,25.1563524 C6.45841274,24.9218741 7.14226145,24.7073183 8.00038949,24.5123066 C10.6916178,25.0948083 14.875414,25.4785396 19.6003104,25.4991301 C24.792711,25.4999971 29.070288,25.1256281 31.8421532,24.5457505 C32.7654055,24.7225198 33.4834288,24.9258477 33.974059,25.1529285 C34.2305846,25.7416599 33.9874087,25.8674684 33.6774381,25.9921909 Z" id="Combined-Shape" stroke="white"></path>
@@ -25,9 +25,10 @@ const Rent = ({ note }) => (
             </g>
         </svg>
         <div style={{ width: "8px" }} />
-        <div style={{ transform: "translateY(4px)", marginRight: "16px" }}>${note.rent && note.rent}pw</div>
+        <div>${note.rent && note.rent}pw</div>
     </div>
 )
+
 
 const ContractEnds = ({ note, remainingMonths }) => (
     <div
@@ -38,9 +39,10 @@ const ContractEnds = ({ note, remainingMonths }) => (
         }}
     >
         <div style={{ width: "8px" }} />
-        <div style={{ transform: "translateY(4px)", marginRight: "16px" }}>{note.contractEnds && remainingMonths} months left on contract</div>
+        <div>{note.contractEnds && remainingMonths} months left on contract</div>
     </div>
 )
+
 
 const ListingCardLeft = ({ note, deviceSize }) => {
 
@@ -52,26 +54,13 @@ const ListingCardLeft = ({ note, deviceSize }) => {
 
     if (deviceSize === "DESKTOP") {
         return (
-            <div style={{ position: "absolute", zIndex: "2", padding: "16px", display: "flex", justifyContent: "space-between" }}>
+            <div style={{ position: "absolute", zIndex: "2", padding: "8px", display: "flex", justifyContent: "space-between" }}>
                 <Address note={note} />
                 <Rent note={note} />
                 <ContractEnds note={note} remainingMonths={remainingMonths} />
             </div>
         )
     }
-
-    // if (deviceSize === "MOBILE") {
-    //     return (
-    //         <div style={{ position: "absolute", zIndex: "2", color: "white", transform: "translate(8px, 8px)", backgroundColor: "black", opacity: "0.6", padding: "16px", borderRadius: "4px" }}>
-    //             <div>{`• ${note.address && note.address}`}</div>
-    //             <div style={{ height: "4px" }} />
-    //             <div>{`• $${note.rent && note.rent}pw`}</div>
-    //             <div style={{ height: "4px" }} />
-    //             <div>{`• ${note.contractEnds && remainingMonths} months left on contract`}</div>
-    //         </div>
-    //     )
-    // }
-
 }
 
 export default ListingCardLeft;

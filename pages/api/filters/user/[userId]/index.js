@@ -35,6 +35,7 @@ export default async (req, res) => {
         if (noFilters) {
             lastFilter = {
                 addresses: [],
+                type: [],
                 selectedAreas: [],
                 rent: sortedRentArr,
                 selectedRentVal: [

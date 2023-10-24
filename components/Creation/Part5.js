@@ -1,14 +1,13 @@
 import { useEffect, useState } from "react"
 
 
-const contactRow = { display: "flex", width: "100%", justifyContent: "space-between", height: "80px", alignItems: "center" }
+const contactRow = { display: "flex", justifyContent: "space-between", height: "80px", alignItems: "center" }
 
 
 const Part5 = (props) => {
 
 
     const [contactInitialised, setContactInitialised] = useState("")
-    const [updateClickable, setUpdateClickable] = useState(true)
 
     const [userContacts, setUserContacts] = useState({
         name: props.user.given_name,
@@ -127,71 +126,49 @@ const Part5 = (props) => {
         <>
             <div style={{ height: "16px" }} />
 
-            <h1>{'Part 6/6: Contact'}</h1>
+            <h1>{'Part 8/8: Confirm contacts'}</h1>
 
             <div style={{ height: "40px" }} />
 
-            Confirm your contact details
-
             <div style={contactRow}>
-                <div style={{ width: "30%" }}>{"NAME: "}</div>
+                <h3 style={{ width: "30%" }}>{"NAME: "}</h3>
                 <input
                     className={errors.name ? "error" : ""}
                     value={userContacts.name}
                     placeholder="Your Name"
                     style={{ width: "70%", padding: "8px", fontSize: "16px" }}
-                    onChange={(e) => {
-                        setUserContacts({ ...userContacts, name: e.target.value })
-                        if (e.target.value !== userContacts.name) {
-                            setUpdateClickable(true)
-                        }
-                    }}
+                    onChange={(e) => setUserContacts({ ...userContacts, name: e.target.value })}
                 />
             </div>
 
             <div style={contactRow}>
-                <div style={{ width: "30%" }}>{"EMAIL: "}</div>
+                <h3 style={{ width: "30%" }}>{"EMAIL: "}</h3>
                 <input
                     value={userContacts.email}
                     placeholder="your.email@mailclient.com"
                     style={{ width: "70%", padding: "8px", fontSize: "16px" }}
-                    onChange={(e) => {
-                        setUserContacts({ ...userContacts, email: e.target.value })
-                        if (e.target.value !== userContacts.email) {
-                            setUpdateClickable(true)
-                        }
-                    }}
+                    onChange={(e) => setUserContacts({ ...userContacts, email: e.target.value })}
                 />
             </div>
 
             <div style={contactRow}>
-                <div style={{ width: "30%" }}>{"PHONE: "}</div>
+                <h3 style={{ width: "30%" }}>{"PHONE: "}</h3>
                 <input
                     value={userContacts.phone}
                     placeholder="0000 000 000"
                     style={{ width: "70%", padding: "8px", fontSize: "16px" }}
-                    onChange={(e) => {
-                        setUserContacts({ ...userContacts, phone: e.target.value })
-                        if (e.target.value !== userContacts.phone) {
-                            setUpdateClickable(true)
-                        }
-                    }}
+                    onChange={(e) => setUserContacts({ ...userContacts, phone: e.target.value })}
                 />
             </div>
 
             <div style={contactRow}>
-                <div style={{ width: "30%" }}>{"FACEBOOK: "}</div>
+                <h3 style={{ width: "30%" }}>{"FACEBOOK: "}</h3>
                 <input
                     className={errors.social ? "error" : ""}
                     value={userContacts.social}
                     placeholder="https://www.facebook.com/your-profile-path/"
                     style={{ width: "70%", padding: "8px", fontSize: "16px" }}
-                    onChange={(e) => {
-                        setUserContacts({ ...userContacts, social: e.target.value })
-                        if (e.target.value !== userContacts.social) {
-                            setUpdateClickable(true)
-                        }
-                    }}
+                    onChange={(e) => setUserContacts({ ...userContacts, social: e.target.value })}
                 />
             </div>
 
@@ -212,7 +189,7 @@ const Part5 = (props) => {
             <div style={{ width: "100%", display: "flex", justifyContent: "space-between" }}>
                 <div
                     className="button secondary"
-                    onClick={() => props.setPart(4)}
+                    onClick={() => props.setPart(6)}
                     style={{ width: "48%" }}
                 >
                     Back
@@ -221,7 +198,7 @@ const Part5 = (props) => {
                 <div
                     className="button primary"
                     onClick={() => {
-                        props.setPart(6)
+                        props.setPart(8)
                         if (contactInitialised) {
                             patchContactInfo()
                         } else {
@@ -230,18 +207,13 @@ const Part5 = (props) => {
                     }}
                     style={{
                         width: "48%",
-                        opacity: updateClickable && !errors.social && !errors.name && !noContactMethods ? "1" : "0.5",
-                        pointerEvents: updateClickable && !errors.social && !errors.name && !noContactMethods ? "" : "none"
+                        opacity: !errors.social && !errors.name && !noContactMethods ? "1" : "0.5",
+                        pointerEvents: !errors.social && !errors.name && !noContactMethods ? "" : "none"
                     }}
                 >
-                    Final Step
+                    Review and Submit
                 </div>
             </div>
-
-
-
-            <div style={{ height: "24px" }} />
-
         </>
     )
 }

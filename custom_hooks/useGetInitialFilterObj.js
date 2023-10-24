@@ -23,7 +23,8 @@ function useGetInitialFilterObj() {
         userId: null,
         userName: null,
         userEmail: null,
-        notesOrder: "Contract (desc)"
+        notesOrder: "Contract (desc)",
+        type: []
     };
 }
 

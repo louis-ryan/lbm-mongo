@@ -6,8 +6,7 @@ const PostCode = (props) => {
 
     return (
         <>
-
-            Postcode
+            <h3>{"Postcode"}</h3>
 
             <div style={{ display: "flex", justifyContent: "space-between" }}>
                 {[1, 2, 3, 4].map((id) => {
@@ -37,6 +36,8 @@ const PostCode = (props) => {
                             style={{ border: props.errors.address && "2px solid #a57583", width: "20%", height: "80px", textAlign: "center", fontSize: "24px", caretColor: "transparent" }}
                             autoComplete="new-password"
                             type="number"
+                            min="0"
+                            max="9"
                         />
                     )
                 })
