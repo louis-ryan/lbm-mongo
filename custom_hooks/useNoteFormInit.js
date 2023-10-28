@@ -9,7 +9,7 @@ function useNoteFormInit() {
         date: '',
         moveInDate: '',
         contractEnds: '',
-        contractTerminates: ''
+        contractTerminates: false
     }
 }
 
