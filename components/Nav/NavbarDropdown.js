@@ -1,6 +1,18 @@
+const DropdownArrow = () => (
+    <svg width="62px" height="40px" viewBox="0 0 62 40" style={{ transform: "translate(116px, 4px)" }}>
+        <g id="Logging-Arrow" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
+            <path d="M31,11 C37.0328181,22.7380747 42.0328181,30.4047414 46,34 C49.9671819,37.5952586 55.6338486,39.5952586 63,40 L-1,40 C6.47263269,39.49876 12.1392994,37.49876 16,34 C19.8607006,30.50124 24.8607006,22.8345734 31,11 Z" id="Rectangle" fill="#000000"></path>
+        </g>
+    </svg>
+)
 
+const NavbarOption = ({ setModalShowing, optionName }) => (
+    <div onClick={() => setModalShowing(true)} style={{ outline: "1px grey solid", color: "white", width: "100%", padding: "16px", maxWidth: "600px", cursor: "pointer" }}>
+        <div style={{ textDecoration: "none" }}> {optionName} </div>
+    </div>
+)
 
-const NavbarDropdown = ({ setUserOptions, setContactShowing, myListings }) => {
+const NavbarDropdown = ({ setUserOptions, setContactShowing, setDocumentsShowing, myListings }) => {
 
     return (
 
@@ -10,25 +22,15 @@ const NavbarDropdown = ({ setUserOptions, setContactShowing, myListings }) => {
         >
             <div style={{ position: "absolute", width: "208px", zIndex: "10", top: "48px", right: "40px" }}>
 
-                <svg width="62px" height="40px" viewBox="0 0 62 40" style={{ transform: "translate(116px, 4px)" }}>
-                    <g id="Logging-Arrow" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
-                        <path d="M31,11 C37.0328181,22.7380747 42.0328181,30.4047414 46,34 C49.9671819,37.5952586 55.6338486,39.5952586 63,40 L-1,40 C6.47263269,39.49876 12.1392994,37.49876 16,34 C19.8607006,30.50124 24.8607006,22.8345734 31,11 Z" id="Rectangle" fill="#000000"></path>
-                    </g>
-                </svg>
+                <DropdownArrow />
 
                 <div style={{ backgroundColor: "black", padding: "16px", maxHeight: "600px", overflow: "scroll" }}>
 
-                    <div
-                        onClick={() => setContactShowing(true)}
-                        style={{ outline: "1px grey solid", color: "white", width: "100%", padding: "16px", maxWidth: "600px", cursor: "pointer" }}
-                    >
-                        <div
-                            style={{ textDecoration: "none" }}
+                    <NavbarOption setModalShowing={setContactShowing} optionName={"My Contact"} />
 
-                        >
-                            Contact
-                        </div>
-                    </div>
+                    <div style={{ height: "8px" }} />
+
+                    <NavbarOption setModalShowing={setDocumentsShowing} optionName={"My Documents"} />
 
                     <div style={{ height: "8px" }} />
 
