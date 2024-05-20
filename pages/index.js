@@ -51,13 +51,13 @@ const Index = (props) => {
     if (windowWidth > 800 || windowWidth === null) {
       return (
         <div style={{ width: "100%", display: "flex", justifyContent: "center" }}>
-          <div ref={desktopComp} style={{ marginTop: "24px", width: "920px" }}>
+          <div ref={desktopComp} style={{ marginTop: "80px", width: "920px" }}>
             {windowWidth > 1220 ? (
               <WelcomeComp user={user} filter={filter} setFilter={setFilter} deviceSize={"DESKTOP"} nameChange={props.nameChange} setNameChange={props.setNameChange} />
             ) : (
               <div style={{ height: "72px" }} />
             )}
-            <div style={{ width: "100%", height: "1px", backgroundColor: "rgb(181, 181, 181)", marginTop: "48px" }} />
+            <div style={{ width: "100%", height: "1px", backgroundColor: "rgb(181, 181, 181)", marginTop: "40px" }} />
             <div style={{ display: "flex", justifyContent: "space-between" }}>
               <div style={{ width: "280px", opacity: !rentProps[6] && "0", transitionDuration: "500ms", transitionDelay: "1s" }}>
                 <FilterComp filter={filter} lastFilterFromServer={lastFilterFromServer} setFilter={setFilter} updateFilter={updateFilter} deleteFilter={deleteFilter} filterUpdating={filterUpdating} notes={notes} rentProps={rentProps} deviceSize={"DESKTOP"} />

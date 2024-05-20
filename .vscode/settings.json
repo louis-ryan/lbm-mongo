@@ -1,5 +1,8 @@
 {
     "terminal.integrated.allowMnemonics": false,
-    "terminal.integrated.enableBell": false,
-    "terminal.explorerKind": "external"
+    "terminal.explorerKind": "external",
+    "accessibility.signals.terminalBell": {
+        "sound": "off"
+    },
+    "terminal.integrated.enableVisualBell": false
 }

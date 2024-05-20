@@ -5,6 +5,7 @@ import logo from '../../public/LBM_rounded.svg'
 import NavbarUserOptions from './NavbarUserOptions';
 import NavbarDropdown from './NavbarDropdown'
 import ContactModal from './ContactModal';
+import DocumentsModal from './DocumentsModal';
 import useWindowWidth from '../../custom_hooks/useWindowWidth';
 import homeButton from '../../public/icons/LBM_button_home.svg';
 import newButton from '../../public/icons/LBM_button_new.svg';
@@ -16,6 +17,7 @@ const Navbar = (props) => {
 
     const [userOptions, setUserOptions] = useState(false)
     const [contactShowing, setContactShowing] = useState(false)
+    const [documentsShowing, setDocumentsShowing] = useState(false)
     const [myListings, setMyListings] = useState([])
 
     const router = useRouter()
@@ -59,6 +61,7 @@ const Navbar = (props) => {
                     <NavbarDropdown
                         setUserOptions={setUserOptions}
                         setContactShowing={setContactShowing}
+                        setDocumentsShowing={setDocumentsShowing}
                         myListings={myListings}
                     />
                 )}
@@ -68,6 +71,13 @@ const Navbar = (props) => {
                         setContactShowing={setContactShowing}
                         user={user}
                         setNameChange={props.setNameChange}
+                    />
+                )}
+
+                {documentsShowing && (
+                    <DocumentsModal
+                        setDocumentsShowing={setDocumentsShowing}
+                        user={user}
                     />
                 )}
             </>

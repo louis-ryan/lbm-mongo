@@ -84,9 +84,9 @@ const NewNote = () => {
     if (windowWidth > 800 || !windowWidth) {
         return (
             <div style={{ width: "100%", display: "flex", justifyContent: "center" }}>
-                <div style={{ marginTop: "80px" }}>
+                <div style={{ marginTop: "40px" }}>
                     <div style={{ height: "40px" }} />
-                    <h1>Create Listing</h1>
+                    <h2>{"Create Listing"}</h2>
                     <div style={{ height: "16px" }} />
 
                     {part < 8 && (

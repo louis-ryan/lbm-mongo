@@ -1,130 +1,145 @@
 input {
-    margin-top: 4px;
-    height: 40px;
-    border-radius: 4px;
-    border: grey 1px solid;
-    cursor: pointer;
-    outline: none;
+  margin-top: 4px;
+  height: 40px;
+  border-radius: 4px;
+  border: grey 1px solid;
+  cursor: pointer;
+  outline: none;
 }
 
 input:hover {
-    border: grey 2px solid;
+  border: grey 2px solid;
 }
 
 input:focus,
 input:active {
-    border: black 2px solid;
+  border: black 2px solid;
 }
 
 input.error {
-    border: rgb(165, 117, 131) 2px solid;
-    color: rgb(165, 117, 131);
-    cursor: text;
+  border: rgb(165, 117, 131) 2px solid;
+  color: rgb(165, 117, 131);
+  cursor: text;
 }
 
 textarea {
-    margin-top: 4px;
-    height: 120px;
-    border-radius: 4px;
-    padding: 16px;
-    border: grey 1px solid;
-    cursor: pointer;
-    outline: none;
+  margin-top: 4px;
+  height: 120px;
+  border-radius: 4px;
+  padding: 16px;
+  border: grey 1px solid;
+  cursor: pointer;
+  outline: none;
 }
 
 textarea:hover {
-    border: grey 2px solid;
+  border: grey 2px solid;
 }
 
 textarea:focus,
 textarea:active {
-    border: grey 2px solid;
+  border: grey 2px solid;
 }
 
 textarea.error {
-    border: rgb(165, 117, 131) 2px solid;
-    color: rgb(165, 117, 131);
-    cursor: text;
+  border: rgb(165, 117, 131) 2px solid;
+  color: rgb(165, 117, 131);
+  cursor: text;
 }
 
 .date {
-    width: 10%;
-    height: 80px;
-    text-align: center;
-    font-size: 24px;
-    caret-color: transparent;
+  width: 10%;
+  height: 80px;
+  text-align: center;
+  font-size: 24px;
+  caret-color: transparent;
 }
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 .slider-track {
-    background: lightgrey;
-    height: 4px
+  background: lightgrey;
+  height: 4px;
 }
 
 .slider-track-1 {
-    background: #00F2C4;
+  background: #00f2c4;
 }
 
 .slider-thumb {
-    background: white;
-    border: 2px solid black;
-    width: 24px;
-    height: 24px;
-    color: unset;
-    transform: translateY(-18px);
-    border-radius: 50%;
-    margin-top: 8px;
-    cursor: grab;
+  background: white;
+  border: 2px solid black;
+  width: 24px;
+  height: 24px;
+  color: unset;
+  transform: translateY(-18px);
+  border-radius: 50%;
+  margin-top: 8px;
+  cursor: grab;
 }
 
 .slider-thumb:active {
-    cursor: grabbing;
+  cursor: grabbing;
 }
 
 .rent-input {
-    width: 100%;
-    display: flex;
-    border-bottom: 2px solid grey;
+  width: 100%;
+  display: flex;
+  border-bottom: 2px solid grey;
 }
 
 .rent-field:hover {
-    border: none;
+  border: none;
 }
 
 .rent-field:focus {
-    border: none;
-    box-shadow: none;
+  border: none;
+  box-shadow: none;
 }
 
 /* Image Input */
 
 .grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 10px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
 }
 
 .file-upload {
-    background-color: black;
-    cursor: pointer;
-    color: white;
+  background-color: black;
+  cursor: pointer;
+  color: white;
 }
 
 .file-upload:hover {
-    filter: brightness(1.2);
+  filter: brightness(1.2);
 }
 
 /* Date Input */
 
 input::-webkit-calendar-picker-indicator {
-    display: none;
+  display: none;
 }
 
 input[type="date"]::-webkit-input-placeholder {
-    visibility: hidden !important;
+  visibility: hidden !important;
 }
+
+/* Document Input*/
+
+.document-input {
+  width: calc((100% / 6) - 8px);
+  height: 110px;
+  margin-right: 8px;
+  border: 1px solid lightgrey;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.document-input:hover {
+    border: 2px solid lightgrey;
+  }
