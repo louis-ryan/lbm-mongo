@@ -211,7 +211,7 @@ const Details = ({ note, mapPath, latInPx, longInPx, deviceSize }) => {
             <div style={{ display: "flex", justifyContent: "space-between" }}>
                 <div style={{ ...itemStyle, width: "49%" }}>
                     <h3>{"Contract Ends:"}</h3>
-                    <h2>{getFormattedDate(note.contractEnds)}</h2>
+                    <h1>{getFormattedDate(note.contractEnds)}</h1>
                     <p>{`${getTimeRemaining(new Date(), new Date(note.contractEnds))} remain on this contract`}</p>
                 </div>
 
@@ -219,12 +219,12 @@ const Details = ({ note, mapPath, latInPx, longInPx, deviceSize }) => {
                     <h3>{deviceSize === "DESKTOP" ? "Earliest Possible Move-in:" : "Earliest Move-in:"}</h3>
                     {new Date(note.moveInDate) > new Date() ? (
                         <>
-                            <h2>{getFormattedDate(note.moveInDate)}</h2>
+                            <h1>{getFormattedDate(note.moveInDate)}</h1>
                             <p>{`${getTimeRemaining(new Date(note.moveInDate), new Date(note.contractEnds))} before possible contract renewal`}</p>
                         </>
                     ) : (
                         <>
-                            <h2>{deviceSize === "DESKTOP" ? "Ready to move in!" : "Today!"}</h2>
+                            <h1>{deviceSize === "DESKTOP" ? "Ready to move in!" : "Today!"}</h1>
                             <p>{`Available from today until the end of contract date before possible renewal`}</p>
                         </>
                     )}

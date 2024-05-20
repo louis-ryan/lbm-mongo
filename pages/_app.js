@@ -12,6 +12,7 @@ import '../css/effect.css';
 import '../css/datepicker.css';
 import '../css/filter.css';
 import '../css/loaders.css';
+import '../css/modals.css';
 
 function MyApp({ Component, pageProps }) {
 
