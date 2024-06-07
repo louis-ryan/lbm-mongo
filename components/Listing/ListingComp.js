@@ -1,6 +1,5 @@
 import ListingCard from './ListingCard';
 import BrowseOptions from './BrowseOptions';
-import { Grid } from 'react-loader-spinner';
 
 
 const ListingComp = ({ notes, getNotes, rendering, unlimitedNotes, skipping, setSkipping, getSkippedNotes, deviceSize }) => {
@@ -21,15 +20,19 @@ const ListingComp = ({ notes, getNotes, rendering, unlimitedNotes, skipping, set
             />
 
             {rendering ? (
-                <div style={{ width: "100%", height: "480px", display: "flex", justifyContent: "center", alignItems: "center" }}>
-                    <img id="loading-ani" src={'LBM_logo.svg'} style={{ margin: "16px" }} />
-                </div>
+                <>
+                    <div style={{ width: "100%", height: "400px", display: "flex", justifyContent: "center", alignItems: "center" }}>
+                        <div style={{ height: "200px", width: "200px", borderRadius: "400px", overflow: "hidden" }}>
+                            <img src={'giphy.webp'} alt="loading gif" style={{ margin: "16px", height: "100%", transform: "scale(1.2)", opacity: "0.8" }} />
+                        </div>
+                    </div>
+                </>
             ) : (
                 notes.length === 0 ? (
                     <div style={{ width: "100%", height: "480px", display: "flex", justifyContent: "center", alignItems: "center", padding: "80px" }}>
-                        <div>
-                            <h2>{"There are no listings in your search filter."}</h2>
-                            <h2>{"You might have to broaden your search"}</h2>
+                        <div style={{ textAlign: "center" }}>
+                            <h3>{"There are no listings in your search filter."}</h3>
+                            <h3>{"You might have to broaden your search"}</h3>
                         </div>
                     </div>
                 ) : (

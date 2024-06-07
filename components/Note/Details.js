@@ -1,4 +1,4 @@
-const itemStyle = { border: "1px solid rgb(181, 181, 181)", borderRadius: "8px", padding: "16px", marginBottom: "16px", backgroundColor: "white" }
+const itemStyle = { border: "1px solid lightgrey", borderRadius: "8px", padding: "16px", marginBottom: "16px", backgroundColor: "white" }
 
 
 const Details = ({ note, mapPath, latInPx, longInPx, deviceSize }) => {

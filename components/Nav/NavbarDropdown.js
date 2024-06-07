@@ -12,7 +12,16 @@ const NavbarOption = ({ setModalShowing, optionName }) => (
     </div>
 )
 
-const NavbarDropdown = ({ setUserOptions, setContactShowing, setDocumentsShowing, myListings }) => {
+const NavbarDropdown = ({ setUserOptions, setContactsShowing, setDocumentsShowing, setAccountShowing, myListings, myApplications }) => {
+
+    const listingApplicationObj = myApplications.listingArr.reduce((acc, item) => {
+        acc[item.noteId] = {
+            totalApplications: item.totalApplications,
+            totalNewApplications: item.totalNewApplications
+        };
+        return acc;
+    }, {});
+
 
     return (
 
@@ -26,44 +35,77 @@ const NavbarDropdown = ({ setUserOptions, setContactShowing, setDocumentsShowing
 
                 <div style={{ backgroundColor: "black", padding: "16px", maxHeight: "600px", overflow: "scroll" }}>
 
-                    <NavbarOption setModalShowing={setContactShowing} optionName={"My Contact"} />
+                    <NavbarOption setModalShowing={setContactsShowing} optionName={"My Contact"} />
 
                     <div style={{ height: "8px" }} />
 
                     <NavbarOption setModalShowing={setDocumentsShowing} optionName={"My Documents"} />
 
+                    {/* <div style={{ height: "8px" }} />
+
+                    <NavbarOption setModalShowing={setAccountShowing} optionName={"My Account"} /> */}
+
                     <div style={{ height: "8px" }} />
 
-                    {myListings.map((listing) => (
+                    <div style={{ outline: "1px grey solid", padding: "16px" }}>
 
-                        <a
-                            key={listing._id}
-                            href={`/${listing._id}`}
-                            style={{ outline: "1px grey solid", color: "white", width: "100%", padding: "16px", maxWidth: "600px", cursor: "pointer", display: "flex", marginBottom: "8px", textDecoration: "none" }}
-                        >
-                            <div style={{ width: "40px", overflow: "hidden" }}>
-                                {listing.pics[0] ? (
-                                    <img
-                                        src={listing.pics[0].url}
-                                        style={{ height: "40px" }}
-                                    />
-                                ) : (
-                                    <img
-                                        src="https://images.squarespace-cdn.com/content/v1/56dce00a45bf214a0b3fadf3/60149970-ce98-49e7-8b04-5739ee538798/LBM_hero_img.png?format=2500w"
-                                        style={{ height: "40px" }}
-                                    />
-                                )}
+                        <div style={{ color: "white" }} >{"My Listings"}</div>
 
-                            </div>
+                        <div style={{ height: "16px" }} />
 
-                            <div style={{ width: "8px" }} />
+                        {myListings.map((listing) => {
 
-                            <div style={{ fontSize: "12px", textDecoration: "none" }}>
-                                {"Your property in " + listing.address}
-                            </div>
+                            const listingId = listing._id
+                            const thisApplicationObj = listingApplicationObj[listingId]
 
-                        </a>
-                    ))}
+                            return (
+                                <a
+                                    key={listingId}
+                                    href={`/${listing._id}`}
+                                    style={{ color: "white", width: "100%", maxWidth: "600px", cursor: "pointer", display: "flex", marginBottom: "4px", textDecoration: "none" }}
+                                >
+                                    <div style={{ width: "40px", overflow: "hidden" }}>
+                                        {listing.pics[0] ? (
+                                            <img
+                                                src={listing.pics[0].url}
+                                                alt="dropdown property photo"
+                                                style={{ height: "56px", width: "40px" }}
+                                            />
+                                        ) : (
+                                            <img
+                                                src="https://images.squarespace-cdn.com/content/v1/56dce00a45bf214a0b3fadf3/60149970-ce98-49e7-8b04-5739ee538798/LBM_hero_img.png?format=2500w"
+                                                alt="dropdown default photo"
+                                                style={{ height: "56px", width: "40px" }}
+                                            />
+                                        )}
+
+                                    </div>
+
+                                    <div style={{ width: "8px" }} />
+
+                                    <div>
+
+                                        <div style={{ fontSize: "12px", textDecoration: "none" }}>
+                                            {listing.address}
+                                        </div>
+
+                                        <div style={{ fontSize: "12px", textDecoration: "none" }}>
+                                            {`${thisApplicationObj ? thisApplicationObj.totalApplications : '0'} applications`}
+                                        </div>
+
+                                        {thisApplicationObj && thisApplicationObj.totalNewApplications > 0 &&
+                                            <div style={{ fontSize: "12px", color: "black", textDecoration: "none", backgroundColor: "pink", padding: "4px", textAlign: "center", width: "48px", fontWeight: "bold", borderRadius: "4px", transform: "translateX(-72px)" }}>
+                                                {thisApplicationObj.totalNewApplications + "new!"}
+                                            </div>
+                                        }
+
+                                    </div>
+                                </a>
+                            )
+                        })}
+                    </div>
+
+                    <div style={{ height: "8px" }} />
 
                     <div style={{ outline: "1px red solid", width: "100%", padding: "16px", maxWidth: "600px" }}>
                         <a

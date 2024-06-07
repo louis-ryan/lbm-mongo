@@ -19,7 +19,7 @@ const RentFilter = ({ reveal, setReveal, filter, setFilter, rentProps }) => {
                     headerTitle={'Rent'}
                     headerSubTitle={`$${selectedVal[0]}pw to $${selectedVal[1]}pw`}
                     activeCondition={activeCondition}
-                    onClick={() => {reveal === "RENT" ? setReveal("NONE") : setReveal("RENT"); ; window.scrollTo({ top: 172, behavior: 'smooth' })}}
+                    onClick={() => { reveal === "RENT" ? setReveal("NONE") : setReveal("RENT");; window.scrollTo({ top: 172, behavior: 'smooth' }) }}
                     icon={rentIcon}
                 />
 
@@ -79,7 +79,9 @@ const RentFilter = ({ reveal, setReveal, filter, setFilter, rentProps }) => {
                                         setFilter({
                                             ...filter,
                                             minRentVal: minVal,
+                                            minLimit: selectedVal[0] === minVal ? true : false,
                                             maxRentVal: maxVal,
+                                            maxLimit: selectedVal[1] === maxVal ? true : false,
                                             selectedRentVal: selectedVal,
                                         })
                                     }}
