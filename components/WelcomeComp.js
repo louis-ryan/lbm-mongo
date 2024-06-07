@@ -5,7 +5,7 @@ import useWelcomeCompLabelArr from "../custom_hooks/useWelcomCompLabelArr";
 const labelStyle = { padding: "8px 32px 4px 16px", borderRadius: "8px", margin: "8px 8px 0px 0px", cursor: "pointer", border: "black 4px solid", backgroundColor: "white", color: "black" }
 
 
-const WelcomeComp = ({ user, filter, setFilter, deviceSize, nameChange, setNameChange }) => {
+const WelcomeComp = ({ user, filter, setFilter, deviceSize, nameChange, setNameChange, paymentStatus }) => {
 
 
     const [activeLabelArr, labelsArr, setAllowSetArr] = useWelcomeCompLabelArr(filter)
@@ -45,13 +45,14 @@ const WelcomeComp = ({ user, filter, setFilter, deviceSize, nameChange, setNameC
 
     if (deviceSize === "DESKTOP") {
         return (
-            <div style={{ width: "100%", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                 <h2>Welcome {userName}</h2>
-                {/* <h4>
-                    Get the complete guide to breaking lease 
-                    <a> </a>
-                    <a href='/help' target='_blank'>here</a>
-                </h4> */}
+
+                {user !== undefined && paymentStatus === 'succeeded' && (
+                    <div style={{ border: "1px solid rgb(181, 181, 181)", borderRadius: "8px", width: "240px", textAlign: "center" }}>
+                        <h3>{"👑 Premium User"}</h3>
+                    </div>
+                )}
             </div>
         )
     }
@@ -62,6 +63,7 @@ const WelcomeComp = ({ user, filter, setFilter, deviceSize, nameChange, setNameC
                 <div style={{ height: "24px" }} />
                 <img
                     src="https://images.squarespace-cdn.com/content/v1/56dce00a45bf214a0b3fadf3/5cf24fcb-d5dc-44b2-a321-b28ee3d3e00d/lbm_new_logo.png?format=500w"
+                    alt="logo"
                     style={{ height: "80px" }}
                 />
 
@@ -72,6 +74,7 @@ const WelcomeComp = ({ user, filter, setFilter, deviceSize, nameChange, setNameC
                             <div style={{ borderRadius: "50%", overflow: "hidden", width: "40px", height: "40px" }}>
                                 <img
                                     src={user.picture}
+                                    alt={"user picture"}
                                     style={{ height: "40px", width: "40px", }}
                                 />
                             </div>

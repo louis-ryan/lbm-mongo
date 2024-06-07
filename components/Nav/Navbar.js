@@ -16,26 +16,51 @@ import signOutButton from '../../public/icons/LBM_button_signout.svg';
 const Navbar = (props) => {
 
     const [userOptions, setUserOptions] = useState(false)
-    const [contactShowing, setContactShowing] = useState(false)
-    const [documentsShowing, setDocumentsShowing] = useState(false)
     const [myListings, setMyListings] = useState([])
+    const [myApplications, setMyApplications] = useState([])
 
     const router = useRouter()
-
     const { user } = useUser()
-
     const windowWidth = useWindowWidth()
 
 
-    async function getMyNotes() {
-        const res = await fetch(`api/notes/mine/${user.sub}`);
-        const { data } = await res.json();
-        setMyListings(data)
+    const handleCheckStatus = async () => {
+        const response = await fetch(`/api/tier/${user.email}`);
+        const data = await response.json();
+        props.setPaymentStatus(data.status);
+    };
+
+
+    const getApplicationSummary = async () => {
+        if (!user) return
+        try {
+            const res = await fetch(`api/applications/toMe/${user.sub}/summary`);
+            const { data } = await res.json();
+
+            setMyApplications(data)
+
+        } catch (error) {
+            console.log("get application summary error: ", error)
+        }
     }
+
+
+    const getMyNotes = async () => {
+        try {
+            const res = await fetch(`api/notes/mine/${user.sub}`);
+            const { data } = await res.json();
+            setMyListings(data)
+        } catch (error) {
+            console.log("get notes from navbar error: ", error)
+        }
+    }
+
 
     useEffect(() => {
         if (!user) return
         getMyNotes()
+        getApplicationSummary()
+        handleCheckStatus()
     }, [user])
 
 
@@ -47,36 +72,38 @@ const Navbar = (props) => {
                     onClick={() => router.push('/')}
                     style={{ position: "fixed", zIndex: "30", top: "4px", left: "4px", cursor: "pointer", marginTop: "8px" }}
                 >
-                    <img src={logo} style={{ height: "60px" }} />
+                    <img src={logo} alt="logo" style={{ height: "60px" }} />
                 </div>
 
                 <div>
                     <NavbarUserOptions
-                        userOptions={userOptions}
                         setUserOptions={setUserOptions}
+                        myApplications={myApplications}
                     />
                 </div>
 
                 {userOptions && (
                     <NavbarDropdown
                         setUserOptions={setUserOptions}
-                        setContactShowing={setContactShowing}
-                        setDocumentsShowing={setDocumentsShowing}
+                        setContactsShowing={props.setContactsShowing}
+                        setDocumentsShowing={props.setDocumentsShowing}
+                        setAccountShowing={props.setAccountShowing}
                         myListings={myListings}
+                        myApplications={myApplications}
                     />
                 )}
 
-                {contactShowing && (
+                {props.contactsShowing && (
                     <ContactModal
-                        setContactShowing={setContactShowing}
+                        setContactShowing={props.setContactsShowing}
                         user={user}
                         setNameChange={props.setNameChange}
                     />
                 )}
 
-                {documentsShowing && (
+                {props.documentsShowing && (
                     <DocumentsModal
-                        setDocumentsShowing={setDocumentsShowing}
+                        setDocumentsShowing={props.setDocumentsShowing}
                         user={user}
                     />
                 )}

@@ -10,6 +10,13 @@ function useUpdateFilter(user, router, setFilterUpdating, filter, setFilter, set
             router.push("/api/auth/login")
             return
         }
+        
+
+        await fetch(`api/filters/delete/${user.sub}`, {
+            method: 'DELETE',
+            headers: { "Accept": "application/json", "Content-Type": "application/json" }
+        })
+
 
         setFilterUpdating("UPDATING")
 

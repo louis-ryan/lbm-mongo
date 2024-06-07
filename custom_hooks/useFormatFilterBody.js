@@ -7,6 +7,8 @@ function useFormatFilterBody(filter, user) {
     type: filter.type,
     selectedAreas: filter.selectedAreas,
     rent: filter.rent,
+    minLimit: filter.minLimit,
+    maxLimit: filter.maxLimit,
     minRentVal: filter.minRentVal,
     maxRentVal: filter.maxRentVal,
     selectedRentVal: filter.selectedRentVal,

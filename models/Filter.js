@@ -28,8 +28,14 @@ const FilterSchema = new mongoose.Schema({
     minRentVal: {
         type: Number
     },
+    minLimit: {
+        type: Boolean
+    },
     maxRentVal: {
         type: Number
+    },
+    maxLimit: {
+        type: Boolean
     },
     selectedRentVal: [
         {

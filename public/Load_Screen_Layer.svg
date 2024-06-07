@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="480px" height="480px" viewBox="0 0 480 480" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 62 (91390) - https://sketch.com -->
+    <title>Load_Screen</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M247,167 C287.869071,167 321,200.130929 321,241 C321,258.602495 314.854001,274.769515 304.590846,287.472215 L324.433808,307.32831 C327.645108,306.872079 331.024354,307.878401 333.495368,310.347658 C333.497159,310.349448 333.49895,310.351239 333.50074,310.35303 L369.770529,346.648625 L354.658117,361.771789 L318.388328,325.476195 C315.915815,323.001923 314.907905,319.618121 315.364598,316.402316 L295.696829,296.720469 C282.683423,308.102846 265.64717,315 247,315 C206.130929,315 173,281.869071 173,241 C173,200.130929 206.130929,167 247,167 Z" id="path-1"></path>
+        <filter x="-4.8%" y="-3.9%" width="109.8%" height="109.9%" filterUnits="objectBoundingBox" id="filter-2">
+            <feMorphology radius="0.5" operator="dilate" in="SourceAlpha" result="shadowSpreadOuter1"></feMorphology>
+            <feOffset dx="0" dy="2" in="shadowSpreadOuter1" result="shadowOffsetOuter1"></feOffset>
+            <feMorphology radius="1.5" operator="erode" in="SourceAlpha" result="shadowInner"></feMorphology>
+            <feOffset dx="0" dy="2" in="shadowInner" result="shadowInner"></feOffset>
+            <feComposite in="shadowOffsetOuter1" in2="shadowInner" operator="out" result="shadowOffsetOuter1"></feComposite>
+            <feGaussianBlur stdDeviation="2.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.2 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <filter x="0.0%" y="0.0%" width="100.0%" height="100.0%" filterUnits="objectBoundingBox" id="filter-3">
+            <feGaussianBlur stdDeviation="0" in="SourceGraphic"></feGaussianBlur>
+        </filter>
+    </defs>
+    <g id="Load_Screen" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Combined-Shape">
+            <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+            <path stroke="#B5B5B5" stroke-width="1" d="M369.063674,346.648625 L354.658117,361.064431 L318.742007,325.122767 C316.322192,322.70123 315.374104,319.365822 315.897374,316.228114 L295.718755,296.035051 C282.749372,307.524581 265.689273,314.5 247,314.5 C226.703535,314.5 208.328535,306.273232 195.027652,292.972348 C181.726768,279.671465 173.5,261.296465 173.5,241 C173.5,220.703535 181.726768,202.328535 195.027652,189.027652 C208.328535,175.726768 226.703535,167.5 247,167.5 C267.296465,167.5 285.671465,175.726768 298.972348,189.027652 C312.273232,202.328535 320.5,220.703535 320.5,241 C320.5,258.644921 314.282402,274.837676 303.918428,287.506693 L324.259411,307.861138 C327.392665,307.338248 330.723617,308.284734 333.141689,310.701086 L369.063674,346.648625 Z" stroke-linejoin="square"></path>
+        </g>
+        <path d="M247,292 L247,189 C218.281193,189 195,212.057335 195,240.5 C195,268.942665 218.281193,292 247,292 Z" id="Oval" fill="#FFFFFF" opacity="0.59618879" filter="url(#filter-3)"></path>
+    </g>
+</svg>

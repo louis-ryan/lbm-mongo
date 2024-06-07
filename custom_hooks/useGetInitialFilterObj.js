@@ -1,10 +1,12 @@
 function useGetInitialFilterObj() {
-    
+
 
     return {
         addresses: [],
         selectedAreas: [],
         rent: [],
+        minLimit: true,
+        maxLimit: true,
         minRentVal: null,
         maxRentVal: null,
         selectedRentVal: [null, null],

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Oval } from 'react-loader-spinner';
 import { pdfjs } from "react-pdf";
 import "react-pdf/dist/esm/Page/AnnotationLayer.css";
@@ -7,8 +7,6 @@ import "react-pdf/dist/esm/Page/AnnotationLayer.css";
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
 
 const DocumentItem = ({ field, arr, docHover, uploading, confirmDelete, setConfirmDelete, setDocHover, handleDeleteDoc, handleFileUpload }) => {
-
-    console.log("field: ", field, "arr: ", arr)
 
     if (confirmDelete.field === field) {
         return (
@@ -20,7 +18,6 @@ const DocumentItem = ({ field, arr, docHover, uploading, confirmDelete, setConfi
                     <div style={{ width: "16px" }} />
                     <div style={{ cursor: "pointer", fontWeight: "800" }} onClick={() => { handleDeleteDoc(confirmDelete.id); setDocHover({ field: "", idx: null }) }}>{"Delete"}</div>
                 </div>
-
             </div>
         )
     }
@@ -29,12 +26,14 @@ const DocumentItem = ({ field, arr, docHover, uploading, confirmDelete, setConfi
     return (
         <div style={{ display: "flex", marginTop: "8px", marginBottom: "24px" }}>
             {arr.map((doc, idx) => {
-                console.log("doc: ", doc)
                 if (doc.type === "img") {
                     if (docHover.field === field && docHover.idx === idx) {
                         return (
                             <div key={idx} className="document-input" onClick={() => { setConfirmDelete({ field: field, idx: idx, id: doc._id }) }} onMouseLeave={() => setDocHover({ field: "", idx: null })} style={{ backgroundColor: "#A06B69", display: "flex", justifyContent: "center", alignItems: "center", border: "none" }} >
-                                <div style={{ color: "white" }}>Delete</div>
+                                <div>
+                                    <div style={{ color: "white" }}>{"Delete"}</div>
+                                    <div style={{ color: "white", maxWidth: "40px", maxHeight: "40px", overflow: "hidden" }}>{doc.fileName}</div>
+                                </div>
                             </div>
                         )
                     } else {
@@ -48,7 +47,10 @@ const DocumentItem = ({ field, arr, docHover, uploading, confirmDelete, setConfi
                     if (docHover.field === field && docHover.idx === idx) {
                         return (
                             <div key={idx} className="document-input" onClick={() => { setConfirmDelete({ field: field, idx: idx, id: doc._id }) }} onMouseLeave={() => setDocHover({ field: "", idx: null })} style={{ backgroundColor: "#A06B69", display: "flex", justifyContent: "center", alignItems: "center", border: "none" }}>
-                                <div style={{ color: "white" }}>Delete</div>
+                                <div>
+                                    <div style={{ color: "white" }}>{"Delete"}</div>
+                                    <div style={{ color: "white", maxWidth: "40px", maxHeight: "40px", overflow: "hidden" }}>{doc.fileName}</div>
+                                </div>
                             </div>
                         )
                     } else {
