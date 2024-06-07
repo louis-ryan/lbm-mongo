@@ -14,6 +14,8 @@ const NavbarOption = ({ setModalShowing, optionName }) => (
 
 const NavbarDropdown = ({ setUserOptions, setContactsShowing, setDocumentsShowing, setAccountShowing, myListings, myApplications }) => {
 
+    
+
     const listingApplicationObj = myApplications.listingArr.reduce((acc, item) => {
         acc[item.noteId] = {
             totalApplications: item.totalApplications,
@@ -40,10 +42,6 @@ const NavbarDropdown = ({ setUserOptions, setContactsShowing, setDocumentsShowin
                     <div style={{ height: "8px" }} />
 
                     <NavbarOption setModalShowing={setDocumentsShowing} optionName={"My Documents"} />
-
-                    {/* <div style={{ height: "8px" }} />
-
-                    <NavbarOption setModalShowing={setAccountShowing} optionName={"My Account"} /> */}
 
                     <div style={{ height: "8px" }} />
 

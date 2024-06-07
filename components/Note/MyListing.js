@@ -3,11 +3,28 @@ import AccessPremium from '../../components/Note/AccessPremium';
 import MyListingNav from './MyListingNav';
 
 
-const MyListing = ({ user, note, setDeleteModal, propertyType }) => {
+const MyListing = ({ user, note, setDeleteModal, propertyType, paymentStatus }) => {
 
     const [applications, setApplications] = useState([]);
     const [newApplications, setNewApplications] = useState([]);
     const [currentApplication, setCurrentApplication] = useState(0);
+
+
+    const getAvailableDirect = (application) => {
+        let string = ""
+
+        if (application.applicantPhone) {
+            string = string + "phone "
+        }
+        if (application.applicantPhone && application.applicantSocial) {
+            string = string + "and "
+        }
+        if (application.applicantSocial) {
+            string = string + "facebook "
+        }
+
+        return string
+    }
 
 
     const getFieldName = (field) => {
@@ -125,20 +142,50 @@ const MyListing = ({ user, note, setDeleteModal, propertyType }) => {
                                 })}
                             </div>
 
-                            <div style={{ height: "8px" }} />
+                            <div style={{ height: "16px" }} />
 
                             <div className="button secondary">{"DOWNLOAD ALL DOCUMENTS"}</div>
 
-                            <div style={{ height: "24px" }} />
+                            <div style={{ height: "32px" }} />
 
+                            {paymentStatus !== "succeeded" ? (
+                                <>
+                                    {getAvailableDirect(application) && (
+                                        <h3>{`This applicant can be contacted via ${getAvailableDirect(application)}`}</h3>
+                                    )}
 
-                            <AccessPremium
-                                user={user}
-                                nameToContact={application.applicantName}
-                                noteId={note._id}
-                            />
+                                    <AccessPremium
+                                        user={user}
+                                        nameToContact={application.applicantName}
+                                        noteId={note._id}
+                                    />
+                                </>
+                            ) : (
+                                <div style={{ backgroundColor: "white" }}>
+                                    <h3>{"Contact Details (premium feature): "}</h3>
 
-                            <div style={{ height: "24px" }} />
+                                    {
+                                        [
+                                            [application.applicantName, "Name: "],
+                                            [application.applicantPhone, "Phone: "],
+                                            [application.applicantEmail, "Email: "],
+                                            [application.applicantSocial, "Facebook: "]
+                                        ]
+                                            .map((item) => {
+                                                return (
+                                                    <div style={{ display: "flex", opacity: !item[0] && "0.5" }}>
+                                                        <h2>{item[1]}</h2>
+                                                        <div style={{ width: "80px" }} />
+                                                        <h1>{item[0] ? item[0] : "not provided"}</h1>
+                                                    </div>
+                                                )
+                                            })
+                                    }
+
+                                </div>
+                            )}
+
+                            <div style={{ height: "32px" }} />
 
                             <h3>Contact {application.applicantName} by email</h3>
 
