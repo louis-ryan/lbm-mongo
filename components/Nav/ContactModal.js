@@ -1,11 +1,6 @@
 import { useEffect, useState } from "react"
 
-const darkBackground = { width: "100vw", height: "calc(100vh + 4px)", zIndex: "600", marginTop: "-80px", opacity: "0.8", position: "fixed" }
-
-const clickableContainer = { position: "absolute", top: "0px", width: "100vw", height: "100vh", zIndex: "601", marginTop: "-80px", display: "flex", justifyContent: "center", alignItems: "center" }
-const infoBox = { width: "600px", backgroundColor: "white", padding: "40px", borderRadius: "8px", boxShadow: "0px 0px 40px darkgrey", position: "fixed" }
 const contactRow = { display: "flex", width: "100%", justifyContent: "space-between", height: "80px", alignItems: "center" }
-
 
 const ContactModal = ({ setContactShowing, user, setNameChange }) => {
 
@@ -123,22 +118,15 @@ const ContactModal = ({ setContactShowing, user, setNameChange }) => {
 
     return (
         <>
-            <div style={darkBackground} />
-            <div style={clickableContainer}
-                onClick={() => { if (!overModal) { setContactShowing(false) } }}
-            >
-                <div style={infoBox}
-                    onMouseEnter={() => setOverModal(true)}
-                    onMouseLeave={() => setOverModal(false)}
-                >
-                    <div
-                        onClick={() => setContactShowing(false)}
-                        style={{ position: "absolute", marginLeft: "520px", marginTop: "-16px", cursor: "pointer" }}
-                    >
-                        X
-                    </div>
+            <div className="dark-background" />
+            <div className="clickable-container" onClick={() => { if (!overModal) { setContactShowing(false) } }}>
+                <div className="info-box" onMouseEnter={() => setOverModal(true)} onMouseLeave={() => setOverModal(false)} >
 
                     <h2>{"Contact Information"}</h2>
+
+                    <div>{"This information is what a property seeker will see when they request to contact you directly. After you have deleted your property listing, this will no longer be available to property seekers."}</div>
+
+                    <div style={{ height: "16px" }} />
 
                     <div style={contactRow}>
                         <div style={{ width: "30%" }}>{"NAME: "}</div>

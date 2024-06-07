@@ -1,0 +1,29 @@
+.dark-background {
+  width: 100vw;
+  height: calc(100vh + 4px);
+  z-index: 600;
+  background-color: black;
+  opacity: 0.4;
+  position: fixed;
+}
+
+.clickable-container {
+  position: absolute;
+  top: 0px;
+  width: 100vw;
+  height: 100vh;
+  z-index: 601;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.info-box {
+  width: 600px;
+  background-color: white;
+  padding: 40px;
+  border-radius: 8px;
+  position: fixed;
+  cursor: auto;
+}

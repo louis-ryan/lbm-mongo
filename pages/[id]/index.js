@@ -157,14 +157,10 @@ const Note = ({ setMobilePromoState }) => {
 
                 {deleteModal && (
                     <>
-                        <div style={clickableContainer}
-                            onClick={() => { if (!overModal) { setDeleteModal(false) } }}
-                        >
-                            <div style={infoBox}
-                                onMouseEnter={() => setOverModal(true)}
-                                onMouseLeave={() => setOverModal(false)}
-                            >
-                                <h2>{"Are you sure you want to delete this property?"}</h2>
+                        <div className="dark-background" />
+                        <div className="clickable-container" onClick={() => { if (!overModal) { setDeleteModal(false) } }}>
+                            <div className="info-box" onMouseEnter={() => setOverModal(true)} onMouseLeave={() => setOverModal(false)}>
+                                <h3>{"Are you sure you want to delete this property?"}</h3>
                                 <p>{"If you delete this property, you will not be able to recover it."}</p>
                                 <div style={{ height: "24px" }} />
                                 <div
@@ -206,13 +202,15 @@ const Note = ({ setMobilePromoState }) => {
                             <>
                                 <h1 style={{ color: "white" }}>{propertyType.name} in {note.address}</h1>
 
-                                <div style={{ display: "flex" }}>
+                                <div style={{ display: "flex", alignItems: "center" }}>
                                     <div style={{ width: "40px", height: "40px", borderRadius: "50%", overflow: "hidden" }}>
                                         <img height="40px" width="40px" src={note && note.breakerPicture} alt="breaker picture" />
                                     </div>
                                     <div style={{ width: "16px" }} />
-                                    <h2 style={{ color: "white", transform: "translateY(-12px)" }}>Listed by {contactDetails.name}</h2>
+                                    <h3 style={{ color: "white" }}>Listed by {contactDetails.name}</h3>
                                 </div>
+
+                                <div style={{ height: "12px" }} />
 
                                 <Action
                                     user={user}
