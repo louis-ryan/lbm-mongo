@@ -15,6 +15,9 @@ const DocumentSchema = new mongoose.Schema({
     },
     previewUrl: {
         type: String
+    },
+    fileName: {
+        type: String
     }
 })
 

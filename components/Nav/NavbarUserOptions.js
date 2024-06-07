@@ -3,7 +3,7 @@ import { useUser } from '@auth0/nextjs-auth0';
 import { useRouter } from 'next/router';
 
 
-const NavbarUserOptions = ({ setUserOptions }) => {
+const NavbarUserOptions = ({ setUserOptions, myApplications }) => {
 
     const [optionHover, setOptionHover] = useState(null)
 
@@ -26,12 +26,19 @@ const NavbarUserOptions = ({ setUserOptions }) => {
                             width="40px"
                             src={user.picture}
                             referrerPolicy="no-referrer"
+                            alt="profile picture"
                             style={{
                                 borderRadius: "50%",
                                 outline: optionHover === "ACCOUNT" && "2px solid rgba(173, 55, 112, 0.378)"
                             }}
                         />
                     </div>
+
+                    {myApplications.totalNewApplications > 0 && (
+                        <div style={{ fontSize: "12px", color: "black", textDecoration: "none", backgroundColor: "pink", padding: "4px", textAlign: "center", width: "48px", fontWeight: "bold", borderRadius: "4px", position: "absolute", transform: "translateX(-44px) translateY(-14px)" }}>
+                            {myApplications.totalNewApplications + "new!"}
+                        </div>
+                    )}
                 </div>
 
                 <div style={{ width: "4px" }} />

@@ -10,6 +10,19 @@ export default async (req, res) => {
     } = req;
 
     switch (method) {
+        case 'GET':
+            try {
+                const filter = await Filter.findById(id);
+
+                if (!filter) {
+                    return res.status(400).json({ success: false });
+                }
+
+                res.status(200).json({ success: true, data: filter });
+            } catch (error) {
+                res.status(400).json({ success: false });
+            }
+            break;
         case 'PUT':
             try {
                 const filter = await Filter.findByIdAndUpdate(id, req.body, {
