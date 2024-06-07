@@ -1,4 +1,4 @@
-const ApplicationModal = ({ docArrForApply, docArrNotInc, handleRemoveDocForApply, handleDocumentDownload, uploadApplication, setContactsShowing, setDocumentsShowing, userContacts }) => {
+const ApplicationPanel = ({ docArrForApply, docArrNotInc, handleRemoveDocForApply, handleDocumentDownload, uploadApplication, setContactsShowing, setDocumentsShowing, userContacts }) => {
 
 
     return (
@@ -104,4 +104,4 @@ const ApplicationModal = ({ docArrForApply, docArrNotInc, handleRemoveDocForAppl
 
 
 
-export default ApplicationModal;
+export default ApplicationPanel;

@@ -30,7 +30,6 @@ const ApplicationWidget = ({ contactDetails, setApplyModal }) => {
             </div>
         </div>
     )
-
 }
 
 export default ApplicationWidget;

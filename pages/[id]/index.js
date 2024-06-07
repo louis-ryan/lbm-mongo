@@ -281,6 +281,7 @@ const Note = (props) => {
                                 note={note}
                                 setDeleteModal={setDeleteModal}
                                 propertyType={propertyType}
+                                paymentStatus={props.paymentStatus}
                             />
                         ) : (
                             <>
