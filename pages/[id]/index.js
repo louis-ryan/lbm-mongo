@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useUser } from '@auth0/nextjs-auth0';
 import { useRouter } from 'next/router';
+import logo from '../../public/LBM_rounded.svg'
 import Details from '../../components/Note/Details';
 import Photos from '../../components/Note/Photos';
 import PhotosDesk from '../../components/Note/PhotosDesk';
@@ -91,11 +92,57 @@ const Note = (props) => {
                 fileName: doc.fileName,
                 field: doc.field,
                 type: doc.type,
-                url: doc.previewUrl ? doc.previewUrl : doc.url
+                url: doc.url,
+                previewUrl: doc.previewUrl ? doc.previewUrl : doc.url
             })
         })
 
         return applicantDocs
+    }
+
+
+    const sendEmailToBreaker = async (urlForEmail) => {
+
+        console.log("url: ", urlForEmail)
+
+        const content =
+
+            `<img src="https://images.squarespace-cdn.com/content/v1/56dce00a45bf214a0b3fadf3/99125cab-df14-4af4-bead-55b272b9cb62/LBM+Copy+3.png?format=2500w" width="240px"/>` +
+
+            `<h2>You have a new application to your property in ${note.address}</h2>` +
+
+            `<div style="width: 60px; height: 60px; border-radius: 50%; overflow: hidden;">` +
+            `<img src="${user.picture}" width="60px" height="60px"/>` +
+            `</div>` +
+
+            `<span style="position: absolute; right: 0px; margin-bottom: 40px;">` +
+            `<h3>Application from</h3>` +
+            `<h3>${user.name}</h3>` +
+            `</span>` +
+
+            `<div>` +
+            `To see this most recent application, simply click the button below` +
+            `</div>` +
+
+            `<a href="${urlForEmail}/${note._id}">` +
+            `<div style="width: 100%; padding: 24px; background-color: black; color: white; text-align: center; text-decoration: none; cursor: pointer; margin-top: 40px;">` +
+            `VIEW APPLICATION` +
+            `</div>` +
+            `</a>`
+
+
+
+
+        await fetch('api/contact', {
+            method: 'POST',
+            headers: { "Accept": "application/json", "Content-Type": "application/json" },
+            body: JSON.stringify({
+                email: note.breakerEmail,
+                subject: "Leasebreakers Melbourne: New Application for property!",
+                content: content
+            })
+        })
+
     }
 
 
@@ -123,7 +170,10 @@ const Note = (props) => {
 
         const resJSON = await res.json();
 
+        const urlForEmail = resJSON.data
+
         setApplicationSubmitted(true)
+        sendEmailToBreaker(urlForEmail)
 
     }
 
@@ -301,8 +351,11 @@ const Note = (props) => {
                                 {pageLoaded && (
                                     <>
                                         {applicationExists ? (
-                                            <div style={{ height: "80px", width: "100%", display: "flex", justifyContent: "center", alignItems: "center", fontSize: "16px", backgroundColor: "white", border: "1px solid lightgrey", borderRadius: "8px" }}>
-                                                <h3>{"You have applied for this property"}</h3>
+                                            <div style={{ padding: "16px", width: "100%", display: "flex", justifyContent: "center", alignItems: "center", fontSize: "16px", backgroundColor: "white", border: "1px solid lightgrey", borderRadius: "8px" }}>
+                                                <div style={{ textAlign: "center" }}>
+                                                    <h3>{"You have applied for this property!"}</h3>
+                                                    <div>{`Hold tight until ${contactDetails.name} gets back to you.`}</div>
+                                                </div>
                                             </div>
                                         ) : (
                                             <div className='button primary' onClick={() => setApplyPanel((v) => !v)} style={{ height: "80px", width: "100%", fontSize: "16px" }}>
@@ -347,7 +400,7 @@ const Note = (props) => {
                                                     />
                                                 ) : (
                                                     <div style={{ border: "1px solid lightgrey", borderRadius: "8px", padding: "16px", backgroundColor: "white" }}>
-                                                        <h3>{"Contact Details (premium feature): "}</h3>
+                                                        <h3>{`As a Full Access User, you can contact ${contactDetails.name} directly: `}</h3>
 
                                                         {
                                                             [
@@ -356,9 +409,9 @@ const Note = (props) => {
                                                                 [contactDetails.email, "Email: "],
                                                                 [contactDetails.social, "Facebook: "]
                                                             ]
-                                                                .map((item) => {
+                                                                .map((item, idx) => {
                                                                     return (
-                                                                        <div style={{ display: "flex", opacity: !item[0] && "0.5" }}>
+                                                                        <div key={idx} style={{ display: "flex", opacity: !item[0] && "0.5" }}>
                                                                             <h2>{item[1]}</h2>
                                                                             <div style={{ width: "80px" }} />
                                                                             <h1>{item[0] ? item[0] : "not provided"}</h1>

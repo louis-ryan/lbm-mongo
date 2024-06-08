@@ -6,12 +6,14 @@ dbConnect();
 export default async (req, res) => {
     const { method } = req;
 
+    const urlForEmail = process.env.AUTH0_BASE_URL
+
     switch (method) {
         case 'POST':
             try {
-                const application = await Application.create(req.body);
+                await Application.create(req.body);
 
-                res.status(201).json({ success: true, data: application })
+                res.status(201).json({ success: true, data: urlForEmail })
             } catch (error) {
                 res.status(400).json({ success: false });
             }

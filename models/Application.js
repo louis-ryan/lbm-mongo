@@ -5,26 +5,14 @@ const ApplicationSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    applicantPic: {
-        type: String
-    },
-    applicantName: {
-        type: String
-    },
-    applicantEmail: {
-        type: String
-    },
-    applicantPhone: {
-        type: String
-    },
-    applicantSocial: {
-        type: String
-    },
+    applicantPic: String,
+    applicantName: String,
+    applicantEmail: String,
+    applicantPhone: String,
+    applicantSocial: String,
     applicantDocuments: [
         {
-            fileName: {
-                type: String
-            },
+            fileName: String,
             field: {
                 type: String,
                 enum: ['ID', 'POI', 'RR'],
@@ -33,25 +21,18 @@ const ApplicationSchema = new mongoose.Schema({
                 type: String,
                 enum: ['img', 'pdf']
             },
-            url: {
-                type: String
-            },
+            url: String,
+            previewUrl: String,
 
         }
     ],
-    applicantMessage: {
-        type: String
-    },
+    applicantMessage: String,
     noteId: {
         type: String,
         required: true
     },
-    breakerId: {
-        type: String
-    },
-    seenByBreaker: {
-        type: Boolean
-    }
+    breakerId: String,
+    seenByBreaker: Boolean
 })
 
 module.exports = mongoose.models.Application || mongoose.model('Application', ApplicationSchema);

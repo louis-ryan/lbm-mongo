@@ -132,7 +132,7 @@ input[type="date"]::-webkit-input-placeholder {
   visibility: hidden !important;
 }
 
-/* Document Input*/
+/* Document Input */
 
 .document-input {
   width: calc((100% / 6) - 8px);
