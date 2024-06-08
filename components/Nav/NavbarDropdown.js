@@ -12,17 +12,7 @@ const NavbarOption = ({ setModalShowing, optionName }) => (
     </div>
 )
 
-const NavbarDropdown = ({ setUserOptions, setContactsShowing, setDocumentsShowing, setAccountShowing, myListings, myApplications }) => {
-
-    
-
-    const listingApplicationObj = myApplications.listingArr.reduce((acc, item) => {
-        acc[item.noteId] = {
-            totalApplications: item.totalApplications,
-            totalNewApplications: item.totalNewApplications
-        };
-        return acc;
-    }, {});
+const NavbarDropdown = ({ setUserOptions, setContactsShowing, setDocumentsShowing, myListings, listingApplicationObj }) => {
 
 
     return (

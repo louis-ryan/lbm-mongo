@@ -24,6 +24,15 @@ const Navbar = (props) => {
     const windowWidth = useWindowWidth()
 
 
+    const listingApplicationObj = myApplications.listingArr && myApplications.listingArr.reduce((acc, item) => {
+        acc[item.noteId] = {
+            totalApplications: item.totalApplications,
+            totalNewApplications: item.totalNewApplications
+        };
+        return acc;
+    }, {});
+
+
     const handleCheckStatus = async () => {
         const response = await fetch(`/api/tier/${user.email}`);
         const data = await response.json();
@@ -87,9 +96,8 @@ const Navbar = (props) => {
                         setUserOptions={setUserOptions}
                         setContactsShowing={props.setContactsShowing}
                         setDocumentsShowing={props.setDocumentsShowing}
-                        setAccountShowing={props.setAccountShowing}
                         myListings={myListings}
-                        myApplications={myApplications}
+                        listingApplicationObj={listingApplicationObj}
                     />
                 )}
 

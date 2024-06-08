@@ -8,6 +8,7 @@ const MyListing = ({ user, note, setDeleteModal, propertyType, paymentStatus }) 
     const [applications, setApplications] = useState([]);
     const [newApplications, setNewApplications] = useState([]);
     const [currentApplication, setCurrentApplication] = useState(0);
+    const [hoveringDocItem, setHoveringDocItem] = useState(null);
 
 
     const getAvailableDirect = (application) => {
@@ -127,24 +128,35 @@ const MyListing = ({ user, note, setDeleteModal, propertyType, paymentStatus }) 
 
                             <h3>{`This application contains ${application.applicantDocuments.length} documents`}</h3>
 
+
                             <div style={{ display: "flex", flexWrap: "wrap" }}>
 
-                                {application.applicantDocuments.map((doc, idx) => {
+                                {application.applicantDocuments.map((doc, idx) => (
+                                    <div key={idx} style={{ marginRight: "16px", overflow: "hidden" }}>
+                                        <a
+                                            href={doc.url}
+                                            onMouseEnter={() => setHoveringDocItem(idx)}
+                                            onMouseLeave={() => setHoveringDocItem(null)}
+                                        >
+                                            {hoveringDocItem === idx ? (
+                                                <div style={{ height: "160px", width: "120px", display: "flex", justifyContent: "center", alignItems: "center" }}>
+                                                    <div style={{ textAlign: "center" }}>
+                                                        <img src={'Download.svg'} alt="download icon" style={{ filter: "brightness(0.8)" }} />
+                                                        <div>{"DOWNLOAD FILE"}</div>
+                                                    </div>
+                                                </div>
+                                            ) : (
+                                                <img src={doc.previewUrl} height="160px" width="120px" alt="doc image url" />
+                                            )}
 
-                                    return (
-                                        <div key={idx} style={{ marginRight: "16px", overflow: "hidden" }}>
-                                            <img src={doc.url} height="160px" width="120px" alt="doc image url" />
-                                            <h3>{getFieldName(doc.field)}</h3>
+                                        </a>
+                                        <h3>{getFieldName(doc.field)}</h3>
 
-                                            <div style={{ width: "120px", overflow: "hidden", height: "40px" }}>{doc.fileName}</div>
-                                        </div>
-                                    )
-                                })}
+                                        <div style={{ width: "120px", overflow: "hidden", height: "40px" }}>{doc.fileName}</div>
+                                    </div>
+                                )
+                                )}
                             </div>
-
-                            <div style={{ height: "16px" }} />
-
-                            <div className="button secondary">{"DOWNLOAD ALL DOCUMENTS"}</div>
 
                             <div style={{ height: "32px" }} />
 
@@ -159,6 +171,17 @@ const MyListing = ({ user, note, setDeleteModal, propertyType, paymentStatus }) 
                                         nameToContact={application.applicantName}
                                         noteId={note._id}
                                     />
+
+                                    <div style={{ height: "32px" }} />
+
+                                    <h3>Contact {application.applicantName} by email</h3>
+
+                                    <div style={{ border: "1px solid grey", padding: "16px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+                                        <h1>{application.applicantEmail}</h1>
+                                        <div>{"COPY"}</div>
+                                    </div>
+
+                                    <div style={{ height: "24px" }} />
                                 </>
                             ) : (
                                 <div style={{ backgroundColor: "white" }}>
@@ -171,9 +194,9 @@ const MyListing = ({ user, note, setDeleteModal, propertyType, paymentStatus }) 
                                             [application.applicantEmail, "Email: "],
                                             [application.applicantSocial, "Facebook: "]
                                         ]
-                                            .map((item) => {
+                                            .map((item, idx) => {
                                                 return (
-                                                    <div style={{ display: "flex", opacity: !item[0] && "0.5" }}>
+                                                    <div key={idx} style={{ display: "flex", opacity: !item[0] && "0.5" }}>
                                                         <h2>{item[1]}</h2>
                                                         <div style={{ width: "80px" }} />
                                                         <h1>{item[0] ? item[0] : "not provided"}</h1>
@@ -184,23 +207,12 @@ const MyListing = ({ user, note, setDeleteModal, propertyType, paymentStatus }) 
 
                                 </div>
                             )}
-
-                            <div style={{ height: "32px" }} />
-
-                            <h3>Contact {application.applicantName} by email</h3>
-
-                            <div style={{ border: "1px solid grey", padding: "16px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-                                <h1>{application.applicantEmail}</h1>
-                                <div>{"COPY"}</div>
-                            </div>
-
-                            <div style={{ height: "24px" }} />
                         </div>
                     )
                 })}
             </div>
 
-            <div style={{ height: "calc(100vh + 120px)" }} />
+            <div style={{ height: "calc(100vh + 240px)" }} />
 
         </>
     )

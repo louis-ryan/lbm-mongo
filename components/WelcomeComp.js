@@ -49,8 +49,10 @@ const WelcomeComp = ({ user, filter, setFilter, deviceSize, nameChange, setNameC
                 <h2>Welcome {userName}</h2>
 
                 {user !== undefined && paymentStatus === 'succeeded' && (
-                    <div style={{ border: "1px solid rgb(181, 181, 181)", borderRadius: "8px", width: "240px", textAlign: "center" }}>
-                        <h3>{"👑 Premium User"}</h3>
+                    <div style={{ display: "flex", alignItems: "center", justifyContent: "center", border: "1px solid rgb(181, 181, 181)", borderRadius: "8px", width: "240px", textAlign: "center" }}>
+                        <h1 style={{ fontSize: "32px" }}>{"🐨"}</h1>
+                        <div style={{ width: "8px" }} />
+                        <h3>{"Full Access User"}</h3>
                     </div>
                 )}
             </div>
