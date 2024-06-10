@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useUser } from '@auth0/nextjs-auth0';
 import { useRouter } from 'next/router';
+import Hamburger from 'hamburger-react'
 import logo from '../../public/LBM_rounded.svg'
 import NavbarUserOptions from './NavbarUserOptions';
 import NavbarDropdown from './NavbarDropdown'
@@ -18,6 +19,8 @@ const Navbar = (props) => {
     const [userOptions, setUserOptions] = useState(false)
     const [myListings, setMyListings] = useState([])
     const [myApplications, setMyApplications] = useState([])
+
+    const [mobileNavOpen, setMobileNavOpen] = useState(false)
 
     const router = useRouter()
     const { user } = useUser()
@@ -98,6 +101,7 @@ const Navbar = (props) => {
                         setDocumentsShowing={props.setDocumentsShowing}
                         myListings={myListings}
                         listingApplicationObj={listingApplicationObj}
+                        deviceSize={"DESKTOP"}
                     />
                 )}
 
@@ -106,6 +110,7 @@ const Navbar = (props) => {
                         setContactShowing={props.setContactsShowing}
                         user={user}
                         setNameChange={props.setNameChange}
+                        deviceSize={"DESKTOP"}
                     />
                 )}
 
@@ -113,6 +118,7 @@ const Navbar = (props) => {
                     <DocumentsModal
                         setDocumentsShowing={props.setDocumentsShowing}
                         user={user}
+                        deviceSize={"DESKTOP"}
                     />
                 )}
             </>
@@ -122,47 +128,83 @@ const Navbar = (props) => {
     if (windowWidth <= 800) {
 
         return (
-            <div style={{ width: "100vw", position: "fixed", bottom: "0px", left: "0px", backgroundColor: "white", zIndex: "400", display: "flex", justifyContent: "space-around", alignItems: "center", boxShadow: "0px 0px 40px 8px black", padding: "8px" }}>
-
-                <div style={{ width: "calc(100% / 3)" }}>
-                    <div
-                        style={{ textAlign: "center" }}
-                        onClick={() => { if (user !== undefined) { router.push('/') } else { router.push("/api/auth/login") } }}
-                    >
-                        <img className="mobile-nav-button" src={homeButton} alt="home button" style={{ height: "40px", border: router.asPath === '/' && "4px solid pink" }} />
-                    </div>
-                    <div style={{ textAlign: "center" }}>home</div>
+            <>
+                <div style={{ position: "fixed", zIndex: "20", top: "0px", right: "0px", width: "60px", height: "60px", display: "flex", justifyContent: "center", alignItems: "center" }}>
+                    <Hamburger toggled={mobileNavOpen} toggle={setMobileNavOpen} />
                 </div>
 
-
-                <div style={{ width: "calc(100% / 3)" }}>
-                    <div
-                        style={{ textAlign: "center" }}
-                        onClick={() => { if (user !== undefined) { router.push('/new') } else { router.push("/api/auth/login") } }}
-                    >
-                        <img className="mobile-nav-button" src={newButton} alt="new button" style={{ height: "40px", border: router.asPath === '/new' && "4px solid pink" }} />
+                {mobileNavOpen && (
+                    <div style={{ position: "fixed", zIndex: "10", top: "0px", left: "0px", width: "100vw", height: "100vh", backgroundColor: "white" }}>
+                        <NavbarDropdown
+                            setUserOptions={setUserOptions}
+                            setContactsShowing={props.setContactsShowing}
+                            setDocumentsShowing={props.setDocumentsShowing}
+                            myListings={myListings}
+                            listingApplicationObj={listingApplicationObj}
+                            deviceSize={"MOBILE"}
+                        />
                     </div>
-                    <div style={{ textAlign: "center" }}>new</div>
-                </div>
+                )}
+
+                {props.contactsShowing && (
+                    <ContactModal
+                        setContactShowing={props.setContactsShowing}
+                        user={user}
+                        setNameChange={props.setNameChange}
+                        deviceSize={"MOBILE"}
+                    />
+                )}
+
+                {props.documentsShowing && (
+                    <DocumentsModal
+                        setDocumentsShowing={props.setDocumentsShowing}
+                        user={user}
+                        deviceSize={"MOBILE"}
+                    />
+                )}
+            </>
+
+            // <div style={{ width: "100vw", position: "fixed", bottom: "0px", left: "0px", backgroundColor: "white", zIndex: "400", display: "flex", justifyContent: "space-around", alignItems: "center", boxShadow: "0px 0px 40px 8px black", padding: "8px" }}>
+
+            //     <div style={{ width: "calc(100% / 3)" }}>
+            //         <div
+            //             style={{ textAlign: "center" }}
+            //             onClick={() => { if (user !== undefined) { router.push('/') } else { router.push("/api/auth/login") } }}
+            //         >
+            //             <img className="mobile-nav-button" src={homeButton} alt="home button" style={{ height: "40px", border: router.asPath === '/' && "4px solid pink" }} />
+            //         </div>
+            //         <div style={{ textAlign: "center" }}>home</div>
+            //     </div>
 
 
-                <div style={{ width: "calc(100% / 3)" }}>
-                    <div
-                        style={{ textAlign: "center" }}
-                        onClick={() => { if (user !== undefined) { router.push('/api/auth/logout') } else { router.push("/api/auth/login") } }}
-                    >
-                        {user !== undefined ? (
-                            <img className="mobile-nav-button" src={signOutButton} alt="sign out button" style={{ height: "40px" }} />
-                        ) : (
-                            <img className="mobile-nav-button" src={signInButton} alt="sign in button" style={{ height: "40px" }} />
-                        )}
-                    </div>
-                    <div style={{ textAlign: "center" }}>
-                        {user !== undefined ? ("sign out") : ("sign in")}
-                    </div>
-                </div>
+            //     <div style={{ width: "calc(100% / 3)" }}>
+            //         <div
+            //             style={{ textAlign: "center" }}
+            //             onClick={() => { if (user !== undefined) { router.push('/new') } else { router.push("/api/auth/login") } }}
+            //         >
+            //             <img className="mobile-nav-button" src={newButton} alt="new button" style={{ height: "40px", border: router.asPath === '/new' && "4px solid pink" }} />
+            //         </div>
+            //         <div style={{ textAlign: "center" }}>new</div>
+            //     </div>
 
-            </div>
+
+            //     <div style={{ width: "calc(100% / 3)" }}>
+            //         <div
+            //             style={{ textAlign: "center" }}
+            //             onClick={() => { if (user !== undefined) { router.push('/api/auth/logout') } else { router.push("/api/auth/login") } }}
+            //         >
+            //             {user !== undefined ? (
+            //                 <img className="mobile-nav-button" src={signOutButton} alt="sign out button" style={{ height: "40px" }} />
+            //             ) : (
+            //                 <img className="mobile-nav-button" src={signInButton} alt="sign in button" style={{ height: "40px" }} />
+            //             )}
+            //         </div>
+            //         <div style={{ textAlign: "center" }}>
+            //             {user !== undefined ? ("sign out") : ("sign in")}
+            //         </div>
+            //     </div>
+
+            // </div>
         )
     }
 

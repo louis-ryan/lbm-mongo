@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useUser } from '@auth0/nextjs-auth0';
 import { useRouter } from 'next/router';
-import logo from '../../public/LBM_rounded.svg'
 import Details from '../../components/Note/Details';
 import Photos from '../../components/Note/Photos';
 import PhotosDesk from '../../components/Note/PhotosDesk';
@@ -17,6 +16,7 @@ import townhouseIcon from '../../public/property_types/Townhouse.svg';
 import ApplicationPanel from '../../components/Note/ApplicationPanel';
 import AccessPremium from '../../components/Note/AccessPremium';
 import MyListing from '../../components/Note/MyListing';
+import newApplicationEmail from '../../components/Emails/NewApplication';
 
 
 const desktopCont = { width: "100%", display: "flex", justifyContent: "center" }
@@ -67,6 +67,14 @@ const Note = (props) => {
     var longInPx = (mapCoords.long - longInit) / onePixLong
 
 
+    const handleCheckStatus = async () => {
+        const response = await fetch(`/api/tier/${user.email}`);
+        const data = await response.json();
+        console.log("data: ", data)
+        props.setPaymentStatus(data.status);
+    };
+
+
     const getApplicationSentBool = async () => {
         try {
             const res = await fetch(`api/applications/byMe/${user.sub}/thisNote/${note._id}/hasSent`, {
@@ -105,20 +113,36 @@ const Note = (props) => {
 
         console.log("url: ", urlForEmail)
 
+        console.log("new appl: ", newApplicationEmail(note, user, urlForEmail))
+
         const content =
 
-            `<img src="https://images.squarespace-cdn.com/content/v1/56dce00a45bf214a0b3fadf3/99125cab-df14-4af4-bead-55b272b9cb62/LBM+Copy+3.png?format=2500w" width="240px"/>` +
+            `<img src="https://images.squarespace-cdn.com/content/v1/56dce00a45bf214a0b3fadf3/99125cab-df14-4af4-bead-55b272b9cb62/LBM+Copy+3.png?format=2500w" width="120px"/>` +
 
             `<h2>You have a new application to your property in ${note.address}</h2>` +
 
+            `<table width="100%" border="0" cellspacing="0" cellpadding="0"> ` +
+            `<tr> ` +
+
+            `<td>` +
+
+            `<td>` +
+
+            `<td> ` +
             `<div style="width: 60px; height: 60px; border-radius: 50%; overflow: hidden;">` +
             `<img src="${user.picture}" width="60px" height="60px"/>` +
             `</div>` +
+            `</td>` +
 
-            `<span style="position: absolute; right: 0px; margin-bottom: 40px;">` +
+            `<td> ` +
+            `<div style="position: absolute; right: 0px; margin-bottom: 40px;">` +
+            `<div style="height: 20px;"/>` +
             `<h3>Application from</h3>` +
             `<h3>${user.name}</h3>` +
-            `</span>` +
+            `</div>` +
+            `</td> ` +
+            ` </tr>` +
+            `</table> ` +
 
             `<div>` +
             `To see this most recent application, simply click the button below` +
@@ -248,6 +272,12 @@ const Note = (props) => {
         }
     }
 
+    useEffect(() => {
+        if (!user) return
+        if (!props) return
+        handleCheckStatus()
+    }, [props, user])
+
 
     useEffect(() => {
         if (!note) return
@@ -258,8 +288,9 @@ const Note = (props) => {
 
 
     useEffect(() => {
+        if (props.contactsShowing) return
         checkForExistingContact()
-    }, [user])
+    }, [props.contactsShowing, user])
 
 
     useEffect(() => {
@@ -423,7 +454,7 @@ const Note = (props) => {
                                                     </div>
                                                 )}
 
-                                                <div style={{ height: "16px" }} />
+                                                <div style={{ height: "24px" }} />
 
                                                 <Details
                                                     note={note}
@@ -451,8 +482,18 @@ const Note = (props) => {
     if (windowWidth <= 800) {
         return (
             <>
+
+                <div 
+                onClick={() => router.push('/')}
+                style={{ position: "absolute", top: "0px", left: "0px", height: "60px", display: "flex", alignItems: "center", justifyContent: "center", padding: "8px" }}
+                >
+                    <h3>{"< BACK TO LISTINGS"}</h3>
+                </div>
+
                 <div style={{ padding: "8px" }}>
-                    <h1>Property</h1>
+
+                    <div style={{ height: "80px" }} />
+
                     <div style={{ display: "flex", alignItems: "center" }}>
                         <div style={{ width: "40px", height: "40px", borderRadius: "50%", overflow: "hidden" }}>
                             <img height="40px" width="40px" src={note && note.breakerPicture} alt="breaker picture" />

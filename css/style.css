@@ -99,8 +99,6 @@ li::before {
   height: 240px;
   width: 100%;
   margin-top: 24px;
-  border-radius: 0px;
-  border: none;
   overflow: hidden;
   cursor: pointer;
   border-radius: 8px;

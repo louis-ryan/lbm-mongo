@@ -32,7 +32,7 @@ const handler = async (req, res) => {
           },
         ],
         mode: 'payment',
-        success_url: `${req.headers.origin}/${noteId}`,
+        success_url: `${req.headers.origin}/${noteId}/paymentSuccess`,
         cancel_url: `${req.headers.origin}/${noteId}`,
         customer: customer.id,
       });

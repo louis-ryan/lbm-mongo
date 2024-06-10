@@ -102,6 +102,13 @@ const Index = (props) => {
               <ListingComp notes={notes} rendering={rendering} unlimitedNotes={unlimitedNotes} skipping={skipping} setSkipping={setSkipping} getSkippedNotes={getSkippedNotes} deviceSize={"MOBILE"} />
             )}
           </div>
+
+          <div 
+          onClick={() => router.push('/new')}
+          className='button secondary' style={{position: "fixed", zIndex: "5", bottom: "0px", width: "calc(100% - 16px)", margin: "8px"}}
+          >
+              {"+ CREATE LISTING"}
+          </div>
         </>
       )
     }

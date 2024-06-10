@@ -6,107 +6,196 @@ const DropdownArrow = () => (
     </svg>
 )
 
-const NavbarOption = ({ setModalShowing, optionName }) => (
-    <div onClick={() => setModalShowing(true)} style={{ outline: "1px grey solid", color: "white", width: "100%", padding: "16px", maxWidth: "600px", cursor: "pointer" }}>
+const NavbarOption = ({ setModalShowing, optionName, deviceSize }) => (
+    <div onClick={() => setModalShowing(true)} style={{ outline: "1px grey solid", color: deviceSize === "DESKTOP" && "white", width: "100%", padding: "16px", maxWidth: "600px", cursor: "pointer" }}>
         <div style={{ textDecoration: "none" }}> {optionName} </div>
     </div>
 )
 
-const NavbarDropdown = ({ setUserOptions, setContactsShowing, setDocumentsShowing, myListings, listingApplicationObj }) => {
+const NavbarDropdown = ({ setUserOptions, setContactsShowing, setDocumentsShowing, myListings, listingApplicationObj, deviceSize }) => {
 
+    if (deviceSize === "DESKTOP") {
+        return (
 
-    return (
+            <div
+                onClick={() => setUserOptions(false)}
+                style={{ position: "fixed", width: "100vw", height: "100vh", zIndex: "200", top: "0px", right: "0px" }}
+            >
+                <div style={{ position: "absolute", width: "208px", zIndex: "10", top: "48px", right: "40px" }}>
 
-        <div
-            onClick={() => setUserOptions(false)}
-            style={{ position: "fixed", width: "100vw", height: "100vh", zIndex: "200", top: "0px", right: "0px" }}
-        >
-            <div style={{ position: "absolute", width: "208px", zIndex: "10", top: "48px", right: "40px" }}>
+                    <DropdownArrow />
 
-                <DropdownArrow />
+                    <div style={{ backgroundColor: "black", padding: "16px", maxHeight: "600px", overflow: "scroll" }}>
 
-                <div style={{ backgroundColor: "black", padding: "16px", maxHeight: "600px", overflow: "scroll" }}>
+                        <NavbarOption setModalShowing={setContactsShowing} optionName={"My Contact"} deviceSize={"DESKTOP"} />
 
-                    <NavbarOption setModalShowing={setContactsShowing} optionName={"My Contact"} />
+                        <div style={{ height: "8px" }} />
 
-                    <div style={{ height: "8px" }} />
+                        <NavbarOption setModalShowing={setDocumentsShowing} optionName={"My Documents"} deviceSize={"DESKTOP"} />
 
-                    <NavbarOption setModalShowing={setDocumentsShowing} optionName={"My Documents"} />
+                        <div style={{ height: "8px" }} />
 
-                    <div style={{ height: "8px" }} />
+                        <div style={{ outline: "1px grey solid", padding: "16px" }}>
 
-                    <div style={{ outline: "1px grey solid", padding: "16px" }}>
+                            <div style={{ color: "white" }} >{"My Listings"}</div>
 
-                        <div style={{ color: "white" }} >{"My Listings"}</div>
+                            <div style={{ height: "16px" }} />
 
-                        <div style={{ height: "16px" }} />
+                            {myListings.map((listing) => {
 
-                        {myListings.map((listing) => {
+                                const listingId = listing._id
+                                const thisApplicationObj = listingApplicationObj[listingId]
 
-                            const listingId = listing._id
-                            const thisApplicationObj = listingApplicationObj[listingId]
+                                return (
+                                    <a
+                                        key={listingId}
+                                        href={`/${listing._id}`}
+                                        style={{ color: "white", width: "100%", maxWidth: "600px", cursor: "pointer", display: "flex", marginBottom: "4px", textDecoration: "none" }}
+                                    >
+                                        <div style={{ width: "40px", overflow: "hidden" }}>
+                                            {listing.pics[0] ? (
+                                                <img
+                                                    src={listing.pics[0].url}
+                                                    alt="dropdown property photo"
+                                                    style={{ height: "56px", width: "40px" }}
+                                                />
+                                            ) : (
+                                                <img
+                                                    src="https://images.squarespace-cdn.com/content/v1/56dce00a45bf214a0b3fadf3/60149970-ce98-49e7-8b04-5739ee538798/LBM_hero_img.png?format=2500w"
+                                                    alt="dropdown default photo"
+                                                    style={{ height: "56px", width: "40px" }}
+                                                />
+                                            )}
 
-                            return (
-                                <a
-                                    key={listingId}
-                                    href={`/${listing._id}`}
-                                    style={{ color: "white", width: "100%", maxWidth: "600px", cursor: "pointer", display: "flex", marginBottom: "4px", textDecoration: "none" }}
-                                >
-                                    <div style={{ width: "40px", overflow: "hidden" }}>
-                                        {listing.pics[0] ? (
-                                            <img
-                                                src={listing.pics[0].url}
-                                                alt="dropdown property photo"
-                                                style={{ height: "56px", width: "40px" }}
-                                            />
-                                        ) : (
-                                            <img
-                                                src="https://images.squarespace-cdn.com/content/v1/56dce00a45bf214a0b3fadf3/60149970-ce98-49e7-8b04-5739ee538798/LBM_hero_img.png?format=2500w"
-                                                alt="dropdown default photo"
-                                                style={{ height: "56px", width: "40px" }}
-                                            />
-                                        )}
-
-                                    </div>
-
-                                    <div style={{ width: "8px" }} />
-
-                                    <div>
-
-                                        <div style={{ fontSize: "12px", textDecoration: "none" }}>
-                                            {listing.address}
                                         </div>
 
-                                        <div style={{ fontSize: "12px", textDecoration: "none" }}>
-                                            {`${thisApplicationObj ? thisApplicationObj.totalApplications : '0'} applications`}
-                                        </div>
+                                        <div style={{ width: "8px" }} />
 
-                                        {thisApplicationObj && thisApplicationObj.totalNewApplications > 0 &&
-                                            <div style={{ fontSize: "12px", color: "black", textDecoration: "none", backgroundColor: "pink", padding: "4px", textAlign: "center", width: "48px", fontWeight: "bold", borderRadius: "4px", transform: "translateX(-72px)" }}>
-                                                {thisApplicationObj.totalNewApplications + "new!"}
+                                        <div>
+
+                                            <div style={{ fontSize: "12px", textDecoration: "none" }}>
+                                                {listing.address}
                                             </div>
-                                        }
 
-                                    </div>
-                                </a>
-                            )
-                        })}
-                    </div>
+                                            <div style={{ fontSize: "12px", textDecoration: "none" }}>
+                                                {`${thisApplicationObj ? thisApplicationObj.totalApplications : '0'} applications`}
+                                            </div>
 
-                    <div style={{ height: "8px" }} />
+                                            {thisApplicationObj && thisApplicationObj.totalNewApplications > 0 &&
+                                                <div style={{ fontSize: "12px", color: "black", textDecoration: "none", backgroundColor: "pink", padding: "4px", textAlign: "center", width: "48px", fontWeight: "bold", borderRadius: "4px", transform: "translateX(-72px)" }}>
+                                                    {thisApplicationObj.totalNewApplications + "new!"}
+                                                </div>
+                                            }
 
-                    <div style={{ outline: "1px red solid", width: "100%", padding: "16px", maxWidth: "600px" }}>
-                        <a
-                            href="/api/auth/logout"
-                            style={{ textDecoration: "none", color: "red" }}
-                        >
-                            Sign out
-                        </a>
+                                        </div>
+                                    </a>
+                                )
+                            })}
+                        </div>
+
+                        <div style={{ height: "8px" }} />
+
+                        <div style={{ outline: "1px red solid", width: "100%", padding: "16px", maxWidth: "600px" }}>
+                            <a
+                                href="/api/auth/logout"
+                                style={{ textDecoration: "none", color: "red" }}
+                            >
+                                Sign out
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    )
+        )
+    }
+
+    if (deviceSize === "MOBILE") {
+        return (
+
+            <div style={{ marginTop: "80px", padding: "16px", height: "100%", overflow: "scroll" }}>
+
+                <NavbarOption setModalShowing={setContactsShowing} optionName={"My Contact"} deviceSize={"MOBILE"} />
+
+                <div style={{ height: "8px" }} />
+
+                {/* <NavbarOption setModalShowing={setDocumentsShowing} optionName={"My Documents"} deviceSize={"MOBILE"} />
+
+                <div style={{ height: "8px" }} /> */}
+
+                <div style={{ outline: "1px grey solid", padding: "16px" }}>
+
+                    <div>{"My Listings"}</div>
+
+                    <div style={{ height: "16px" }} />
+
+                    {myListings.map((listing) => {
+
+                        const listingId = listing._id
+                        const thisApplicationObj = listingApplicationObj[listingId]
+
+                        return (
+                            <a
+                                key={listingId}
+                                href={`/${listing._id}`}
+                                style={{ width: "100%", maxWidth: "600px", cursor: "pointer", display: "flex", marginBottom: "4px", textDecoration: "none" }}
+                            >
+                                <div style={{ width: "40px", overflow: "hidden" }}>
+                                    {listing.pics[0] ? (
+                                        <img
+                                            src={listing.pics[0].url}
+                                            alt="dropdown property photo"
+                                            style={{ height: "56px", width: "40px" }}
+                                        />
+                                    ) : (
+                                        <img
+                                            src="https://images.squarespace-cdn.com/content/v1/56dce00a45bf214a0b3fadf3/60149970-ce98-49e7-8b04-5739ee538798/LBM_hero_img.png?format=2500w"
+                                            alt="dropdown default photo"
+                                            style={{ height: "56px", width: "40px" }}
+                                        />
+                                    )}
+
+                                </div>
+
+                                <div style={{ width: "8px" }} />
+
+                                <div>
+
+                                    <div style={{ fontSize: "12px", textDecoration: "none" }}>
+                                        {listing.address}
+                                    </div>
+
+                                    <div style={{ fontSize: "12px", textDecoration: "none" }}>
+                                        {`${thisApplicationObj ? thisApplicationObj.totalApplications : '0'} applications`}
+                                    </div>
+
+                                    {thisApplicationObj && thisApplicationObj.totalNewApplications > 0 &&
+                                        <div style={{ fontSize: "12px", color: "black", textDecoration: "none", backgroundColor: "pink", padding: "4px", textAlign: "center", width: "48px", fontWeight: "bold", borderRadius: "4px", transform: "translateX(-72px)" }}>
+                                            {thisApplicationObj.totalNewApplications + "new!"}
+                                        </div>
+                                    }
+
+                                </div>
+                            </a>
+                        )
+                    })}
+                </div>
+
+                <div style={{ height: "8px" }} />
+
+                <div style={{ outline: "1px red solid", width: "100%", padding: "16px", maxWidth: "600px" }}>
+                    <a
+                        href="/api/auth/logout"
+                        style={{ textDecoration: "none", color: "red" }}
+                    >
+                        Sign out
+                    </a>
+                </div>
+
+                <div style={{ height: "120px" }} />
+            </div>
+        )
+    }
+
 
 }
 
