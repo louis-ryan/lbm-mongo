@@ -33,18 +33,21 @@ const AccessPremium = ({ user, nameToContact, noteId }) => {
         <div
             onMouseEnter={() => setHoverPremium(true)}
             onMouseLeave={() => setHoverPremium(false)}
-            style={{ width: "100%", height: hoverPremium ? "600px" : "240px", backgroundColor: hoverPremium ? "white" : "lightgrey", display: "flex", justifyContent: "center", alignItems: "center", cursor: "pointer", transition: "1s" }}
+            style={{ width: "100%", height: "400", backgroundColor: hoverPremium ? "white" : "lightgrey", display: "flex", padding: "24px", justifyContent: "center", alignItems: "center", cursor: "pointer", transition: "1s" }}
         >
             {accessingStripe ? (
-                 <Oval visible={true} height="80" width="80" color="white" ariaLabel="oval-loading" wrapperStyle={{}} wrapperClass="" />
+                <div style={{height: "280px", display: "flex", alignItems: "center"}}>
+                    <Oval visible={true} height="80" width="80" color="white" ariaLabel="oval-loading" wrapperStyle={{}} wrapperClass="" />
+                </div>
             ) : (
                 <div style={{ textAlign: "center" }}>
-                    <h3 style={{ fontSize: "16px" }}>Contact {nameToContact} directly</h3>
-                    <div>{'PREMIUM FEATURE'}</div>
+
+                    <h1>{"Contact this user directly with full access!"}</h1>
+
                     <div style={{ height: "16px" }} />
 
-                    <div style={{ width: "100%", height: hoverPremium ? "272px" : "0px", opacity: hoverPremium ? "1" : "0", marginBottom: hoverPremium ? "16px" : "0px", transition: "1s", display: "flex", justifyContent: 'space-between' }}>
-                        <div style={{ textAlign: "center", border: "1px solid grey", padding: "16px", opacity: "0.8" }}>
+                    <div style={{ width: "100%", height: "280px", transition: "1s", display: "flex", justifyContent: 'space-between', filter: hoverPremium ? "saturate(1)" : "saturate(0)" }}>
+                        <div style={{ textAlign: "center", border: "1px solid grey", padding: "16px", opacity: hoverPremium ? "0.6" : "0.8", transition: "1s" }}>
                             <h2 style={{ transform: "scaleX(1.3)" }}>{"Free Tier"}</h2>
                             <h2 style={{ transform: "scaleX(1.3)" }}>{"$0 forever"}</h2>
                             <h3>{"✅ Communicate via platform"}</h3>
@@ -56,7 +59,7 @@ const AccessPremium = ({ user, nameToContact, noteId }) => {
                         <div
                             onClick={() => handleCheckout()}
                             className='tier-card-premium'
-                            style={{ textAlign: "center", border: "1px solid grey", padding: "16px" }}
+                            style={{ textAlign: "center", border: "1px solid grey", padding: "16px", opacity: hoverPremium ? "1" : "0.8" }}
                         >
                             <h2 style={{ transform: "scaleX(1.3)" }}>{"Premium"}</h2>
                             <h2 style={{ transform: "scaleX(1.3)" }}>{"$10 one-time"}</h2>
@@ -66,12 +69,7 @@ const AccessPremium = ({ user, nameToContact, noteId }) => {
                             <h1>{"Check it out!"}</h1>
                         </div>
                     </div>
-                    <div
-                        className={hoverPremium ? "button secondary" : ""}
-                        style={{ border: "1px solid grey", padding: "16px", opacity: hoverPremium ? "0" : "1", transition: "1s" }}
-                    >
-                        {'ACCESS PREMIUM FOR ONE-TIME PAYMENT OF $10.00'}
-                    </div>
+                    <div style={{ height: "16px" }} />
                 </div>
             )}
 

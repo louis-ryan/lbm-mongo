@@ -43,7 +43,18 @@ const Layout = ({ children }) => {
                 <div id="mobile-content-card">
                     {children}
                 </div>
-                <Navbar />
+                <Navbar
+                    nameChange={children.props.nameChange}
+                    setNameChange={children.props.setNameChange}
+                    paymentStatus={children.props.paymentStatus}
+                    setPaymentStatus={children.props.setPaymentStatus}
+                    contactsShowing={children.props.contactsShowing}
+                    setContactsShowing={children.props.setContactsShowing}
+                    documentsShowing={children.props.documentsShowing}
+                    setDocumentsShowing={children.props.setDocumentsShowing}
+                    accountShowing={children.props.accountShowing}
+                    setAccountShowing={children.props.setAccountShowing}
+                />
             </>
         )
     }
