@@ -11,7 +11,7 @@ function useGetFilter(user) {
     useEffect(() => {
         if (user === undefined) return
         if (!mount) return
-
+        
         async function getFilter() {
             const res = await fetch(`api/filters/user/${user.sub}`)
             const { data } = await res.json();

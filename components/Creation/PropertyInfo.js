@@ -143,7 +143,7 @@ const PropertyInfo = (props) => {
                     display: "flex",
                     justifyContent: "center",
                     backgroundColor: props.device === "DESKTOP" && "white",
-                    border: "1px solid rgb(181, 181, 181)",
+                    border: props.device === "DESKTOP" && "1px solid rgb(181, 181, 181)",
                     borderRadius: "8px",
                 }}
             >

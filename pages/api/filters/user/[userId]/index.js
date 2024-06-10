@@ -27,6 +27,9 @@ export default async (req, res) => {
 
         var lastFilter = filter[filter.length - 1]
 
+        lastFilter.minRentVal = sortedRentArr[0]
+        lastFilter.maxRentVal = sortedRentArr[sortedRentArr.length - 1]
+
 
 
 
@@ -63,7 +66,6 @@ export default async (req, res) => {
                 __v: 0
             }
         }
-
 
         res.status(200).json({ success: true, data: lastFilter });
     } catch (error) {

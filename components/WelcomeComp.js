@@ -5,7 +5,7 @@ import useWelcomeCompLabelArr from "../custom_hooks/useWelcomCompLabelArr";
 const labelStyle = { padding: "8px 32px 4px 16px", borderRadius: "8px", margin: "8px 8px 0px 0px", cursor: "pointer", border: "black 4px solid", backgroundColor: "white", color: "black" }
 
 
-const WelcomeComp = ({ user, filter, setFilter, deviceSize, nameChange, setNameChange }) => {
+const WelcomeComp = ({ user, filter, setFilter, deviceSize, nameChange, setNameChange, paymentStatus }) => {
 
 
     const [activeLabelArr, labelsArr, setAllowSetArr] = useWelcomeCompLabelArr(filter)
@@ -45,13 +45,16 @@ const WelcomeComp = ({ user, filter, setFilter, deviceSize, nameChange, setNameC
 
     if (deviceSize === "DESKTOP") {
         return (
-            <div style={{ width: "100%", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                 <h2>Welcome {userName}</h2>
-                {/* <h4>
-                    Get the complete guide to breaking lease 
-                    <a> </a>
-                    <a href='/help' target='_blank'>here</a>
-                </h4> */}
+
+                {user !== undefined && paymentStatus === 'succeeded' && (
+                    <div style={{ display: "flex", alignItems: "center", justifyContent: "center", border: "1px solid rgb(181, 181, 181)", borderRadius: "8px", width: "240px", textAlign: "center" }}>
+                        {/* <h1 style={{ fontSize: "32px" }}>{"🐨"}</h1>
+                        <div style={{ width: "8px" }} /> */}
+                        <h3>{"Full Access User"}</h3>
+                    </div>
+                )}
             </div>
         )
     }
@@ -61,35 +64,37 @@ const WelcomeComp = ({ user, filter, setFilter, deviceSize, nameChange, setNameC
             <div style={{ width: "100%", padding: "16px" }}>
                 <div style={{ height: "24px" }} />
                 <img
-                    src="https://images.squarespace-cdn.com/content/v1/56dce00a45bf214a0b3fadf3/5cf24fcb-d5dc-44b2-a321-b28ee3d3e00d/lbm_new_logo.png?format=500w"
+                    src="https://images.squarespace-cdn.com/content/v1/56dce00a45bf214a0b3fadf3/99125cab-df14-4af4-bead-55b272b9cb62/LBM+Copy+3.png?format=2500w"
+                    alt="logo"
                     style={{ height: "80px" }}
                 />
 
                 {user !== undefined && (
-                    <>
-                        <div style={{ height: "24px" }} />
-                        <div style={{ fontSize: "24px", display: "flex", alignItems: "center" }}>
-                            <div style={{ borderRadius: "50%", overflow: "hidden", width: "40px", height: "40px" }}>
-                                <img
-                                    src={user.picture}
-                                    style={{ height: "40px", width: "40px", }}
-                                />
-                            </div>
-                            <div style={{ width: "8px" }} />
-                            <div>{`Welcome ${userName} `}</div>
+                    <div style={{ fontSize: "24px", display: "flex", alignItems: "center" }}>
+                        <div style={{ borderRadius: "50%", overflow: "hidden", width: "80px", height: "80px" }}>
+                            <img
+                                src={user.picture}
+                                alt={"user picture"}
+                                style={{ height: "80px", width: "80px", }}
+                            />
                         </div>
-                    </>
+                        <div style={{ width: "8px" }} />
+                        <div>
+                            <h2>{`Welcome`}</h2>
+                            <h2>{`${userName} `}</h2>
+                        </div>
+                    </div>
                 )}
 
                 <div style={{ height: "24px" }} />
 
-                {activeLabelArr.length > 0 && (
+                {/* {activeLabelArr.length > 0 && (
                     <div style={{ fontSize: "16px" }}>
                         {"you are filtering by the following search parametres"}
                     </div>
                 )}
-                <div style={{ height: "8px" }} />
-                <div style={{ marginTop: "24px", display: "flex", flexWrap: "wrap" }}>
+                <div style={{ height: "8px" }} /> */}
+                {/* <div style={{ marginTop: "24px", display: "flex", flexWrap: "wrap" }}>
 
                     {labelsArr.map((label) => (
                         <div
@@ -113,7 +118,7 @@ const WelcomeComp = ({ user, filter, setFilter, deviceSize, nameChange, setNameC
                         </div>
                     )
                     )}
-                </div>
+                </div> */}
             </div>
         )
     }

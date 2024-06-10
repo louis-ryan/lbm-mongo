@@ -27,6 +27,24 @@ const Index = (props) => {
 
 
   /**
+   * Assign new min and max rent values to rent range if they were left at previous min and max
+   */
+  useEffect(() => {
+    setFilter({
+      ...filter,
+      maxRentVal: filter.maxLimit ? rentProps[7] : filter.maxRentVal,
+      minRentVal: filter.minLimit ? rentProps[6] : filter.minRentVal,
+      selectedRentVal: [
+        filter.minLimit ? rentProps[6] : filter.selectedRentVal[0],
+        filter.maxLimit ? rentProps[7] : filter.selectedRentVal[1]
+      ]
+    })
+
+  }, [lastFilterFromServer])
+
+
+
+  /**
    * Check for expired posts and delete them
    */
   useEffect(() => {
@@ -52,11 +70,9 @@ const Index = (props) => {
       return (
         <div style={{ width: "100%", display: "flex", justifyContent: "center" }}>
           <div ref={desktopComp} style={{ marginTop: "80px", width: "920px" }}>
-            {windowWidth > 1220 ? (
-              <WelcomeComp user={user} filter={filter} setFilter={setFilter} deviceSize={"DESKTOP"} nameChange={props.nameChange} setNameChange={props.setNameChange} />
-            ) : (
-              <div style={{ height: "72px" }} />
-            )}
+
+            <WelcomeComp user={user} filter={filter} setFilter={setFilter} deviceSize={"DESKTOP"} nameChange={props.nameChange} setNameChange={props.setNameChange} paymentStatus={props.paymentStatus} />
+
             <div style={{ width: "100%", height: "1px", backgroundColor: "rgb(181, 181, 181)", marginTop: "40px" }} />
             <div style={{ display: "flex", justifyContent: "space-between" }}>
               <div style={{ width: "280px", opacity: !rentProps[6] && "0", transitionDuration: "500ms", transitionDelay: "1s" }}>
@@ -85,6 +101,13 @@ const Index = (props) => {
             {mobileView === "NOTES" && (
               <ListingComp notes={notes} rendering={rendering} unlimitedNotes={unlimitedNotes} skipping={skipping} setSkipping={setSkipping} getSkippedNotes={getSkippedNotes} deviceSize={"MOBILE"} />
             )}
+          </div>
+
+          <div 
+          onClick={() => router.push('/new')}
+          className='button secondary' style={{position: "fixed", zIndex: "5", bottom: "0px", width: "calc(100% - 16px)", margin: "8px"}}
+          >
+              {"+ CREATE LISTING"}
           </div>
         </>
       )

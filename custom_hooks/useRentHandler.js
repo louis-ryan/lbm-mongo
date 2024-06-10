@@ -57,6 +57,14 @@ function useRentHandler(filter, setFilter, user) {
         setMinVal(sortedRentArr[0])
         setMaxVal(sortedRentArr[sortedRentArr.length - 1])
         setRentArr(sortedRentArr)
+
+        setFilter({
+            ...filter,
+            selectedRentVal: [
+              filter.selectedRentVal[0] === null && sortedRentArr[0],
+              filter.selectedRentVal[1] === null && sortedRentArr[sortedRentArr.length - 1]
+            ]
+          })
     }
 
 
@@ -79,7 +87,7 @@ function useRentHandler(filter, setFilter, user) {
             })
         }
     }, [minVal, maxVal])
-    
+
 
 
     useEffect(() => {
@@ -99,11 +107,7 @@ function useRentHandler(filter, setFilter, user) {
      * Set init selection based on min and max
      */
     useEffect(() => {
-        if (filter.selectedRentVal !== []) {
-            setSelectedVal([filter.selectedRentVal[0], filter.selectedRentVal[1]])
-        } else {
-            setSelectedVal([minVal, maxVal])
-        }
+        setSelectedVal([filter.selectedRentVal[0], filter.selectedRentVal[1]])
     }, [filter, minVal, maxVal])
 
 

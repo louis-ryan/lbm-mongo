@@ -33,7 +33,7 @@ const handler = async (req, res) => {
                   <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
                     <tr> 
                       <td bgcolor="#ffffff" align="center" style="padding: 10px 15px 30px 15px" class="section-padding" > 
-                        <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 500px" class="responsive-table" > 
+                        <table border="0" cellpadding="0" cellspacing="0" width="80%" style="max-width: 500px" class="responsive-table" > 
                           <tr> 
                             <td> 
                               <table width="100%" border="0" cellspacing="0" cellpadding="0"> 

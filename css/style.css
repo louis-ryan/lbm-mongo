@@ -26,7 +26,7 @@ h2 {
   font-weight: 900;
   color: #757d6e;
   letter-spacing: -1.5px;
-  transform: scaleX(1.3) translateX(11%);
+  transform: scaleX(1.3) translateX(11.5%);
 }
 
 h3 {
@@ -99,8 +99,6 @@ li::before {
   height: 240px;
   width: 100%;
   margin-top: 24px;
-  border-radius: 0px;
-  border: none;
   overflow: hidden;
   cursor: pointer;
   border-radius: 8px;
@@ -110,6 +108,15 @@ li::before {
   outline: 4px solid white;
   border: 4px solid white;
   border-radius: 12px;
+}
+
+.tier-card-premium {
+  box-shadow: 0px 0px 20px 0px lightgrey;
+  transition: 300ms;
+}
+
+.tier-card-premium:hover {
+  box-shadow: 0px 0px 60px 10px lightgrey;
 }
 
 .wrapper {

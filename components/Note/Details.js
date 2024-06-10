@@ -1,4 +1,4 @@
-const itemStyle = { border: "1px solid rgb(181, 181, 181)", borderRadius: "8px", padding: "16px", marginBottom: "16px", backgroundColor: "white" }
+const itemStyle = { border: "1px solid lightgrey", borderRadius: "8px", padding: "16px", marginBottom: "16px", backgroundColor: "white" }
 
 
 const Details = ({ note, mapPath, latInPx, longInPx, deviceSize }) => {
@@ -155,16 +155,19 @@ const Details = ({ note, mapPath, latInPx, longInPx, deviceSize }) => {
                     width: "50%"
                 }}>
 
-                    <svg width="1600px" height="1600px">
-                        <g id="Artboard-Copy-8" stroke="#979797" strokeWidth="6" fill="none" fillRule="evenodd">
-                            <path d={mapPath} id="Rectangle" fill="#F1F1F1"></path>
-                        </g>
-                    </svg>
+                    {deviceSize === "DESKTOP" && (
+                        <>
+                            <svg width="1600px" height="1600px">
+                                <g id="Artboard-Copy-8" stroke="#979797" strokeWidth="6" fill="none" fillRule="evenodd">
+                                    <path d={mapPath} id="Rectangle" fill="#F1F1F1"></path>
+                                </g>
+                            </svg>
 
-                    <div style={{ position: "absolute", width: "1600px", height: "1600px", zIndex: "20", marginTop: "-1600px" }}>
-                        <div style={{ width: "80px", height: "80px", backgroundColor: "white", marginLeft: `${longInPx - 80}px`, marginTop: `${latInPx - 80}px`, borderRadius: "50%", boxShadow: "0px 0px 0px 80px #00F2C4" }}></div>
-                    </div>
-
+                            <div style={{ position: "absolute", width: "1600px", height: "1600px", zIndex: "20", marginTop: "-1600px" }}>
+                                <div style={{ width: "80px", height: "80px", backgroundColor: "white", marginLeft: `${longInPx - 80}px`, marginTop: `${latInPx - 80}px`, borderRadius: "50%", boxShadow: "0px 0px 0px 80px #00F2C4" }}></div>
+                            </div>
+                        </>
+                    )}
 
                 </div>
             </div>
