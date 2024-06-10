@@ -11,18 +11,18 @@ const PaymentSuccess = (props) => {
     console.log("user: ", user)
     const router = useRouter()
 
-    const handleCheckStatus = async () => {
-        const response = await fetch(`/api/tier/${user.email}`);
-        const data = await response.json();
-        console.log("data: ", data)
-        props.setPaymentStatus(data.status);
-    };
+    // const handleCheckStatus = async () => {
+    //     const response = await fetch(`/api/tier/${user.email}`);
+    //     const data = await response.json();
+    //     console.log("data: ", data)
+    //     props.setPaymentStatus(data.status);
+    // };
 
-    useEffect(() => {
-        if (!user) return
-        if (!props) return
-        handleCheckStatus()
-    }, [props, user])
+    // useEffect(() => {
+    //     if (!user) return
+    //     if (!props) return
+    //     handleCheckStatus()
+    // }, [props, user])
 
     return (
         <div style={{ width: "100%", height: "calc(100vh - 40px)", display: "flex", justifyContent: "center", alignItems: "center" }}>

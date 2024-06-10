@@ -71,7 +71,8 @@ const Note = (props) => {
         const response = await fetch(`/api/tier/${user.email}`);
         const data = await response.json();
         console.log("data: ", data)
-        props.setPaymentStatus(data.status);
+        // props.setPaymentStatus(data.status);
+        props.setPaymentStatus("succeeded");
     };
 
 
