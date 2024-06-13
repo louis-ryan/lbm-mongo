@@ -39,8 +39,7 @@ const Navbar = (props) => {
     const handleCheckStatus = async () => {
         const response = await fetch(`/api/tier/${user.email}`);
         const data = await response.json();
-        // props.setPaymentStatus(data.status);
-        props.setPaymentStatus("succeeded");
+        props.setPaymentStatus(data.status);
     };
 
 
