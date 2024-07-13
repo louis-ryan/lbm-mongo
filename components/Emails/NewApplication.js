@@ -1,6 +1,6 @@
 const newApplicationEmail = (note, user, urlForEmail) => (
 
-    `<img src="https://images.squarespace-cdn.com/content/v1/56dce00a45bf214a0b3fadf3/99125cab-df14-4af4-bead-55b272b9cb62/LBM+Copy+3.png?format=2500w" width="120px"/>` +
+    `<img src="https://leasebreakersmelbourne.s3.eu-central-1.amazonaws.com/LBM_hero_img.png" width="120px"/>` +
 
     `<h2>You have a new application to your property in ${note.address}</h2>` +
     

@@ -61,7 +61,7 @@ const NavbarDropdown = ({ setUserOptions, setContactsShowing, setDocumentsShowin
                                                 />
                                             ) : (
                                                 <img
-                                                    src="https://images.squarespace-cdn.com/content/v1/56dce00a45bf214a0b3fadf3/60149970-ce98-49e7-8b04-5739ee538798/LBM_hero_img.png?format=2500w"
+                                                    src="https://leasebreakersmelbourne.s3.eu-central-1.amazonaws.com/LBM_hero_img.png"
                                                     alt="dropdown default photo"
                                                     style={{ height: "56px", width: "40px" }}
                                                 />
@@ -148,7 +148,7 @@ const NavbarDropdown = ({ setUserOptions, setContactsShowing, setDocumentsShowin
                                         />
                                     ) : (
                                         <img
-                                            src="https://images.squarespace-cdn.com/content/v1/56dce00a45bf214a0b3fadf3/60149970-ce98-49e7-8b04-5739ee538798/LBM_hero_img.png?format=2500w"
+                                            src="https://leasebreakersmelbourne.s3.eu-central-1.amazonaws.com/LBM_hero_img.png"
                                             alt="dropdown default photo"
                                             style={{ height: "56px", width: "40px" }}
                                         />

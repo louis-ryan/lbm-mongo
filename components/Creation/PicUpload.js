@@ -65,6 +65,7 @@ const ImageBox = ({ form, id, setForm }) => {
         <div style={boxStyle}>
             <img
                 src={form.pics && form.pics[id] && form.pics[id].url}
+                alt={'property pic'}
                 style={{ height: "100%" }}
                 onClick={() => {
                     var newForm = { ...form }

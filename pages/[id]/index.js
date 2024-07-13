@@ -25,7 +25,7 @@ const coverPic = { position: "absolute", width: "100%", top: "-420px", left: "0p
 
 const CoverPicDesk = ({ pic }) => (
     <div style={coverPic}>
-        {pic ? (<img src={pic.url} alt="cover photo" style={{ width: "100%", filter: "blur(6px)", transform: "scale(1.1)" }} />) : (<img src="https://images.squarespace-cdn.com/content/v1/56dce00a45bf214a0b3fadf3/60149970-ce98-49e7-8b04-5739ee538798/LBM_hero_img.png?format=2500w" alt="cover photo" style={{ width: "100%", filter: "blur(6px)", transform: "scale(1.1)" }} />)}
+        {pic ? (<img src={pic.url} alt="cover photo" style={{ width: "100%", filter: "blur(6px)", transform: "scale(1.1)" }} />) : (<img src="https://leasebreakersmelbourne.s3.eu-central-1.amazonaws.com/LBM_hero_img.png" alt="cover photo" style={{ width: "100%", filter: "blur(6px)", transform: "scale(1.1)" }} />)}
     </div>
 )
 
@@ -117,7 +117,7 @@ const Note = (props) => {
 
         const content =
 
-            `<img src="https://images.squarespace-cdn.com/content/v1/56dce00a45bf214a0b3fadf3/99125cab-df14-4af4-bead-55b272b9cb62/LBM+Copy+3.png?format=2500w" width="120px"/>` +
+            `<img src="https://leasebreakersmelbourne.s3.eu-central-1.amazonaws.com/LBM_logo_latest.png" width="120px"/>` +
 
             `<h2>You have a new application to your property in ${note.address}</h2>` +
 

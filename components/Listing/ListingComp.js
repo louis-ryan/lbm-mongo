@@ -4,8 +4,6 @@ import BrowseOptions from './BrowseOptions';
 
 const ListingComp = ({ notes, getNotes, rendering, unlimitedNotes, skipping, setSkipping, getSkippedNotes, deviceSize }) => {
 
-    console.log("notes: ", notes)
-
     return (
         <div style={{ width: "100%" }}>
 

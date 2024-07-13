@@ -64,7 +64,7 @@ const WelcomeComp = ({ user, filter, setFilter, deviceSize, nameChange, setNameC
             <div style={{ width: "100%", padding: "16px" }}>
                 <div style={{ height: "24px" }} />
                 <img
-                    src="https://images.squarespace-cdn.com/content/v1/56dce00a45bf214a0b3fadf3/99125cab-df14-4af4-bead-55b272b9cb62/LBM+Copy+3.png?format=2500w"
+                    src={'LBM_logo_latest.png'}
                     alt="logo"
                     style={{ height: "80px" }}
                 />

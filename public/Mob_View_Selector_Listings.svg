@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="360px" height="60px" viewBox="0 0 360 60" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 62 (91390) - https://sketch.com -->
+    <title>Mob View Selector: Listings</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Mob-View-Selector:-Listings" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M184,49 L184,32 C184,23.163444 191.163444,16 200,16 L336.392414,16 C345.22897,16 352.392414,23.163444 352.392414,32 L352.392414,49 L352.392414,49" id="Line-24" fill="#D6D6D6" transform="translate(268.196207, 32.500000) scale(-1, 1) translate(-268.196207, -32.500000) "></path>
+        <path d="M-8,49 L7.6075861,49 L7.6075861,32 C7.6075861,23.163444 14.7710301,16 23.6075861,16 L160,16 C168.836556,16 176,23.163444 176,32 L176,49 L176,49 L360,49" id="Line-24-Copy" stroke="#979797" fill="#FFFFFF" stroke-linecap="square"></path>
+        <rect id="Rectangle" x="180" y="0" width="180" height="60"></rect>
+        <text id="listings" font-family="Helvetica" font-size="16" font-weight="normal" letter-spacing="-0.311999333" fill="#555555">
+            <tspan x="66.7948723" y="42">listings</tspan>
+        </text>
+        <text id="filters" font-family="Helvetica" font-size="16" font-weight="normal" letter-spacing="-0.311999333" fill="#555555">
+            <tspan x="252.322717" y="42">filters</tspan>
+        </text>
+    </g>
+</svg>

@@ -8,10 +8,6 @@ import NavbarDropdown from './NavbarDropdown'
 import ContactModal from './ContactModal';
 import DocumentsModal from './DocumentsModal';
 import useWindowWidth from '../../custom_hooks/useWindowWidth';
-import homeButton from '../../public/icons/LBM_button_home.svg';
-import newButton from '../../public/icons/LBM_button_new.svg';
-import signInButton from '../../public/icons/LBM_button_signin.svg';
-import signOutButton from '../../public/icons/LBM_button_signout.svg';
 
 
 const Navbar = (props) => {
@@ -130,7 +126,16 @@ const Navbar = (props) => {
         return (
             <>
                 <div style={{ position: "fixed", zIndex: "20", top: "0px", right: "0px", width: "60px", height: "60px", display: "flex", justifyContent: "center", alignItems: "center" }}>
-                    <Hamburger toggled={mobileNavOpen} toggle={setMobileNavOpen} />
+                    <Hamburger
+                        toggled={mobileNavOpen}
+                        toggle={() => {
+                            if (user) {
+                                setMobileNavOpen((prev) => !prev)
+                            } else {
+                                router.push("/api/auth/login")
+                            }
+                        }}
+                    />
                 </div>
 
                 {mobileNavOpen && (
@@ -163,48 +168,6 @@ const Navbar = (props) => {
                     />
                 )}
             </>
-
-            // <div style={{ width: "100vw", position: "fixed", bottom: "0px", left: "0px", backgroundColor: "white", zIndex: "400", display: "flex", justifyContent: "space-around", alignItems: "center", boxShadow: "0px 0px 40px 8px black", padding: "8px" }}>
-
-            //     <div style={{ width: "calc(100% / 3)" }}>
-            //         <div
-            //             style={{ textAlign: "center" }}
-            //             onClick={() => { if (user !== undefined) { router.push('/') } else { router.push("/api/auth/login") } }}
-            //         >
-            //             <img className="mobile-nav-button" src={homeButton} alt="home button" style={{ height: "40px", border: router.asPath === '/' && "4px solid pink" }} />
-            //         </div>
-            //         <div style={{ textAlign: "center" }}>home</div>
-            //     </div>
-
-
-            //     <div style={{ width: "calc(100% / 3)" }}>
-            //         <div
-            //             style={{ textAlign: "center" }}
-            //             onClick={() => { if (user !== undefined) { router.push('/new') } else { router.push("/api/auth/login") } }}
-            //         >
-            //             <img className="mobile-nav-button" src={newButton} alt="new button" style={{ height: "40px", border: router.asPath === '/new' && "4px solid pink" }} />
-            //         </div>
-            //         <div style={{ textAlign: "center" }}>new</div>
-            //     </div>
-
-
-            //     <div style={{ width: "calc(100% / 3)" }}>
-            //         <div
-            //             style={{ textAlign: "center" }}
-            //             onClick={() => { if (user !== undefined) { router.push('/api/auth/logout') } else { router.push("/api/auth/login") } }}
-            //         >
-            //             {user !== undefined ? (
-            //                 <img className="mobile-nav-button" src={signOutButton} alt="sign out button" style={{ height: "40px" }} />
-            //             ) : (
-            //                 <img className="mobile-nav-button" src={signInButton} alt="sign in button" style={{ height: "40px" }} />
-            //             )}
-            //         </div>
-            //         <div style={{ textAlign: "center" }}>
-            //             {user !== undefined ? ("sign out") : ("sign in")}
-            //         </div>
-            //     </div>
-
-            // </div>
         )
     }
 
