@@ -95,19 +95,21 @@ const Index = (props) => {
 
           <div style={{ borderRadius: "16px", padding: "4px" }}>
             <ListingEditToggle mobileView={mobileView} setMobileView={setMobileView} />
-            {mobileView === "FILTERS" && (
+
+            <div style={{ display: `${mobileView !== "FILTERS" ? 'none' : 'unset'}` }}>
               <FilterComp filter={filter} lastFilterFromServer={lastFilterFromServer} setFilter={setFilter} updateFilter={updateFilter} deleteFilter={deleteFilter} filterUpdating={filterUpdating} notes={notes} rentProps={rentProps} deviceSize={"MOBILE"} />
-            )}
-            {mobileView === "NOTES" && (
+            </div>
+
+            <div style={{ display: `${mobileView !== "NOTES" ? 'none' : 'unset'}` }}>
               <ListingComp notes={notes} rendering={rendering} unlimitedNotes={unlimitedNotes} skipping={skipping} setSkipping={setSkipping} getSkippedNotes={getSkippedNotes} deviceSize={"MOBILE"} />
-            )}
+            </div>
           </div>
 
-          <div 
-          onClick={() => router.push('/new')}
-          className='button secondary' style={{position: "fixed", zIndex: "5", bottom: "0px", width: "calc(100% - 16px)", margin: "8px"}}
+          <div
+            onClick={() => router.push('/new')}
+            className='button secondary' style={{ position: "fixed", zIndex: "5", bottom: "0px", width: "100vw", border: "0px", outline: "1px solid grey" }}
           >
-              {"+ CREATE LISTING"}
+            {"+ CREATE LISTING"}
           </div>
         </>
       )

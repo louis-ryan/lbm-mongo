@@ -1,6 +1,6 @@
 const HeaderIcon = ({ icon }) => (
     <div style={{ marginRight: "8px" }}>
-        <img src={icon} style={{ height: "32px", marginTop: "12px" }} />
+        <img src={icon} alt={`${icon} icon`} style={{ height: "32px", marginTop: "12px" }} />
     </div>
 )
 

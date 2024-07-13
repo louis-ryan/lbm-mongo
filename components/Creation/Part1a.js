@@ -10,7 +10,7 @@ import NavButtons from "./NavButtons";
 
 const Bool = ({ setter, condition, title, icon }) => (
     <div className="form-bool" style={{ border: condition && "2px solid black" }} onClick={setter}>
-        <img src={icon} style={{ width: "32px" }} />
+        <img src={icon} alt={`${icon} icon`} style={{ width: "32px" }} />
         <p style={{ color: condition && "black", marginLeft: "4px" }}>{title}</p>
     </div>
 )

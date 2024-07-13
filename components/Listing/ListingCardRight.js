@@ -23,7 +23,7 @@ const ListingCardRight = ({ note }) => {
 
                         <img
                             alt="blank image"
-                            src="https://images.squarespace-cdn.com/content/v1/56dce00a45bf214a0b3fadf3/60149970-ce98-49e7-8b04-5739ee538798/LBM_hero_img.png?format=2500w"
+                            src={'LBM_hero_img.png'}
                             style={{ width: "100%", filter: "blur(2px) brightness(0.8)" }}
                         />
                         <h6 style={{ position: "absolute", zIndex: "40" }}>{"This listing has no photos"}</h6>
